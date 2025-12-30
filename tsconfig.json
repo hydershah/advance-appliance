@@ -67,6 +67,7 @@
     ".next",
     "out",
     "build",
-    "dist"
+    "dist",
+    "examples"
   ]
 }
