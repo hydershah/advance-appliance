@@ -38,7 +38,7 @@ export default async function ServicesPage() {
   // Get current design theme
   const designTheme = getCurrentDesignTheme()
   const components = getDesignComponents(designTheme)
-  const { Header, Footer, ServiceCard, SectionHeading } = components
+  const { Header, Footer, ServiceCard } = components
 
   // Generate ItemList schema for SEO
   const itemListSchema = {

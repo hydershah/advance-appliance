@@ -4,7 +4,6 @@ import { getPayloadClient } from '@/utilities/getPayloadClient'
 import { JsonLd } from '@/components/JsonLd'
 import { BlockRenderer } from '@/components/BlockRenderer'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
-import type { Media } from '@/payload-types'
 
 /**
  * About Page - Server Component

@@ -5,11 +5,6 @@
 
 import { getPayloadClient } from '@/utilities/getPayloadClient'
 import type {
-  Page,
-  Service,
-  BlogPost,
-  Testimonial,
-  ServiceArea,
   Settings,
 } from '@/payload-types'
 

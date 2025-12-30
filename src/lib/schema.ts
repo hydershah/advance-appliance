@@ -64,7 +64,7 @@ export function generateLocalBusinessSchema() {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Appliance Repair Services',
-      itemListElement: BUSINESS_INFO.services.map((service, index) => ({
+      itemListElement: BUSINESS_INFO.services.map((service, _index) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',

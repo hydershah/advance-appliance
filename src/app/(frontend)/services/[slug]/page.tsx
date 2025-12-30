@@ -116,7 +116,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   // Get current design theme
   const designTheme = getCurrentDesignTheme()
   const components = getDesignComponents(designTheme)
-  const { Header, Footer, ServiceCard, FAQAccordion, SectionHeading } = components
+  const { Header, Footer, ServiceCard, FAQAccordion } = components
 
   // Generate Service schema
   const serviceSchema = generateServiceSchema({

@@ -242,7 +242,7 @@ export async function parseJSON<T = any>(
   try {
     const data = await request.json()
     return { data }
-  } catch (error) {
+  } catch {
     return { error: 'Invalid JSON' }
   }
 }

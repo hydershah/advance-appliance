@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { isAdmin, isLoggedIn } from '../access'
+import { isAdmin } from '../access'
 
 export const TeamMembers: CollectionConfig = {
   slug: 'team-members',
