@@ -105,8 +105,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   // Fetch related services
   const relatedServices =
     service.relatedServices
-      ?.map((s) => (typeof s === 'object' ? (s as Service) : null))
-      .filter(Boolean) || []
+      ?.map((s: string | Service) => (typeof s === 'object' ? (s as Service) : null))
+      .filter((s: Service | null): s is Service => s !== null) || []
 
   // Fetch site settings
   const settings = await payload.findGlobal({
@@ -188,7 +188,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 What We Offer
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
-                {service.features.map((feature, index) => (
+                {service.features.map((feature: { id?: string; title: string; description: string }, index: number) => (
                   <div
                     key={feature.id || index}
                     className="flex items-start bg-white rounded-lg p-6 shadow-md"
@@ -223,7 +223,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <FAQAccordion faqs={service.faqs} />
               ) : (
                 <div className="space-y-4">
-                  {service.faqs.map((faq, index) => (
+                  {service.faqs.map((faq: { id?: string; question: string; answer: string }, index: number) => (
                     <details
                       key={faq.id || index}
                       className="bg-white rounded-lg shadow-md overflow-hidden"
@@ -250,7 +250,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 Related Services
               </h2>
               <div className="grid md:grid-cols-3 gap-8">
-                {relatedServices.map((relatedService) => {
+                {relatedServices.map((relatedService: Service) => {
                   if (!relatedService) return null
 
                   const relatedImage =

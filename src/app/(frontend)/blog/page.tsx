@@ -102,7 +102,7 @@ export default async function BlogPage() {
                         {/* Categories */}
                         {post.categories && post.categories.length > 0 && (
                           <div className="flex flex-wrap gap-2 mb-3">
-                            {post.categories.slice(0, 2).map((cat, index) => (
+                            {post.categories.slice(0, 2).map((cat: { id?: string; category: string }, index: number) => (
                               <span
                                 key={cat.id || index}
                                 className="text-xs font-semibold px-3 py-1 bg-gold-100 text-gold-700 rounded-full"

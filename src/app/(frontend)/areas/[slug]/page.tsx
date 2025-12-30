@@ -106,7 +106,7 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
   const areaServices =
     area.services
       ?.map((s: string | Service) => (typeof s === 'object' ? (s as Service) : null))
-      .filter((s): s is Service => s !== null) || []
+      .filter((s: Service | null): s is Service => s !== null) || []
 
   // Fetch site settings
   const settings = await payload.findGlobal({

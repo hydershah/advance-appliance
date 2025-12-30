@@ -114,8 +114,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   // Fetch related posts
   const relatedPosts =
     post.relatedPosts
-      ?.map((p) => (typeof p === 'object' ? (p as BlogPost) : null))
-      .filter(Boolean) || []
+      ?.map((p: string | BlogPost) => (typeof p === 'object' ? (p as BlogPost) : null))
+      .filter((p: BlogPost | null): p is BlogPost => p !== null) || []
 
   // Fetch site settings
   const settings = await payload.findGlobal({
@@ -157,7 +157,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {/* Categories */}
               {post.categories && post.categories.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {post.categories.map((cat, index) => (
+                  {post.categories.map((cat: { id?: string; category: string }, index: number) => (
                     <span
                       key={cat.id || index}
                       className="text-sm font-semibold px-4 py-2 bg-gold-500 text-black rounded-full"
@@ -236,7 +236,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="mt-12 pt-8 border-t">
                 <h3 className="text-sm font-semibold text-gray-500 mb-4">TAGS</h3>
                 <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag, index) => (
+                  {post.tags.map((tag: { id?: string; tag: string }, index: number) => (
                     <span
                       key={tag.id || index}
                       className="text-sm px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors"
@@ -258,7 +258,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Related Articles
               </h2>
               <div className="grid md:grid-cols-3 gap-8">
-                {relatedPosts.map((relatedPost) => {
+                {relatedPosts.map((relatedPost: BlogPost) => {
                   if (!relatedPost) return null
 
                   const relatedImage =
