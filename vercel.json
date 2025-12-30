@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "regions": ["iad1"],
+  "env": {
+    "DATABASE_URI": "@database-uri",
+    "PAYLOAD_SECRET": "@payload-secret",
+    "NEXT_PUBLIC_SERVER_URL": "@next-public-server-url",
+    "BLOG_API_KEYS": "@blog-api-keys"
+  },
+  "build": {
+    "env": {
+      "DATABASE_URI": "@database-uri",
+      "PAYLOAD_SECRET": "@payload-secret",
+      "NEXT_PUBLIC_SERVER_URL": "@next-public-server-url"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "/admin/collections/pages",
+      "permanent": false
+    }
+  ],
+  "rewrites": []
+}
