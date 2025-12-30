@@ -40,7 +40,7 @@ const HeroSection: React.FC = () => (
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6">
             Expert <span className="relative inline-block"><span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]">Appliance</span><span className="absolute bottom-2 left-0 w-full h-3 bg-[#3B82F6]/30 -z-0" /></span><br />Repair Service
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl mb-8 max-w-xl leading-relaxed">{BUSINESS_INFO.tagline} Trusted by over 100,000 customers across Central New Jersey for 30+ years.</p>
+          <p className="text-gray-400 text-lg md:text-xl mb-8 max-w-xl leading-relaxed">Fast, reliable appliance repair you can count on. Trusted by over 100,000 customers across Central New Jersey for 30+ years.</p>
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <a href={`tel:${BUSINESS_INFO.phoneClean}`} className="group flex items-center justify-center space-x-3 px-8 py-4 bg-[#3B82F6] text-white rounded-xl font-bold text-lg hover:bg-[#2563EB] transition-all transform hover:scale-105 shadow-lg shadow-[#3B82F6]/30">
               <svg className="w-6 h-6 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
@@ -87,7 +87,7 @@ const HeroSection: React.FC = () => (
 );
 
 const ServicesSection: React.FC = () => {
-  const { isVisible, elementRef } = useIntersectionObserver();
+  const { isVisible, ref: elementRef } = useIntersectionObserver();
   const iconMap: Record<string, React.ReactNode> = {
     snowflake: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v18m0-18l-3 3m3-3l3 3m-3 15l-3-3m3 3l3-3M3 12h18M3 12l3-3m-3 3l3 3m15-3l-3-3m3 3l-3 3" /></svg>,
     droplet: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" /></svg>,
@@ -119,9 +119,9 @@ const ServicesSection: React.FC = () => {
                 <div className="w-16 h-16 bg-[#0A1628] rounded-2xl flex items-center justify-center text-white mb-6 group-hover:bg-[#3B82F6] transition-colors">{iconMap[service.icon] || iconMap.circle}</div>
                 <h3 className={`font-bold text-[#0A1628] mb-3 group-hover:text-[#3B82F6] transition-colors ${index === 0 ? 'text-2xl md:text-3xl' : 'text-xl'}`}>{service.name}</h3>
                 <p className={`text-gray-600 mb-6 leading-relaxed ${index === 0 ? 'text-lg' : ''}`}>{service.description}</p>
-                {index === 0 && service.features && <div className="grid grid-cols-2 gap-3 mb-6">{service.features.map((f) => (<div key={f} className="flex items-center space-x-2 text-gray-600"><svg className="w-4 h-4 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg><span className="text-sm">{f}</span></div>))}</div>}
+                {index === 0 && service.commonIssues && <div className="grid grid-cols-2 gap-3 mb-6">{service.commonIssues.slice(0, 4).map((issue) => (<div key={issue} className="flex items-center space-x-2 text-gray-600"><svg className="w-4 h-4 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg><span className="text-sm">{issue}</span></div>))}</div>}
                 <div className="flex items-center justify-between">
-                  <span className="text-[#3B82F6] font-bold">{service.price}</span>
+                  <span className="text-[#3B82F6] font-bold">From $89</span>
                   <span className="flex items-center space-x-2 text-[#0A1628] font-medium group-hover:text-[#3B82F6] transition-colors"><span>Learn More</span><svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></span>
                 </div>
               </div>
