@@ -250,7 +250,7 @@ class BlogAPIClient {
 // Usage Examples
 // ============================================================================
 
-async function examples() {
+async function _examples() {
   // Initialize the client
   const client = new BlogAPIClient(
     'https://yourdomain.com', // Your site URL
