@@ -44,7 +44,7 @@ export default function Error({
         </h1>
 
         <p className="text-lg text-gray-600 mb-8">
-          We encountered an unexpected error. This has been logged and we'll look into
+          We encountered an unexpected error. This has been logged and we&apos;ll look into
           it.
         </p>
 

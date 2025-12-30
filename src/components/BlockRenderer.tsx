@@ -358,7 +358,7 @@ function TestimonialsBlockRenderer({
                   ))}
                 </div>
                 <p className="text-gray-700 mb-4 italic">
-                  "{testimonial.content}"
+                  &ldquo;{testimonial.content}&rdquo;
                 </p>
                 <div className="border-t pt-4">
                   <p className="font-semibold">{testimonial.customerName}</p>

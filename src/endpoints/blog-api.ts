@@ -30,7 +30,7 @@ interface BlogPostCreate {
   publishedDate?: string
 }
 
-interface BlogPostUpdate extends Partial<BlogPostCreate> {}
+type BlogPostUpdate = Partial<BlogPostCreate>
 
 /**
  * Verify API key middleware

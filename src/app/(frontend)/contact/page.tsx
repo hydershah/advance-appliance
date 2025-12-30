@@ -109,7 +109,7 @@ export default async function ContactPage() {
                         {settings.contact.email}
                       </a>
                       <p className="text-gray-600 mt-1">
-                        We'll respond within 24 hours
+                        We&apos;ll respond within 24 hours
                       </p>
                     </div>
                   </div>

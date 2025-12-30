@@ -109,7 +109,7 @@ export default async function AboutPage() {
                   <p className="text-gray-700 mb-6 text-lg leading-relaxed">
                     At {settings.siteName}, we pride ourselves on providing
                     exceptional appliance repair services to our community. With years
-                    of experience and a team of certified technicians, we're committed
+                    of experience and a team of certified technicians, we&apos;re committed
                     to keeping your appliances running smoothly.
                   </p>
 
