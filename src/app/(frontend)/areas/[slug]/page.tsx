@@ -18,19 +18,24 @@ interface ServiceAreaPageProps {
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayloadClient()
+  try {
+    const payload = await getPayloadClient()
 
-  const areas = await payload.find({
-    collection: 'service-areas',
-    where: {
-      status: { equals: 'published' },
-    },
-    limit: 100,
-  })
+    const areas = await payload.find({
+      collection: 'service-areas',
+      where: {
+        status: { equals: 'published' },
+      },
+      limit: 100,
+    })
 
-  return areas.docs.map((area) => ({
-    slug: area.slug,
-  }))
+    return areas.docs.map((area) => ({
+      slug: area.slug,
+    }))
+  } catch {
+    // Database may not exist during build (e.g., Docker)
+    return []
+  }
 }
 
 export async function generateMetadata({

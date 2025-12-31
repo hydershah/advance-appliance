@@ -18,19 +18,24 @@ interface ServicePageProps {
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayloadClient()
+  try {
+    const payload = await getPayloadClient()
 
-  const services = await payload.find({
-    collection: 'services',
-    where: {
-      status: { equals: 'published' },
-    },
-    limit: 100,
-  })
+    const services = await payload.find({
+      collection: 'services',
+      where: {
+        status: { equals: 'published' },
+      },
+      limit: 100,
+    })
 
-  return services.docs.map((service) => ({
-    slug: service.slug,
-  }))
+    return services.docs.map((service) => ({
+      slug: service.slug,
+    }))
+  } catch {
+    // Database may not exist during build (e.g., Docker)
+    return []
+  }
 }
 
 export async function generateMetadata({

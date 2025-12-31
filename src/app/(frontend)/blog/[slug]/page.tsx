@@ -18,19 +18,24 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayloadClient()
+  try {
+    const payload = await getPayloadClient()
 
-  const posts = await payload.find({
-    collection: 'blog-posts',
-    where: {
-      status: { equals: 'published' },
-    },
-    limit: 100,
-  })
+    const posts = await payload.find({
+      collection: 'blog-posts',
+      where: {
+        status: { equals: 'published' },
+      },
+      limit: 100,
+    })
 
-  return posts.docs.map((post) => ({
-    slug: post.slug,
-  }))
+    return posts.docs.map((post) => ({
+      slug: post.slug,
+    }))
+  } catch {
+    // Database may not exist during build (e.g., Docker)
+    return []
+  }
 }
 
 export async function generateMetadata({
