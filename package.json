@@ -18,6 +18,7 @@
     "verify:seo": "node scripts/verify-seo.js"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "^3.69.0",
     "@payloadcms/db-sqlite": "^3.14.0",
     "@payloadcms/live-preview-react": "^3.14.0",
     "@payloadcms/next": "^3.14.0",
