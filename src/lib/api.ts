@@ -176,9 +176,11 @@ export function getSortParams(
 
   // Validate sort field (prevent injection)
   const validFields = ['createdAt', 'updatedAt', 'title', 'publishedAt', 'order']
-  const [field, order] = sort.split(':')
+  const parts = sort.split(':')
+  const field = parts[0]
+  const order = parts[1]
 
-  if (!validFields.includes(field)) {
+  if (!field || !validFields.includes(field)) {
     return undefined
   }
 
@@ -298,11 +300,12 @@ export function getCorsHeaders(origin?: string): Record<string, string> {
   const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [
     'http://localhost:3000',
   ]
+  const defaultOrigin = allowedOrigins[0] ?? 'http://localhost:3000'
 
   const isAllowed = origin && allowedOrigins.includes(origin)
 
   return {
-    'Access-Control-Allow-Origin': isAllowed ? origin : allowedOrigins[0],
+    'Access-Control-Allow-Origin': isAllowed ? origin : defaultOrigin,
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-API-Key',
     'Access-Control-Max-Age': '86400',

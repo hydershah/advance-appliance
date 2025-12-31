@@ -36,7 +36,7 @@ const awards: Award[] = [
 
 const serviceAreas = ['Monmouth County', 'Middlesex County', 'Ocean County', 'Mercer County', 'Somerset County', 'Union County'];
 
-const ServiceIcon: React.FC<{ type: string }> = ({ type }) => {
+const ServiceIcon: React.FC = () => {
   return (
     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
           </div>
           <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transform transition-all duration-700 delay-200 ${servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {services.map((service, index) => (
-              <ClassicCard key={service.id} variant="service" title={service.title} description={service.description} icon={<ServiceIcon type={service.icon} />} href={`/services/${service.title.toLowerCase().replace(/\s+&?\s*/g, '-')}`} style={{ transitionDelay: `${index * 100}ms` }} />
+              <ClassicCard key={service.id} variant="service" title={service.title ?? ''} description={service.description ?? ''} icon={<ServiceIcon />} href={`/services/${(service.title ?? '').toLowerCase().replace(/\s+&?\s*/g, '-')}`} style={{ transitionDelay: `${index * 100}ms` }} />
             ))}
           </div>
           <div className="text-center mt-12">

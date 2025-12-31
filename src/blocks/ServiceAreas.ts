@@ -34,7 +34,7 @@ export const ServiceAreasBlock: Block = {
       hasMany: true,
       label: 'Featured Service Areas',
       admin: {
-        condition: (data, siblingData) => siblingData?.displayMode === 'featured',
+        condition: (_data, siblingData) => siblingData?.displayMode === 'featured',
         description: 'Select specific service areas to display',
       },
     },

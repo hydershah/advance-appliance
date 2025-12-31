@@ -25,11 +25,11 @@ const Blog: React.FC = () => {
 
   const filteredPosts = blogPosts.filter((post) => {
     const matchesCategory = activeCategory === 'All' || post.category === activeCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || (post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
     return matchesCategory && matchesSearch;
   });
 
-  const featuredPost = blogPosts[0];
+  const featuredPost = blogPosts[0] as BlogPost | undefined;
   const regularPosts = filteredPosts.slice(activeCategory === 'All' && !searchQuery ? 1 : 0);
 
   return (
@@ -68,7 +68,7 @@ const Blog: React.FC = () => {
         </div>
       </section>
 
-      {activeCategory === 'All' && !searchQuery && (
+      {activeCategory === 'All' && !searchQuery && featuredPost && (
         <section className="py-16 bg-ivory">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12"><p className="text-burgundy font-serif tracking-widest uppercase mb-4">Featured Article</p><OrnamentDivider variant="simple" color="burgundy" className="max-w-xs mx-auto" /></div>

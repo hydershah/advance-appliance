@@ -196,7 +196,7 @@ export async function fetchSettings(): Promise<Settings> {
 
   return await payload.findGlobal({
     slug: 'settings',
-  })
+  }) as unknown as Settings
 }
 
 /**

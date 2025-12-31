@@ -19,13 +19,13 @@ const ServiceIcons: Record<string, React.FC<{ className?: string }>> = {
 };
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, variant = 'default' }) => {
-  const IconComponent = ServiceIcons[service.icon] || ServiceIcons.oven;
+  const IconComponent = ServiceIcons[service.icon] ?? ServiceIcons.oven ?? ServiceIcons.refrigerator;
 
   if (variant === 'minimal') {
     return (
       <a href={`/services/${service.slug}`} className="group block p-6 border border-gray-200 hover:border-[#D4AF37] transition-all duration-300">
         <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300"><IconComponent className="w-6 h-6" /></div>
+          <div className="w-12 h-12 flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300">{IconComponent && <IconComponent className="w-6 h-6" />}</div>
           <span className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">{service.name}</span>
         </div>
       </a>
@@ -40,7 +40,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, variant = 'default' 
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8">
-          <div className="w-12 h-12 flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] mb-4 group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300"><IconComponent className="w-6 h-6" /></div>
+          <div className="w-12 h-12 flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] mb-4 group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300">{IconComponent && <IconComponent className="w-6 h-6" />}</div>
           <h3 className="font-serif text-2xl text-white mb-2">{service.name}</h3>
           <p className="text-white/70 text-sm line-clamp-2">{service.shortDescription}</p>
           <div className="mt-4 flex items-center text-[#D4AF37] text-sm uppercase tracking-wider opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
@@ -54,7 +54,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, variant = 'default' 
   return (
     <a href={`/services/${service.slug}`} className="group block bg-white border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-xl">
       <div className="p-8 border-b border-gray-100 group-hover:border-[#D4AF37]/30 transition-colors">
-        <div className="w-16 h-16 mx-auto flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300"><IconComponent className="w-8 h-8" /></div>
+        <div className="w-16 h-16 mx-auto flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300">{IconComponent && <IconComponent className="w-8 h-8" />}</div>
       </div>
       <div className="p-8 text-center">
         <h3 className="font-serif text-xl text-black mb-3 group-hover:text-[#D4AF37] transition-colors">{service.name}</h3>

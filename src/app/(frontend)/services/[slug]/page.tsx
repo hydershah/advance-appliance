@@ -188,7 +188,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 What We Offer
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
-                {service.features.map((feature: { id?: string; title: string; description: string }, index: number) => (
+                {service.features.map((feature: { id?: string; title: string; description: string; feature?: string }, index: number) => (
                   <div
                     key={feature.id || index}
                     className="flex items-start bg-white rounded-lg p-6 shadow-md"
@@ -204,7 +204,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <p className="text-lg">{feature.feature}</p>
+                    <div>
+                      <p className="text-lg font-semibold">{feature.title}</p>
+                      {feature.description && <p className="text-gray-600 mt-1">{feature.description}</p>}
+                    </div>
                   </div>
                 ))}
               </div>

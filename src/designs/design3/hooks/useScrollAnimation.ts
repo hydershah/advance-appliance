@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback, RefObject } from 'react';
+import { useEffect, useRef, useState, RefObject } from 'react';
 
 /**
  * Hook to detect when an element enters the viewport
@@ -16,8 +16,9 @@ export function useScrollAnimation<T extends HTMLElement = HTMLDivElement>(
     if (!element) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
+      (entries) => {
+        const entry = entries[0];
+        if (entry?.isIntersecting) {
           setIsVisible(true);
           observer.unobserve(element);
         }

@@ -5,7 +5,8 @@ import { businessInfo, services, serviceAreas, testimonials, brands, images } fr
 interface AreaPageProps { areaSlug?: string; }
 
 const AreaPage: React.FC<AreaPageProps> = ({ areaSlug = 'short-hills' }) => {
-  const area = serviceAreas.find((a) => a.slug === areaSlug) || serviceAreas[0];
+  const area = serviceAreas.find((a) => a.slug === areaSlug) ?? serviceAreas[0];
+  if (!area) return null;
   const otherAreas = serviceAreas.filter((a) => a.id !== area.id);
   const areaTestimonials = testimonials.filter((t) => t.location.toLowerCase().includes(area.name.toLowerCase()));
   const areaFaqs = [

@@ -32,7 +32,7 @@ export const ServiceFilterTabs: React.FC<ServiceFilterTabsProps> = ({ tabs, acti
         {tabs.map((tab, index) => (
           <button
             key={tab.id}
-            ref={(el) => (tabsRef.current[index] = el)}
+            ref={(el) => { tabsRef.current[index] = el; }}
             onClick={() => onTabChange(tab.id)}
             className={`relative z-10 px-6 py-3 font-medium text-sm uppercase tracking-wider transition-colors duration-300 ${activeTab === tab.id ? 'text-white' : 'text-[#0A1628] hover:text-[#3B82F6]'}`}
           >

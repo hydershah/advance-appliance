@@ -109,7 +109,7 @@ const AreaPage: React.FC = () => {
           </div>
           <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transform transition-all duration-700 delay-200 ${servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {services.map((service, index) => (
-              <a key={service.id} href={`/services/${service.title.toLowerCase().replace(/\s+&?\s*/g, '-')}`} className="group bg-ivory border-2 border-forest/20 rounded-xl p-6 hover:border-copper hover:shadow-lg transition-all text-center" style={{ transitionDelay: `${index * 100}ms` }}>
+              <a key={service.id} href={`/services/${(service.title ?? '').toLowerCase().replace(/\s+&?\s*/g, '-')}`} className="group bg-ivory border-2 border-forest/20 rounded-xl p-6 hover:border-copper hover:shadow-lg transition-all text-center" style={{ transitionDelay: `${index * 100}ms` }}>
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-forest/10 flex items-center justify-center text-forest group-hover:bg-copper group-hover:text-ivory transition-colors">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 </div>
@@ -157,7 +157,7 @@ const AreaPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8"><h2 className="font-cormorant font-bold text-2xl text-forest mb-4">Zip Codes We Serve in {areaData.name}</h2><OrnamentDivider variant="simple" color="forest" className="max-w-xs mx-auto" /></div>
           <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
-            {areaData.zipCodes.map((zip) => (<span key={zip} className="px-3 py-1 bg-ivory border border-forest/20 rounded text-sm font-mono text-forest">{zip}</span>))}
+            {(areaData.zipCodes ?? []).map((zip) => (<span key={zip} className="px-3 py-1 bg-ivory border border-forest/20 rounded text-sm font-mono text-forest">{zip}</span>))}
           </div>
         </div>
       </section>

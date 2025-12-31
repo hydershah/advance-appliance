@@ -1,11 +1,16 @@
 import React from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   fullWidth?: boolean;
   loading?: boolean;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  className?: string;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,9 +19,11 @@ const Button: React.FC<ButtonProps> = ({
   children,
   fullWidth = false,
   loading = false,
-  className = '',
+  href,
+  type = 'button',
   disabled,
-  ...props
+  className = '',
+  onClick,
 }) => {
   const baseClasses = 'inline-flex items-center justify-center font-medium transition-all duration-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-offset-2';
 
@@ -35,39 +42,58 @@ const Button: React.FC<ButtonProps> = ({
   const widthClass = fullWidth ? 'w-full' : '';
   const disabledClass = disabled || loading ? 'opacity-60 cursor-not-allowed' : '';
 
+  const combinedClassName = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass} ${disabledClass} ${className}`;
+
+  const content = loading ? (
+    <>
+      <svg
+        className="animate-spin -ml-1 mr-2 h-4 w-4"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        />
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        />
+      </svg>
+      Loading...
+    </>
+  ) : (
+    children
+  );
+
+  // If href is provided, render as an anchor tag
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={combinedClassName}
+        onClick={onClick}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  // Otherwise render as a button
   return (
     <button
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass} ${disabledClass} ${className}`}
+      type={type}
+      className={combinedClassName}
       disabled={disabled || loading}
-      {...props}
+      onClick={onClick}
     >
-      {loading ? (
-        <>
-          <svg
-            className="animate-spin -ml-1 mr-2 h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="4"
-            />
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            />
-          </svg>
-          Loading...
-        </>
-      ) : (
-        children
-      )}
+      {content}
     </button>
   );
 };

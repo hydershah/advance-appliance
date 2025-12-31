@@ -85,7 +85,7 @@ export const Services: React.FC = () => {
 };
 
 const ServiceGridCard: React.FC<{ service: typeof SERVICES[number]; index: number }> = ({ service, index }) => {
-  const { isVisible, elementRef } = useIntersectionObserver();
+  const { isVisible, ref } = useIntersectionObserver();
   const iconMap: Record<string, React.ReactNode> = {
     snowflake: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v18m0-18l-3 3m3-3l3 3m-3 15l-3-3m3 3l3-3M3 12h18M3 12l3-3m-3 3l3 3m15-3l-3-3m3 3l-3 3" /></svg>,
     droplet: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" /></svg>,
@@ -97,18 +97,20 @@ const ServiceGridCard: React.FC<{ service: typeof SERVICES[number]; index: numbe
   };
 
   return (
-    <a ref={elementRef} href={`/services/${service.id}`} className={`group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#3B82F6] hover:shadow-2xl transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${index * 50}ms` }}>
-      <div className="h-2 bg-gradient-to-r from-[#3B82F6] to-[#60A5FA] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-      <div className="p-8">
-        <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center text-[#0A1628] mb-6 group-hover:bg-[#3B82F6] group-hover:text-white transition-all">{iconMap[service.icon] || iconMap.circle}</div>
-        <h3 className="text-xl font-bold text-[#0A1628] mb-3 group-hover:text-[#3B82F6] transition-colors">{service.name}</h3>
-        <p className="text-gray-600 mb-6 line-clamp-2">{service.description}</p>
-        <div className="space-y-2 mb-6">{service.features.slice(0, 3).map((f) => (<div key={f} className="flex items-center space-x-2 text-sm text-gray-500"><svg className="w-4 h-4 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg><span>{f}</span></div>))}</div>
-        <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-          <span className="text-[#3B82F6] font-bold">{service.price}</span>
-          <span className="flex items-center space-x-2 text-[#0A1628] font-medium group-hover:text-[#3B82F6] transition-colors"><span>View Details</span><svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></span>
+    <div ref={ref} className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${index * 50}ms` }}>
+      <a href={`/services/${service.id}`} className="group block bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#3B82F6] hover:shadow-2xl transition-all duration-500">
+        <div className="h-2 bg-gradient-to-r from-[#3B82F6] to-[#60A5FA] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+        <div className="p-8">
+          <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center text-[#0A1628] mb-6 group-hover:bg-[#3B82F6] group-hover:text-white transition-all">{iconMap[service.icon] || iconMap.circle}</div>
+          <h3 className="text-xl font-bold text-[#0A1628] mb-3 group-hover:text-[#3B82F6] transition-colors">{service.name}</h3>
+          <p className="text-gray-600 mb-6 line-clamp-2">{service.description}</p>
+          <div className="space-y-2 mb-6">{service.features.slice(0, 3).map((f) => (<div key={f} className="flex items-center space-x-2 text-sm text-gray-500"><svg className="w-4 h-4 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg><span>{f}</span></div>))}</div>
+          <div className="flex items-center justify-between pt-6 border-t border-gray-100">
+            <span className="text-[#3B82F6] font-bold">{service.price}</span>
+            <span className="flex items-center space-x-2 text-[#0A1628] font-medium group-hover:text-[#3B82F6] transition-colors"><span>View Details</span><svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></span>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
   );
 };

@@ -5,7 +5,8 @@ import { businessInfo, services, brands } from '../data/content';
 interface ServiceDetailProps { serviceSlug?: string; }
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerator-repair' }) => {
-  const service = services.find((s) => s.slug === serviceSlug) || services[0];
+  const service = services.find((s) => s.slug === serviceSlug) ?? services[0];
+  if (!service) return null;
   const relatedServices = services.filter((s) => s.id !== service.id).slice(0, 3);
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: service.name, url: `/services/${service.slug}` }];
 
@@ -41,7 +42,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
                 <div className="mb-16">
                   <h3 className="font-serif text-2xl text-black mb-8">What We Offer</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {service.features.map((feature, i) => (
+                    {service.features.map((feature: string, i: number) => (
                       <div key={i} className="flex items-start p-4 border border-gray-100 hover:border-[#D4AF37] transition-colors">
                         <svg className="w-5 h-5 text-[#D4AF37] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
                         <span className="text-gray-700">{feature}</span>

@@ -3,7 +3,8 @@
 
 export * from './components';
 export * from './pages';
-export * from './types';
+// Re-export types explicitly to avoid BlogPost name conflict with the page component
+export type { Service, Testimonial, TeamMember, BlogPost as BlogPostType, ServiceArea, Brand, Certification, NavItem, Award, FAQ } from './types';
 export * from './data/content';
 
 export const design1Metadata = {

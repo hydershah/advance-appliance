@@ -67,7 +67,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
       )
     }
 
-    const doc = result.docs[0]
+    const doc = result.docs[0]!
 
     // Transform related posts
     const relatedPosts: BlogPostListItem[] = ((doc.relatedPosts || []) as (string | BlogPost)[])
@@ -185,7 +185,7 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
       )
     }
 
-    const postId = existing.docs[0].id
+    const postId = existing.docs[0]!.id
 
     // Build update data
     const updateData: Record<string, unknown> = {}
@@ -319,7 +319,7 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
       )
     }
 
-    const postId = existing.docs[0].id
+    const postId = existing.docs[0]!.id
 
     // Delete the post
     await payload.delete({

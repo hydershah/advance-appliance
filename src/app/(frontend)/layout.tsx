@@ -129,7 +129,9 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
     yandex: 'your-yandex-verification-code',
-    bing: 'your-bing-verification-code',
+    other: {
+      'msvalidate.01': 'your-bing-verification-code',
+    },
   },
   category: 'business',
   applicationName: 'Advanced Appliance Repair Service',

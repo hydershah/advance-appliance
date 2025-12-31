@@ -3,6 +3,7 @@
  * Renders Lexical rich text content from PayloadCMS
  */
 
+import React from 'react'
 import type { RichTextContent } from '@/payload-types'
 
 interface RichTextProps {
@@ -46,14 +47,21 @@ function RichTextNode({ node }: { node: any }) {
 
   // Headings
   if (type === 'heading') {
-    const HeadingTag = `h${props.tag || '2'}` as keyof JSX.IntrinsicElements
-    return (
-      <HeadingTag className="font-bold mb-4 mt-8">
-        {children?.map((child: any, index: number) => (
-          <RichTextNode key={index} node={child} />
-        ))}
-      </HeadingTag>
-    )
+    const level = props.tag || '2'
+    const headingProps = { className: 'font-bold mb-4 mt-8' }
+    const headingChildren = children?.map((child: any, index: number) => (
+      <RichTextNode key={index} node={child} />
+    ))
+
+    switch (level) {
+      case '1': return <h1 {...headingProps}>{headingChildren}</h1>
+      case '2': return <h2 {...headingProps}>{headingChildren}</h2>
+      case '3': return <h3 {...headingProps}>{headingChildren}</h3>
+      case '4': return <h4 {...headingProps}>{headingChildren}</h4>
+      case '5': return <h5 {...headingProps}>{headingChildren}</h5>
+      case '6': return <h6 {...headingProps}>{headingChildren}</h6>
+      default: return <h2 {...headingProps}>{headingChildren}</h2>
+    }
   }
 
   // Text nodes

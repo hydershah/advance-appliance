@@ -33,8 +33,8 @@ const Contact: React.FC = () => {
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Please enter a valid email';
-    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
-    else if (!/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(formData.phone)) newErrors.phone = 'Please enter a valid phone number';
+    if (!formData.phone?.trim()) newErrors.phone = 'Phone is required';
+    else if (!/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(formData.phone ?? '')) newErrors.phone = 'Please enter a valid phone number';
     if (!formData.appliance) newErrors.appliance = 'Please select an appliance';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;

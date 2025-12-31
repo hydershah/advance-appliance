@@ -62,7 +62,7 @@ export const createBlogPost: Endpoint = {
         )
       }
 
-      const body: BlogPostCreate = await req.json()
+      const body: BlogPostCreate = await req.json?.() ?? {}
 
       // Validate required fields
       if (!body.title || !body.content) {
@@ -107,8 +107,8 @@ export const createBlogPost: Endpoint = {
         },
         { status: 201 }
       )
-    } catch (error) {
-      req.payload.logger.error('Error creating blog post:', error)
+    } catch (error: unknown) {
+      req.payload.logger.error({ err: error }, 'Error creating blog post')
       return Response.json(
         {
           error: {
@@ -134,7 +134,7 @@ export const listBlogPosts: Endpoint = {
       // API key required for listing all posts (including drafts)
       const isAuthenticated = authenticateAPIKey(req)
 
-      const url = new URL(req.url)
+      const url = new URL(req.url ?? '', 'http://localhost')
       const page = parseInt(url.searchParams.get('page') || '1')
       const limit = parseInt(url.searchParams.get('limit') || '10')
       const status = url.searchParams.get('status')
@@ -171,8 +171,8 @@ export const listBlogPosts: Endpoint = {
         },
         { status: 200 }
       )
-    } catch (error) {
-      req.payload.logger.error('Error listing blog posts:', error)
+    } catch (error: unknown) {
+      req.payload.logger.error({ err: error }, 'Error listing blog posts')
       return Response.json(
         {
           error: {
@@ -241,8 +241,8 @@ export const getBlogPost: Endpoint = {
         },
         { status: 200 }
       )
-    } catch (error) {
-      req.payload.logger.error('Error getting blog post:', error)
+    } catch (error: unknown) {
+      req.payload.logger.error({ err: error }, 'Error getting blog post')
       return Response.json(
         {
           error: {
@@ -292,7 +292,7 @@ export const updateBlogPost: Endpoint = {
         )
       }
 
-      const body: BlogPostUpdate = await req.json()
+      const body: BlogPostUpdate = await req.json?.() ?? {}
 
       // Find the post by slug
       const posts = await req.payload.find({
@@ -303,7 +303,8 @@ export const updateBlogPost: Endpoint = {
         limit: 1,
       })
 
-      if (!posts.docs.length) {
+      const firstPost = posts.docs[0]
+      if (!firstPost) {
         return Response.json(
           {
             error: {
@@ -315,7 +316,7 @@ export const updateBlogPost: Endpoint = {
         )
       }
 
-      const postId = posts.docs[0].id
+      const postId = firstPost.id
 
       // Update the blog post
       const updatedPost = await req.payload.update({
@@ -333,8 +334,8 @@ export const updateBlogPost: Endpoint = {
         },
         { status: 200 }
       )
-    } catch (error) {
-      req.payload.logger.error('Error updating blog post:', error)
+    } catch (error: unknown) {
+      req.payload.logger.error({ err: error }, 'Error updating blog post')
       return Response.json(
         {
           error: {
@@ -393,7 +394,8 @@ export const deleteBlogPost: Endpoint = {
         limit: 1,
       })
 
-      if (!posts.docs.length) {
+      const postToDelete = posts.docs[0]
+      if (!postToDelete) {
         return Response.json(
           {
             error: {
@@ -405,7 +407,7 @@ export const deleteBlogPost: Endpoint = {
         )
       }
 
-      const postId = posts.docs[0].id
+      const postId = postToDelete.id
 
       // Delete the blog post
       await req.payload.delete({
@@ -421,8 +423,8 @@ export const deleteBlogPost: Endpoint = {
         },
         { status: 204 }
       )
-    } catch (error) {
-      req.payload.logger.error('Error deleting blog post:', error)
+    } catch (error: unknown) {
+      req.payload.logger.error({ err: error }, 'Error deleting blog post')
       return Response.json(
         {
           error: {

@@ -35,7 +35,7 @@ export const BlogPostsBlock: Block = {
       hasMany: true,
       label: 'Featured Posts',
       admin: {
-        condition: (data, siblingData) => siblingData?.displayMode === 'featured',
+        condition: (_data, siblingData) => siblingData?.displayMode === 'featured',
         description: 'Select specific blog posts to display',
       },
     },
@@ -44,7 +44,7 @@ export const BlogPostsBlock: Block = {
       type: 'text',
       label: 'Category',
       admin: {
-        condition: (data, siblingData) => siblingData?.displayMode === 'category',
+        condition: (_data, siblingData) => siblingData?.displayMode === 'category',
         description: 'Filter posts by category',
       },
     },

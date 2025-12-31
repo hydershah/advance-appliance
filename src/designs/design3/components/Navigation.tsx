@@ -198,7 +198,7 @@ const Navigation: React.FC = () => {
                   </a>
                   {item.children && (
                     <div className="pl-4 mt-2 space-y-2">
-                      {item.children.map((child) => (
+                      {item.children.map((child: { label: string; href: string }) => (
                         <a
                           key={child.href}
                           href={child.href}

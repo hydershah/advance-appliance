@@ -19,7 +19,7 @@ interface ImageGalleryProps {
 const ImageGallery: React.FC<ImageGalleryProps> = ({
   images,
   columns = 3,
-  variant = 'grid',
+  variant: _variant = 'grid',
   className = '',
 }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -162,13 +162,13 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={images[currentIndex].src}
-              alt={images[currentIndex].alt}
+              src={images[currentIndex]?.src}
+              alt={images[currentIndex]?.alt}
               className="max-w-full max-h-[75vh] object-contain rounded-lg border-4 border-copper shadow-2xl"
             />
-            {images[currentIndex].caption && (
+            {images[currentIndex]?.caption && (
               <p className="text-center text-ivory font-serif mt-4 text-lg">
-                {images[currentIndex].caption}
+                {images[currentIndex]?.caption}
               </p>
             )}
           </div>

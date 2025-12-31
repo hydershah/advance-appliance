@@ -5,7 +5,8 @@ import { businessInfo, blogPosts } from '../data/content';
 interface BlogPostProps { postSlug?: string; }
 
 const BlogPost: React.FC<BlogPostProps> = ({ postSlug = 'maintaining-your-sub-zero-refrigerator' }) => {
-  const post = blogPosts.find((p) => p.slug === postSlug) || blogPosts[0];
+  const post = blogPosts.find((p) => p.slug === postSlug) ?? blogPosts[0];
+  if (!post) return null;
   const relatedPosts = blogPosts.filter((p) => p.id !== post.id).slice(0, 3);
   const formatDate = (dateString: string) => new Date(dateString).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: post.title, url: `/blog/${post.slug}` }];
@@ -52,7 +53,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ postSlug = 'maintaining-your-sub-ze
               <article className="lg:col-span-8">
                 <p className="text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-[#D4AF37] pl-6">{post.excerpt}</p>
                 <div className="prose prose-lg max-w-none">
-                  {post.content.split('\n\n').map((paragraph, i) => {
+                  {post.content.split('\n\n').map((paragraph: string, i: number) => {
                     if (paragraph.startsWith('## ')) return <h2 key={i} className="font-serif text-2xl text-black mt-12 mb-6">{paragraph.replace('## ', '')}</h2>;
                     return <p key={i} className="text-gray-600 leading-relaxed mb-6">{paragraph}</p>;
                   })}
@@ -60,7 +61,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ postSlug = 'maintaining-your-sub-ze
                 <div className="mt-12 pt-8 border-t border-gray-100">
                   <h4 className="text-xs uppercase tracking-wider text-gray-500 mb-4">Tags</h4>
                   <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag, i) => <a key={i} href={`/blog?tag=${tag.toLowerCase().replace(/\s+/g, '-')}`} className="px-3 py-1 border border-gray-200 text-gray-600 text-sm hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors">{tag}</a>)}
+                    {post.tags.map((tag: string, i: number) => <a key={i} href={`/blog?tag=${tag.toLowerCase().replace(/\s+/g, '-')}`} className="px-3 py-1 border border-gray-200 text-gray-600 text-sm hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors">{tag}</a>)}
                   </div>
                 </div>
                 <div className="mt-12 p-8 bg-gray-50 border border-gray-100">

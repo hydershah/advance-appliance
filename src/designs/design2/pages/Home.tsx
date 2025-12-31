@@ -146,20 +146,16 @@ const TestimonialsSection: React.FC = () => {
         </div>
         <div className="max-w-4xl mx-auto">
           <div className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/10 mb-8">
-            {TESTIMONIALS[activeIndex].hasVideo && (
-              <div className="aspect-video bg-gray-800 rounded-2xl mb-8 flex items-center justify-center overflow-hidden relative group cursor-pointer">
-                <img src={IMAGES.kitchen} alt="Video thumbnail" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity" />
-                <div className="w-20 h-20 bg-[#3B82F6] rounded-full flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
-                  <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+            {TESTIMONIALS[activeIndex] && (
+              <>
+                <div className="flex items-center space-x-1 mb-6">{[1, 2, 3, 4, 5].map((star) => (<svg key={star} className={`w-6 h-6 ${star <= (TESTIMONIALS[activeIndex]?.rating ?? 0) ? 'text-yellow-500' : 'text-gray-600'}`} fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>))}</div>
+                <blockquote className="text-xl md:text-2xl text-white leading-relaxed mb-8">"{TESTIMONIALS[activeIndex]?.text}"</blockquote>
+                <div className="flex items-center space-x-4">
+                  <div className="w-14 h-14 bg-[#3B82F6] rounded-full flex items-center justify-center text-white font-bold text-xl">{TESTIMONIALS[activeIndex]?.name.charAt(0)}</div>
+                  <div><p className="text-white font-bold text-lg">{TESTIMONIALS[activeIndex]?.name}</p><p className="text-gray-400">{TESTIMONIALS[activeIndex]?.location}</p></div>
                 </div>
-              </div>
+              </>
             )}
-            <div className="flex items-center space-x-1 mb-6">{[1, 2, 3, 4, 5].map((star) => (<svg key={star} className={`w-6 h-6 ${star <= TESTIMONIALS[activeIndex].rating ? 'text-yellow-500' : 'text-gray-600'}`} fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>))}</div>
-            <blockquote className="text-xl md:text-2xl text-white leading-relaxed mb-8">"{TESTIMONIALS[activeIndex].text}"</blockquote>
-            <div className="flex items-center space-x-4">
-              <div className="w-14 h-14 bg-[#3B82F6] rounded-full flex items-center justify-center text-white font-bold text-xl">{TESTIMONIALS[activeIndex].name.charAt(0)}</div>
-              <div><p className="text-white font-bold text-lg">{TESTIMONIALS[activeIndex].name}</p><p className="text-gray-400">{TESTIMONIALS[activeIndex].location}</p></div>
-            </div>
           </div>
           <div className="flex items-center justify-center space-x-3">{TESTIMONIALS.map((_, index) => (<button key={index} onClick={() => setActiveIndex(index)} className={`h-2 rounded-full transition-all duration-300 ${activeIndex === index ? 'w-8 bg-[#3B82F6]' : 'w-2 bg-gray-600 hover:bg-gray-500'}`} aria-label={`Go to testimonial ${index + 1}`} />))}</div>
         </div>

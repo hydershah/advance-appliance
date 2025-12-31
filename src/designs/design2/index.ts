@@ -19,8 +19,8 @@ export { AnimatedCounter, StatsGrid } from './components/AnimatedCounter';
 export { ServiceFilterTabs } from './components/ServiceFilterTabs';
 export { BrandCarousel } from './components/BrandCarousel';
 export { MultiStepForm } from './components/MultiStepForm';
-export { Toast, ToastProvider, useToast } from './components/Toast';
-export { LoadingSkeleton, CardSkeleton, PageSkeleton } from './components/LoadingSkeleton';
+export { ToastProvider, useToast, StandaloneToast } from './components/Toast';
+export { Skeleton, CardSkeleton, PageLoadingSkeleton } from './components/LoadingSkeleton';
 
 // Hooks
 export {

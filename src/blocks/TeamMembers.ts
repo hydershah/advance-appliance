@@ -34,7 +34,7 @@ export const TeamMembersBlock: Block = {
       hasMany: true,
       label: 'Featured Team Members',
       admin: {
-        condition: (data, siblingData) => siblingData?.displayMode === 'featured',
+        condition: (_data, siblingData) => siblingData?.displayMode === 'featured',
         description: 'Select specific team members to display',
       },
     },
@@ -44,7 +44,7 @@ export const TeamMembersBlock: Block = {
       label: 'Maximum Number to Display',
       defaultValue: 4,
       admin: {
-        condition: (data, siblingData) => siblingData?.displayMode === 'all',
+        condition: (_data, siblingData) => siblingData?.displayMode === 'all',
       },
     },
   ],

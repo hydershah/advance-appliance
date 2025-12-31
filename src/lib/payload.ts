@@ -40,7 +40,7 @@ export async function queryCollection<T = any>(
     sort: options?.sort,
   })
 
-  return result as {
+  return result as unknown as {
     docs: T[]
     totalDocs: number
     totalPages: number

@@ -55,7 +55,7 @@ const BlogPost: React.FC = () => {
         </div>
         <div className="absolute bottom-0 left-0 right-0 pb-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Breadcrumb items={[{ label: 'Blog', href: '/blog' }, { label: post.category }]} className="mb-6 text-ivory/60" />
+            <Breadcrumb items={[{ label: 'Blog', href: '/blog' }, { label: post.category ?? 'Article' }]} className="mb-6 text-ivory/60" />
             <span className="inline-block px-4 py-2 bg-burgundy text-ivory font-serif text-sm rounded-full mb-4">{post.category}</span>
             <h1 className="font-cormorant font-bold text-3xl sm:text-4xl md:text-5xl text-ivory leading-tight">{post.title}</h1>
           </div>
@@ -66,8 +66,8 @@ const BlogPost: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`flex flex-wrap items-center gap-6 pb-8 border-b border-forest/20 mb-8 transform transition-all duration-700 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 rounded-full bg-forest flex items-center justify-center"><span className="font-cormorant font-bold text-ivory">{post.author.charAt(0)}</span></div>
-              <div><p className="font-cormorant font-bold text-forest">{post.author}</p><p className="font-serif text-forest/60 text-sm">Master Technician</p></div>
+              <div className="w-12 h-12 rounded-full bg-forest flex items-center justify-center"><span className="font-cormorant font-bold text-ivory">{(post.author ?? 'A').charAt(0)}</span></div>
+              <div><p className="font-cormorant font-bold text-forest">{post.author ?? 'Author'}</p><p className="font-serif text-forest/60 text-sm">Master Technician</p></div>
             </div>
             <div className="flex items-center space-x-4 text-sm text-forest/60 font-serif"><span>{post.date}</span><span>|</span><span>{post.readTime}</span></div>
             <div className="flex-1" />
@@ -78,7 +78,7 @@ const BlogPost: React.FC = () => {
             </div>
           </div>
           <article className={`transform transition-all duration-700 delay-200 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {renderContent(post.content)}
+            {renderContent(post.content ?? '')}
           </article>
           <div className="mt-12 pt-8 border-t border-forest/20">
             <div className="flex flex-wrap gap-2">
@@ -87,8 +87,8 @@ const BlogPost: React.FC = () => {
           </div>
           <div className="mt-12 p-8 bg-forest/5 rounded-xl border border-forest/10">
             <div className="flex items-start space-x-6">
-              <div className="w-20 h-20 rounded-full bg-forest flex items-center justify-center flex-shrink-0"><span className="font-cormorant font-bold text-2xl text-ivory">{post.author.charAt(0)}</span></div>
-              <div><h3 className="font-cormorant font-bold text-xl text-forest mb-2">About {post.author}</h3><p className="font-serif text-forest/70 leading-relaxed">With over 35 years of experience in appliance repair, {post.author} founded Advanced Appliance Repair Service in 1992.</p></div>
+              <div className="w-20 h-20 rounded-full bg-forest flex items-center justify-center flex-shrink-0"><span className="font-cormorant font-bold text-2xl text-ivory">{(post.author ?? 'A').charAt(0)}</span></div>
+              <div><h3 className="font-cormorant font-bold text-xl text-forest mb-2">About {post.author ?? 'the Author'}</h3><p className="font-serif text-forest/70 leading-relaxed">With over 35 years of experience in appliance repair, {post.author ?? 'our team'} founded Advanced Appliance Repair Service in 1992.</p></div>
             </div>
           </div>
         </div>

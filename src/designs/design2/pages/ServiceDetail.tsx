@@ -9,7 +9,8 @@ interface ServiceDetailProps { serviceId?: string; }
 
 export const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceId = 'refrigerator' }) => {
   const [activeTab, setActiveTab] = useState('overview');
-  const service = SERVICES.find((s) => s.id === serviceId) || SERVICES[0];
+  const service = SERVICES.find((s) => s.id === serviceId) ?? SERVICES[0];
+  if (!service) return null;
   const tabs = [{ id: 'overview', label: 'Overview' }, { id: 'problems', label: 'Common Problems' }, { id: 'pricing', label: 'Pricing' }, { id: 'faq', label: 'FAQ' }];
   const commonProblems = [
     { problem: 'Not Cooling Properly', description: 'Thermostat, compressor, or condenser coil issues', avgCost: '$150 - $400' },

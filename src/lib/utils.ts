@@ -250,7 +250,12 @@ export function shuffle<T>(array: T[]): T[] {
   const shuffled = [...array]
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    const temp = shuffled[i]
+    const swapItem = shuffled[j]
+    if (temp !== undefined && swapItem !== undefined) {
+      shuffled[i] = swapItem
+      shuffled[j] = temp
+    }
   }
   return shuffled
 }
@@ -258,7 +263,7 @@ export function shuffle<T>(array: T[]): T[] {
 /**
  * Get random item from array
  */
-export function randomItem<T>(array: T[]): T {
+export function randomItem<T>(array: T[]): T | undefined {
   return array[Math.floor(Math.random() * array.length)]
 }
 
