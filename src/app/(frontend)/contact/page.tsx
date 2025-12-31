@@ -3,6 +3,11 @@ import { getPayloadClient } from '@/utilities/getPayloadClient'
 import { JsonLd } from '@/components/JsonLd'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
 
+// Import static design pages for fallback when CMS is unavailable
+import { Contact as Design1Contact } from '@/designs/design1/pages'
+import { Contact as Design2Contact } from '@/designs/design2/pages'
+import Design3Contact from '@/designs/design3/pages/Contact'
+
 /**
  * Contact Page - Server Component
  */
@@ -17,17 +22,19 @@ export const metadata: Metadata = {
 }
 
 export default async function ContactPage() {
-  const payload = await getPayloadClient()
-
-  // Fetch site settings
-  const settings = await payload.findGlobal({
-    slug: 'settings',
-  })
-
   // Get current design theme
   const designTheme = getCurrentDesignTheme()
-  const components = getDesignComponents(designTheme)
-  const { Header, Footer, ContactForm } = components
+
+  try {
+    const payload = await getPayloadClient()
+
+    // Fetch site settings
+    const settings = await payload.findGlobal({
+      slug: 'settings',
+    })
+
+    const components = getDesignComponents(designTheme)
+    const { Header, Footer, ContactForm } = components
 
   // Generate ContactPage schema
   const contactPageSchema = {
@@ -400,4 +407,14 @@ export default async function ContactPage() {
       <Footer settings={settings} />
     </>
   )
+  } catch {
+    // Database unavailable - fall back to static design
+    return (
+      <>
+        {designTheme === '1' && <Design1Contact />}
+        {designTheme === '2' && <Design2Contact />}
+        {designTheme === '3' && <Design3Contact />}
+      </>
+    )
+  }
 }

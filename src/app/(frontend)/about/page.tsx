@@ -5,6 +5,11 @@ import { JsonLd } from '@/components/JsonLd'
 import { BlockRenderer } from '@/components/BlockRenderer'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
 
+// Import static design pages for fallback when CMS is unavailable
+import { About as Design1About } from '@/designs/design1/pages'
+import { About as Design2About } from '@/designs/design2/pages'
+import Design3About from '@/designs/design3/pages/About'
+
 /**
  * About Page - Server Component
  */
@@ -19,30 +24,32 @@ export const metadata: Metadata = {
 }
 
 export default async function AboutPage() {
-  const payload = await getPayloadClient()
-
-  // Try to fetch an "about" page from CMS
-  const pageResult = await payload.find({
-    collection: 'pages',
-    where: {
-      slug: { equals: 'about' },
-      status: { equals: 'published' },
-    },
-    limit: 1,
-    depth: 2,
-  })
-
-  const page = pageResult.docs[0]
-
-  // Fetch site settings
-  const settings = await payload.findGlobal({
-    slug: 'settings',
-  })
-
   // Get current design theme
   const designTheme = getCurrentDesignTheme()
-  const components = getDesignComponents(designTheme)
-  const { Header, Footer } = components
+
+  try {
+    const payload = await getPayloadClient()
+
+    // Try to fetch an "about" page from CMS
+    const pageResult = await payload.find({
+      collection: 'pages',
+      where: {
+        slug: { equals: 'about' },
+        status: { equals: 'published' },
+      },
+      limit: 1,
+      depth: 2,
+    })
+
+    const page = pageResult.docs[0]
+
+    // Fetch site settings
+    const settings = await payload.findGlobal({
+      slug: 'settings',
+    })
+
+    const components = getDesignComponents(designTheme)
+    const { Header, Footer } = components
 
   // Generate Organization schema
   const organizationSchema = {
@@ -242,5 +249,15 @@ export default async function AboutPage() {
       <Footer settings={settings} />
     </>
   )
+  } catch {
+    // Database unavailable - fall back to static design
+    return (
+      <>
+        {designTheme === '1' && <Design1About />}
+        {designTheme === '2' && <Design2About />}
+        {designTheme === '3' && <Design3About />}
+      </>
+    )
+  }
 }
 

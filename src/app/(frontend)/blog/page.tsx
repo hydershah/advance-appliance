@@ -6,6 +6,11 @@ import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignCompo
 import { truncateRichText } from '@/components/RichText'
 import type { Media } from '@/payload-types'
 
+// Import static design pages for fallback when CMS is unavailable
+import { Blog as Design1Blog } from '@/designs/design1/pages'
+import { Blog as Design2Blog } from '@/designs/design2/pages'
+import Design3Blog from '@/designs/design3/pages/Blog'
+
 /**
  * Blog Listing Page - Server Component
  */
@@ -20,29 +25,31 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  const payload = await getPayloadClient()
-
-  // Fetch all published blog posts
-  const blogPostsResult = await payload.find({
-    collection: 'blog-posts',
-    where: {
-      status: { equals: 'published' },
-    },
-    limit: 50,
-    sort: '-publishedDate',
-  })
-
-  const posts = blogPostsResult.docs
-
-  // Fetch site settings
-  const settings = await payload.findGlobal({
-    slug: 'settings',
-  })
-
   // Get current design theme
   const designTheme = getCurrentDesignTheme()
-  const components = getDesignComponents(designTheme)
-  const { Header, Footer } = components
+
+  try {
+    const payload = await getPayloadClient()
+
+    // Fetch all published blog posts
+    const blogPostsResult = await payload.find({
+      collection: 'blog-posts',
+      where: {
+        status: { equals: 'published' },
+      },
+      limit: 50,
+      sort: '-publishedDate',
+    })
+
+    const posts = blogPostsResult.docs
+
+    // Fetch site settings
+    const settings = await payload.findGlobal({
+      slug: 'settings',
+    })
+
+    const components = getDesignComponents(designTheme)
+    const { Header, Footer } = components
 
   // Generate Blog schema
   const blogSchema = {
@@ -210,5 +217,15 @@ export default async function BlogPage() {
       <Footer settings={settings} />
     </>
   )
+  } catch {
+    // Database unavailable - fall back to static design
+    return (
+      <>
+        {designTheme === '1' && <Design1Blog />}
+        {designTheme === '2' && <Design2Blog />}
+        {designTheme === '3' && <Design3Blog />}
+      </>
+    )
+  }
 }
 

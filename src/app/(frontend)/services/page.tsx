@@ -5,6 +5,11 @@ import { JsonLd } from '@/components/JsonLd'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
 import type { Media } from '@/payload-types'
 
+// Import static design pages for fallback when CMS is unavailable
+import { Services as Design1Services } from '@/designs/design1/pages'
+import { Services as Design2Services } from '@/designs/design2/pages'
+import Design3Services from '@/designs/design3/pages/Services'
+
 /**
  * Services Listing Page - Server Component
  */
@@ -19,29 +24,31 @@ export const metadata: Metadata = {
 }
 
 export default async function ServicesPage() {
-  const payload = await getPayloadClient()
-
-  // Fetch all published services
-  const servicesResult = await payload.find({
-    collection: 'services',
-    where: {
-      status: { equals: 'published' },
-    },
-    limit: 50,
-    sort: 'name',
-  })
-
-  const services = servicesResult.docs
-
-  // Fetch site settings
-  const settings = await payload.findGlobal({
-    slug: 'settings',
-  })
-
   // Get current design theme
   const designTheme = getCurrentDesignTheme()
-  const components = getDesignComponents(designTheme)
-  const { Header, Footer, ServiceCard } = components
+
+  try {
+    const payload = await getPayloadClient()
+
+    // Fetch all published services
+    const servicesResult = await payload.find({
+      collection: 'services',
+      where: {
+        status: { equals: 'published' },
+      },
+      limit: 50,
+      sort: 'name',
+    })
+
+    const services = servicesResult.docs
+
+    // Fetch site settings
+    const settings = await payload.findGlobal({
+      slug: 'settings',
+    })
+
+    const components = getDesignComponents(designTheme)
+    const { Header, Footer, ServiceCard } = components
 
   // Generate ItemList schema for SEO
   const itemListSchema = {
@@ -189,5 +196,15 @@ export default async function ServicesPage() {
       <Footer settings={settings} />
     </>
   )
+  } catch {
+    // Database unavailable - fall back to static design
+    return (
+      <>
+        {designTheme === '1' && <Design1Services />}
+        {designTheme === '2' && <Design2Services />}
+        {designTheme === '3' && <Design3Services />}
+      </>
+    )
+  }
 }
 
