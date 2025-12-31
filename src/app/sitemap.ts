@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 
 /**
@@ -7,12 +7,10 @@ import config from '@payload-config'
  * Automatically includes all pages, services, blog posts, and service areas
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const payload = await getPayloadHMR({ config })
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
-
   const sitemap: MetadataRoute.Sitemap = []
 
-  // Static pages - highest priority
+  // Static pages - highest priority (always include these)
   sitemap.push({
     url: baseUrl,
     lastModified: new Date(),
@@ -54,6 +52,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'monthly',
     priority: 0.8,
   })
+
+  // Try to get payload client - may fail during Docker build
+  let payload
+  try {
+    payload = await getPayload({ config })
+  } catch (error) {
+    console.warn('Could not connect to database for sitemap:', error)
+    // Return static pages only if database is unavailable
+    return sitemap
+  }
 
   // Fetch services from PayloadCMS
   try {

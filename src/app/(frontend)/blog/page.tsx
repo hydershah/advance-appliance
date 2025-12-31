@@ -10,6 +10,9 @@ import type { Media } from '@/payload-types'
  * Blog Listing Page - Server Component
  */
 
+// Prevent pre-rendering during build (database may not exist)
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Blog',
   description:
@@ -209,5 +212,3 @@ export default async function BlogPage() {
   )
 }
 
-// Enable ISR
-export const revalidate = 3600

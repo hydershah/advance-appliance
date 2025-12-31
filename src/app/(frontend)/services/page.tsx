@@ -9,6 +9,9 @@ import type { Media } from '@/payload-types'
  * Services Listing Page - Server Component
  */
 
+// Prevent pre-rendering during build (database may not exist)
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Our Services',
   description:
@@ -188,5 +191,3 @@ export default async function ServicesPage() {
   )
 }
 
-// Enable ISR
-export const revalidate = 3600

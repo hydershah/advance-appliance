@@ -9,6 +9,9 @@ import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignCompo
  * About Page - Server Component
  */
 
+// Prevent pre-rendering during build (database may not exist)
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'About Us',
   description:
@@ -241,5 +244,3 @@ export default async function AboutPage() {
   )
 }
 
-// Enable ISR
-export const revalidate = 3600

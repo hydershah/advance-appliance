@@ -7,6 +7,9 @@ import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignCompo
  * Contact Page - Server Component
  */
 
+// Prevent pre-rendering during build (database may not exist)
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Contact Us',
   description:

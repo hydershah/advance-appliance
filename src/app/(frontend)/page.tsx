@@ -15,6 +15,9 @@ import Design3Home from '@/designs/design3/pages/Home'
  * Renders the home page with content from PayloadCMS
  */
 
+// Prevent pre-rendering during build (database may not exist)
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata(): Promise<Metadata> {
   const payload = await getPayloadClient()
 
