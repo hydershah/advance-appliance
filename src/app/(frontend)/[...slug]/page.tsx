@@ -18,20 +18,25 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayloadClient()
+  try {
+    const payload = await getPayloadClient()
 
-  const pages = await payload.find({
-    collection: 'pages',
-    where: {
-      status: { equals: 'published' },
-      slug: { not_equals: 'home' }, // Exclude home page
-    },
-    limit: 100,
-  })
+    const pages = await payload.find({
+      collection: 'pages',
+      where: {
+        status: { equals: 'published' },
+        slug: { not_equals: 'home' }, // Exclude home page
+      },
+      limit: 100,
+    })
 
-  return pages.docs.map((page) => ({
-    slug: [page.slug],
-  }))
+    return pages.docs.map((page) => ({
+      slug: [page.slug],
+    }))
+  } catch {
+    // Database may not exist during build (e.g., Docker)
+    return []
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
