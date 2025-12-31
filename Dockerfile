@@ -52,6 +52,10 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
+# Copy libsql native modules (required for Turso/SQLite)
+COPY --from=builder /app/node_modules/@libsql ./node_modules/@libsql
+COPY --from=builder /app/node_modules/libsql ./node_modules/libsql
+
 # Create media upload directory
 RUN mkdir -p /app/public/media
 RUN chown -R nextjs:nodejs /app/public/media
