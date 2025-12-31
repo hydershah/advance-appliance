@@ -68,8 +68,8 @@ export default function DesignPreviewPage() {
         </div>
       </div>
 
-      {/* Design Content - with padding for fixed header */}
-      <div className="pt-16">
+      {/* Design Content - with padding for fixed header and offset for design headers */}
+      <div className="pt-16 [&_header]:!top-16">
         {selectedDesign === 1 && <Design1Home />}
         {selectedDesign === 2 && <Design2Home />}
         {selectedDesign === 3 && <Design3Home />}
