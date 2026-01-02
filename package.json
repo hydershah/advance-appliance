@@ -4,7 +4,7 @@
   "description": "Luxury appliance repair website with PayloadCMS and Next.js",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS='--no-deprecation' next dev",
+    "dev": "cross-env NODE_OPTIONS='--no-deprecation' next dev -p 3001",
     "build": "cross-env NODE_OPTIONS='--no-deprecation' next build",
     "start": "cross-env NODE_OPTIONS='--no-deprecation' next start",
     "lint": "next lint",
