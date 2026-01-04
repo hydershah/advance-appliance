@@ -152,10 +152,13 @@ const config: Config = {
           white: '#ffffff',
           cream: '#fafaf8',
         },
-        // Design 4: Surgical Precision (Pure Monochrome + Copper)
-        surgical: {
-          white: '#FFFFFF',
-          black: '#0A0A0A',
+        // Design 4: Bamo Luxury Minimal (Warm Off-White + Dark Charcoal)
+        bamo: {
+          bg: '#fffaf2',        // Warm off-white background (NOT pure white)
+          text: '#2d2926',      // Deep charcoal text (NOT black)
+          accent: '#32373c',    // Dark charcoal for buttons (EXACT from Bamo)
+          border: '#E5E5E5',    // Barely visible hairline
+          white: '#FFFFFF',     // Pure white for cards
           grey: {
             50: '#FAFAFA',
             100: '#F5F5F5',
@@ -167,18 +170,6 @@ const config: Config = {
             700: '#404040',
             800: '#262626',
             900: '#171717',
-          },
-          copper: {
-            50: '#fdf8f3',
-            100: '#faeee3',
-            200: '#f5ddc7',
-            300: '#ecc8a0',
-            400: '#C6A15B', // Primary copper
-            500: '#b48f4f',
-            600: '#9a7842',
-            700: '#7f6236',
-            800: '#644d2a',
-            900: '#49381f',
           },
         },
         // Design 5: Warm Sophistication (Warm Cream + Burnished Copper)
@@ -347,6 +338,12 @@ const config: Config = {
         '7xl': ['4.5rem', { lineHeight: '1' }],
         '8xl': ['6rem', { lineHeight: '1' }],
         '9xl': ['8rem', { lineHeight: '1' }],
+        // Bamo-specific exact sizes
+        'bamo-sm': ['0.8125rem', { lineHeight: '1.5em' }],    // 13px
+        'bamo-md': ['1.25rem', { lineHeight: '1.5em' }],      // 20px
+        'bamo-lg': ['2.25rem', { lineHeight: '1.5em' }],      // 36px
+        'bamo-xl': ['2.625rem', { lineHeight: '1.5em' }],     // 42px
+        'bamo-button': ['1.125em', { lineHeight: '1.5em' }],  // 18px (1.125em)
       },
       spacing: {
         '128': '32rem',
