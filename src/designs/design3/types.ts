@@ -1,4 +1,4 @@
-// Design 3 - Classic Premium Theme Type Definitions
+// Design 3 - Contemporary Elegance Theme Type Definitions
 
 export interface FAQ {
   question: string;

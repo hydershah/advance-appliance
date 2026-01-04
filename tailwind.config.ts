@@ -13,10 +13,10 @@ const config: Config = {
     extend: {
       colors: {
         // Design 3 direct color aliases
-        ivory: '#F5F5F0',
-        forest: '#1B4332',
-        burgundy: '#800020',
-        copper: '#B87333',
+        ivory: '#F5F2E8',
+        forest: '#0F172A',
+        burgundy: '#2F3B4B',
+        copper: '#C6A15B',
         // Design 1: Elegant Minimalist (Gold & Black)
         elegant: {
           gold: {
@@ -46,72 +46,111 @@ const config: Config = {
             900: '#111827',
           },
         },
-        // Design 2: Bold Modern (Blue & Orange)
-        bold: {
-          blue: {
-            50: '#eff6ff',
-            100: '#dbeafe',
-            200: '#bfdbfe',
-            300: '#93c5fd',
-            400: '#60a5fa',
-            500: '#3b82f6',
-            600: '#2563eb',
-            700: '#1d4ed8',
-            800: '#1e40af',
-            900: '#1e3a8a',
-          },
-          orange: {
-            50: '#fff7ed',
-            100: '#ffedd5',
-            200: '#fed7aa',
-            300: '#fdba74',
-            400: '#fb923c',
-            500: '#f97316',
-            600: '#ea580c',
-            700: '#c2410c',
-            800: '#9a3412',
-            900: '#7c2d12',
-          },
-          navy: '#1a202c',
-        },
-        // Design 3: Classic Premium (Burgundy & Cream)
-        classic: {
-          burgundy: {
-            50: '#fdf2f4',
-            100: '#fce7e9',
-            200: '#f9d0d7',
-            300: '#f4a8b7',
-            400: '#ec7491',
-            500: '#8B2635', // Primary burgundy
-            600: '#771f2d',
-            700: '#631926',
-            800: '#4f141f',
-            900: '#3b0f17',
+        // Design 2: Modern Professional Luxury (Navy & Cream)
+        modern: {
+          navy: {
+            50: '#f0f4f8',
+            100: '#d9e2ec',
+            200: '#bcccdc',
+            300: '#9fb3c8',
+            400: '#829ab1',
+            500: '#627d98',
+            600: '#486581',
+            700: '#334e68',
+            800: '#243b53',
+            900: '#07203f', // Primary navy
           },
           cream: {
-            50: '#fefdfb',
-            100: '#fdfcf8',
-            200: '#faf8f0',
-            300: '#f7f4e8',
-            400: '#F4EFE0', // Primary cream
-            500: '#e5dcc8',
-            600: '#cfc0a0',
-            700: '#b3a080',
-            800: '#948263',
-            900: '#75664b',
+            50: '#fdfcfb',
+            100: '#faf8f5',
+            200: '#f5f1ed',
+            300: '#ebded4', // Primary background cream
+            400: '#e1ccbd',
+            500: '#d9aa90', // Accent tan
+            600: '#c89372',
+            700: '#b07754',
+            800: '#8f5f3f',
+            900: '#6d4730',
           },
-          brown: {
-            50: '#faf8f5',
-            100: '#f4f0ea',
-            200: '#e6ddd0',
-            300: '#d3c4ab',
-            400: '#C19A6B', // Bronze accent
-            500: '#a8835a',
-            600: '#8d6d4a',
-            700: '#71563b',
-            800: '#56422d',
-            900: '#3c2e1f',
+          blue: {
+            50: '#e6f3ff',
+            100: '#b3daff',
+            200: '#80c1ff',
+            300: '#4da8ff',
+            400: '#1a8fff',
+            500: '#116dff', // CTA blue
+            600: '#0d57cc',
+            700: '#0a4199',
+            800: '#062b66',
+            900: '#031533',
           },
+          gold: {
+            50: '#fef8f0',
+            100: '#fcefd9',
+            200: '#f9ddb3',
+            300: '#f5cb8c',
+            400: '#f2b965',
+            500: '#efc07b', // Gold highlight
+            600: '#d4a866',
+            700: '#b99050',
+            800: '#9e783b',
+            900: '#836025',
+          },
+          charcoal: '#2c3e50',
+          white: '#ffffff',
+        },
+        // Design 3: Contemporary Elegance (Platinum & Gold)
+        contemporary: {
+          charcoal: {
+            50: '#f8f9fa',
+            100: '#eceff1',
+            200: '#cfd8dc',
+            300: '#b0bec5',
+            400: '#90a4ae',
+            500: '#607d8b',
+            600: '#546e7a',
+            700: '#455a64',
+            800: '#34495e', // Secondary charcoal
+            900: '#2c3e50', // Primary charcoal
+          },
+          platinum: {
+            50: '#fefefe',
+            100: '#fdfdfd',
+            200: '#ecf0f1', // Light background
+            300: '#dfe6e9',
+            400: '#bdc3c7', // Silver
+            500: '#95a5a6',
+            600: '#7f8c8d',
+            700: '#6c7a7b',
+            800: '#59686a',
+            900: '#465658',
+          },
+          gold: {
+            50: '#faf7f2',
+            100: '#f5efe5',
+            200: '#e8d9c5',
+            300: '#dbc3a5',
+            400: '#ceac85',
+            500: '#C19A6B', // Gold accent
+            600: '#aa8660',
+            700: '#937254',
+            800: '#7c5e48',
+            900: '#654a3c',
+          },
+          slate: {
+            50: '#f7f8fa',
+            100: '#eef0f3',
+            200: '#d5dae0',
+            300: '#bcc4cd',
+            400: '#a3aeba',
+            500: '#8a98a7',
+            600: '#748394',
+            700: '#5e6d81',
+            800: '#48586e',
+            900: '#34495e', // Depth color
+          },
+          white: '#ffffff',
+          cream: '#fafaf8',
         },
         // Functional colors
         primary: {
@@ -160,12 +199,12 @@ const config: Config = {
         // Design 1: Elegant Minimalist
         playfair: ['Playfair Display', 'serif'],
         inter: ['Inter', 'sans-serif'],
-        // Design 2: Bold Modern
-        bebas: ['Bebas Neue', 'sans-serif'],
+        // Design 2: Modern Professional
+        lora: ['Lora', 'serif'],
+        openSans: ['Open Sans', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        // Design 3: Contemporary Elegance
         poppins: ['Poppins', 'sans-serif'],
-        // Design 3: Classic Premium
-        cormorant: ['Cormorant Garamond', 'serif'],
-        source: ['Source Serif Pro', 'serif'],
         // Default
         sans: ['Inter', 'system-ui', 'sans-serif'],
         serif: ['Playfair Display', 'Georgia', 'serif'],
@@ -204,8 +243,10 @@ const config: Config = {
       boxShadow: {
         'elegant': '0 4px 6px -1px rgba(212, 175, 55, 0.1), 0 2px 4px -1px rgba(212, 175, 55, 0.06)',
         'elegant-lg': '0 10px 15px -3px rgba(212, 175, 55, 0.1), 0 4px 6px -2px rgba(212, 175, 55, 0.05)',
-        'bold': '0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.04)',
-        'classic': '0 4px 6px -1px rgba(139, 38, 53, 0.1), 0 2px 4px -1px rgba(139, 38, 53, 0.06)',
+        'modern': '0 4px 6px -1px rgba(7, 32, 63, 0.1), 0 2px 4px -1px rgba(7, 32, 63, 0.06)',
+        'modern-lg': '0 10px 15px -3px rgba(7, 32, 63, 0.1), 0 4px 6px -2px rgba(7, 32, 63, 0.05)',
+        'contemporary': '0 4px 6px -1px rgba(44, 62, 80, 0.1), 0 2px 4px -1px rgba(44, 62, 80, 0.06)',
+        'contemporary-lg': '0 10px 15px -3px rgba(44, 62, 80, 0.1), 0 4px 6px -2px rgba(44, 62, 80, 0.05)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

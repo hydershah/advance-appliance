@@ -3,7 +3,7 @@ import React from 'react';
 interface OrnamentDividerProps {
   variant?: 'simple' | 'ornate' | 'diamond' | 'floral';
   className?: string;
-  color?: 'forest' | 'burgundy' | 'copper' | 'ivory';
+  color?: 'forest' | 'burgundy' | 'copper' | 'ivory' | 'contemporary-charcoal-900' | 'contemporary-gold-500' | 'contemporary-platinum-400';
 }
 
 const OrnamentDivider: React.FC<OrnamentDividerProps> = ({
@@ -16,6 +16,9 @@ const OrnamentDivider: React.FC<OrnamentDividerProps> = ({
     burgundy: 'text-[#722F37]',
     copper: 'text-[#B87333]',
     ivory: 'text-[#FFFAF5]',
+    'contemporary-charcoal-900': 'text-contemporary-charcoal-900',
+    'contemporary-gold-500': 'text-contemporary-gold-500',
+    'contemporary-platinum-400': 'text-contemporary-platinum-400',
   };
 
   const baseClasses = `flex items-center justify-center my-8 ${colorClasses[color]} ${className}`;

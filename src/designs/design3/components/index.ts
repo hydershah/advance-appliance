@@ -1,4 +1,4 @@
-// Design 3 - Classic Premium Components
+// Design 3 - Contemporary Elegance Components
 export { default as Navigation } from './Navigation';
 export { default as Footer } from './Footer';
 export { default as OrnamentDivider } from './OrnamentDivider';

@@ -1,5 +1,5 @@
-// Design 3: Classic Premium Theme
-// A timeless, trustworthy design for luxury appliance repair services
+// Design 3: Contemporary Elegance Theme
+// A modern, sophisticated design for luxury appliance repair services
 
 // Components
 export {

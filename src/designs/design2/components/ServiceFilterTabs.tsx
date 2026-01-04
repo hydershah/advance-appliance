@@ -27,14 +27,14 @@ export const ServiceFilterTabs: React.FC<ServiceFilterTabsProps> = ({ tabs, acti
 
   return (
     <div className="relative">
-      <div className="hidden md:flex items-center justify-center bg-[#0A1628]/5 rounded-2xl p-2 relative">
-        <div className="absolute top-2 bottom-2 bg-[#0A1628] rounded-xl transition-all duration-300 ease-out" style={indicatorStyle} />
+      <div className="hidden md:flex items-center justify-center bg-white rounded-2xl border border-gray-200 p-2 relative shadow-sm">
+        <div className="absolute top-2 bottom-2 bg-modern-blue-500 rounded-xl transition-all duration-300 ease-out" style={indicatorStyle} />
         {tabs.map((tab, index) => (
           <button
             key={tab.id}
             ref={(el) => { tabsRef.current[index] = el; }}
             onClick={() => onTabChange(tab.id)}
-            className={`relative z-10 px-6 py-3 font-medium text-sm uppercase tracking-wider transition-colors duration-300 ${activeTab === tab.id ? 'text-white' : 'text-[#0A1628] hover:text-[#3B82F6]'}`}
+            className={`relative z-10 px-6 py-3 font-openSans font-semibold text-sm uppercase tracking-wider transition-colors duration-300 ${activeTab === tab.id ? 'text-white' : 'text-modern-charcoal hover:text-modern-blue-500'}`}
           >
             {tab.label}
           </button>
@@ -44,9 +44,9 @@ export const ServiceFilterTabs: React.FC<ServiceFilterTabsProps> = ({ tabs, acti
         <select
           value={activeTab}
           onChange={(e) => onTabChange(e.target.value)}
-          className="w-full px-6 py-4 bg-[#0A1628] text-white rounded-xl font-medium text-sm uppercase tracking-wider appearance-none cursor-pointer"
+          className="w-full px-6 py-4 bg-white text-modern-navy-900 rounded-xl font-openSans font-semibold text-sm uppercase tracking-wider appearance-none cursor-pointer border border-gray-200"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2307203f'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'right 1rem center',
             backgroundSize: '1.5rem',

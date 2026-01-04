@@ -57,8 +57,8 @@ const ToastItem: React.FC<{ toast: Toast; onClose: () => void }> = ({ toast, onC
     return () => { clearTimeout(showTimeout); clearTimeout(dismissTimeout); };
   }, [toast.duration, onClose]);
 
-  const colors: Record<ToastType, string> = { success: 'bg-green-500', error: 'bg-red-500', warning: 'bg-yellow-500', info: 'bg-[#3B82F6]' };
-  const borderColors: Record<ToastType, string> = { success: 'border-l-green-500', error: 'border-l-red-500', warning: 'border-l-yellow-500', info: 'border-l-[#3B82F6]' };
+  const colors: Record<ToastType, string> = { success: 'bg-green-500', error: 'bg-red-500', warning: 'bg-yellow-500', info: 'bg-modern-blue-500' };
+  const borderColors: Record<ToastType, string> = { success: 'border-l-green-500', error: 'border-l-red-500', warning: 'border-l-yellow-500', info: 'border-l-modern-blue-500' };
 
   return (
     <div className={`bg-white rounded-lg shadow-2xl border-l-4 ${borderColors[toast.type]} p-4 flex items-start space-x-3 transform transition-all duration-300 ${isVisible && !isLeaving ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
@@ -70,7 +70,7 @@ const ToastItem: React.FC<{ toast: Toast; onClose: () => void }> = ({ toast, onC
           {toast.type === 'info' && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />}
         </svg>
       </div>
-      <div className="flex-grow"><p className="text-[#0A1628] font-medium">{toast.message}</p></div>
+      <div className="flex-grow"><p className="text-modern-navy-900 font-openSans font-medium">{toast.message}</p></div>
       <button onClick={() => { setIsLeaving(true); setTimeout(onClose, 300); }} className="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
       </button>
@@ -80,7 +80,7 @@ const ToastItem: React.FC<{ toast: Toast; onClose: () => void }> = ({ toast, onC
 
 export const StandaloneToast: React.FC<{ message: string; type?: ToastType; isVisible: boolean; onClose: () => void }> = ({ message, type = 'info', isVisible, onClose }) => {
   if (!isVisible) return null;
-  const colors: Record<ToastType, string> = { success: 'bg-green-500', error: 'bg-red-500', warning: 'bg-yellow-500', info: 'bg-[#3B82F6]' };
+  const colors: Record<ToastType, string> = { success: 'bg-green-500', error: 'bg-red-500', warning: 'bg-yellow-500', info: 'bg-modern-blue-500' };
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <div className="bg-white rounded-lg shadow-2xl p-4 flex items-start space-x-3 animate-slideIn max-w-sm">
@@ -90,7 +90,7 @@ export const StandaloneToast: React.FC<{ message: string; type?: ToastType; isVi
             {type === 'info' && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />}
           </svg>
         </div>
-        <div className="flex-grow"><p className="text-[#0A1628] font-medium">{message}</p></div>
+        <div className="flex-grow"><p className="text-modern-navy-900 font-openSans font-medium">{message}</p></div>
         <button onClick={onClose} className="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
         </button>

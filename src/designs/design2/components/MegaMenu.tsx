@@ -54,21 +54,21 @@ const iconMap: Record<string, React.ReactNode> = {
 export const MegaMenu: React.FC<MegaMenuProps> = ({ services, isScrolled }) => {
   return (
     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[800px]">
-      <div className={`rounded-2xl shadow-2xl p-8 grid grid-cols-3 gap-4 ${isScrolled ? 'bg-[#0A1628] border border-white/10' : 'bg-white border border-gray-100'}`}>
+      <div className={`rounded-2xl shadow-2xl p-8 grid grid-cols-3 gap-4 ${isScrolled ? 'bg-modern-navy-900 border border-white/10' : 'bg-white border border-gray-200'}`}>
         {services.slice(0, 9).map((service) => (
           <a
             key={service.id}
             href={`/services/${service.id}`}
-            className={`flex items-start space-x-3 p-3 rounded-xl transition-all duration-200 group ${isScrolled ? 'hover:bg-white/5' : 'hover:bg-gray-50'}`}
+            className={`flex items-start space-x-3 p-3 rounded-xl transition-all duration-200 group ${isScrolled ? 'hover:bg-white/5' : 'hover:bg-modern-cream-300/30'}`}
           >
-            <div className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110 ${isScrolled ? 'bg-[#3B82F6]/20 text-[#3B82F6]' : 'bg-[#0A1628]/5 text-[#0A1628] group-hover:bg-[#3B82F6] group-hover:text-white'}`}>
+            <div className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110 ${isScrolled ? 'bg-modern-gold-500/20 text-modern-gold-500' : 'bg-modern-navy-900/5 text-modern-navy-900 group-hover:bg-modern-blue-500 group-hover:text-white'}`}>
               {iconMap[service.icon] || iconMap.circle}
             </div>
             <div>
-              <h4 className={`font-bold text-sm transition-colors ${isScrolled ? 'text-white group-hover:text-[#3B82F6]' : 'text-[#0A1628] group-hover:text-[#3B82F6]'}`}>
+              <h4 className={`font-lora font-bold text-sm transition-colors ${isScrolled ? 'text-white group-hover:text-modern-gold-500' : 'text-modern-navy-900 group-hover:text-modern-blue-500'}`}>
                 {service.name}
               </h4>
-              <p className={`text-xs mt-1 line-clamp-2 ${isScrolled ? 'text-gray-400' : 'text-gray-500'}`}>
+              <p className={`font-openSans text-xs mt-1 line-clamp-2 ${isScrolled ? 'text-gray-400' : 'text-gray-500'}`}>
                 {service.description.substring(0, 60)}...
               </p>
             </div>
@@ -77,7 +77,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ services, isScrolled }) => {
         <div className="col-span-3 mt-4 pt-4 border-t border-gray-200/20">
           <a
             href="/services"
-            className={`flex items-center justify-center space-x-2 py-3 rounded-lg font-bold text-sm transition-all duration-200 group ${isScrolled ? 'bg-[#3B82F6] text-white hover:bg-[#2563EB]' : 'bg-[#0A1628] text-white hover:bg-[#0A1628]/90'}`}
+            className={`flex items-center justify-center space-x-2 py-3 rounded-lg font-montserrat font-bold text-sm transition-all duration-200 group ${isScrolled ? 'bg-modern-blue-500 text-white hover:bg-modern-blue-600' : 'bg-modern-navy-900 text-white hover:bg-modern-navy-800'}`}
           >
             <span>View All Services</span>
             <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

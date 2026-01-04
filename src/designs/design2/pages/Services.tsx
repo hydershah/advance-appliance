@@ -4,8 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { ServiceFilterTabs } from '../components/ServiceFilterTabs';
-import { useIntersectionObserver } from '../hooks/useAnimatedCounter';
-import { SERVICES, BUSINESS_INFO, IMAGES } from '../utils/constants';
+import { BUSINESS_INFO, SERVICES, IMAGES } from '../utils/constants';
 
 type ServiceCategory = 'all' | 'kitchen' | 'laundry' | 'cooling';
 
@@ -17,100 +16,130 @@ const SERVICE_CATEGORIES: { id: ServiceCategory; label: string }[] = [
 ];
 
 const serviceCategoryMap: Record<string, ServiceCategory> = {
-  refrigerator: 'cooling', freezer: 'cooling', 'ice-maker': 'cooling',
-  washer: 'laundry', dryer: 'laundry',
-  dishwasher: 'kitchen', oven: 'kitchen', cooktop: 'kitchen', stove: 'kitchen',
+  refrigerator: 'cooling',
+  freezer: 'cooling',
+  'ice-maker': 'cooling',
+  washer: 'laundry',
+  dryer: 'laundry',
+  dishwasher: 'kitchen',
+  oven: 'kitchen',
+  cooktop: 'kitchen',
+  stove: 'kitchen',
+  microwave: 'kitchen',
 };
 
 export const Services: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ServiceCategory>('all');
-  const filteredServices = useMemo(() => activeCategory === 'all' ? SERVICES : SERVICES.filter((s) => serviceCategoryMap[s.id] === activeCategory), [activeCategory]);
+  const filteredServices = useMemo(
+    () => (activeCategory === 'all' ? SERVICES : SERVICES.filter((s) => serviceCategoryMap[s.id] === activeCategory)),
+    [activeCategory],
+  );
+
+  const featured = SERVICES[0];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-openSans">
       <Header currentPage="services" />
-      <section className="bg-[#0A1628] pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5"><div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`, backgroundSize: '40px 40px' }} /></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#3B82F6]/20 rounded-full blur-3xl" />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl">
-            <span className="text-[#3B82F6] font-bold text-sm uppercase tracking-widest mb-4 block">Professional Repair Services</span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Expert Appliance<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#60A5FA]"> Repair </span>Services</h1>
-            <p className="text-gray-400 text-lg md:text-xl leading-relaxed">From refrigerators to ovens, we repair all major household appliances. Factory-authorized service with genuine parts and expert technicians.</p>
-          </div>
-        </div>
-      </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="grid lg:grid-cols-2">
-              <div className="relative h-64 lg:h-auto"><img src={IMAGES.kitchen} alt="Featured appliance repair" className="absolute inset-0 w-full h-full object-cover" /></div>
-              <div className="p-8 lg:p-12">
-                <span className="inline-flex items-center px-3 py-1 bg-[#3B82F6]/10 text-[#3B82F6] rounded-full text-sm font-bold uppercase tracking-wider mb-4">Featured Service</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628] mb-4">Refrigerator Repair Specialists</h2>
-                <p className="text-gray-600 mb-6 leading-relaxed">Your refrigerator is the heart of your kitchen. When it breaks down, you need fast, reliable service. Our certified technicians specialize in all major brands including Sub-Zero, Viking, and Samsung.</p>
-                <ul className="space-y-3 mb-8">{['Same-day emergency service', 'Genuine manufacturer parts', '90-day warranty on repairs', 'All major brands serviced'].map((item) => (<li key={item} className="flex items-center space-x-3"><div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center"><svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg></div><span className="text-gray-700">{item}</span></li>))}</ul>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a href={`tel:${BUSINESS_INFO.phoneClean}`} className="flex items-center justify-center space-x-2 px-6 py-3 bg-[#0A1628] text-white rounded-xl font-bold hover:bg-[#0A1628]/90 transition-colors"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg><span>Call Now</span></a>
-                  <a href="/services/refrigerator" className="flex items-center justify-center space-x-2 px-6 py-3 border-2 border-[#0A1628] text-[#0A1628] rounded-xl font-bold hover:bg-[#0A1628] hover:text-white transition-colors"><span>Learn More</span></a>
-                </div>
+      <section className="relative overflow-hidden bg-modern-navy-900">
+        <div className="absolute inset-0">
+          <img src={IMAGES.kitchen} alt="Luxury kitchen" className="w-full h-full object-cover opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-modern-navy-900 via-modern-navy-900/95 to-modern-navy-900/80" />
+        </div>
+        <div className="relative container mx-auto px-6 py-24 lg:py-28 grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-modern-cream-300/10 border border-modern-gold-500/30 text-modern-gold-500 font-openSans font-semibold uppercase tracking-[0.3em] mb-4 text-sm">Repair Services</span>
+            <h1 className="text-4xl md:text-5xl font-lora font-bold text-white leading-tight mb-4">Precision Repair for Premium Appliances</h1>
+            <p className="text-lg text-modern-cream-300/90 max-w-2xl leading-relaxed">
+              From refrigeration to cooking suites, our factory-trained team handles complex diagnostics, delicate panels, and high-end finishes with care.
+            </p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 backdrop-blur">
+            <h3 className="text-2xl font-lora font-semibold text-white mb-3">{featured.name}</h3>
+            <p className="text-modern-cream-300/80 mb-4">{featured.description}</p>
+            <ul className="grid grid-cols-2 gap-3 text-sm text-modern-cream-300/90 mb-6">
+              {featured.commonIssues?.slice(0, 6).map((issue) => (
+                <li key={issue} className="flex items-center space-x-2">
+                  <span className="w-2 h-2 rounded-full bg-modern-gold-500" />
+                  <span>{issue}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] text-modern-gold-500 font-openSans font-semibold">Starting</p>
+                <p className="text-2xl font-lora font-bold text-white">{featured.price}</p>
               </div>
+              <a href={`/services/${featured.id}`} className="inline-flex items-center space-x-2 text-white font-semibold hover:text-modern-gold-500 transition-colors">
+                <span>Explore details</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-16 bg-modern-cream-300">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628] mb-4">All Repair Services</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Select a category to filter our services, or browse all available repair options.</p>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-lora font-bold mb-3 text-modern-navy-900">Select a category</h2>
+            <p className="text-modern-charcoal/70">Tailored expertise for every appliance in your home.</p>
           </div>
-          <div className="mb-12"><ServiceFilterTabs tabs={SERVICE_CATEGORIES} activeTab={activeCategory} onTabChange={(tab) => setActiveCategory(tab as ServiceCategory)} /></div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">{filteredServices.map((service, index) => <ServiceGridCard key={service.id} service={service} index={index} />)}</div>
+          <div className="mb-10">
+            <ServiceFilterTabs tabs={SERVICE_CATEGORIES} activeTab={activeCategory} onTabChange={(tab) => setActiveCategory(tab as ServiceCategory)} />
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredServices.map((service) => (
+              <div key={service.id} className="group bg-white rounded-2xl shadow-md border border-gray-200 overflow-hidden hover:-translate-y-1 hover:shadow-modern-lg transition-all duration-200">
+                <div className="h-1 bg-gradient-to-r from-modern-blue-500 to-modern-gold-500" />
+                <div className="p-8 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xl font-lora font-bold group-hover:text-modern-blue-500 transition-colors text-modern-navy-900">{service.name}</h3>
+                    <span className="text-sm font-openSans font-semibold text-modern-gold-500 uppercase tracking-widest">{service.price}</span>
+                  </div>
+                  <p className="text-modern-charcoal/70 leading-relaxed">{service.description}</p>
+                  <ul className="space-y-2 text-sm text-modern-charcoal/80">
+                    {service.features.slice(0, 3).map((f) => (
+                      <li key={f} className="flex items-center space-x-2">
+                        <span className="w-2 h-2 rounded-full bg-modern-blue-500" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a href={`/services/${service.id}`} className="inline-flex items-center space-x-2 text-modern-navy-900 font-semibold hover:text-modern-blue-500 transition-colors">
+                    <span>View details</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-20 bg-[#0A1628]">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Not Sure What Service You Need?</h2>
-          <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">Our expert technicians can diagnose any appliance problem. Call us now for a free consultation.</p>
-          <a href={`tel:${BUSINESS_INFO.phoneClean}`} className="inline-flex items-center space-x-3 px-8 py-4 bg-[#3B82F6] text-white rounded-xl font-bold text-lg hover:bg-[#2563EB] transition-colors shadow-lg shadow-[#3B82F6]/30"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg><span>{BUSINESS_INFO.phone}</span></a>
+      <section className="py-16 bg-modern-navy-900">
+        <div className="container mx-auto px-6">
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-modern-gold-500 mb-2 font-openSans font-semibold">Not sure where to start?</p>
+              <h3 className="text-2xl md:text-3xl font-lora font-bold text-white mb-2">We will diagnose and recommend the right fix.</h3>
+              <p className="text-modern-cream-300/80 max-w-2xl">Describe the issue and our concierge will match you with the right technician, provide an arrival window, and protect your home while we work.</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+              <a href={`tel:${BUSINESS_INFO.phoneClean}`} className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-modern-blue-500 text-white font-montserrat font-semibold hover:bg-modern-blue-600 transition-colors shadow-md">
+                Call {BUSINESS_INFO.phone}
+              </a>
+              <a href="/contact" className="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-white/30 text-white font-montserrat font-semibold hover:bg-white hover:text-modern-navy-900 transition-colors">
+                Book online
+              </a>
+            </div>
+          </div>
         </div>
       </section>
+
       <Footer />
-    </div>
-  );
-};
-
-const ServiceGridCard: React.FC<{ service: typeof SERVICES[number]; index: number }> = ({ service, index }) => {
-  const { isVisible, ref } = useIntersectionObserver();
-  const iconMap: Record<string, React.ReactNode> = {
-    snowflake: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v18m0-18l-3 3m3-3l3 3m-3 15l-3-3m3 3l3-3M3 12h18M3 12l3-3m-3 3l3 3m15-3l-3-3m3 3l-3 3" /></svg>,
-    droplet: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" /></svg>,
-    wind: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>,
-    dish: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>,
-    flame: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /></svg>,
-    circle: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" strokeWidth={2} /></svg>,
-    cube: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>,
-  };
-
-  return (
-    <div ref={ref} className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${index * 50}ms` }}>
-      <a href={`/services/${service.id}`} className="group block bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-[#3B82F6] hover:shadow-2xl transition-all duration-500">
-        <div className="h-2 bg-gradient-to-r from-[#3B82F6] to-[#60A5FA] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-        <div className="p-8">
-          <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center text-[#0A1628] mb-6 group-hover:bg-[#3B82F6] group-hover:text-white transition-all">{iconMap[service.icon] || iconMap.circle}</div>
-          <h3 className="text-xl font-bold text-[#0A1628] mb-3 group-hover:text-[#3B82F6] transition-colors">{service.name}</h3>
-          <p className="text-gray-600 mb-6 line-clamp-2">{service.description}</p>
-          <div className="space-y-2 mb-6">{service.features.slice(0, 3).map((f) => (<div key={f} className="flex items-center space-x-2 text-sm text-gray-500"><svg className="w-4 h-4 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg><span>{f}</span></div>))}</div>
-          <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-            <span className="text-[#3B82F6] font-bold">{service.price}</span>
-            <span className="flex items-center space-x-2 text-[#0A1628] font-medium group-hover:text-[#3B82F6] transition-colors"><span>View Details</span><svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></span>
-          </div>
-        </div>
-      </a>
     </div>
   );
 };

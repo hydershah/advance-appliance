@@ -5,33 +5,33 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-forest text-ivory">
+    <footer className="bg-contemporary-charcoal-900 text-contemporary-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-ivory rounded-full flex items-center justify-center border-2 border-copper">
-                <span className="text-forest font-cormorant font-bold text-xl">AA</span>
+              <div className="w-12 h-12 bg-contemporary-white rounded-full flex items-center justify-center border border-contemporary-gold-500/30 shadow-sm">
+                <span className="text-contemporary-charcoal-900 font-playfair font-bold text-xl">AA</span>
               </div>
               <div>
-                <h3 className="font-cormorant font-bold text-xl text-ivory leading-tight">
+                <h3 className="font-playfair font-bold text-xl text-contemporary-white leading-tight">
                   Advanced Appliance
                 </h3>
-                <p className="text-xs text-copper tracking-wider uppercase">
+                <p className="text-xs text-contemporary-gold-500 tracking-wider uppercase">
                   Repair Service
                 </p>
               </div>
             </div>
-            <p className="text-ivory/80 font-serif leading-relaxed mb-6">
+            <p className="text-contemporary-platinum-400 font-poppins leading-relaxed mb-6">
               Courteous, professional, fast, and reliable appliance repair services since 1992.
               Trusted by thousands of homeowners for over 30 years.
             </p>
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="w-10 h-10 rounded-full border-2 border-copper flex items-center justify-center hover:bg-copper hover:border-copper transition-colors"
+                className="w-10 h-10 rounded-full border border-contemporary-platinum-400/50 flex items-center justify-center hover:bg-contemporary-gold-500 hover:border-contemporary-gold-500 transition-colors"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full border-2 border-copper flex items-center justify-center hover:bg-copper hover:border-copper transition-colors"
+                className="w-10 h-10 rounded-full border border-contemporary-platinum-400/50 flex items-center justify-center hover:bg-contemporary-gold-500 hover:border-contemporary-gold-500 transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full border-2 border-copper flex items-center justify-center hover:bg-copper hover:border-copper transition-colors"
+                className="w-10 h-10 rounded-full border border-contemporary-platinum-400/50 flex items-center justify-center hover:bg-contemporary-gold-500 hover:border-contemporary-gold-500 transition-colors"
                 aria-label="Yelp"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -61,16 +61,16 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-cormorant font-bold text-xl text-copper mb-6">Quick Links</h4>
+            <h4 className="font-playfair font-bold text-xl text-contemporary-gold-500 mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {['Home', 'About Us', 'Our Services', 'Service Areas', 'Blog', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
                     href={`/${link.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="font-serif text-ivory/80 hover:text-copper transition-colors inline-flex items-center group"
+                    className="font-poppins text-contemporary-platinum-400 hover:text-contemporary-gold-500 transition-colors inline-flex items-center group"
                   >
                     <span className="w-0 group-hover:w-4 transition-all duration-200 overflow-hidden">
-                      <svg className="w-4 h-4 text-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-contemporary-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </span>
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-cormorant font-bold text-xl text-copper mb-6">Our Services</h4>
+            <h4 className="font-playfair font-bold text-xl text-contemporary-gold-500 mb-6">Our Services</h4>
             <ul className="space-y-3">
               {[
                 'Refrigerator Repair',
@@ -96,10 +96,10 @@ const Footer: React.FC = () => {
                 <li key={service}>
                   <a
                     href={`/services/${service.toLowerCase().replace(/\s+&?\s*/g, '-')}`}
-                    className="font-serif text-ivory/80 hover:text-copper transition-colors inline-flex items-center group"
+                    className="font-poppins text-contemporary-platinum-400 hover:text-contemporary-gold-500 transition-colors inline-flex items-center group"
                   >
                     <span className="w-0 group-hover:w-4 transition-all duration-200 overflow-hidden">
-                      <svg className="w-4 h-4 text-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-contemporary-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </span>
@@ -112,36 +112,36 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-cormorant font-bold text-xl text-copper mb-6">Contact Us</h4>
+            <h4 className="font-playfair font-bold text-xl text-contemporary-gold-500 mb-6">Contact Us</h4>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <svg className="w-6 h-6 text-copper flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-contemporary-gold-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <div>
-                  <p className="font-serif text-ivory/80">Phone</p>
-                  <a href="tel:7324167430" className="font-medium hover:text-copper transition-colors">
+                  <p className="font-poppins text-contemporary-platinum-400">Phone</p>
+                  <a href="tel:7324167430" className="font-medium hover:text-contemporary-gold-500 transition-colors">
                     (732) 416-7430
                   </a>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <svg className="w-6 h-6 text-copper flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-contemporary-gold-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <div>
-                  <p className="font-serif text-ivory/80">Email</p>
-                  <a href="mailto:info@advancedappliance.com" className="font-medium hover:text-copper transition-colors">
+                  <p className="font-poppins text-contemporary-platinum-400">Email</p>
+                  <a href="mailto:info@advancedappliance.com" className="font-medium hover:text-contemporary-gold-500 transition-colors">
                     info@advancedappliance.com
                   </a>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <svg className="w-6 h-6 text-copper flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-contemporary-gold-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div>
-                  <p className="font-serif text-ivory/80">Hours</p>
+                  <p className="font-poppins text-contemporary-platinum-400">Hours</p>
                   <p className="font-medium">Mon - Sat: 8AM - 6PM</p>
                   <p className="font-medium">Sunday: Closed</p>
                 </div>
@@ -149,12 +149,12 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Credentials */}
-            <div className="mt-8 pt-6 border-t border-ivory/20">
+            <div className="mt-8 pt-6 border-t border-contemporary-white/10">
               <div className="flex flex-wrap gap-3">
                 {['Licensed', 'Bonded', 'Insured'].map((badge) => (
                   <span
                     key={badge}
-                    className="px-3 py-1 text-xs font-serif bg-copper/20 text-copper rounded-full border border-copper/40"
+                    className="px-3 py-1 text-xs font-poppins bg-contemporary-gold-500/20 text-contemporary-gold-500 rounded-full border border-contemporary-gold-500/40"
                   >
                     {badge}
                   </span>
@@ -165,23 +165,23 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <OrnamentDivider variant="simple" color="copper" />
+      <OrnamentDivider variant="simple" color="contemporary-gold-500" className="opacity-30" />
 
       {/* Bottom Bar */}
-      <div className="bg-forest py-6" style={{ backgroundColor: '#0F2A1F' }}>
+      <div className="bg-contemporary-slate-900 py-6 border-t border-contemporary-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-ivory/60 text-sm font-serif">
+            <p className="text-contemporary-platinum-400 text-sm font-poppins">
               {currentYear} Advanced Appliance Repair Service. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="/privacy" className="text-ivory/60 hover:text-copper text-sm font-serif transition-colors">
+              <a href="/privacy" className="text-contemporary-platinum-400 hover:text-contemporary-gold-500 text-sm font-poppins transition-colors">
                 Privacy Policy
               </a>
-              <a href="/terms" className="text-ivory/60 hover:text-copper text-sm font-serif transition-colors">
+              <a href="/terms" className="text-contemporary-platinum-400 hover:text-contemporary-gold-500 text-sm font-poppins transition-colors">
                 Terms of Service
               </a>
-              <a href="/sitemap" className="text-ivory/60 hover:text-copper text-sm font-serif transition-colors">
+              <a href="/sitemap" className="text-contemporary-platinum-400 hover:text-contemporary-gold-500 text-sm font-poppins transition-colors">
                 Sitemap
               </a>
             </div>

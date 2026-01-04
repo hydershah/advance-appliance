@@ -1,4 +1,4 @@
-// Design 2 - Bold Modern Theme
+// Design 2 - Modern Professional Luxury Theme
 // Main entry point for all exports
 
 // Pages

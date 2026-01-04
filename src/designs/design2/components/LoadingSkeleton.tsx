@@ -86,17 +86,17 @@ export const HeaderSkeleton: React.FC = () => (
 );
 
 export const HeroSkeleton: React.FC = () => (
-  <div className="bg-[#0A1628] min-h-[80vh] flex items-center">
+  <div className="bg-modern-navy-900 min-h-[80vh] flex items-center">
     <div className="container mx-auto px-6">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <Skeleton className="h-4 w-32 mb-6 bg-gray-700" />
-          <Skeleton className="h-14 w-full mb-4 bg-gray-700" />
-          <Skeleton className="h-14 w-3/4 mb-6 bg-gray-700" />
-          <div className="space-y-2 mb-8"><Skeleton className="h-5 w-full bg-gray-700" /><Skeleton className="h-5 w-4/5 bg-gray-700" /></div>
-          <div className="flex space-x-4"><Skeleton className="h-14 w-40 rounded-lg bg-gray-700" /><Skeleton className="h-14 w-40 rounded-lg bg-gray-700" /></div>
+          <Skeleton className="h-4 w-32 mb-6 bg-modern-cream-300/20" />
+          <Skeleton className="h-14 w-full mb-4 bg-modern-cream-300/20" />
+          <Skeleton className="h-14 w-3/4 mb-6 bg-modern-cream-300/20" />
+          <div className="space-y-2 mb-8"><Skeleton className="h-5 w-full bg-modern-cream-300/20" /><Skeleton className="h-5 w-4/5 bg-modern-cream-300/20" /></div>
+          <div className="flex space-x-4"><Skeleton className="h-14 w-40 rounded-lg bg-modern-cream-300/20" /><Skeleton className="h-14 w-40 rounded-lg bg-modern-cream-300/20" /></div>
         </div>
-        <Skeleton className="h-96 rounded-2xl bg-gray-700" />
+        <Skeleton className="h-96 rounded-2xl bg-modern-cream-300/20" />
       </div>
     </div>
   </div>

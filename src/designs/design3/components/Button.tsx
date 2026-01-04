@@ -25,12 +25,12 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   onClick,
 }) => {
-  const baseClasses = 'inline-flex items-center justify-center font-medium transition-all duration-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-offset-2';
+  const baseClasses = 'inline-flex items-center justify-center font-poppins font-medium transition-all duration-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2';
 
   const variantClasses = {
-    primary: 'bg-[#1B4332] text-[#FFFAF5] hover:bg-[#143728] focus:ring-[#1B4332] border-2 border-[#1B4332]',
-    secondary: 'bg-[#722F37] text-[#FFFAF5] hover:bg-[#5a252c] focus:ring-[#722F37] border-2 border-[#722F37]',
-    outline: 'bg-transparent text-[#1B4332] border-2 border-[#1B4332] hover:bg-[#1B4332] hover:text-[#FFFAF5] focus:ring-[#1B4332]',
+    primary: 'bg-contemporary-charcoal-900 text-contemporary-white hover:bg-contemporary-slate-900 focus:ring-contemporary-charcoal-900 border border-contemporary-charcoal-900',
+    secondary: 'bg-contemporary-gold-500 text-contemporary-white hover:bg-contemporary-gold-500/90 focus:ring-contemporary-gold-500 border border-contemporary-gold-500',
+    outline: 'bg-transparent text-contemporary-charcoal-900 border border-contemporary-charcoal-900 hover:bg-contemporary-charcoal-900 hover:text-contemporary-white focus:ring-contemporary-charcoal-900',
   };
 
   const sizeClasses = {

@@ -21,7 +21,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' }) => {
         <li className="flex items-center">
           <a
             href="/"
-            className="text-forest/60 hover:text-copper transition-colors font-serif text-sm flex items-center"
+            className="text-contemporary-charcoal-900/60 hover:text-contemporary-gold-500 transition-colors font-poppins text-sm flex items-center"
           >
             <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -33,7 +33,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' }) => {
         {items.map((item, index) => (
           <li key={index} className="flex items-center">
             {/* Separator */}
-            <span className="mx-2 text-forest/40">
+            <span className="mx-2 text-contemporary-platinum-400/40">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
@@ -47,13 +47,13 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className = '' }) => {
             {item.href ? (
               <a
                 href={item.href}
-                className="text-forest/60 hover:text-copper transition-colors font-serif text-sm"
+                className="text-contemporary-charcoal-900/60 hover:text-contemporary-gold-500 transition-colors font-poppins text-sm"
               >
                 {item.label}
               </a>
             ) : (
               <span
-                className="text-forest font-serif text-sm font-medium"
+                className="text-contemporary-charcoal-900 font-poppins text-sm font-medium"
                 aria-current="page"
               >
                 {item.label}

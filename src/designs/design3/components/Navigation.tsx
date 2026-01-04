@@ -32,7 +32,7 @@ interface DropdownProps {
 const Dropdown: React.FC<DropdownProps> = ({ items, isOpen }) => {
   return (
     <div
-      className={`absolute top-full left-0 mt-2 w-64 bg-ivory border-2 border-forest shadow-xl rounded-lg overflow-hidden transition-all duration-300 ${
+      className={`absolute top-full left-0 mt-2 w-64 bg-contemporary-white border border-contemporary-platinum-400/30 shadow-xl rounded-lg overflow-hidden transition-all duration-300 ${
         isOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'
       }`}
     >
@@ -41,7 +41,7 @@ const Dropdown: React.FC<DropdownProps> = ({ items, isOpen }) => {
           <a
             key={item.href}
             href={item.href}
-            className="block px-6 py-3 text-forest hover:bg-forest hover:text-ivory transition-colors duration-200 font-serif"
+            className="block px-6 py-3 text-contemporary-charcoal-900 hover:bg-contemporary-charcoal-900 hover:text-contemporary-white transition-colors duration-200 font-poppins"
           >
             {item.label}
           </a>
@@ -64,26 +64,26 @@ const Navigation: React.FC = () => {
   const mobileMenuRef = useClickOutside<HTMLDivElement>(closeMobileMenu);
 
   return (
-    <header className="bg-ivory border-b-4 border-forest sticky top-0 z-50">
+    <header className="bg-contemporary-white/95 backdrop-blur border-b border-contemporary-platinum-400/20 sticky top-0 z-50 shadow-sm">
       {/* Top bar */}
-      <div className="bg-forest text-ivory py-2">
+      <div className="bg-contemporary-charcoal-900 text-contemporary-white py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-sm">
           <div className="flex items-center space-x-6">
             <span className="flex items-center">
-              <svg className="w-4 h-4 mr-2 text-copper" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 mr-2 text-contemporary-gold-500" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
               (732) 416-7430
             </span>
             <span className="hidden sm:flex items-center">
-              <svg className="w-4 h-4 mr-2 text-copper" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 mr-2 text-contemporary-gold-500" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
               </svg>
               Mon-Sat: 8AM - 6PM
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="text-copper font-medium">30+ Years of Excellence</span>
+            <span className="text-contemporary-gold-500 font-medium">30+ Years of Excellence</span>
           </div>
         </div>
       </div>
@@ -93,14 +93,14 @@ const Navigation: React.FC = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <a href="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-forest rounded-full flex items-center justify-center border-2 border-copper">
-              <span className="text-ivory font-cormorant font-bold text-xl">AA</span>
+            <div className="w-12 h-12 bg-contemporary-charcoal-900 rounded-full flex items-center justify-center border border-contemporary-gold-500/30 shadow-sm">
+              <span className="text-contemporary-white font-playfair font-bold text-xl">AA</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="font-cormorant font-bold text-xl text-forest leading-tight">
+              <h1 className="font-playfair font-bold text-xl text-contemporary-charcoal-900 leading-tight">
                 Advanced Appliance
               </h1>
-              <p className="text-xs text-burgundy font-serif tracking-wider uppercase">
+              <p className="text-xs text-contemporary-slate-900 font-montserrat tracking-wider uppercase">
                 Repair Service
               </p>
             </div>
@@ -117,7 +117,7 @@ const Navigation: React.FC = () => {
               >
                 <a
                   href={item.href}
-                  className="font-serif text-forest hover:text-burgundy transition-colors duration-200 flex items-center py-2"
+                  className="font-poppins text-contemporary-charcoal-900 hover:text-contemporary-gold-500 transition-colors duration-200 flex items-center py-2"
                 >
                   {item.label}
                   {item.children && (
@@ -143,7 +143,7 @@ const Navigation: React.FC = () => {
           {/* CTA Button */}
           <a
             href="/contact"
-            className="hidden md:inline-flex items-center px-6 py-3 bg-burgundy text-ivory font-serif rounded-lg border-2 border-burgundy hover:bg-transparent hover:text-burgundy transition-all duration-300 shadow-md"
+            className="hidden md:inline-flex items-center px-6 py-3 bg-contemporary-charcoal-900 text-contemporary-white font-poppins rounded-lg border border-contemporary-charcoal-900 hover:bg-transparent hover:text-contemporary-charcoal-900 transition-all duration-300 shadow-sm"
           >
             Schedule Service
           </a>
@@ -151,7 +151,7 @@ const Navigation: React.FC = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="lg:hidden p-2 text-forest hover:text-burgundy transition-colors"
+            className="lg:hidden p-2 text-contemporary-charcoal-900 hover:text-contemporary-gold-500 transition-colors"
             aria-label="Open menu"
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -163,22 +163,22 @@ const Navigation: React.FC = () => {
 
       {/* Mobile menu overlay */}
       <div
-        className={`fixed inset-0 bg-forest/50 z-50 transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 bg-contemporary-charcoal-900/60 z-50 transition-opacity duration-300 lg:hidden ${
           mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
         <div
           ref={mobileMenuRef}
-          className={`absolute right-0 top-0 h-full w-80 bg-ivory shadow-2xl transform transition-transform duration-300 ${
+          className={`absolute right-0 top-0 h-full w-80 bg-contemporary-white shadow-2xl transform transition-transform duration-300 ${
             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
           <div className="p-6">
             <div className="flex justify-between items-center mb-8">
-              <span className="font-cormorant font-bold text-xl text-forest">Menu</span>
+              <span className="font-playfair font-bold text-xl text-contemporary-charcoal-900">Menu</span>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-forest hover:text-burgundy transition-colors"
+                className="p-2 text-contemporary-charcoal-900 hover:text-contemporary-gold-500 transition-colors"
                 aria-label="Close menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,7 +192,7 @@ const Navigation: React.FC = () => {
                 <div key={item.href}>
                   <a
                     href={item.href}
-                    className="block py-3 font-serif text-lg text-forest hover:text-burgundy border-b border-forest/20"
+                    className="block py-3 font-poppins text-lg text-contemporary-charcoal-900 hover:text-contemporary-gold-500 border-b border-contemporary-platinum-400/30"
                   >
                     {item.label}
                   </a>
@@ -202,7 +202,7 @@ const Navigation: React.FC = () => {
                         <a
                           key={child.href}
                           href={child.href}
-                          className="block py-2 text-forest/80 hover:text-burgundy text-sm"
+                          className="block py-2 text-contemporary-charcoal-900/70 hover:text-contemporary-gold-500 text-sm"
                         >
                           {child.label}
                         </a>
@@ -213,15 +213,15 @@ const Navigation: React.FC = () => {
               ))}
             </nav>
 
-            <div className="mt-8 pt-8 border-t-2 border-forest/20">
+            <div className="mt-8 pt-8 border-t border-contemporary-platinum-400/30">
               <a
                 href="/contact"
-                className="block w-full text-center px-6 py-4 bg-burgundy text-ivory font-serif rounded-lg hover:bg-forest transition-colors"
+                className="block w-full text-center px-6 py-4 bg-contemporary-charcoal-900 text-contemporary-white font-poppins rounded-lg hover:bg-contemporary-slate-900 transition-colors"
               >
                 Schedule Service
               </a>
               <div className="mt-6 text-center">
-                <a href="tel:7324167430" className="text-forest font-medium">
+                <a href="tel:7324167430" className="text-contemporary-charcoal-900 font-medium">
                   (732) 416-7430
                 </a>
               </div>
