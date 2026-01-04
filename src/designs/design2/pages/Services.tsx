@@ -35,7 +35,7 @@ export const Services: React.FC = () => {
     [activeCategory],
   );
 
-  const featured = SERVICES[0];
+  const featured = SERVICES[0]!;
 
   return (
     <div className="min-h-screen bg-white font-openSans">
@@ -54,30 +54,32 @@ export const Services: React.FC = () => {
               From refrigeration to cooking suites, our factory-trained team handles complex diagnostics, delicate panels, and high-end finishes with care.
             </p>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 backdrop-blur">
-            <h3 className="text-2xl font-lora font-semibold text-white mb-3">{featured.name}</h3>
-            <p className="text-modern-cream-300/80 mb-4">{featured.description}</p>
-            <ul className="grid grid-cols-2 gap-3 text-sm text-modern-cream-300/90 mb-6">
-              {featured.commonIssues?.slice(0, 6).map((issue) => (
-                <li key={issue} className="flex items-center space-x-2">
-                  <span className="w-2 h-2 rounded-full bg-modern-gold-500" />
-                  <span>{issue}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-modern-gold-500 font-openSans font-semibold">Starting</p>
-                <p className="text-2xl font-lora font-bold text-white">{featured.price}</p>
+          {featured && (
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 backdrop-blur">
+              <h3 className="text-2xl font-lora font-semibold text-white mb-3">{featured.name}</h3>
+              <p className="text-modern-cream-300/80 mb-4">{featured.description}</p>
+              <ul className="grid grid-cols-2 gap-3 text-sm text-modern-cream-300/90 mb-6">
+                {featured.commonIssues?.slice(0, 6).map((issue) => (
+                  <li key={issue} className="flex items-center space-x-2">
+                    <span className="w-2 h-2 rounded-full bg-modern-gold-500" />
+                    <span>{issue}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-modern-gold-500 font-openSans font-semibold">Starting</p>
+                  <p className="text-2xl font-lora font-bold text-white">{featured.price}</p>
+                </div>
+                <a href={`/services/${featured.id}`} className="inline-flex items-center space-x-2 text-white font-semibold hover:text-modern-gold-500 transition-colors">
+                  <span>Explore details</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
               </div>
-              <a href={`/services/${featured.id}`} className="inline-flex items-center space-x-2 text-white font-semibold hover:text-modern-gold-500 transition-colors">
-                <span>Explore details</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
