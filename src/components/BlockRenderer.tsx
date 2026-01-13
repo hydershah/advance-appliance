@@ -14,7 +14,7 @@ import type {
   Testimonial,
   Media,
 } from '@/payload-types'
-import { getDesignComponents, getCurrentDesignTheme } from '@/lib/getDesignComponents'
+import { getDesignComponents, getCurrentDesignTheme, type DesignTheme } from '@/lib/getDesignComponents'
 import { RichText } from '@/components/RichText'
 
 type PageBlock =
@@ -27,7 +27,7 @@ type PageBlock =
 
 interface BlockRendererProps {
   blocks: PageBlock[] | null | undefined
-  designTheme?: '1'
+  designTheme?: DesignTheme
 }
 
 /**

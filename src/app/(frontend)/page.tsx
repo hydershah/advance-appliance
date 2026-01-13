@@ -7,6 +7,7 @@ import type { Media } from '@/payload-types'
 
 // Import static design pages for fallback when no CMS content exists
 import { Home as Design1Home } from '@/designs/design1/pages'
+import { Home as Design2Home } from '@/designs/design2/pages'
 
 /**
  * Homepage - Server Component
@@ -157,14 +158,15 @@ export default async function HomePage() {
             </main>
             <Footer settings={settings} />
           </>
+        ) : designTheme === '2' ? (
+          <Design2Home />
         ) : (
-          // Show static design when no CMS content - designs include their own Header/Footer
           <Design1Home />
         )}
       </>
     )
   } catch {
     // Database unavailable - fall back to static design
-    return <Design1Home />
+    return designTheme === '2' ? <Design2Home /> : <Design1Home />
   }
 }
