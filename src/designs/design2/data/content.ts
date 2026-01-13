@@ -1,6 +1,6 @@
 // Content Data for Design 2 - Modern Heritage Theme
 
-import { Service, Testimonial, TeamMember, BlogPost, ServiceArea, Brand, Certification, FAQ } from '../types';
+import { Service } from '../types';
 
 // Re-export everything from design1 except services and images
 export { businessInfo, brands, testimonials, teamMembers, serviceAreas, blogPosts, certifications, trustBadges, generalFaqs } from '../../design1/data/content';
