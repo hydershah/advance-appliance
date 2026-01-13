@@ -7,8 +7,6 @@ import type { Media } from '@/payload-types'
 
 // Import static design pages for fallback when CMS is unavailable
 import { Services as Design1Services } from '@/designs/design1/pages'
-import { Services as Design2Services } from '@/designs/design2/pages'
-import Design3Services from '@/designs/design3/pages/Services'
 
 /**
  * Services Listing Page - Server Component
@@ -198,13 +196,7 @@ export default async function ServicesPage() {
   )
   } catch {
     // Database unavailable - fall back to static design
-    return (
-      <>
-        {designTheme === '1' && <Design1Services />}
-        {designTheme === '2' && <Design2Services />}
-        {designTheme === '3' && <Design3Services />}
-      </>
-    )
+    return <Design1Services />
   }
 }
 

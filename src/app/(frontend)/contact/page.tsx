@@ -5,8 +5,6 @@ import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignCompo
 
 // Import static design pages for fallback when CMS is unavailable
 import { Contact as Design1Contact } from '@/designs/design1/pages'
-import { Contact as Design2Contact } from '@/designs/design2/pages'
-import Design3Contact from '@/designs/design3/pages/Contact'
 
 /**
  * Contact Page - Server Component
@@ -409,12 +407,6 @@ export default async function ContactPage() {
   )
   } catch {
     // Database unavailable - fall back to static design
-    return (
-      <>
-        {designTheme === '1' && <Design1Contact />}
-        {designTheme === '2' && <Design2Contact />}
-        {designTheme === '3' && <Design3Contact />}
-      </>
-    )
+    return <Design1Contact />
   }
 }

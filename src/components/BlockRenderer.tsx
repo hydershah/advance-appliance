@@ -27,7 +27,7 @@ type PageBlock =
 
 interface BlockRendererProps {
   blocks: PageBlock[] | null | undefined
-  designTheme?: '1' | '2' | '3'
+  designTheme?: '1'
 }
 
 /**

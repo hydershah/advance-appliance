@@ -8,8 +8,6 @@ import type { Media } from '@/payload-types'
 
 // Import static design pages for fallback when CMS is unavailable
 import { Blog as Design1Blog } from '@/designs/design1/pages'
-import { Blog as Design2Blog } from '@/designs/design2/pages'
-import Design3Blog from '@/designs/design3/pages/Blog'
 
 /**
  * Blog Listing Page - Server Component
@@ -219,13 +217,7 @@ export default async function BlogPage() {
   )
   } catch {
     // Database unavailable - fall back to static design
-    return (
-      <>
-        {designTheme === '1' && <Design1Blog />}
-        {designTheme === '2' && <Design2Blog />}
-        {designTheme === '3' && <Design3Blog />}
-      </>
-    )
+    return <Design1Blog />
   }
 }
 
