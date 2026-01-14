@@ -8,8 +8,11 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr_1fr_1fr] gap-12">
           <div>
-            <span className="font-[var(--font-bebas)] text-3xl tracking-[0.2em]">ADVANCED</span>
-            <p className="mt-2 text-xs uppercase tracking-[0.4em] text-modern-gold-200 font-[var(--font-poppins)]">Appliance Repair</p>
+            <img
+              src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
+              alt="Advanced Appliance Repair"
+              className="h-14 w-auto"
+            />
             <p className="mt-6 text-sm text-modern-cream-100/70 font-[var(--font-poppins)]">
               Premium appliance repair services for discerning homeowners. Factory-certified technicians specializing in luxury brands since 1998.
             </p>

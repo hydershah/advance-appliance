@@ -67,9 +67,12 @@ const Header: React.FC = () => {
       <div className={`transition-all duration-500 ${isScrolled ? 'bg-modern-cream-100/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
         <div className="container mx-auto px-6 py-5">
           <nav className="flex items-center justify-between">
-            <a href="/" className="flex flex-col">
-              <span className="font-[var(--font-bebas)] text-3xl tracking-[0.2em] text-modern-navy-900">ADVANCED</span>
-              <span className="text-[10px] uppercase tracking-[0.4em] text-modern-navy-700 font-[var(--font-poppins)]">Appliance Repair</span>
+            <a href="/" className="flex items-center">
+              <img
+                src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
+                alt="Advanced Appliance Repair"
+                className="h-12 md:h-14 w-auto"
+              />
             </a>
 
             <div className="hidden lg:flex items-center gap-8">

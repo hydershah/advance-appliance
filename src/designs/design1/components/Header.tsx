@@ -63,11 +63,12 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-6">
         <nav className="flex justify-between items-center">
-          <a href="/" className="flex items-center space-x-3">
-            <div className={`font-serif transition-colors duration-300 ${isScrolled ? 'text-black' : 'text-white'}`}>
-              <span className="text-2xl md:text-3xl font-light tracking-wide">Advanced</span>
-              <span className="block text-xs md:text-sm tracking-[0.3em] uppercase text-[#D4AF37]">Appliance Repair</span>
-            </div>
+          <a href="/" className="flex items-center">
+            <img
+              src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
+              alt="Advanced Appliance Repair"
+              className="h-12 md:h-16 w-auto"
+            />
           </a>
 
           <div className="hidden lg:flex items-center space-x-8">

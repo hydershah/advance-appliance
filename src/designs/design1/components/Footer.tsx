@@ -10,8 +10,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <span className="font-serif text-2xl font-light tracking-wide">Advanced</span>
-              <span className="block text-xs tracking-[0.3em] uppercase text-[#D4AF37]">Appliance Repair</span>
+              <img
+                src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
+                alt="Advanced Appliance Repair"
+                className="h-14 w-auto"
+              />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Premium appliance repair services for discerning homeowners. Factory-certified technicians specializing in luxury brands since 1998.
