@@ -9,8 +9,10 @@ interface NavItem {
   children?: NavItem[];
 }
 
+// Navigation matching live site (appliancenj.com)
 const navigation: NavItem[] = [
   { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
   {
     label: 'Services',
     href: '/services',
@@ -26,20 +28,8 @@ const navigation: NavItem[] = [
       { label: 'Stove Repair', href: '/services/stove-repair' },
     ],
   },
-  {
-    label: 'Service Areas',
-    href: '/areas',
-    children: [
-      { label: 'Short Hills', href: '/areas/short-hills' },
-      { label: 'Summit', href: '/areas/summit' },
-      { label: 'Chatham', href: '/areas/chatham' },
-      { label: 'Millburn', href: '/areas/millburn' },
-      { label: 'Morganville', href: '/areas/morganville' },
-    ],
-  },
-  { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact Us', href: '/contact' },
 ];
 
 const Header: React.FC = () => {
@@ -63,15 +53,17 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-6">
         <nav className="flex justify-between items-center">
-          <a href="/" className="flex items-center">
+          <a href="/" className="flex items-center flex-shrink-0">
             <img
               src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
               alt="Advanced Appliance Repair"
-              className="h-12 md:h-16 w-auto"
+              className={`h-10 md:h-12 w-auto max-w-[180px] md:max-w-[220px] object-contain transition-all duration-300 ${
+                isScrolled ? '' : 'brightness-0 invert'
+              }`}
             />
           </a>
 
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center space-x-6">
             {navigation.map((item) => (
               <div
                 key={item.label}
@@ -81,7 +73,7 @@ const Header: React.FC = () => {
               >
                 <a
                   href={item.href}
-                  className={`font-light tracking-wide text-sm uppercase transition-colors duration-300 hover:text-[#D4AF37] ${
+                  className={`font-medium text-xs uppercase tracking-wider transition-colors duration-300 hover:text-[#D4AF37] whitespace-nowrap ${
                     isScrolled ? 'text-black' : 'text-white'
                   }`}
                 >
@@ -93,13 +85,13 @@ const Header: React.FC = () => {
                   )}
                 </a>
                 {item.children && activeDropdown === item.label && (
-                  <div className="absolute top-full left-0 pt-4 w-64">
-                    <div className="bg-white shadow-xl border border-gray-100 py-4">
+                  <div className="absolute top-full left-0 pt-4 w-56">
+                    <div className="bg-white shadow-xl border border-gray-100 py-2">
                       {item.children.map((child) => (
                         <a
                           key={child.label}
                           href={child.href}
-                          className="block px-6 py-3 text-sm text-gray-700 hover:text-[#D4AF37] hover:bg-gray-50 transition-colors"
+                          className="block px-5 py-2.5 text-sm text-gray-700 hover:text-[#D4AF37] hover:bg-gray-50 transition-colors"
                         >
                           {child.label}
                         </a>
@@ -111,10 +103,10 @@ const Header: React.FC = () => {
             ))}
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <a
               href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`}
-              className="inline-flex items-center px-6 py-3 border border-[#D4AF37] text-[#D4AF37] text-sm uppercase tracking-wider hover:bg-[#D4AF37] hover:text-white transition-all duration-300"
+              className="inline-flex items-center px-5 py-2.5 border border-[#D4AF37] text-[#D4AF37] text-xs uppercase tracking-wider hover:bg-[#D4AF37] hover:text-white transition-all duration-300"
             >
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -124,7 +116,7 @@ const Header: React.FC = () => {
           </div>
 
           <button
-            className={`lg:hidden p-2 transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
+            className={`xl:hidden p-2 transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -136,7 +128,7 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden fixed inset-0 bg-white z-50 transform transition-transform duration-500 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`xl:hidden fixed inset-0 bg-white z-50 transform transition-transform duration-500 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex justify-between items-center p-6 border-b border-gray-100">
           <span className="font-serif text-xl">Menu</span>
           <button onClick={() => setIsMobileMenuOpen(false)} className="p-2" aria-label="Close menu">

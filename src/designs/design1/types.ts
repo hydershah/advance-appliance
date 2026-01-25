@@ -61,7 +61,9 @@ export interface BlogPost {
 
 export interface Brand {
   name: string;
+  slug?: string;
   logo?: string;
+  description?: string;
 }
 
 export interface Certification {

@@ -6,15 +6,34 @@ import { BlockRenderer } from '@/components/BlockRenderer'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
 import type { Media } from '@/payload-types'
 
+// Import static page components for fallbacks
+import { BrandPage as Design1BrandPage, AreaPage as Design1AreaPage, BlogPost as Design1BlogPost } from '@/designs/design1/pages'
+import { brands, serviceAreas, blogPosts } from '@/designs/design1/data/content'
+
 /**
  * Dynamic Page Route - Server Component
- * Handles all CMS pages with dynamic slugs
+ * Handles all CMS pages with dynamic slugs, plus static brand/location pages
  */
 
 interface PageProps {
   params: Promise<{
     slug: string[]
   }>
+}
+
+// Helper to find brand by slug
+function findBrandBySlug(slug: string) {
+  return brands.find(b => b.slug === slug)
+}
+
+// Helper to find service area by slug
+function findAreaBySlug(slug: string) {
+  return serviceAreas.find(a => a.slug === slug)
+}
+
+// Helper to find blog post by slug
+function findBlogPostBySlug(slug: string) {
+  return blogPosts.find(p => p.slug === slug)
 }
 
 export async function generateStaticParams() {
@@ -40,10 +59,51 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  try {
-    const { slug } = await params
-    const pageSlug = slug.join('/')
+  const { slug } = await params
+  const pageSlug = slug.join('/')
 
+  // Check for static brand page
+  const brand = findBrandBySlug(pageSlug)
+  if (brand) {
+    return {
+      title: `${brand.name} Appliance Repair Service in NJ - Advanced Appliance`,
+      description: `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 90-day warranty. Call (732) 416-7430.`,
+      openGraph: {
+        title: `${brand.name} Appliance Repair Service in NJ`,
+        description: `Expert ${brand.name} appliance repair throughout Central New Jersey.`,
+      },
+    }
+  }
+
+  // Check for static location page
+  const area = findAreaBySlug(pageSlug)
+  if (area) {
+    return {
+      title: `Appliance Repair in ${area.name}, NJ - Advanced Appliance`,
+      description: `Professional appliance repair in ${area.name}, ${area.county} County, NJ. Same-day service, all major brands. Call (732) 416-7430.`,
+      openGraph: {
+        title: `Appliance Repair in ${area.name}, NJ`,
+        description: `Professional appliance repair services in ${area.name}, New Jersey.`,
+      },
+    }
+  }
+
+  // Check for static blog post
+  const blogPost = findBlogPostBySlug(pageSlug)
+  if (blogPost) {
+    return {
+      title: `${blogPost.title} - Advanced Appliance`,
+      description: blogPost.excerpt,
+      openGraph: {
+        title: blogPost.title,
+        description: blogPost.excerpt,
+        images: blogPost.image ? [{ url: blogPost.image }] : undefined,
+      },
+    }
+  }
+
+  // Try CMS page
+  try {
     const payload = await getPayloadClient()
 
     const pageResult = await payload.find({
@@ -102,6 +162,25 @@ export default async function DynamicPage({ params }: PageProps) {
   const { slug } = await params
   const pageSlug = slug.join('/')
 
+  // Check for static brand page first
+  const brand = findBrandBySlug(pageSlug)
+  if (brand) {
+    return <Design1BrandPage brand={brand} />
+  }
+
+  // Check for static location/area page
+  const area = findAreaBySlug(pageSlug)
+  if (area) {
+    return <Design1AreaPage area={area} />
+  }
+
+  // Check for static blog post
+  const blogPost = findBlogPostBySlug(pageSlug)
+  if (blogPost) {
+    return <Design1BlogPost post={blogPost} />
+  }
+
+  // Try CMS page
   try {
     const payload = await getPayloadClient()
 

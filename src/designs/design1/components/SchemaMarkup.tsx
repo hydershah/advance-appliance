@@ -13,7 +13,7 @@ export const LocalBusinessSchema: React.FC<LocalBusinessSchemaProps> = () => {
     url: 'https://advancedappliancerepair.com',
     telephone: businessInfo.phone,
     email: businessInfo.email,
-    address: { '@type': 'PostalAddress', streetAddress: '123 Main Street', addressLocality: 'Millburn', addressRegion: 'NJ', postalCode: '07041', addressCountry: 'US' },
+    address: { '@type': 'PostalAddress', streetAddress: '23 Reids Hill Road', addressLocality: 'Morganville', addressRegion: 'NJ', postalCode: '07751', addressCountry: 'US' },
     geo: { '@type': 'GeoCoordinates', latitude: 40.7261, longitude: -74.3073 },
     openingHoursSpecification: [
       { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:00', closes: '20:00' },
@@ -24,7 +24,7 @@ export const LocalBusinessSchema: React.FC<LocalBusinessSchemaProps> = () => {
     areaServed: serviceAreas.map((area) => ({ '@type': 'City', name: area.name, containedInPlace: { '@type': 'State', name: 'New Jersey' } })),
     hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Appliance Repair Services', itemListElement: services.map((service) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: service.name, description: service.shortDescription } })) },
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '127', bestRating: '5', worstRating: '1' },
-    sameAs: [businessInfo.socialMedia.facebook, businessInfo.socialMedia.instagram, businessInfo.socialMedia.linkedin],
+    sameAs: [businessInfo.socialMedia.facebook, businessInfo.socialMedia.instagram, businessInfo.socialMedia.twitter, businessInfo.socialMedia.youtube],
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 };

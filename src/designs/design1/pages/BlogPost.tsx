@@ -1,15 +1,19 @@
 import React from 'react';
 import { Header, Footer, SectionHeading, CTAButton, ArticleSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, blogPosts } from '../data/content';
+import { BlogPost as BlogPostType } from '../types';
 
-interface BlogPostProps { postSlug?: string; }
+interface BlogPostProps {
+  postSlug?: string;
+  post?: BlogPostType;
+}
 
-const BlogPost: React.FC<BlogPostProps> = ({ postSlug = 'maintaining-your-sub-zero-refrigerator' }) => {
-  const post = blogPosts.find((p) => p.slug === postSlug) ?? blogPosts[0];
+const BlogPost: React.FC<BlogPostProps> = ({ postSlug, post: postProp }) => {
+  const post = postProp || blogPosts.find((p) => p.slug === postSlug) || blogPosts[0];
   if (!post) return null;
   const relatedPosts = blogPosts.filter((p) => p.id !== post.id).slice(0, 3);
   const formatDate = (dateString: string) => new Date(dateString).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-  const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: post.title, url: `/blog/${post.slug}` }];
+  const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: post.title, url: `/${post.slug}` }];
 
   return (
     <>

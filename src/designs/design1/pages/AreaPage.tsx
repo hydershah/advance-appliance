@@ -1,11 +1,15 @@
 import React from 'react';
 import { Header, Footer, Hero, ServiceCard, SectionHeading, CTAButton, FAQAccordion, TestimonialCard, LocalBusinessSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, services, serviceAreas, testimonials, brands, images } from '../data/content';
+import { ServiceArea } from '../types';
 
-interface AreaPageProps { areaSlug?: string; }
+interface AreaPageProps {
+  areaSlug?: string;
+  area?: ServiceArea;
+}
 
-const AreaPage: React.FC<AreaPageProps> = ({ areaSlug = 'short-hills' }) => {
-  const area = serviceAreas.find((a) => a.slug === areaSlug) ?? serviceAreas[0];
+const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
+  const area = areaProp || serviceAreas.find((a) => a.slug === areaSlug) || serviceAreas[0];
   if (!area) return null;
   const otherAreas = serviceAreas.filter((a) => a.id !== area.id);
   const areaTestimonials = testimonials.filter((t) => t.location.toLowerCase().includes(area.name.toLowerCase()));
@@ -15,7 +19,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug = 'short-hills' }) => {
     { question: `How quickly can you respond to emergencies in ${area.name}?`, answer: `For emergencies in ${area.name}, we typically respond within 2-4 hours.` },
     { question: `Do you charge extra for service in ${area.name}?`, answer: `No, there are no additional travel charges for ${area.name}. Our standard $89 diagnostic fee applies.` },
   ];
-  const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Service Areas', url: '/areas' }, { name: area.name, url: `/areas/${area.slug}` }];
+  const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Service Areas', url: '/our-service-area' }, { name: area.name, url: `/${area.slug}` }];
 
   return (
     <>
@@ -29,7 +33,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug = 'short-hills' }) => {
           <div className="container mx-auto px-6">
             <nav className="flex items-center space-x-2 text-sm">
               <a href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</a><span className="text-gray-300">/</span>
-              <a href="/areas" className="text-gray-500 hover:text-[#D4AF37]">Service Areas</a><span className="text-gray-300">/</span>
+              <a href="/our-service-area" className="text-gray-500 hover:text-[#D4AF37]">Service Areas</a><span className="text-gray-300">/</span>
               <span className="text-[#D4AF37]">{area.name}</span>
             </nav>
           </div>
@@ -105,8 +109,8 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug = 'short-hills' }) => {
           <div className="container mx-auto px-6">
             <SectionHeading subtitle="We Also Serve" title="Other Service Areas" align="center" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-              {otherAreas.map((a) => (
-                <a key={a.id} href={`/areas/${a.slug}`} className="group p-6 bg-white border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-lg">
+              {otherAreas.slice(0, 8).map((a) => (
+                <a key={a.id} href={`/${a.slug}`} className="group p-6 bg-white border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-lg">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">{a.name}</h3>

@@ -11,6 +11,7 @@ interface NavItem {
 
 const navigation: NavItem[] = [
   { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
   {
     label: 'Services',
     href: '/services',
@@ -26,20 +27,8 @@ const navigation: NavItem[] = [
       { label: 'Stove Repair', href: '/services/stove-repair' },
     ],
   },
-  {
-    label: 'Service Areas',
-    href: '/areas',
-    children: [
-      { label: 'Short Hills', href: '/areas/short-hills' },
-      { label: 'Summit', href: '/areas/summit' },
-      { label: 'Chatham', href: '/areas/chatham' },
-      { label: 'Millburn', href: '/areas/millburn' },
-      { label: 'Morganville', href: '/areas/morganville' },
-    ],
-  },
-  { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact Us', href: '/contact' },
 ];
 
 const Header: React.FC = () => {
@@ -67,11 +56,13 @@ const Header: React.FC = () => {
       <div className={`transition-all duration-500 ${isScrolled ? 'bg-modern-cream-100/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
         <div className="container mx-auto px-6 py-5">
           <nav className="flex items-center justify-between">
-            <a href="/" className="flex items-center">
+            <a href="/" className="flex items-center flex-shrink-0">
               <img
                 src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
                 alt="Advanced Appliance Repair"
-                className="h-12 md:h-14 w-auto"
+                className={`h-10 md:h-12 w-auto max-w-[180px] md:max-w-[220px] object-contain transition-all duration-300 ${
+                  isScrolled ? '' : 'brightness-0 invert'
+                }`}
               />
             </a>
 

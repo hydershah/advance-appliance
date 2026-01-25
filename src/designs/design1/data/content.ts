@@ -5,31 +5,53 @@ import { Service, Testimonial, TeamMember, BlogPost, ServiceArea, Brand, Certifi
 // Business Information
 export const businessInfo = {
   name: 'Advanced Appliance Repair Service',
-  tagline: 'Premium Appliance Care for Discerning Homes',
+  tagline: 'Factory-Authorized Appliance Repair in Monmouth & Middlesex Counties, NJ',
   phone: '(732) 416-7430',
-  email: 'service@advancedappliancerepair.com',
-  address: '123 Main Street, Millburn, NJ 07041',
+  tollFree: '(800) 664-0650',
+  email: 'service@appliancenj.com',
+  address: '23 Reids Hill Road, Morganville, NJ 07751',
+  city: 'Morganville',
+  state: 'NJ',
+  zip: '07751',
   hours: {
-    weekdays: '7:00 AM - 8:00 PM',
-    saturday: '8:00 AM - 6:00 PM',
-    sunday: '9:00 AM - 4:00 PM',
+    weekdays: '8:00 AM - 9:00 PM',
+    saturday: '8:00 AM - 9:00 PM',
+    sunday: '8:00 AM - 9:00 PM',
+    liveOperators: '24/7',
   },
   socialMedia: {
-    facebook: 'https://facebook.com/advancedappliancerepair',
-    instagram: 'https://instagram.com/advancedappliancerepair',
-    twitter: 'https://twitter.com/advapprepair',
-    linkedin: 'https://linkedin.com/company/advancedappliancerepair',
+    facebook: 'https://www.facebook.com/profile.php?id=61555650040922',
+    instagram: 'https://www.instagram.com/advancedappliance/?hl=en',
+    twitter: 'https://twitter.com/advappliancenj?lang=en',
+    youtube: 'https://www.youtube.com/channel/UC3FgNm3NMvks81yUBLOYhKw',
   },
+  founded: 1992,
+  yearsInBusiness: 30,
 };
 
-// Images
+// Images - from live site
 export const images = {
-  hero: 'https://images.pexels.com/photos/19227216/pexels-photo-19227216.jpeg',
-  kitchen: 'https://images.pexels.com/photos/10099318/pexels-photo-10099318.jpeg',
+  logo: 'https://appliancenj.com/wp-content/uploads/2016/05/logo.png',
+  favicon: 'https://appliancenj.com/wp-content/uploads/2016/05/favicon.png',
+  hero: 'https://appliancenj.com/wp-content/uploads/2016/04/slider.jpg',
+  hero2: 'https://appliancenj.com/wp-content/uploads/2016/04/slider2.jpg',
+  hero3: 'https://appliancenj.com/wp-content/uploads/2016/04/slider3.jpg',
+  kitchen: 'https://appliancenj.com/wp-content/uploads/2016/05/repair-nj.jpg',
   living: 'https://images.pexels.com/photos/19689230/pexels-photo-19689230.jpeg',
   about: 'https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg',
   team: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg',
   contact: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+  // Process icons
+  iconBook: 'https://appliancenj.com/wp-content/uploads/2016/04/note-2.png',
+  iconRepair: 'https://appliancenj.com/wp-content/uploads/2016/04/repair-2.png',
+  iconRelax: 'https://appliancenj.com/wp-content/uploads/2016/04/relax-2.png',
+  // Appliance images
+  oven: 'https://appliancenj.com/wp-content/uploads/2016/04/oven.png',
+  cooktop: 'https://appliancenj.com/wp-content/uploads/2016/04/cooker-2.jpg',
+  dishwasher: 'https://appliancenj.com/wp-content/uploads/2016/04/dishwasher-1.png',
+  refrigerator: 'https://appliancenj.com/wp-content/uploads/2016/04/refrigerator.jpg',
+  washer: 'https://appliancenj.com/wp-content/uploads/2016/04/ge-washer-metallic-silver.jpg',
+  dryer: 'https://appliancenj.com/wp-content/uploads/2016/04/Dispatcher-dry-mini-main.jpg',
 };
 
 // Services
@@ -274,72 +296,107 @@ export const services: Service[] = [
   },
 ];
 
-// Brands
+// Brands - from live site (with repair page slugs)
 export const brands: Brand[] = [
-  { name: 'Sub-Zero' },
-  { name: 'Viking' },
-  { name: 'Wolf' },
-  { name: 'Thermador' },
-  { name: 'Miele' },
-  { name: 'Bosch' },
-  { name: 'Gaggenau' },
-  { name: 'Liebherr' },
-  { name: 'Dacor' },
-  { name: 'La Cornue' },
-  { name: 'Bertazzoni' },
-  { name: 'Fisher & Paykel' },
-  { name: 'JennAir' },
-  { name: 'Monogram' },
-  { name: 'KitchenAid' },
-  { name: 'Electrolux' },
+  { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Sub-zero-logo.jpg' },
+  { name: 'Viking', slug: 'viking-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Viking-logo.jpg' },
+  { name: 'Thermador', slug: 'thermador-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Thermador.png' },
+  { name: 'Miele', slug: 'miele-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Miele-logo.png' },
+  { name: 'Wolf', slug: 'wolf-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Wolf-logo.jpg' },
+  { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj' },
+  { name: 'LG', slug: 'lg-appliance-repair-service-nj' },
+  { name: 'Bosch', slug: 'bosch-appliance-repair-service-nj' },
+  { name: 'KitchenAid', slug: 'kitchenaid-appliance-repair-service-nj' },
+  { name: 'Jenn-Air', slug: 'jenn-air-appliance-repair-service-nj' },
+  { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj' },
+  { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj' },
+  { name: 'GE', slug: 'general-electric-ge-appliance-repair-service-nj' },
+  { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj' },
+  { name: 'Whirlpool', slug: 'whirlpool-appliance-repair-service-nj' },
 ];
 
-// Testimonials
+// Testimonials - from live site reviews
 export const testimonials: Testimonial[] = [
   {
     id: '1',
-    name: 'Elizabeth Montgomery',
-    location: 'Short Hills, NJ',
+    name: 'Ira K.',
+    location: 'Monmouth County, NJ',
     rating: 5,
-    text: 'Exceptional service from start to finish. The technician arrived promptly, diagnosed the issue with my Sub-Zero refrigerator immediately, and had it running perfectly within an hour. True professionals.',
-    service: 'Refrigerator Repair',
+    text: 'Ilya was very punctual, friendly, and caring. That\'s rare. Highly recommend for laundry maintenance work.',
+    service: 'Frigidaire Washer & Dryer Repair',
     date: '2024-11-15',
   },
   {
     id: '2',
-    name: 'Jonathan Whitmore',
-    location: 'Summit, NJ',
+    name: 'Marcus J.',
+    location: 'Middlesex County, NJ',
     rating: 5,
-    text: 'Our Wolf range stopped working right before a dinner party. Advanced Appliance came out the same day and saved the evening. Cannot recommend them highly enough.',
-    service: 'Oven & Range Repair',
+    text: 'Recently lost your number and hired another company from the internet. So sorry I did.',
+    service: 'Maytag Washer Repair',
     date: '2024-11-10',
   },
   {
     id: '3',
-    name: 'Catherine Chen',
-    location: 'Millburn, NJ',
+    name: 'Brian C.',
+    location: 'Monmouth County, NJ',
     rating: 5,
-    text: 'The level of expertise and professionalism is unmatched. They repaired our Miele dishwasher when other companies said it could not be fixed. Outstanding work.',
-    service: 'Dishwasher Repair',
+    text: 'I called and was able to schedule an appointment right away. The technician arrived on time, identified the problem quickly, and fixed it on the spot.',
+    service: 'LG Dishwasher Repair',
     date: '2024-11-05',
   },
   {
     id: '4',
-    name: 'Robert Sterling',
-    location: 'Chatham, NJ',
+    name: 'Frederick M.',
+    location: 'Middlesex County, NJ',
     rating: 5,
-    text: 'I have been using Advanced Appliance for years. They maintain all my high-end kitchen appliances and the service is always impeccable. Worth every penny.',
-    service: 'Multiple Services',
+    text: 'Came out the next day. Demonstrated knowledge of their craft. Repaired 3 appliances all at once.',
+    service: 'Electrolux Multiple Appliance Repair',
     date: '2024-10-28',
   },
   {
     id: '5',
-    name: 'Patricia Anderson',
-    location: 'Morganville, NJ',
+    name: 'Lisa C.',
+    location: 'Monmouth County, NJ',
     rating: 5,
-    text: 'Fast, courteous, and extremely knowledgeable. Fixed our Thermador cooktop issue that two other companies could not diagnose. Finally, a repair company that knows luxury appliances.',
-    service: 'Cooktop Repair',
+    text: 'Very good company. Fixed my stove through them. Very happy with the service and technician.',
+    service: 'Bosch Stove Repair',
     date: '2024-10-20',
+  },
+  {
+    id: '6',
+    name: 'Natasha S.',
+    location: 'Monmouth County, NJ',
+    rating: 5,
+    text: 'The technician, Josh was very knowledgeable. I would recommend this company to anyone needing refrigerator work.',
+    service: 'Maytag Refrigerator Repair',
+    date: '2024-10-15',
+  },
+  {
+    id: '7',
+    name: 'Alex K.',
+    location: 'Middlesex County, NJ',
+    rating: 5,
+    text: 'Did a fine job, clean and reliable. I would hire them again.',
+    service: 'Frigidaire Dishwasher Repair',
+    date: '2024-10-10',
+  },
+  {
+    id: '8',
+    name: 'Tom M.',
+    location: 'Monmouth County, NJ',
+    rating: 5,
+    text: 'I was impressed with the punctuality, professionalism and low fees. Great job.',
+    service: 'Whirlpool Refrigerator Repair',
+    date: '2024-10-05',
+  },
+  {
+    id: '9',
+    name: 'Anthony Z.',
+    location: 'Middlesex County, NJ',
+    rating: 5,
+    text: 'I am so happy to have found your company. I will continue to use you and recommend your services to my friends.',
+    service: 'GE Washer & Dryer Repair',
+    date: '2024-09-28',
   },
 ];
 
@@ -375,146 +432,205 @@ export const teamMembers: TeamMember[] = [
   },
 ];
 
-// Service Areas
+// Service Areas - All 38 locations from live site (Monmouth & Middlesex Counties)
 export const serviceAreas: ServiceArea[] = [
-  {
-    id: '1',
-    name: 'Short Hills',
-    slug: 'short-hills',
-    county: 'Essex',
-    state: 'NJ',
-    description: 'Serving the prestigious Short Hills community with premium appliance repair services. Our technicians are familiar with the high-end appliances common in this distinguished neighborhood.',
-    zipCodes: ['07078'],
-  },
-  {
-    id: '2',
-    name: 'Summit',
-    slug: 'summit',
-    county: 'Union',
-    state: 'NJ',
-    description: 'Summit residents trust Advanced Appliance for their luxury kitchen and laundry appliance needs. We provide prompt, professional service to this beautiful community.',
-    zipCodes: ['07901', '07902'],
-  },
-  {
-    id: '3',
-    name: 'Chatham',
-    slug: 'chatham',
-    county: 'Morris',
-    state: 'NJ',
-    description: 'The Chatham community relies on our expertise for all their premium appliance repair needs. We serve both Chatham Borough and Chatham Township.',
-    zipCodes: ['07928', '07935'],
-  },
-  {
-    id: '4',
-    name: 'Millburn',
-    slug: 'millburn',
-    county: 'Essex',
-    state: 'NJ',
-    description: 'Millburn homeowners appreciate our attention to detail and specialized knowledge of luxury appliances. We proudly serve this distinguished community.',
-    zipCodes: ['07041'],
-  },
-  {
-    id: '5',
-    name: 'Morganville',
-    slug: 'morganville',
-    county: 'Monmouth',
-    state: 'NJ',
-    description: 'Extending our premium appliance repair services to Morganville and the greater Monmouth County area. Same exceptional service, same expert technicians.',
-    zipCodes: ['07751'],
-  },
+  { id: '1', name: 'Aberdeen', slug: 'appliance-repair-in-aberdeen-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair services in Aberdeen, NJ. Same-day service available for all major kitchen and laundry appliances.', zipCodes: ['07747'] },
+  { id: '2', name: 'Belford', slug: 'appliance-repair-belford-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Belford, NJ. Factory-authorized service for all major brands.', zipCodes: ['07718'] },
+  { id: '3', name: 'Colts Neck', slug: 'appliance-repair-colts-neck-nj', county: 'Monmouth', state: 'NJ', description: 'Premium appliance repair services in Colts Neck, NJ. Serving luxury homes with expert care.', zipCodes: ['07722'] },
+  { id: '4', name: 'Deal', slug: 'appliance-repair-in-deal-nj', county: 'Monmouth', state: 'NJ', description: 'Trusted appliance repair in Deal, NJ. Over 30 years of experience serving the shore community.', zipCodes: ['07723'] },
+  { id: '5', name: 'Eatontown', slug: 'appliance-repair-eatontown-nj', county: 'Monmouth', state: 'NJ', description: 'Fast, reliable appliance repair in Eatontown, NJ. All major brands serviced.', zipCodes: ['07724'] },
+  { id: '6', name: 'Edison', slug: 'appliance-repair-in-edison-nj', county: 'Middlesex', state: 'NJ', description: 'Professional appliance repair services in Edison, NJ. Same-day appointments available.', zipCodes: ['08817', '08818', '08820', '08837'] },
+  { id: '7', name: 'Englishtown', slug: 'appliance-repair-in-englishtown-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Englishtown, NJ. Serving residential and commercial customers.', zipCodes: ['07726'] },
+  { id: '8', name: 'Fair Haven', slug: 'appliance-repair-in-fair-haven-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in Fair Haven, NJ. Licensed, bonded, and insured technicians.', zipCodes: ['07704'] },
+  { id: '9', name: 'Farmingdale', slug: 'appliance-repair-in-farmingdale-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair services in Farmingdale, NJ. Factory-authorized parts and service.', zipCodes: ['07727'] },
+  { id: '10', name: 'Fords', slug: 'appliance-repair-in-fords-nj', county: 'Middlesex', state: 'NJ', description: 'Trusted appliance repair in Fords, NJ. Same-day service for most repairs.', zipCodes: ['08863'] },
+  { id: '11', name: 'Freehold', slug: 'appliance-repair-in-freehold-nj', county: 'Monmouth', state: 'NJ', description: 'Comprehensive appliance repair in Freehold, NJ. Serving the historic downtown and surrounding areas.', zipCodes: ['07728'] },
+  { id: '12', name: 'Hazlet', slug: 'appliance-repair-in-hazlet-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair in Hazlet, NJ. Over 30 years of experience.', zipCodes: ['07730'] },
+  { id: '13', name: 'Holmdel', slug: 'appliance-repair-in-holmdel-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Holmdel, NJ. Specializing in high-end appliances.', zipCodes: ['07733'] },
+  { id: '14', name: 'Keansburg', slug: 'appliance-repair-in-keansburg-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair in Keansburg, NJ. Fast turnaround times.', zipCodes: ['07734'] },
+  { id: '15', name: 'Keyport', slug: 'appliance-repair-in-keyport-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in Keyport, NJ. All major brands serviced.', zipCodes: ['07735'] },
+  { id: '16', name: 'Leonardo', slug: 'appliance-repair-in-leonardo-nj', county: 'Monmouth', state: 'NJ', description: 'Trusted appliance repair in Leonardo, NJ. Factory-authorized service center.', zipCodes: ['07737'] },
+  { id: '17', name: 'Lincroft', slug: 'appliance-repair-in-lincroft-nj', county: 'Monmouth', state: 'NJ', description: 'Premium appliance repair in Lincroft, NJ. Serving luxury homes with care.', zipCodes: ['07738'] },
+  { id: '18', name: 'Little Silver', slug: 'appliance-repair-in-little-silver-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Little Silver, NJ. Same-day appointments available.', zipCodes: ['07739'] },
+  { id: '19', name: 'Manalapan', slug: 'appliance-repair-in-manalapan-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair in Manalapan, NJ. All appliances serviced.', zipCodes: ['07726'] },
+  { id: '20', name: 'Marlboro', slug: 'appliance-repair-marlboro-nj', county: 'Monmouth', state: 'NJ', description: 'Comprehensive appliance repair in Marlboro, NJ. Licensed and insured technicians.', zipCodes: ['07746'] },
+  { id: '21', name: 'Matawan', slug: 'appliance-repair-in-matawan-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair in Matawan, NJ. Over 30 years serving the community.', zipCodes: ['07747'] },
+  { id: '22', name: 'Metuchen', slug: 'appliance-repair-in-metuchen-nj', county: 'Middlesex', state: 'NJ', description: 'Quality appliance repair in Metuchen, NJ. Same-day service for most repairs.', zipCodes: ['08840'] },
+  { id: '23', name: 'Middletown', slug: 'appliance-repair-in-middletown-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Middletown, NJ. All major brands and appliances.', zipCodes: ['07748'] },
+  { id: '24', name: 'Morganville', slug: 'appliance-repair-in-morganville-nj', county: 'Monmouth', state: 'NJ', description: 'Our home base! Premium appliance repair services in Morganville, NJ. Factory-authorized for all major brands.', zipCodes: ['07751'] },
+  { id: '25', name: 'Neptune', slug: 'appliance-repair-in-neptune-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair in Neptune, NJ. Serving the shore community.', zipCodes: ['07753', '07754'] },
+  { id: '26', name: 'Oceanport', slug: 'appliance-repair-in-oceanport-nj', county: 'Monmouth', state: 'NJ', description: 'Trusted appliance repair in Oceanport, NJ. Fast, reliable service.', zipCodes: ['07757'] },
+  { id: '27', name: 'Old Bridge', slug: 'appliance-repair-in-old-bridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Old Bridge, NJ. Same-day appointments available.', zipCodes: ['08857'] },
+  { id: '28', name: 'Parlin', slug: 'appliance-repair-in-parlin-nj', county: 'Middlesex', state: 'NJ', description: 'Expert appliance repair in Parlin, NJ. All appliances and brands serviced.', zipCodes: ['08859'] },
+  { id: '29', name: 'Perth Amboy', slug: 'appliance-repair-in-perth-amboy-nj', county: 'Middlesex', state: 'NJ', description: 'Reliable appliance repair in Perth Amboy, NJ. Over 30 years of experience.', zipCodes: ['08861', '08862'] },
+  { id: '30', name: 'Port Monmouth', slug: 'appliance-repair-in-port-monmouth-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in Port Monmouth, NJ. Licensed and insured.', zipCodes: ['07758'] },
+  { id: '31', name: 'Red Bank', slug: 'appliance-repair-in-red-bank-nj', county: 'Monmouth', state: 'NJ', description: 'Premium appliance repair in Red Bank, NJ. Serving downtown and surrounding areas.', zipCodes: ['07701', '07702'] },
+  { id: '32', name: 'Rumson', slug: 'appliance-repair-in-rumson-nj', county: 'Monmouth', state: 'NJ', description: 'Luxury appliance repair in Rumson, NJ. Specializing in high-end brands.', zipCodes: ['07760'] },
+  { id: '33', name: 'Sayreville', slug: 'appliance-repair-in-sayreville-nj', county: 'Middlesex', state: 'NJ', description: 'Professional appliance repair in Sayreville, NJ. All major brands serviced.', zipCodes: ['08871', '08872'] },
+  { id: '34', name: 'Shrewsbury', slug: 'appliance-repair-in-shrewsbury-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Shrewsbury, NJ. Same-day service available.', zipCodes: ['07702'] },
+  { id: '35', name: 'South Amboy', slug: 'appliance-repair-in-south-amboy-nj', county: 'Middlesex', state: 'NJ', description: 'Trusted appliance repair in South Amboy, NJ. Over 30 years of experience.', zipCodes: ['08879'] },
+  { id: '36', name: 'Tinton Falls', slug: 'appliance-repair-in-tinton-falls-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair in Tinton Falls, NJ. Factory-authorized service.', zipCodes: ['07724', '07753'] },
+  { id: '37', name: 'West Long Branch', slug: 'appliance-repair-in-west-long-branch-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in West Long Branch, NJ. All appliances and brands.', zipCodes: ['07764'] },
+  { id: '38', name: 'Woodbridge', slug: 'appliance-repair-in-woodbridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Woodbridge, NJ. Same-day appointments available.', zipCodes: ['07095'] },
 ];
 
-// Blog Posts
+// Blog Posts - from live site
 export const blogPosts: BlogPost[] = [
   {
     id: '1',
-    slug: 'maintaining-your-sub-zero-refrigerator',
-    title: 'The Complete Guide to Maintaining Your Sub-Zero Refrigerator',
-    excerpt: 'Learn the essential maintenance tips that will keep your Sub-Zero running perfectly for decades.',
-    content: `Your Sub-Zero refrigerator is a significant investment in your home's functionality and value. With proper care, these exceptional appliances can last 20 years or more. Here are our expert tips for maintaining your Sub-Zero.
+    slug: 'emergency-washer-repair-guide',
+    title: 'Emergency Washer Repair: What to Do First',
+    excerpt: 'Your washing machine just broke down mid-cycle. Water everywhere. Clothes soaking wet. What do you do first?',
+    content: `A washer emergency can be stressful, but knowing what to do first can save you time, money, and prevent further damage to your home.
 
-## Regular Cleaning
+## Step 1: Turn Off the Water Supply
 
-The condenser should be cleaned every 6-12 months, depending on your environment. Pet owners or those in dusty areas should clean more frequently. A dirty condenser forces the compressor to work harder, reducing efficiency and lifespan.
+The first thing you should do is locate the water shut-off valves behind your washing machine and turn them off. This prevents flooding and water damage.
 
-## Door Seals
+## Step 2: Unplug the Machine
 
-Inspect your door seals monthly for any signs of wear or damage. A tight seal is essential for maintaining proper temperature and preventing frost buildup.
+Safety first! Unplug your washer from the electrical outlet to prevent any electrical hazards while you assess the situation.
 
-## Temperature Settings
+## Step 3: Remove Standing Water
 
-Sub-Zero refrigerators should be set between 36-38 degrees Fahrenheit, with the freezer at 0-5 degrees. These precise temperatures ensure optimal food preservation.
+If there's water in the drum, you'll need to manually drain it. Most washers have a drain filter at the bottom front that you can access.
 
-## Professional Service
+## Step 4: Call a Professional
 
-We recommend annual professional inspections to catch potential issues before they become costly repairs. Our technicians are factory-trained and know every Sub-Zero model intimately.`,
-    author: 'Michael Richardson',
+While some issues can be DIY fixes, most washer problems require professional diagnosis. Our technicians can usually provide same-day service.
+
+## Common Washer Emergencies
+
+- Water not draining
+- Excessive vibration or shaking
+- Burning smell
+- Error codes displayed
+- Water leaking from bottom
+
+Don't wait for small problems to become big ones. Contact Advanced Appliance for fast, reliable service.`,
+    author: 'Advanced Appliance Team',
     date: '2024-11-20',
-    image: 'https://images.pexels.com/photos/5824883/pexels-photo-5824883.jpeg',
-    category: 'Maintenance',
-    tags: ['Sub-Zero', 'Refrigerator', 'Maintenance', 'Tips'],
-    readTime: 5,
-  },
-  {
-    id: '2',
-    slug: 'wolf-range-troubleshooting',
-    title: 'Common Wolf Range Issues and How to Address Them',
-    excerpt: 'Expert insights into the most frequent Wolf range problems and when to call for professional help.',
-    content: `Wolf ranges are renowned for their professional-grade performance, but like any sophisticated appliance, they can experience issues. Here's what to watch for.
-
-## Igniter Problems
-
-If your burners are slow to light or clicking continuously, the igniter may need attention. While you can clean around the igniter carefully, replacement should be done by a certified technician.
-
-## Uneven Heating
-
-If your oven heats unevenly, first check that the racks are properly positioned. If the problem persists, you may have a failing heating element or convection fan.
-
-## Temperature Calibration
-
-Over time, oven temperatures can drift. If your dishes are consistently over or undercooked, professional calibration may be needed.
-
-## When to Call Us
-
-While some minor maintenance can be done at home, Wolf ranges contain sophisticated components that require expert attention. If you notice any unusual behavior, contact us for a professional diagnosis.`,
-    author: 'James Wilson',
-    date: '2024-11-15',
-    image: 'https://images.pexels.com/photos/6996086/pexels-photo-6996086.jpeg',
-    category: 'Troubleshooting',
-    tags: ['Wolf', 'Range', 'Troubleshooting', 'Repair'],
+    image: 'https://appliancenj.com/wp-content/uploads/2016/04/ge-washer-metallic-silver.jpg',
+    category: 'Tips',
+    tags: ['Washer', 'Emergency', 'Repair', 'Tips'],
     readTime: 4,
   },
   {
+    id: '2',
+    slug: 'dryer-not-heating-guide',
+    title: 'Dryer Not Heating? A 5-Step Troubleshooting Guide',
+    excerpt: 'Is your dryer running but not producing heat? Here are 5 things to check before calling for service.',
+    content: `A dryer that runs but doesn't heat is one of the most common appliance problems we see. Here's what you can check before calling us.
+
+## Step 1: Check the Power
+
+Electric dryers require 240V power. If one leg of power is out, the dryer will run but won't heat. Check your circuit breaker.
+
+## Step 2: Clean the Lint Filter
+
+A clogged lint filter restricts airflow and can cause heating issues. Clean it before every load.
+
+## Step 3: Inspect the Vent
+
+A blocked dryer vent is a common cause of heating problems. Check for lint buildup and kinks in the vent hose.
+
+## Step 4: Check Gas Supply (Gas Dryers)
+
+If you have a gas dryer, ensure the gas valve is fully open and the pilot light is lit (on older models).
+
+## Step 5: Listen for the Igniter
+
+On gas dryers, you should hear a clicking sound when the igniter activates. No click might mean a faulty igniter.
+
+## When to Call a Pro
+
+If these steps don't solve the problem, you likely have a faulty heating element, thermal fuse, or thermostat. These repairs require professional service.`,
+    author: 'Advanced Appliance Team',
+    date: '2024-11-15',
+    image: 'https://appliancenj.com/wp-content/uploads/2016/04/Dispatcher-dry-mini-main.jpg',
+    category: 'Tips',
+    tags: ['Dryer', 'Heating', 'Troubleshooting', 'Tips'],
+    readTime: 5,
+  },
+  {
     id: '3',
-    slug: 'choosing-right-luxury-appliances',
-    title: 'How to Choose the Right Luxury Appliances for Your Kitchen',
-    excerpt: 'A comprehensive guide to selecting premium kitchen appliances that match your lifestyle and cooking needs.',
-    content: `Investing in luxury kitchen appliances is a decision that will impact your daily life for years to come. Here's how to choose wisely.
+    slug: 'dishwasher-not-draining-fix',
+    title: 'How to Fix a Dishwasher Not Draining: A DIY Guide',
+    excerpt: 'Standing water in your dishwasher? Before you call for service, try these simple fixes.',
+    content: `A dishwasher that won't drain is frustrating, but many drainage problems have simple solutions you can try yourself.
 
-## Assess Your Cooking Style
+## Check the Filter
 
-Are you a serious home chef who needs professional-grade performance? Or do you prefer simple, reliable appliances that require minimal attention? Your cooking style should drive your choices.
+Most dishwashers have a removable filter at the bottom of the tub. Remove it and clean out any food debris or buildup.
 
-## Consider Integration
+## Inspect the Drain Hose
 
-Modern luxury kitchens often feature integrated appliances that blend seamlessly with cabinetry. Brands like Sub-Zero, Miele, and Thermador offer excellent panel-ready options.
+The drain hose connects your dishwasher to your garbage disposal or sink drain. Check for kinks, clogs, or damage.
 
-## Think Long-Term
+## Clear the Garbage Disposal
 
-Quality appliances are investments. Consider not just the purchase price, but the total cost of ownership including energy efficiency, maintenance, and repair availability.
+If your dishwasher drains through a garbage disposal, make sure the disposal is clear. Run it with water to ensure proper drainage.
 
-## Brand Reputation
+## Check the Air Gap
 
-We recommend brands with strong service networks and available parts. Sub-Zero, Wolf, Viking, and Miele all excel in this regard.
+If you have an air gap (the chrome cylinder on your sink), remove the cap and clean out any debris that might be blocking it.
 
-## Work with Experts
+## Run Hot Water First
 
-Before making your final decision, consult with kitchen designers and appliance specialists who can help you select the perfect combination for your needs.`,
-    author: 'Michael Richardson',
+Before starting your dishwasher, run hot water in your sink until it's hot. This ensures your dishwasher starts with hot water.
+
+## When DIY Won't Work
+
+If these steps don't solve your drainage problem, you may have a faulty drain pump, clogged drain valve, or other mechanical issue. That's when you need our expert technicians.`,
+    author: 'Advanced Appliance Team',
     date: '2024-11-10',
-    image: 'https://images.pexels.com/photos/10099318/pexels-photo-10099318.jpeg',
-    category: 'Buying Guide',
-    tags: ['Buying Guide', 'Luxury Appliances', 'Kitchen Design'],
+    image: 'https://appliancenj.com/wp-content/uploads/2016/04/dishwasher-1.png',
+    category: 'Tips',
+    tags: ['Dishwasher', 'Draining', 'DIY', 'Tips'],
+    readTime: 4,
+  },
+  {
+    id: '4',
+    slug: 'kitchen-appliance-repair-guide',
+    title: 'Kitchen Appliance Repair: A Complete Homeowner\'s Guide',
+    excerpt: 'Everything you need to know about maintaining and repairing your kitchen appliances.',
+    content: `Your kitchen appliances are some of the most important and heavily used items in your home. Here's your complete guide to keeping them running smoothly.
+
+## Refrigerator Care
+
+- Clean condenser coils every 6-12 months
+- Check door seals regularly
+- Keep temperature between 35-38°F
+- Don't overfill - air needs to circulate
+
+## Dishwasher Maintenance
+
+- Clean the filter monthly
+- Run an empty cycle with vinegar quarterly
+- Check spray arms for clogs
+- Use the right detergent
+
+## Oven & Range Tips
+
+- Clean spills promptly
+- Check igniter performance
+- Calibrate temperature annually
+- Replace worn seals
+
+## When to Call a Professional
+
+Some repairs are best left to the experts:
+- Gas line issues
+- Electrical problems
+- Compressor failures
+- Electronic control boards
+
+Advanced Appliance has been serving Monmouth and Middlesex counties for over 30 years. We're factory-authorized for all major brands.`,
+    author: 'Advanced Appliance Team',
+    date: '2024-11-05',
+    image: 'https://appliancenj.com/wp-content/uploads/2016/04/oven.png',
+    category: 'Guide',
+    tags: ['Kitchen', 'Appliances', 'Maintenance', 'Guide'],
     readTime: 6,
   },
 ];
@@ -529,40 +645,89 @@ export const certifications: Certification[] = [
   { name: 'EPA 608 Certified', issuer: 'EPA', year: '2023' },
 ];
 
-// Trust Badges
+// Trust Badges - matching live site
 export const trustBadges = [
-  { title: 'Licensed & Insured', description: 'Fully licensed and insured for your protection' },
-  { title: 'Factory Certified', description: 'Trained and certified by major manufacturers' },
-  { title: 'Same Day Service', description: 'Emergency same-day service available' },
-  { title: '90-Day Warranty', description: 'All repairs backed by our warranty' },
-  { title: '25+ Years Experience', description: 'Decades of luxury appliance expertise' },
-  { title: 'Genuine Parts', description: 'We use only OEM replacement parts' },
+  { title: '$100 Diagnostic Fee', description: 'Plus parts and labor. No hidden fees' },
+  { title: '24/7 Assistance', description: 'Live operators available around the clock' },
+  { title: 'Same Day Service', description: 'Schedule today, service tomorrow' },
+  { title: '90-Day Warranty', description: 'All repairs backed by our guarantee' },
+  { title: '30+ Years Experience', description: 'Factory-authorized since 1992' },
+  { title: 'Genuine OEM Parts', description: 'We use only manufacturer parts' },
 ];
 
-// FAQs
+// Specials/Offers - from live site
+export const specials = [
+  {
+    title: '$100 Diagnostic Fee',
+    description: 'Plus parts and labor. No other hidden fees.',
+    icon: 'diagnostic'
+  },
+  {
+    title: '10% OFF Special',
+    description: 'Submit a Google review for 10% off your next appointment.',
+    icon: 'discount'
+  },
+  {
+    title: '$129 Appliance Tune-Up',
+    description: 'Regular maintenance recommended every 4 years.',
+    icon: 'maintenance'
+  },
+];
+
+// How It Works - 3 step process from live site
+export const howItWorks = [
+  {
+    step: 1,
+    title: 'Book',
+    description: 'Schedule an appointment for a convenient time that works for you.',
+    icon: 'book'
+  },
+  {
+    step: 2,
+    title: 'Repair',
+    description: 'We diagnose the issue, explain the problem, and repair your appliance.',
+    icon: 'repair'
+  },
+  {
+    step: 3,
+    title: 'Relax',
+    description: 'Our 90-day satisfaction guarantee covers all repairs.',
+    icon: 'relax'
+  },
+];
+
+// FAQs - matching live site
 export const generalFaqs: FAQ[] = [
   {
     question: 'What areas do you serve?',
-    answer: 'We provide luxury appliance repair services throughout Essex, Union, Morris, and Monmouth counties in New Jersey, including Short Hills, Summit, Chatham, Millburn, and Morganville.',
+    answer: 'We provide appliance repair services throughout Monmouth and Middlesex counties in Central New Jersey, including Morganville, Marlboro, Holmdel, Red Bank, Freehold, Old Bridge, Edison, and 30+ other communities.',
   },
   {
     question: 'Do you offer same-day service?',
-    answer: 'Yes, we offer same-day service for most appliance emergencies. Call us before noon for the best chance of same-day availability.',
+    answer: 'Yes! Schedule your appointment today, and we can often provide service tomorrow. For emergencies, same-day service may be available.',
   },
   {
     question: 'What brands do you repair?',
-    answer: 'We specialize in premium brands including Sub-Zero, Viking, Wolf, Thermador, Miele, Bosch, Gaggenau, Liebherr, and many others.',
+    answer: 'We are factory-authorized for Sub-Zero, Viking, Thermador, Miele, and Wolf. We also service Samsung, LG, Bosch, KitchenAid, Whirlpool, GE, Maytag, Kenmore, Jenn-Air, Electrolux, and many more.',
   },
   {
     question: 'Do you provide warranties on repairs?',
-    answer: 'Yes, all our repairs come with a 90-day warranty on both parts and labor. We stand behind our work completely.',
+    answer: 'Yes, all our repairs come with a 90-day satisfaction guarantee on both parts and labor.',
   },
   {
     question: 'How much does a service call cost?',
-    answer: 'Our diagnostic service fee is $89, which is waived if you proceed with the repair. We always provide transparent pricing before beginning any work.',
+    answer: 'Our diagnostic fee is $100, plus parts and labor. No hidden fees. We provide a complete estimate before beginning any work.',
   },
   {
     question: 'Are your technicians factory trained?',
-    answer: 'Yes, our technicians hold current factory certifications from all major luxury appliance manufacturers and undergo continuous training.',
+    answer: 'Yes! Our technicians receive continuous factory training from major manufacturers. We have been in business since 1992 - over 30 years of experience.',
+  },
+  {
+    question: 'What appliances do you repair?',
+    answer: 'We repair all major kitchen and laundry appliances including refrigerators, washers, dryers, dishwashers, ovens, ranges, cooktops, freezers, and stoves - both gas and electric.',
+  },
+  {
+    question: 'Do you use genuine parts?',
+    answer: 'Yes, we use only genuine OEM (Original Equipment Manufacturer) parts for all repairs to ensure quality and reliability.',
   },
 ];
