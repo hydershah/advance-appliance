@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPayloadClient } from '@/utilities/getPayloadClient'
-import { getCurrentDesignTheme } from '@/lib/getDesignComponents'
 
 // Import static design pages for fallback when CMS is unavailable
 import { BlogPost as Design1BlogPost } from '@/designs/design1/pages'
@@ -91,7 +90,6 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
-  const designTheme = getCurrentDesignTheme()
 
   // Check static blog posts first - this is the primary fallback
   const staticPost = findStaticBlogPostBySlug(slug)

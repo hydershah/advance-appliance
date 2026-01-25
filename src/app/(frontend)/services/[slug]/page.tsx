@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPayloadClient } from '@/utilities/getPayloadClient'
-import { getCurrentDesignTheme } from '@/lib/getDesignComponents'
 
 // Import static design pages for fallback when CMS is unavailable
 import { ServiceDetail as Design1ServiceDetail } from '@/designs/design1/pages'
@@ -86,7 +85,6 @@ export async function generateMetadata({
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params
-  const designTheme = getCurrentDesignTheme()
 
   // Check static services first - this is the primary fallback
   const staticService = findStaticServiceBySlug(slug)
