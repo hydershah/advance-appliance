@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (brand) {
     return {
       title: `${brand.name} Appliance Repair Service in NJ - Advanced Appliance`,
-      description: `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 90-day warranty. Call (732) 416-7430.`,
+      description: `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 90-180 day warranty. Call (732) 416-7430.`,
       openGraph: {
         title: `${brand.name} Appliance Repair Service in NJ`,
         description: `Expert ${brand.name} appliance repair throughout Central New Jersey.`,

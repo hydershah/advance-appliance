@@ -64,6 +64,7 @@ export interface Brand {
   slug?: string;
   logo?: string;
   description?: string;
+  featured?: boolean;
 }
 
 export interface Certification {

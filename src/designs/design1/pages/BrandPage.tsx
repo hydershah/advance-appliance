@@ -84,7 +84,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                     {[
                       `Factory-trained ${brand.name} technicians`,
                       'Genuine OEM replacement parts',
-                      '90-day warranty on all repairs',
+                      '90-180 day warranty on all repairs',
                       'Same-day service available',
                       'Transparent pricing with no hidden fees',
                     ].map((item, i) => (

@@ -61,7 +61,7 @@ const TermsOfService: React.FC = () => {
 
                 <h2 className="font-serif text-2xl text-black mt-8 mb-4">Warranty</h2>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  All repairs performed by {businessInfo.name} are covered by our 90-day warranty:
+                  All repairs performed by {businessInfo.name} are covered by our 90-180 day warranty:
                 </p>
                 <ul className="list-disc pl-6 text-gray-600 space-y-2 mb-6">
                   <li>Warranty covers both parts and labor</li>

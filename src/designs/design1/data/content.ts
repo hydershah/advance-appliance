@@ -67,7 +67,7 @@ export const services: Service[] = [
       'Same-day service availability',
       'Factory-trained technicians',
       'Genuine OEM replacement parts',
-      '90-day warranty on all repairs',
+      '90-180 day warranty on all repairs',
       'Sub-Zero, Viking, Thermador specialists',
     ],
     faqs: [
@@ -297,12 +297,14 @@ export const services: Service[] = [
 ];
 
 // Brands - from live site (with repair page slugs)
+// Premium/Featured Brands (with logos)
 export const brands: Brand[] = [
-  { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Sub-zero-logo.jpg' },
-  { name: 'Viking', slug: 'viking-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Viking-logo.jpg' },
-  { name: 'Thermador', slug: 'thermador-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Thermador.png' },
-  { name: 'Miele', slug: 'miele-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Miele-logo.png' },
-  { name: 'Wolf', slug: 'wolf-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Wolf-logo.jpg' },
+  { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Sub-zero-logo.jpg', featured: true },
+  { name: 'Viking', slug: 'viking-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Viking-logo.jpg', featured: true },
+  { name: 'Thermador', slug: 'thermador-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Thermador.png', featured: true },
+  { name: 'Miele', slug: 'miele-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Miele-logo.png', featured: true },
+  { name: 'Wolf', slug: 'wolf-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Wolf-logo.jpg', featured: true },
+  // Major Brands
   { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj' },
   { name: 'LG', slug: 'lg-appliance-repair-service-nj' },
   { name: 'Bosch', slug: 'bosch-appliance-repair-service-nj' },
@@ -311,8 +313,27 @@ export const brands: Brand[] = [
   { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj' },
   { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj' },
   { name: 'GE', slug: 'general-electric-ge-appliance-repair-service-nj' },
+  { name: 'GE Profile', slug: 'ge-profile-appliance-repair-service-nj' },
+  { name: 'GE Monogram', slug: 'ge-monogram-appliance-repair-service-nj' },
+  { name: 'GE Cafe', slug: 'ge-cafe-appliance-repair-service-nj' },
   { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj' },
   { name: 'Whirlpool', slug: 'whirlpool-appliance-repair-service-nj' },
+  { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj' },
+  // Additional Brands from live site
+  { name: 'Admiral', slug: 'admiral-appliance-repair-service-nj' },
+  { name: 'Amana', slug: 'amana-appliance-repair-service-nj' },
+  { name: 'Asko', slug: 'asko-appliance-repair-service-nj' },
+  { name: 'Dacor', slug: 'dacor-appliance-repair-service-nj' },
+  { name: 'DCS', slug: 'dcs-appliance-repair-service-nj' },
+  { name: 'Fisher & Paykel', slug: 'fisher-paykel-appliance-repair-service-nj' },
+  { name: 'Gaggenau', slug: 'gaggenau-appliance-repair-service-nj' },
+  { name: 'Hotpoint', slug: 'hotpoint-appliance-repair-service-nj' },
+  { name: 'Magic Chef', slug: 'magic-chef-appliance-repair-service-nj' },
+  { name: 'Roper', slug: 'roper-appliance-repair-service-nj' },
+  { name: 'Speed Queen', slug: 'speed-queen-appliance-repair-service-nj' },
+  { name: 'Tappan', slug: 'tappan-appliance-repair-service-nj' },
+  { name: 'U Line', slug: 'u-line-appliance-repair-service-nj' },
+  { name: 'Westinghouse', slug: 'westinghouse-appliance-repair-service-nj' },
 ];
 
 // Testimonials - from live site reviews
@@ -459,19 +480,20 @@ export const serviceAreas: ServiceArea[] = [
   { id: '23', name: 'Middletown', slug: 'appliance-repair-in-middletown-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Middletown, NJ. All major brands and appliances.', zipCodes: ['07748'] },
   { id: '24', name: 'Morganville', slug: 'appliance-repair-in-morganville-nj', county: 'Monmouth', state: 'NJ', description: 'Our home base! Premium appliance repair services in Morganville, NJ. Factory-authorized for all major brands.', zipCodes: ['07751'] },
   { id: '25', name: 'Neptune', slug: 'appliance-repair-in-neptune-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair in Neptune, NJ. Serving the shore community.', zipCodes: ['07753', '07754'] },
-  { id: '26', name: 'Oceanport', slug: 'appliance-repair-in-oceanport-nj', county: 'Monmouth', state: 'NJ', description: 'Trusted appliance repair in Oceanport, NJ. Fast, reliable service.', zipCodes: ['07757'] },
-  { id: '27', name: 'Old Bridge', slug: 'appliance-repair-in-old-bridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Old Bridge, NJ. Same-day appointments available.', zipCodes: ['08857'] },
-  { id: '28', name: 'Parlin', slug: 'appliance-repair-in-parlin-nj', county: 'Middlesex', state: 'NJ', description: 'Expert appliance repair in Parlin, NJ. All appliances and brands serviced.', zipCodes: ['08859'] },
-  { id: '29', name: 'Perth Amboy', slug: 'appliance-repair-in-perth-amboy-nj', county: 'Middlesex', state: 'NJ', description: 'Reliable appliance repair in Perth Amboy, NJ. Over 30 years of experience.', zipCodes: ['08861', '08862'] },
-  { id: '30', name: 'Port Monmouth', slug: 'appliance-repair-in-port-monmouth-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in Port Monmouth, NJ. Licensed and insured.', zipCodes: ['07758'] },
-  { id: '31', name: 'Red Bank', slug: 'appliance-repair-in-red-bank-nj', county: 'Monmouth', state: 'NJ', description: 'Premium appliance repair in Red Bank, NJ. Serving downtown and surrounding areas.', zipCodes: ['07701', '07702'] },
-  { id: '32', name: 'Rumson', slug: 'appliance-repair-in-rumson-nj', county: 'Monmouth', state: 'NJ', description: 'Luxury appliance repair in Rumson, NJ. Specializing in high-end brands.', zipCodes: ['07760'] },
-  { id: '33', name: 'Sayreville', slug: 'appliance-repair-in-sayreville-nj', county: 'Middlesex', state: 'NJ', description: 'Professional appliance repair in Sayreville, NJ. All major brands serviced.', zipCodes: ['08871', '08872'] },
-  { id: '34', name: 'Shrewsbury', slug: 'appliance-repair-in-shrewsbury-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Shrewsbury, NJ. Same-day service available.', zipCodes: ['07702'] },
-  { id: '35', name: 'South Amboy', slug: 'appliance-repair-in-south-amboy-nj', county: 'Middlesex', state: 'NJ', description: 'Trusted appliance repair in South Amboy, NJ. Over 30 years of experience.', zipCodes: ['08879'] },
-  { id: '36', name: 'Tinton Falls', slug: 'appliance-repair-in-tinton-falls-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair in Tinton Falls, NJ. Factory-authorized service.', zipCodes: ['07724', '07753'] },
-  { id: '37', name: 'West Long Branch', slug: 'appliance-repair-in-west-long-branch-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in West Long Branch, NJ. All appliances and brands.', zipCodes: ['07764'] },
-  { id: '38', name: 'Woodbridge', slug: 'appliance-repair-in-woodbridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Woodbridge, NJ. Same-day appointments available.', zipCodes: ['07095'] },
+  { id: '26', name: 'Ocean', slug: 'appliance-repair-in-ocean-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Ocean Township, NJ. All major brands serviced with same-day availability.', zipCodes: ['07712'] },
+  { id: '27', name: 'Oceanport', slug: 'appliance-repair-in-oceanport-nj', county: 'Monmouth', state: 'NJ', description: 'Trusted appliance repair in Oceanport, NJ. Fast, reliable service.', zipCodes: ['07757'] },
+  { id: '28', name: 'Old Bridge', slug: 'appliance-repair-in-old-bridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Old Bridge, NJ. Same-day appointments available.', zipCodes: ['08857'] },
+  { id: '29', name: 'Parlin', slug: 'appliance-repair-in-parlin-nj', county: 'Middlesex', state: 'NJ', description: 'Expert appliance repair in Parlin, NJ. All appliances and brands serviced.', zipCodes: ['08859'] },
+  { id: '30', name: 'Perth Amboy', slug: 'appliance-repair-in-perth-amboy-nj', county: 'Middlesex', state: 'NJ', description: 'Reliable appliance repair in Perth Amboy, NJ. Over 30 years of experience.', zipCodes: ['08861', '08862'] },
+  { id: '31', name: 'Port Monmouth', slug: 'appliance-repair-in-port-monmouth-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in Port Monmouth, NJ. Licensed and insured.', zipCodes: ['07758'] },
+  { id: '32', name: 'Red Bank', slug: 'appliance-repair-in-red-bank-nj', county: 'Monmouth', state: 'NJ', description: 'Premium appliance repair in Red Bank, NJ. Serving downtown and surrounding areas.', zipCodes: ['07701', '07702'] },
+  { id: '33', name: 'Rumson', slug: 'appliance-repair-in-rumson-nj', county: 'Monmouth', state: 'NJ', description: 'Luxury appliance repair in Rumson, NJ. Specializing in high-end brands.', zipCodes: ['07760'] },
+  { id: '34', name: 'Sayreville', slug: 'appliance-repair-in-sayreville-nj', county: 'Middlesex', state: 'NJ', description: 'Professional appliance repair in Sayreville, NJ. All major brands serviced.', zipCodes: ['08871', '08872'] },
+  { id: '35', name: 'Shrewsbury', slug: 'appliance-repair-in-shrewsbury-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Shrewsbury, NJ. Same-day service available.', zipCodes: ['07702'] },
+  { id: '36', name: 'South Amboy', slug: 'appliance-repair-in-south-amboy-nj', county: 'Middlesex', state: 'NJ', description: 'Trusted appliance repair in South Amboy, NJ. Over 30 years of experience.', zipCodes: ['08879'] },
+  { id: '37', name: 'Tinton Falls', slug: 'appliance-repair-in-tinton-falls-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair in Tinton Falls, NJ. Factory-authorized service.', zipCodes: ['07724', '07753'] },
+  { id: '38', name: 'West Long Branch', slug: 'appliance-repair-in-west-long-branch-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in West Long Branch, NJ. All appliances and brands.', zipCodes: ['07764'] },
+  { id: '39', name: 'Woodbridge', slug: 'appliance-repair-in-woodbridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Woodbridge, NJ. Same-day appointments available.', zipCodes: ['07095'] },
 ];
 
 // Blog Posts - from live site
@@ -650,7 +672,7 @@ export const trustBadges = [
   { title: '$100 Diagnostic Fee', description: 'Plus parts and labor. No hidden fees' },
   { title: '24/7 Assistance', description: 'Live operators available around the clock' },
   { title: 'Same Day Service', description: 'Schedule today, service tomorrow' },
-  { title: '90-Day Warranty', description: 'All repairs backed by our guarantee' },
+  { title: '90-180 Day Warranty', description: 'Coverage on parts with matching labor warranty' },
   { title: '30+ Years Experience', description: 'Factory-authorized since 1992' },
   { title: 'Genuine OEM Parts', description: 'We use only manufacturer parts' },
 ];
@@ -691,7 +713,7 @@ export const howItWorks = [
   {
     step: 3,
     title: 'Relax',
-    description: 'Our 90-day satisfaction guarantee covers all repairs.',
+    description: 'Our 90-180 day warranty covers all repairs on parts and labor.',
     icon: 'relax'
   },
 ];
@@ -712,7 +734,7 @@ export const generalFaqs: FAQ[] = [
   },
   {
     question: 'Do you provide warranties on repairs?',
-    answer: 'Yes, all our repairs come with a 90-day satisfaction guarantee on both parts and labor.',
+    answer: 'Yes, all our repairs come with a 90-180 day warranty on parts with matching labor warranty coverage.',
   },
   {
     question: 'How much does a service call cost?',

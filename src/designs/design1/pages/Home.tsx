@@ -47,11 +47,11 @@ const Home: React.FC = () => {
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
               </div>
               <div>
-                <SectionHeading subtitle="Why Choose Us" title="25+ Years of Excellence in Luxury Appliance Care" align="left" />
+                <SectionHeading subtitle="Why Choose Us" title="30+ Years of Excellence in Luxury Appliance Care" align="left" />
                 <div className="space-y-6 mt-8">
-                  <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service has been the trusted choice for discerning homeowners throughout New Jersey since 1998.</p>
+                  <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service has been the trusted choice for discerning homeowners throughout New Jersey since 1992.</p>
                   <ul className="space-y-4">
-                    {['Factory-certified on all major luxury brands', 'Same-day emergency service available', 'Genuine OEM parts with 90-day warranty', 'Transparent pricing with no hidden fees'].map((item, i) => (
+                    {['Factory-certified on all major luxury brands', 'Same-day emergency service available', 'Genuine OEM parts with 90-180 day warranty', 'Transparent pricing with no hidden fees'].map((item, i) => (
                       <li key={i} className="flex items-start"><svg className="w-5 h-5 text-[#D4AF37] mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg><span className="text-gray-700">{item}</span></li>
                     ))}
                   </ul>

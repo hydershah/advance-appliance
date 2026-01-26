@@ -165,10 +165,10 @@ export default function FrontendLayout({
         />
         <link rel="preconnect" href="https://images.pexels.com" />
 
-        {/* Favicons */}
+        {/* Favicons - using actual favicon from appliancenj.com */}
+        <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/icon.svg" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
 
         {/* Theme color for mobile browsers */}
