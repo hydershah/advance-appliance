@@ -2,12 +2,14 @@
 # Multi-stage Dockerfile for Next.js + PayloadCMS
 # ============================================
 
-# Base image with Node.js
-FROM node:18-alpine AS base
+# Base image with Node.js (using slim for glibc compatibility with libsql)
+FROM node:18-slim AS base
 
 # Install dependencies only when needed
 FROM base AS deps
-RUN apk add --no-cache libc6-compat
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    openssl \
+    && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
 # Copy package files
@@ -40,12 +42,17 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    openssl \
+    && rm -rf /var/lib/apt/lists/*
+
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Create a non-root user
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN groupadd --system --gid 1001 nodejs
+RUN useradd --system --uid 1001 --gid nodejs nextjs
 
 # Copy necessary files from builder
 COPY --from=builder /app/public ./public
