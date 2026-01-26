@@ -7,10 +7,8 @@ import type { ComponentType } from 'react'
 
 // Design 1 Components
 import * as Design1 from '@/designs/design1/components'
-// Design 2 Components
-import * as Design2 from '@/designs/design2/components'
 
-export type DesignTheme = '1' | '2'
+export type DesignTheme = '1'
 
 /**
  * Interface for design component structure
@@ -31,21 +29,7 @@ export interface DesignComponents {
 /**
  * Get component set for a specific design theme
  */
-export function getDesignComponents(theme: DesignTheme = '1'): DesignComponents {
-  if (theme === '2') {
-    return {
-      Header: Design2.Header,
-      Footer: Design2.Footer,
-      Hero: Design2.Hero,
-      ServiceCard: Design2.ServiceCard,
-      TestimonialCard: Design2.TestimonialCard,
-      ContactForm: Design2.ContactForm,
-      CTAButton: Design2.CTAButton,
-      SectionHeading: Design2.SectionHeading,
-      FAQAccordion: Design2.FAQAccordion,
-    }
-  }
-
+export function getDesignComponents(_theme: DesignTheme = '1'): DesignComponents {
   return {
     Header: Design1.Header,
     Footer: Design1.Footer,
@@ -63,8 +47,7 @@ export function getDesignComponents(theme: DesignTheme = '1'): DesignComponents 
  * Get the current active design theme from environment or config
  */
 export function getCurrentDesignTheme(): DesignTheme {
-  const envTheme = process.env.NEXT_PUBLIC_DESIGN_THEME
-  return envTheme === '2' ? '2' : '1'
+  return '1'
 }
 
 /**
@@ -82,19 +65,6 @@ export const designMetadata = {
     fonts: {
       heading: 'var(--font-playfair)',
       body: 'var(--font-inter)',
-    },
-  },
-  '2': {
-    name: 'Modern Heritage',
-    description: 'Bold modern design with navy, cream, and gold accents',
-    colorScheme: {
-      primary: '#07203f',
-      secondary: '#ebded4',
-      background: '#fdfcfb',
-    },
-    fonts: {
-      heading: 'var(--font-bebas)',
-      body: 'var(--font-poppins)',
     },
   },
 } as const
