@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
+import { fetchAllBlogPosts, fetchSettings } from '@/sanity/fetchers'
+import { urlFor } from '@/sanity/image'
 import { JsonLd } from '@/components/JsonLd'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
 import { truncateRichText } from '@/components/RichText'
-import type { Media } from '@/payload-types'
 
 // Import static design pages for fallback when CMS is unavailable
 import { Blog as Design1Blog } from '@/designs/design1/pages'
@@ -12,9 +12,6 @@ import { Blog as Design1Blog } from '@/designs/design1/pages'
 /**
  * Blog Listing Page - Server Component
  */
-
-// Prevent pre-rendering during build (database may not exist)
-export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -27,24 +24,11 @@ export default async function BlogPage() {
   const designTheme = getCurrentDesignTheme()
 
   try {
-    const payload = await getPayloadClient()
-
-    // Fetch all published blog posts
-    const blogPostsResult = await payload.find({
-      collection: 'blog-posts',
-      where: {
-        status: { equals: 'published' },
-      },
-      limit: 50,
-      sort: '-publishedDate',
-    })
-
-    const posts = blogPostsResult.docs
-
-    // Fetch site settings
-    const settings = await payload.findGlobal({
-      slug: 'settings',
-    })
+    // Fetch all published blog posts and settings from Sanity
+    const [posts, settings] = await Promise.all([
+      fetchAllBlogPosts({ limit: 50 }),
+      fetchSettings(),
+    ])
 
     const components = getDesignComponents(designTheme)
     const { Header, Footer } = components
@@ -82,19 +66,21 @@ export default async function BlogPage() {
             {posts.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {posts.map((post) => {
-                  const featuredImage =
-                    typeof post.featuredImage === 'object' &&
-                    post.featuredImage !== null
-                      ? (post.featuredImage as Media).url
-                      : post.featuredImage
+                  const featuredImage = post.featuredImage
+                    ? urlFor(post.featuredImage).url()
+                    : null
+
+                  const postSlug = typeof post.slug === 'object'
+                    ? post.slug.current
+                    : post.slug
 
                   const excerpt =
                     post.excerpt || truncateRichText(post.content, 150)
 
                   return (
                     <Link
-                      key={post.id}
-                      href={`/blog/${post.slug}`}
+                      key={post._id}
+                      href={`/blog/${postSlug}`}
                       className="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                     >
                       {featuredImage && (
@@ -110,12 +96,12 @@ export default async function BlogPage() {
                         {/* Categories */}
                         {post.categories && post.categories.length > 0 && (
                           <div className="flex flex-wrap gap-2 mb-3">
-                            {post.categories.slice(0, 2).map((cat: { id?: string; category: string }, index: number) => (
+                            {post.categories.slice(0, 2).map((cat: string, index: number) => (
                               <span
-                                key={cat.id || index}
+                                key={index}
                                 className="text-xs font-semibold px-3 py-1 bg-gold-100 text-gold-700 rounded-full"
                               >
-                                {cat.category}
+                                {cat}
                               </span>
                             ))}
                           </div>
@@ -216,7 +202,7 @@ export default async function BlogPage() {
     </>
   )
   } catch {
-    // Database unavailable - fall back to static design
+    // CMS unavailable - fall back to static design
     return <Design1Blog />
   }
 }

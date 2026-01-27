@@ -1,10 +1,10 @@
 import { MetadataRoute } from 'next'
-import { getPayload } from 'payload'
-import config from '@payload-config'
+import { client } from '@/sanity/client'
+import { groq } from 'next-sanity'
 
 /**
  * Dynamic sitemap generation for Advanced Appliance Repair
- * Automatically includes all pages, services, blog posts, and service areas
+ * Automatically includes all pages, services, blog posts, and service areas from Sanity CMS
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
@@ -53,32 +53,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   })
 
-  // Try to get payload client - may fail during Docker build
-  let payload
+  // Fetch services from Sanity
   try {
-    payload = await getPayload({ config })
-  } catch (error) {
-    console.warn('Could not connect to database for sitemap:', error)
-    // Return static pages only if database is unavailable
-    return sitemap
-  }
+    const services = await client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
+      groq`*[_type == "service" && status == "published"]{ slug, _updatedAt }`
+    )
 
-  // Fetch services from PayloadCMS
-  try {
-    const servicesData = await payload.find({
-      collection: 'services',
-      where: {
-        _status: {
-          equals: 'published',
-        },
-      },
-      limit: 100,
-    })
-
-    servicesData.docs.forEach((service) => {
+    ;(services || []).forEach((service) => {
       sitemap.push({
-        url: `${baseUrl}/services/${service.slug}`,
-        lastModified: new Date(service.updatedAt),
+        url: `${baseUrl}/services/${service.slug.current}`,
+        lastModified: new Date(service._updatedAt),
         changeFrequency: 'weekly',
         priority: 0.8,
       })
@@ -87,23 +71,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.warn('Could not fetch services for sitemap:', error)
   }
 
-  // Fetch blog posts from PayloadCMS
+  // Fetch blog posts from Sanity
   try {
-    const postsData = await payload.find({
-      collection: 'posts',
-      where: {
-        _status: {
-          equals: 'published',
-        },
-      },
-      limit: 1000,
-      sort: '-publishedDate',
-    })
+    const posts = await client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
+      groq`*[_type == "blogPost" && status == "published"] | order(publishedDate desc){ slug, _updatedAt }`
+    )
 
-    postsData.docs.forEach((post) => {
+    ;(posts || []).forEach((post) => {
       sitemap.push({
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(post.updatedAt),
+        url: `${baseUrl}/blog/${post.slug.current}`,
+        lastModified: new Date(post._updatedAt),
         changeFrequency: 'monthly',
         priority: 0.6,
       })
@@ -112,22 +89,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.warn('Could not fetch blog posts for sitemap:', error)
   }
 
-  // Fetch service areas from PayloadCMS
+  // Fetch service areas from Sanity
   try {
-    const areasData = await payload.find({
-      collection: 'service-areas',
-      where: {
-        _status: {
-          equals: 'published',
-        },
-      },
-      limit: 100,
-    })
+    const areas = await client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
+      groq`*[_type == "serviceArea" && status == "published"]{ slug, _updatedAt }`
+    )
 
-    areasData.docs.forEach((area) => {
+    ;(areas || []).forEach((area) => {
       sitemap.push({
-        url: `${baseUrl}/areas/${area.slug}`,
-        lastModified: new Date(area.updatedAt),
+        url: `${baseUrl}/areas/${area.slug.current}`,
+        lastModified: new Date(area._updatedAt),
         changeFrequency: 'monthly',
         priority: 0.7,
       })
@@ -136,22 +107,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.warn('Could not fetch service areas for sitemap:', error)
   }
 
-  // Fetch brands/manufacturers
+  // Fetch brands from Sanity
   try {
-    const brandsData = await payload.find({
-      collection: 'brands',
-      where: {
-        _status: {
-          equals: 'published',
-        },
-      },
-      limit: 100,
-    })
+    const brands = await client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
+      groq`*[_type == "brand" && status == "published"]{ slug, _updatedAt }`
+    )
 
-    brandsData.docs.forEach((brand) => {
+    ;(brands || []).forEach((brand) => {
       sitemap.push({
-        url: `${baseUrl}/brands/${brand.slug}`,
-        lastModified: new Date(brand.updatedAt),
+        url: `${baseUrl}/brands/${brand.slug.current}`,
+        lastModified: new Date(brand._updatedAt),
         changeFrequency: 'monthly',
         priority: 0.6,
       })
@@ -160,53 +125,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.warn('Could not fetch brands for sitemap:', error)
   }
 
-  // Fetch pages (if you have a pages collection)
+  // Fetch pages from Sanity (excluding home which is already added)
   try {
-    const pagesData = await payload.find({
-      collection: 'pages',
-      where: {
-        _status: {
-          equals: 'published',
-        },
-      },
-      limit: 100,
-    })
+    const pages = await client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
+      groq`*[_type == "page" && status == "published" && slug.current != "home"]{ slug, _updatedAt }`
+    )
 
-    pagesData.docs.forEach((page) => {
-      // Skip if it's a homepage or already added
-      if (page.slug && page.slug !== 'home') {
-        sitemap.push({
-          url: `${baseUrl}/${page.slug}`,
-          lastModified: new Date(page.updatedAt),
-          changeFrequency: 'monthly',
-          priority: 0.7,
-        })
-      }
+    ;(pages || []).forEach((page) => {
+      sitemap.push({
+        url: `${baseUrl}/${page.slug.current}`,
+        lastModified: new Date(page._updatedAt),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      })
     })
   } catch (error) {
     console.warn('Could not fetch pages for sitemap:', error)
   }
-
-  // Add category pages if you have them
-  const categories = [
-    'refrigerator-repair',
-    'washer-repair',
-    'dryer-repair',
-    'dishwasher-repair',
-    'oven-repair',
-    'range-repair',
-    'cooktop-repair',
-    'microwave-repair',
-  ]
-
-  categories.forEach((category) => {
-    sitemap.push({
-      url: `${baseUrl}/services/${category}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    })
-  })
 
   return sitemap
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, teamMembers, certifications, images } from '../data/content';
+import { businessInfo, certifications, images } from '../data/content';
 
 const About: React.FC = () => {
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about' }];
@@ -66,22 +66,6 @@ const About: React.FC = () => {
                   </div>
                   <h3 className="font-serif text-xl text-black mb-3">{value.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24 lg:py-32 bg-white">
-          <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Our Team" title="Meet the Experts" align="center" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-              {teamMembers.map((member) => (
-                <div key={member.id} className="group">
-                  <div className="relative aspect-[3/4] overflow-hidden mb-6"><img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /></div>
-                  <h3 className="font-serif text-xl text-black mb-1">{member.name}</h3>
-                  <p className="text-[#D4AF37] text-sm uppercase tracking-wider mb-3">{member.role}</p>
-                  <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
                 </div>
               ))}
             </div>

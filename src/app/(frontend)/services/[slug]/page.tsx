@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
+import { fetchServiceBySlug } from '@/sanity/fetchers'
 
 // Import static design pages for fallback when CMS is unavailable
 import { ServiceDetail as Design1ServiceDetail } from '@/designs/design1/pages'
@@ -10,9 +10,6 @@ import { services as staticServices } from '@/designs/design1/data/content'
  * Service Detail Page - Server Component
  * Falls back to static design when CMS is unavailable
  */
-
-// Prevent pre-rendering during build (database may not exist)
-export const dynamic = 'force-dynamic'
 
 interface ServicePageProps {
   params: Promise<{
@@ -46,18 +43,7 @@ export async function generateMetadata({
 
   // Try CMS
   try {
-    const payload = await getPayloadClient()
-
-    const serviceResult = await payload.find({
-      collection: 'services',
-      where: {
-        slug: { equals: slug },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-    })
-
-    const service = serviceResult.docs[0]
+    const service = await fetchServiceBySlug(slug)
 
     if (!service) {
       return {
@@ -65,8 +51,8 @@ export async function generateMetadata({
       }
     }
 
-    const title = service.meta?.seo?.title || service.name
-    const description = service.meta?.seo?.description || service.excerpt || ''
+    const title = service.meta?.seo?.title || service.seo?.title || service.name
+    const description = service.meta?.seo?.description || service.seo?.description || service.excerpt || ''
 
     return {
       title,
@@ -94,19 +80,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
   // Try CMS if no static service found
   try {
-    const payload = await getPayloadClient()
-
-    const serviceResult = await payload.find({
-      collection: 'services',
-      where: {
-        slug: { equals: slug },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-      depth: 2,
-    })
-
-    const service = serviceResult.docs[0]
+    const service = await fetchServiceBySlug(slug)
 
     if (!service) {
       notFound()
@@ -116,7 +90,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
     // (The CMS rendering would require more setup)
     return <Design1ServiceDetail serviceSlug={slug} />
   } catch {
-    // Database error - show not found
+    // CMS error - show not found
     notFound()
   }
 }

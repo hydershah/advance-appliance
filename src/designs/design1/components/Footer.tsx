@@ -110,6 +110,9 @@ const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
             <p>&copy; {currentYear} {businessInfo.name}. All rights reserved.</p>
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4 md:mt-0">
+              <a href="/our-brands" className="hover:text-white transition-colors">Our Brands</a>
+              <a href="/our-reviews" className="hover:text-white transition-colors">Our Reviews</a>
+              <a href="/our-service-area" className="hover:text-white transition-colors">Our Service Area</a>
               <a href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</a>
               <a href="/sms-messaging-compliance" className="hover:text-white transition-colors">SMS / Messaging Compliance</a>

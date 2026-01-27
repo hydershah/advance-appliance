@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
+import { fetchBlogPostBySlug } from '@/sanity/fetchers'
 
 // Import static design pages for fallback when CMS is unavailable
 import { BlogPost as Design1BlogPost } from '@/designs/design1/pages'
@@ -10,9 +10,6 @@ import { blogPosts as staticBlogPosts } from '@/designs/design1/data/content'
  * Blog Post Detail Page - Server Component
  * Falls back to static design when CMS is unavailable
  */
-
-// Prevent pre-rendering during build (database may not exist)
-export const dynamic = 'force-dynamic'
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -49,18 +46,7 @@ export async function generateMetadata({
 
   // Try CMS
   try {
-    const payload = await getPayloadClient()
-
-    const postResult = await payload.find({
-      collection: 'blog-posts',
-      where: {
-        slug: { equals: slug },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-    })
-
-    const post = postResult.docs[0]
+    const post = await fetchBlogPostBySlug(slug)
 
     if (!post) {
       return {
@@ -68,8 +54,8 @@ export async function generateMetadata({
       }
     }
 
-    const title = post.meta?.seo?.title || post.title
-    const description = post.meta?.seo?.description || post.excerpt || ''
+    const title = post.meta?.seo?.title || post.seo?.title || post.title
+    const description = post.meta?.seo?.description || post.seo?.description || post.excerpt || ''
 
     return {
       title,
@@ -78,7 +64,7 @@ export async function generateMetadata({
         title,
         description,
         type: 'article',
-        publishedTime: post.publishedDate || post.createdAt,
+        publishedTime: post.publishedDate || post._createdAt,
       },
     }
   } catch {
@@ -99,19 +85,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   // Try CMS if no static post found
   try {
-    const payload = await getPayloadClient()
-
-    const postResult = await payload.find({
-      collection: 'blog-posts',
-      where: {
-        slug: { equals: slug },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-      depth: 2,
-    })
-
-    const post = postResult.docs[0]
+    const post = await fetchBlogPostBySlug(slug)
 
     if (!post) {
       notFound()
@@ -120,7 +94,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     // If CMS has the post, use the static design component for now
     return <Design1BlogPost postSlug={slug} />
   } catch {
-    // Database error - show not found
+    // CMS error - show not found
     notFound()
   }
 }

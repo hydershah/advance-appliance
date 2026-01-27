@@ -1,215 +1,104 @@
 /**
  * RichText Component
- * Renders Lexical rich text content from PayloadCMS
+ * Renders Portable Text content from Sanity CMS
  */
 
 import React from 'react'
-import type { RichTextContent } from '@/payload-types'
+import { PortableText, type PortableTextComponents } from '@portabletext/react'
+import type { PortableTextBlock } from '@portabletext/react'
+
+// Re-export type for backwards compatibility
+export type RichTextContent = PortableTextBlock[]
 
 interface RichTextProps {
-  content: RichTextContent
+  content: PortableTextBlock[] | null | undefined
   className?: string
 }
 
+const components: PortableTextComponents = {
+  block: {
+    h1: ({ children }) => <h1 className="font-bold mb-4 mt-8">{children}</h1>,
+    h2: ({ children }) => <h2 className="font-bold mb-4 mt-8">{children}</h2>,
+    h3: ({ children }) => <h3 className="font-bold mb-4 mt-8">{children}</h3>,
+    h4: ({ children }) => <h4 className="font-bold mb-4 mt-8">{children}</h4>,
+    h5: ({ children }) => <h5 className="font-bold mb-4 mt-8">{children}</h5>,
+    h6: ({ children }) => <h6 className="font-bold mb-4 mt-8">{children}</h6>,
+    normal: ({ children }) => <p className="mb-4">{children}</p>,
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-4 border-gold-500 pl-4 italic my-6">
+        {children}
+      </blockquote>
+    ),
+  },
+  marks: {
+    link: ({ value, children }) => (
+      <a
+        href={value?.href}
+        target={value?.blank ? '_blank' : undefined}
+        rel={value?.blank ? 'noopener noreferrer' : undefined}
+        className="text-gold-500 hover:text-gold-600 underline"
+      >
+        {children}
+      </a>
+    ),
+    code: ({ children }) => (
+      <code className="bg-gray-100 px-1 rounded">{children}</code>
+    ),
+    strong: ({ children }) => <strong>{children}</strong>,
+    em: ({ children }) => <em>{children}</em>,
+    underline: ({ children }) => <u>{children}</u>,
+    'strike-through': ({ children }) => <s>{children}</s>,
+  },
+  list: {
+    bullet: ({ children }) => <ul className="mb-4 ml-6 list-disc">{children}</ul>,
+    number: ({ children }) => <ol className="mb-4 ml-6 list-decimal">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }) => <li className="mb-2">{children}</li>,
+    number: ({ children }) => <li className="mb-2">{children}</li>,
+  },
+}
+
 /**
- * Renders rich text content from Lexical editor
+ * Renders rich text content from Sanity Portable Text
  */
 export function RichText({ content, className = '' }: RichTextProps) {
-  if (!content?.root?.children) {
+  if (!content || !Array.isArray(content) || content.length === 0) {
     return null
   }
 
   return (
     <div className={`prose prose-lg max-w-none ${className}`}>
-      {content.root.children.map((node, index) => (
-        <RichTextNode key={index} node={node} />
-      ))}
+      <PortableText value={content} components={components} />
     </div>
   )
 }
 
 /**
- * Renders individual rich text nodes
+ * Utility to extract plain text from Portable Text content
  */
-function RichTextNode({ node }: { node: any }) {
-  const { type, children, ...props } = node
-
-  // Paragraph
-  if (type === 'paragraph') {
-    return (
-      <p className="mb-4">
-        {children?.map((child: any, index: number) => (
-          <RichTextNode key={index} node={child} />
-        ))}
-      </p>
-    )
-  }
-
-  // Headings
-  if (type === 'heading') {
-    const level = props.tag || '2'
-    const headingProps = { className: 'font-bold mb-4 mt-8' }
-    const headingChildren = children?.map((child: any, index: number) => (
-      <RichTextNode key={index} node={child} />
-    ))
-
-    switch (level) {
-      case '1': return <h1 {...headingProps}>{headingChildren}</h1>
-      case '2': return <h2 {...headingProps}>{headingChildren}</h2>
-      case '3': return <h3 {...headingProps}>{headingChildren}</h3>
-      case '4': return <h4 {...headingProps}>{headingChildren}</h4>
-      case '5': return <h5 {...headingProps}>{headingChildren}</h5>
-      case '6': return <h6 {...headingProps}>{headingChildren}</h6>
-      default: return <h2 {...headingProps}>{headingChildren}</h2>
-    }
-  }
-
-  // Text nodes
-  if (type === 'text') {
-    let textContent = props.text || ''
-
-    // Apply formatting
-    if (props.format) {
-      const formats = typeof props.format === 'number' ? [props.format] : props.format
-
-      if (formats.includes(1) || props.bold) {
-        textContent = <strong>{textContent}</strong>
-      }
-      if (formats.includes(2) || props.italic) {
-        textContent = <em>{textContent}</em>
-      }
-      if (formats.includes(4) || props.underline) {
-        textContent = <u>{textContent}</u>
-      }
-      if (formats.includes(8) || props.strikethrough) {
-        textContent = <s>{textContent}</s>
-      }
-      if (formats.includes(16) || props.code) {
-        textContent = <code className="bg-gray-100 px-1 rounded">{textContent}</code>
-      }
-    }
-
-    return <>{textContent}</>
-  }
-
-  // Links
-  if (type === 'link') {
-    return (
-      <a
-        href={props.url}
-        target={props.newTab ? '_blank' : undefined}
-        rel={props.newTab ? 'noopener noreferrer' : undefined}
-        className="text-gold-500 hover:text-gold-600 underline"
-      >
-        {children?.map((child: any, index: number) => (
-          <RichTextNode key={index} node={child} />
-        ))}
-      </a>
-    )
-  }
-
-  // Lists
-  if (type === 'list') {
-    const ListTag = props.listType === 'number' ? 'ol' : 'ul'
-    return (
-      <ListTag className="mb-4 ml-6 list-disc">
-        {children?.map((child: any, index: number) => (
-          <RichTextNode key={index} node={child} />
-        ))}
-      </ListTag>
-    )
-  }
-
-  // List items
-  if (type === 'listitem') {
-    return (
-      <li className="mb-2">
-        {children?.map((child: any, index: number) => (
-          <RichTextNode key={index} node={child} />
-        ))}
-      </li>
-    )
-  }
-
-  // Blockquote
-  if (type === 'quote') {
-    return (
-      <blockquote className="border-l-4 border-gold-500 pl-4 italic my-6">
-        {children?.map((child: any, index: number) => (
-          <RichTextNode key={index} node={child} />
-        ))}
-      </blockquote>
-    )
-  }
-
-  // Code block
-  if (type === 'code') {
-    return (
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-6">
-        <code>
-          {children?.map((child: any, index: number) => (
-            <RichTextNode key={index} node={child} />
-          ))}
-        </code>
-      </pre>
-    )
-  }
-
-  // Horizontal rule
-  if (type === 'horizontalrule') {
-    return <hr className="my-8 border-gray-300" />
-  }
-
-  // Line break
-  if (type === 'linebreak') {
-    return <br />
-  }
-
-  // Default: render children if available
-  if (children && Array.isArray(children)) {
-    return (
-      <>
-        {children.map((child: any, index: number) => (
-          <RichTextNode key={index} node={child} />
-        ))}
-      </>
-    )
-  }
-
-  // Fallback for unknown types
-  console.warn('Unknown rich text node type:', type)
-  return null
-}
-
-/**
- * Utility to extract plain text from rich text content
- */
-export function extractPlainText(content: RichTextContent): string {
-  if (!content?.root?.children) {
+export function extractPlainText(content: PortableTextBlock[] | null | undefined): string {
+  if (!content || !Array.isArray(content)) {
     return ''
   }
 
-  const extractFromNode = (node: any): string => {
-    if (node.type === 'text') {
-      return node.text || ''
-    }
-
-    if (node.children && Array.isArray(node.children)) {
-      return node.children.map(extractFromNode).join('')
-    }
-
-    return ''
-  }
-
-  return content.root.children.map(extractFromNode).join(' ')
+  return content
+    .filter((block) => block._type === 'block')
+    .map((block) => {
+      if (!block.children) return ''
+      return (block.children as Array<{ text?: string }>)
+        .map((child) => child.text || '')
+        .join('')
+    })
+    .join(' ')
 }
 
 /**
  * Utility to truncate rich text content to a specific length
  */
 export function truncateRichText(
-  content: RichTextContent,
-  maxLength: number
+  content: PortableTextBlock[] | null | undefined,
+  maxLength: number,
 ): string {
   const plainText = extractPlainText(content)
 

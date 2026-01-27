@@ -46,12 +46,8 @@
       "@/components/*": ["./src/components/*"],
       "@/lib/*": ["./src/lib/*"],
       "@/utilities/*": ["./src/utilities/*"],
-      "@/collections/*": ["./src/collections/*"],
-      "@/blocks/*": ["./src/blocks/*"],
-      "@/fields/*": ["./src/fields/*"],
-      "@/globals/*": ["./src/globals/*"],
-      "@/designs/*": ["./src/designs/*"],
-      "@payload-config": ["./src/payload.config.ts"]
+      "@/sanity/*": ["./src/sanity/*"],
+      "@/designs/*": ["./src/designs/*"]
     }
   },
   "include": [

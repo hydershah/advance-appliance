@@ -1,9 +1,10 @@
 /**
  * Block Renderer Component
- * Renders PayloadCMS blocks using the appropriate design components
+ * Renders Sanity CMS blocks using the appropriate design components
  */
 
 import type {
+  PageBlock,
   HeroBlock,
   ContentBlock,
   CTABlock,
@@ -12,18 +13,10 @@ import type {
   FAQBlock,
   Service,
   Testimonial,
-  Media,
-} from '@/payload-types'
+} from '@/sanity/types'
+import { urlFor } from '@/sanity/image'
 import { getDesignComponents, getCurrentDesignTheme, type DesignTheme } from '@/lib/getDesignComponents'
 import { RichText } from '@/components/RichText'
-
-type PageBlock =
-  | HeroBlock
-  | ContentBlock
-  | CTABlock
-  | FeaturedServicesBlock
-  | TestimonialsBlock
-  | FAQBlock
 
 interface BlockRendererProps {
   blocks: PageBlock[] | null | undefined
@@ -44,7 +37,7 @@ export function BlockRenderer({ blocks, designTheme }: BlockRendererProps) {
   return (
     <>
       {blocks.map((block, index) => (
-        <Block key={block.id || index} block={block} components={components} />
+        <Block key={block._key || index} block={block} components={components} />
       ))}
     </>
   )
@@ -60,28 +53,40 @@ function Block({
   block: PageBlock
   components: ReturnType<typeof getDesignComponents>
 }) {
-  switch (block.blockType) {
-    case 'hero':
+  switch (block._type) {
+    case 'heroBlock':
       return <HeroBlockRenderer block={block} components={components} />
 
-    case 'content':
+    case 'contentBlock':
       return <ContentBlockRenderer block={block} />
 
-    case 'cta':
+    case 'ctaBlock':
       return <CTABlockRenderer block={block} components={components} />
 
-    case 'featuredServices':
+    case 'featuredServicesBlock':
       return <FeaturedServicesBlockRenderer block={block} components={components} />
 
-    case 'testimonials':
+    case 'testimonialsBlock':
       return <TestimonialsBlockRenderer block={block} components={components} />
 
-    case 'faq':
+    case 'faqBlock':
       return <FAQBlockRenderer block={block} components={components} />
 
     default:
-      console.warn('Unknown block type:', (block as any).blockType)
+      console.warn('Unknown block type:', (block as any)._type)
       return null
+  }
+}
+
+/**
+ * Helper to get image URL from Sanity image source
+ */
+function getImageUrl(image: any): string | undefined {
+  if (!image || !image.asset) return undefined
+  try {
+    return urlFor(image).url()
+  } catch {
+    return undefined
   }
 }
 
@@ -130,16 +135,13 @@ function HeroBlockRenderer({
     )
   }
 
-  const backgroundImage =
-    typeof block.backgroundImage === 'object' && block.backgroundImage !== null
-      ? (block.backgroundImage as Media).url
-      : block.backgroundImage
+  const backgroundImage = getImageUrl(block.backgroundImage)
 
   return (
     <Hero
       heading={block.heading}
       subheading={block.subheading}
-      backgroundImage={backgroundImage || undefined}
+      backgroundImage={backgroundImage}
       ctaText={block.ctaText}
       ctaLink={block.ctaLink}
       secondaryCtaText={block.secondaryCtaText}
@@ -221,15 +223,9 @@ function FeaturedServicesBlockRenderer({
   components: ReturnType<typeof getDesignComponents>
 }) {
   const { ServiceCard, SectionHeading } = components
+  const services = (block.services || []).filter(Boolean) as Service[]
 
-  const services =
-    block.services
-      ?.map((s) => (typeof s === 'object' ? (s as Service) : null))
-      .filter(Boolean) || []
-
-  if (services.length === 0) {
-    return null
-  }
+  if (services.length === 0) return null
 
   return (
     <section className="py-16 px-4 bg-gray-50">
@@ -245,42 +241,30 @@ function FeaturedServicesBlockRenderer({
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => {
             if (!service) return null
-
-            const serviceImage =
-              typeof service.image === 'object' && service.image !== null
-                ? (service.image as Media).url
-                : service.image
+            const serviceImage = getImageUrl(service.image)
+            const slug = typeof service.slug === 'object' ? service.slug.current : service.slug
 
             return ServiceCard ? (
               <ServiceCard
-                key={service.id}
+                key={service._id}
                 title={service.name}
                 description={service.excerpt || ''}
-                image={serviceImage || undefined}
-                href={`/services/${service.slug}`}
+                image={serviceImage}
+                href={`/services/${slug}`}
                 icon={service.icon}
               />
             ) : (
               <div
-                key={service.id}
+                key={service._id}
                 className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
               >
                 {serviceImage && (
-                  <img
-                    src={serviceImage}
-                    alt={service.name}
-                    className="w-full h-48 object-cover"
-                  />
+                  <img src={serviceImage} alt={service.name} className="w-full h-48 object-cover" />
                 )}
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">{service.name}</h3>
-                  {service.excerpt && (
-                    <p className="text-gray-600 mb-4">{service.excerpt}</p>
-                  )}
-                  <a
-                    href={`/services/${service.slug}`}
-                    className="text-gold-500 hover:text-gold-600 font-semibold"
-                  >
+                  {service.excerpt && <p className="text-gray-600 mb-4">{service.excerpt}</p>}
+                  <a href={`/services/${slug}`} className="text-gold-500 hover:text-gold-600 font-semibold">
                     Learn More →
                   </a>
                 </div>
@@ -304,15 +288,9 @@ function TestimonialsBlockRenderer({
   components: ReturnType<typeof getDesignComponents>
 }) {
   const { TestimonialCard, SectionHeading } = components
+  const testimonials = (block.testimonials || []).filter(Boolean) as Testimonial[]
 
-  const testimonials =
-    block.testimonials
-      ?.map((t) => (typeof t === 'object' ? (t as Testimonial) : null))
-      .filter(Boolean) || []
-
-  if (testimonials.length === 0) {
-    return null
-  }
+  if (testimonials.length === 0) return null
 
   return (
     <section className="py-16 px-4">
@@ -328,10 +306,9 @@ function TestimonialsBlockRenderer({
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => {
             if (!testimonial) return null
-
             return TestimonialCard ? (
               <TestimonialCard
-                key={testimonial.id}
+                key={testimonial._id}
                 name={testimonial.customerName}
                 content={testimonial.content}
                 rating={testimonial.rating}
@@ -339,34 +316,16 @@ function TestimonialsBlockRenderer({
                 date={testimonial.date}
               />
             ) : (
-              <div
-                key={testimonial.id}
-                className="bg-white rounded-lg shadow-lg p-6"
-              >
+              <div key={testimonial._id} className="bg-white rounded-lg shadow-lg p-6">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <span
-                      key={i}
-                      className={`text-xl ${
-                        i < testimonial.rating
-                          ? 'text-gold-500'
-                          : 'text-gray-300'
-                      }`}
-                    >
-                      ★
-                    </span>
+                    <span key={i} className={`text-xl ${i < testimonial.rating ? 'text-gold-500' : 'text-gray-300'}`}>★</span>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4 italic">
-                  &ldquo;{testimonial.content}&rdquo;
-                </p>
+                <p className="text-gray-700 mb-4 italic">&ldquo;{testimonial.content}&rdquo;</p>
                 <div className="border-t pt-4">
                   <p className="font-semibold">{testimonial.customerName}</p>
-                  {testimonial.location && (
-                    <p className="text-sm text-gray-600">
-                      {testimonial.location}
-                    </p>
-                  )}
+                  {testimonial.location && <p className="text-sm text-gray-600">{testimonial.location}</p>}
                 </div>
               </div>
             )
@@ -389,9 +348,7 @@ function FAQBlockRenderer({
 }) {
   const { FAQAccordion, SectionHeading } = components
 
-  if (!block.faqs || block.faqs.length === 0) {
-    return null
-  }
+  if (!block.faqs || block.faqs.length === 0) return null
 
   return (
     <section className="py-16 px-4">
@@ -409,10 +366,7 @@ function FAQBlockRenderer({
         ) : (
           <div className="space-y-4">
             {block.faqs.map((faq, index) => (
-              <details
-                key={faq.id || index}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
-              >
+              <details key={faq._key || index} className="bg-white rounded-lg shadow-md overflow-hidden">
                 <summary className="px-6 py-4 font-semibold cursor-pointer hover:bg-gray-50 transition-colors">
                   {faq.question}
                 </summary>

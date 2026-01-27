@@ -1,11 +1,12 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
-import { JsonLd, generateServiceSchema } from '@/components/JsonLd'
+import { fetchServiceAreaBySlug, fetchSettings, fetchAllServiceAreas } from '@/sanity/fetchers'
+import { urlFor } from '@/sanity/image'
+import type { Service } from '@/sanity/types'
+import { JsonLd } from '@/components/JsonLd'
 import { RichText } from '@/components/RichText'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
-import type { Media, Service } from '@/payload-types'
 import { AreaPage as Design1AreaPage } from '@/designs/design1/pages'
 import { serviceAreas } from '@/designs/design1/data/content'
 
@@ -31,18 +32,10 @@ export async function generateStaticParams() {
   }))
 
   try {
-    const payload = await getPayloadClient()
+    const areas = await fetchAllServiceAreas()
 
-    const areas = await payload.find({
-      collection: 'service-areas',
-      where: {
-        status: { equals: 'published' },
-      },
-      limit: 100,
-    })
-
-    const dbParams = areas.docs.map((area) => ({
-      slug: area.slug,
+    const dbParams = areas.map((area) => ({
+      slug: typeof area.slug === 'object' ? area.slug.current : area.slug,
     }))
 
     // Merge, preferring DB entries but including all static ones
@@ -55,7 +48,7 @@ export async function generateStaticParams() {
     }
     return merged
   } catch {
-    // Database may not exist during build (e.g., Docker)
+    // CMS may not be available during build
     return staticParams
   }
 }
@@ -65,30 +58,20 @@ export async function generateMetadata({
 }: ServiceAreaPageProps): Promise<Metadata> {
   const { slug } = await params
 
-  // Try database first
+  // Try Sanity first
   try {
-    const payload = await getPayloadClient()
-
-    const areaResult = await payload.find({
-      collection: 'service-areas',
-      where: {
-        slug: { equals: slug },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-    })
-
-    const area = areaResult.docs[0]
+    const area = await fetchServiceAreaBySlug(slug)
 
     if (area) {
-      const title = area.meta?.seo?.title || `${area.name} - Service Area`
-      const description = area.meta?.seo?.description || area.excerpt || ''
-      const image =
-        typeof area.meta?.seo?.image === 'object' && area.meta?.seo?.image !== null
-          ? (area.meta.seo.image as Media).url
-          : typeof area.image === 'object' && area.image !== null
-          ? (area.image as Media).url
-          : undefined
+      const title = area.meta?.seo?.title || area.seo?.title || `${area.name} - Service Area`
+      const description = area.meta?.seo?.description || area.seo?.description || area.excerpt || ''
+
+      const seoImage = area.meta?.seo?.image || area.seo?.image
+      const image = seoImage
+        ? urlFor(seoImage).url()
+        : area.image
+        ? urlFor(area.image).url()
+        : undefined
 
       return {
         title,
@@ -106,7 +89,7 @@ export async function generateMetadata({
       }
     }
   } catch {
-    // Database unavailable, fall through to static
+    // CMS unavailable, fall through to static
   }
 
   // Fallback to static data
@@ -130,25 +113,16 @@ export async function generateMetadata({
 export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) {
   const { slug } = await params
 
-  // Try database first
+  // Try Sanity first
   let area: any = null
-  let payload: any = null
+  let settings: any = null
   try {
-    payload = await getPayloadClient()
-
-    const areaResult = await payload.find({
-      collection: 'service-areas',
-      where: {
-        slug: { equals: slug },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-      depth: 2,
-    })
-
-    area = areaResult.docs[0]
+    area = await fetchServiceAreaBySlug(slug)
+    if (area) {
+      settings = await fetchSettings()
+    }
   } catch {
-    // Database unavailable, fall through to static
+    // CMS unavailable, fall through to static
   }
 
   // Fallback to static data
@@ -160,21 +134,11 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
     notFound()
   }
 
-  // Ensure payload is available for DB-sourced areas
-  if (!payload) {
-    payload = await getPayloadClient()
-  }
-
   // Fetch services for this area
   const areaServices =
     area.services
-      ?.map((s: string | Service) => (typeof s === 'object' ? (s as Service) : null))
-      .filter((s: Service | null): s is Service => s !== null) || []
-
-  // Fetch site settings
-  const settings = await payload.findGlobal({
-    slug: 'settings',
-  })
+      ?.filter((s: Service | null): s is Service => s !== null && typeof s === 'object')
+      || []
 
   // Get current design theme
   const designTheme = getCurrentDesignTheme()
@@ -182,17 +146,19 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
   const { Header, Footer, ServiceCard } = components
 
   // Generate Service schema for the area
-  const serviceSchema = generateServiceSchema({
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
     name: `Appliance Repair in ${area.name}`,
     description: area.excerpt || undefined,
-    providerName: settings.siteName,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: settings.siteName,
+    },
     areaServed: area.name,
-  })
+  }
 
-  const areaImage =
-    typeof area.image === 'object' && area.image !== null
-      ? (area.image as Media).url
-      : area.image
+  const areaImage = area.image ? urlFor(area.image).url() : null
 
   return (
     <>
@@ -256,9 +222,9 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
                 Neighborhoods We Serve
               </h2>
               <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {area.neighborhoods.map((neighborhood: { name: string; id?: string | null }, index: number) => (
+                {area.neighborhoods.map((neighborhood: { name: string; _key?: string }, index: number) => (
                   <div
-                    key={neighborhood.id || index}
+                    key={neighborhood._key || index}
                     className="bg-white rounded-lg p-6 shadow-md text-center hover:shadow-lg transition-shadow"
                   >
                     <svg
@@ -293,24 +259,27 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
                 {areaServices.map((service: Service) => {
                   if (!service) return null
 
-                  const serviceImage =
-                    typeof service.image === 'object' && service.image !== null
-                      ? (service.image as Media).url
-                      : service.image
+                  const serviceImage = service.image
+                    ? urlFor(service.image).url()
+                    : null
+
+                  const serviceSlug = typeof service.slug === 'object'
+                    ? service.slug.current
+                    : service.slug
 
                   return ServiceCard ? (
                     <ServiceCard
-                      key={service.id}
+                      key={service._id}
                       title={service.name}
                       description={service.excerpt || ''}
                       image={serviceImage || undefined}
-                      href={`/services/${service.slug}`}
+                      href={`/services/${serviceSlug}`}
                       icon={service.icon || undefined}
                     />
                   ) : (
                     <Link
-                      key={service.id}
-                      href={`/services/${service.slug}`}
+                      key={service._id}
+                      href={`/services/${serviceSlug}`}
                       className="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                     >
                       {serviceImage && (

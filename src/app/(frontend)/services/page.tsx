@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
+import { fetchAllServices, fetchSettings } from '@/sanity/fetchers'
+import { urlFor } from '@/sanity/image'
 import { JsonLd } from '@/components/JsonLd'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
-import type { Media } from '@/payload-types'
 
 // Import static design pages for fallback when CMS is unavailable
 import { Services as Design1Services } from '@/designs/design1/pages'
@@ -11,9 +11,6 @@ import { Services as Design1Services } from '@/designs/design1/pages'
 /**
  * Services Listing Page - Server Component
  */
-
-// Prevent pre-rendering during build (database may not exist)
-export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Our Services',
@@ -26,24 +23,11 @@ export default async function ServicesPage() {
   const designTheme = getCurrentDesignTheme()
 
   try {
-    const payload = await getPayloadClient()
-
     // Fetch all published services
-    const servicesResult = await payload.find({
-      collection: 'services',
-      where: {
-        status: { equals: 'published' },
-      },
-      limit: 50,
-      sort: 'name',
-    })
-
-    const services = servicesResult.docs
+    const services = await fetchAllServices()
 
     // Fetch site settings
-    const settings = await payload.findGlobal({
-      slug: 'settings',
-    })
+    const settings = await fetchSettings()
 
     const components = getDesignComponents(designTheme)
     const { Header, Footer, ServiceCard } = components
@@ -59,7 +43,7 @@ export default async function ServicesPage() {
         '@type': 'Service' as const,
         name: service.name,
         description: service.excerpt || undefined,
-        url: `${process.env.NEXT_PUBLIC_SERVER_URL}/services/${service.slug}`,
+        url: `${process.env.NEXT_PUBLIC_SERVER_URL}/services/${typeof service.slug === 'object' ? service.slug.current : service.slug}`,
       },
     })),
   }
@@ -88,24 +72,22 @@ export default async function ServicesPage() {
             {services.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {services.map((service) => {
-                  const serviceImage =
-                    typeof service.image === 'object' && service.image !== null
-                      ? (service.image as Media).url
-                      : service.image
+                  const serviceSlug = typeof service.slug === 'object' ? service.slug.current : service.slug
+                  const serviceImage = service.image ? urlFor(service.image).url() : undefined
 
                   return ServiceCard ? (
                     <ServiceCard
-                      key={service.id}
+                      key={service._id}
                       title={service.name}
                       description={service.excerpt || ''}
                       image={serviceImage || undefined}
-                      href={`/services/${service.slug}`}
+                      href={`/services/${serviceSlug}`}
                       icon={service.icon || undefined}
                     />
                   ) : (
                     <Link
-                      key={service.id}
-                      href={`/services/${service.slug}`}
+                      key={service._id}
+                      href={`/services/${serviceSlug}`}
                       className="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                     >
                       {serviceImage && (
@@ -195,7 +177,7 @@ export default async function ServicesPage() {
     </>
   )
   } catch {
-    // Database unavailable - fall back to static design
+    // CMS unavailable - fall back to static design
     return <Design1Services />
   }
 }

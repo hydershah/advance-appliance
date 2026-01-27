@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
-import type { Where } from 'payload'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
+import { client } from '@/sanity/client'
+import { writeClient } from '@/sanity/client'
 import {
   successResponse,
   errorResponse,
@@ -10,87 +10,95 @@ import {
   generateSlug,
   validateRequiredFields,
 } from '@/utilities/apiHelpers'
-import type { CreateBlogPostInput, BlogPostListItem } from '@/payload-types'
+
+interface CreateBlogPostInput {
+  title: string
+  content: string
+  slug?: string
+  author?: string
+  excerpt?: string
+  categories?: string[]
+  tags?: string[]
+  status?: 'published' | 'draft'
+  publishedDate?: string
+  meta?: {
+    title?: string
+    description?: string
+    keywords?: string
+  }
+}
 
 /**
  * GET /api/blog
  * List blog posts with pagination and optional filtering
- *
- * Query Parameters:
- * - page: Page number (default: 1)
- * - limit: Items per page (default: 10, max: 100)
- * - category: Filter by category
- * - tag: Filter by tag
- * - status: Filter by status (published/draft) - requires auth
- *
- * Response: Paginated list of blog posts
  */
 export async function GET(request: NextRequest) {
   try {
-    const payload = await getPayloadClient()
     const searchParams = request.nextUrl.searchParams
     const { page, limit } = getPaginationParams(searchParams)
 
     const category = searchParams.get('category')
     const tag = searchParams.get('tag')
 
-    // Build query conditions
-    const where: Where = {
-      status: { equals: 'published' },
-    }
+    // Build GROQ filter
+    let filter = `_type == "blogPost"`
 
     // Only allow status filtering for authenticated requests
     const apiKey = request.headers.get('x-api-key')
     if (apiKey && validateApiKey(request)) {
       const statusFilter = searchParams.get('status')
-      if (statusFilter === 'draft' || statusFilter === 'published') {
-        where.status = { equals: statusFilter }
-      } else if (statusFilter === 'all') {
-        delete where.status
+      if (statusFilter === 'draft') {
+        filter += ` && status == "draft"`
+      } else if (statusFilter === 'published') {
+        filter += ` && status == "published"`
       }
+      // 'all' = no status filter
+    } else {
+      filter += ` && status == "published"`
     }
 
-    // Category filter
     if (category) {
-      where['categories.category'] = { contains: category }
+      filter += ` && "${category}" in categories`
     }
 
-    // Tag filter
     if (tag) {
-      where['tags.tag'] = { contains: tag }
+      filter += ` && "${tag}" in tags`
     }
 
-    const result = await payload.find({
-      collection: 'blog-posts',
-      where,
-      page,
-      limit,
-      sort: '-publishedDate',
-      depth: 1,
-    })
+    const start = (page - 1) * limit
+    const end = start + limit
 
-    // Transform docs to list items
-    const posts: BlogPostListItem[] = result.docs.map((doc) => ({
-      id: doc.id,
+    const [posts, total] = await Promise.all([
+      client.fetch(
+        `*[${filter}] | order(publishedDate desc) [${start}...${end}]{
+          _id, title, slug, excerpt, author, publishedDate,
+          featuredImage{..., asset->}, categories, tags
+        }`
+      ),
+      client.fetch(`count(*[${filter}])`),
+    ])
+
+    const transformedPosts = posts.map((doc: Record<string, unknown>) => ({
+      id: doc._id,
       title: doc.title,
-      slug: doc.slug,
+      slug: typeof doc.slug === 'object' && doc.slug !== null ? (doc.slug as { current: string }).current : doc.slug,
       excerpt: doc.excerpt,
       author: doc.author,
       publishedDate: doc.publishedDate,
       featuredImage: doc.featuredImage
         ? {
-            url: typeof doc.featuredImage === 'object' ? doc.featuredImage.url : null,
-            alt: typeof doc.featuredImage === 'object' ? doc.featuredImage.alt : '',
+            url: (doc.featuredImage as { asset?: { url?: string } })?.asset?.url || null,
+            alt: '',
           }
         : null,
-      categories: doc.categories?.map((c: { category: string }) => c.category) || [],
-      tags: doc.tags?.map((t: { tag: string }) => t.tag) || [],
+      categories: (doc.categories as string[]) || [],
+      tags: (doc.tags as string[]) || [],
     }))
 
-    return successResponse(posts, {
-      page: result.page,
-      limit: result.limit,
-      total: result.totalDocs,
+    return successResponse(transformedPosts, {
+      page,
+      limit,
+      total,
     })
   } catch (error) {
     console.error('Error fetching blog posts:', error)
@@ -105,17 +113,9 @@ export async function GET(request: NextRequest) {
 /**
  * POST /api/blog
  * Create a new blog post
- *
- * Headers:
- * - x-api-key: API key for authentication (required)
- *
- * Body: CreateBlogPostInput
- *
- * Response: Created blog post
  */
 export async function POST(request: NextRequest) {
   try {
-    // Validate API key
     if (!validateApiKey(request)) {
       return errorResponse(
         'UNAUTHORIZED',
@@ -124,7 +124,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Parse request body
     let body: CreateBlogPostInput
     try {
       body = await request.json()
@@ -136,7 +135,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate required fields
     const { valid, missing } = validateRequiredFields(body, ['title', 'content'])
     if (!valid) {
       return errorResponse(
@@ -147,19 +145,15 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const payload = await getPayloadClient()
-
-    // Generate slug if not provided
     const slug = body.slug || generateSlug(body.title)
 
     // Check for duplicate slug
-    const existingPost = await payload.find({
-      collection: 'blog-posts',
-      where: { slug: { equals: slug } },
-      limit: 1,
-    })
+    const existing = await client.fetch(
+      `count(*[_type == "blogPost" && slug.current == $slug])`,
+      { slug },
+    )
 
-    if (existingPost.docs.length > 0) {
+    if (existing > 0) {
       return errorResponse(
         'DUPLICATE_SLUG',
         'A blog post with this slug already exists',
@@ -168,57 +162,49 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Create the blog post
-    const post = await payload.create({
-      collection: 'blog-posts',
-      data: {
-        title: body.title,
-        slug,
-        author: body.author || null,
-        excerpt: body.excerpt || null,
-        content: {
-          root: {
-            type: 'root',
-            children: [
-              {
-                type: 'paragraph',
-                version: 1,
-                children: [
-                  {
-                    type: 'text',
-                    text: body.content,
-                    version: 1,
-                  },
-                ],
-              },
-            ],
-            direction: 'ltr',
-            format: '',
-            indent: 0,
-            version: 1,
-          },
+    // Create the blog post via Sanity mutation
+    const post = await writeClient.create({
+      _type: 'blogPost',
+      title: body.title,
+      slug: { _type: 'slug', current: slug },
+      author: body.author || null,
+      excerpt: body.excerpt || null,
+      content: [
+        {
+          _type: 'block',
+          _key: Math.random().toString(36).substring(2, 9),
+          style: 'normal',
+          markDefs: [],
+          children: [
+            {
+              _type: 'span',
+              _key: Math.random().toString(36).substring(2, 9),
+              text: body.content,
+              marks: [],
+            },
+          ],
         },
-        categories: body.categories?.map((category) => ({ category })) || [],
-        tags: body.tags?.map((tag) => ({ tag })) || [],
-        status: body.status || 'draft',
-        publishedDate: body.publishedDate || (body.status === 'published' ? new Date().toISOString() : null),
-        meta: body.meta
-          ? {
-              seo: {
-                title: body.meta.title,
-                description: body.meta.description,
-                keywords: body.meta.keywords,
-              },
-            }
-          : undefined,
-      },
+      ],
+      categories: body.categories || [],
+      tags: body.tags || [],
+      status: body.status || 'draft',
+      publishedDate:
+        body.publishedDate ||
+        (body.status === 'published' ? new Date().toISOString() : null),
+      seo: body.meta
+        ? {
+            title: body.meta.title,
+            description: body.meta.description,
+            keywords: body.meta.keywords,
+          }
+        : undefined,
     })
 
     return successResponse(
       {
-        id: post.id,
+        id: post._id,
         title: post.title,
-        slug: post.slug,
+        slug: slug,
         status: post.status,
         publishedDate: post.publishedDate,
       },

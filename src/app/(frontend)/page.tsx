@@ -1,55 +1,40 @@
 import { Metadata } from 'next'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
+import { fetchPageBySlug, fetchSettings } from '@/sanity/fetchers'
+import { urlFor } from '@/sanity/image'
 import { JsonLd } from '@/components/JsonLd'
 import { BlockRenderer } from '@/components/BlockRenderer'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
-import type { Media } from '@/payload-types'
 
 // Import static design pages for fallback when no CMS content exists
 import { Home as Design1Home } from '@/designs/design1/pages'
 
 /**
  * Homepage - Server Component
- * Renders the home page with content from PayloadCMS
+ * Renders the home page with content from Sanity CMS
  */
-
-// Prevent pre-rendering during build (database may not exist)
-export const dynamic = 'force-dynamic'
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const payload = await getPayloadClient()
-
-    const settings = await payload.findGlobal({
-      slug: 'settings',
-    })
-
-    const pageResult = await payload.find({
-      collection: 'pages',
-      where: {
-        slug: { equals: 'home' },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-    })
-
-    const page = pageResult.docs[0]
+    const settings = await fetchSettings()
+    const page = await fetchPageBySlug('home')
 
     // Use page meta if available, otherwise fall back to settings
-    const title = page?.meta?.seo?.title || settings.seo?.defaultTitle || settings.siteName
+    const title = page?.seo?.title || page?.meta?.seo?.title || settings.seo?.defaultTitle || settings.siteName
     const description =
+      page?.seo?.description ||
       page?.meta?.seo?.description ||
       settings.seo?.defaultDescription ||
       settings.tagline ||
       ''
 
-    const image =
-      typeof page?.meta?.seo?.image === 'object' && page?.meta?.seo?.image !== null
-        ? (page.meta.seo.image as Media).url
-        : typeof settings.seo?.defaultImage === 'object' &&
-          settings.seo?.defaultImage !== null
-        ? (settings.seo.defaultImage as Media).url
-        : '/og-image.jpg'
+    const seoImage = page?.seo?.image || page?.meta?.seo?.image
+    const defaultImage = settings.seo?.defaultImage
+
+    const image = seoImage
+      ? urlFor(seoImage).url()
+      : defaultImage
+      ? urlFor(defaultImage).url()
+      : '/og-image.jpg'
 
     return {
       title,
@@ -66,7 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     }
   } catch {
-    // Database unavailable - return default metadata
+    // CMS unavailable - return default metadata
     return {
       title: 'Advanced Appliance Repair Service | Expert Repair in NJ',
       description: 'Professional luxury appliance repair services in Monmouth & Middlesex Counties, NJ. Expert technicians, same-day service available.',
@@ -79,25 +64,12 @@ export default async function HomePage() {
   const designTheme = getCurrentDesignTheme()
 
   try {
-    const payload = await getPayloadClient()
+    // Fetch home page content and settings from Sanity
+    const [page, settings] = await Promise.all([
+      fetchPageBySlug('home'),
+      fetchSettings(),
+    ])
 
-    // Fetch home page content
-    const pageResult = await payload.find({
-      collection: 'pages',
-      where: {
-        slug: { equals: 'home' },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-      depth: 2,
-    })
-
-    // Fetch site settings
-    const settings = await payload.findGlobal({
-      slug: 'settings',
-    })
-
-    const page = pageResult.docs[0]
     const components = getDesignComponents(designTheme)
     const { Header, Footer } = components
 
@@ -163,7 +135,7 @@ export default async function HomePage() {
       </>
     )
   } catch {
-    // Database unavailable - fall back to static design
+    // CMS unavailable - fall back to static design
     return <Design1Home />
   }
 }

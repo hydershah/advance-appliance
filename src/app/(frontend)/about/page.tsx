@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
+import { fetchPageBySlug, fetchSettings } from '@/sanity/fetchers'
 import { JsonLd } from '@/components/JsonLd'
 import { BlockRenderer } from '@/components/BlockRenderer'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
@@ -11,9 +11,6 @@ import { About as Design1About } from '@/designs/design1/pages'
 /**
  * About Page - Server Component
  */
-
-// Prevent pre-rendering during build (database may not exist)
-export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -26,25 +23,11 @@ export default async function AboutPage() {
   const designTheme = getCurrentDesignTheme()
 
   try {
-    const payload = await getPayloadClient()
-
     // Try to fetch an "about" page from CMS
-    const pageResult = await payload.find({
-      collection: 'pages',
-      where: {
-        slug: { equals: 'about' },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-      depth: 2,
-    })
-
-    const page = pageResult.docs[0]
+    const page = await fetchPageBySlug('about')
 
     // Fetch site settings
-    const settings = await payload.findGlobal({
-      slug: 'settings',
-    })
+    const settings = await fetchSettings()
 
     const components = getDesignComponents(designTheme)
     const { Header, Footer } = components
@@ -248,7 +231,7 @@ export default async function AboutPage() {
     </>
   )
   } catch {
-    // Database unavailable - fall back to static design
+    // CMS unavailable - fall back to static design
     return <Design1About />
   }
 }

@@ -1,4 +1,3 @@
-export { getPayloadClient } from './getPayloadClient'
 export {
   successResponse,
   errorResponse,

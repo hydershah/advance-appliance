@@ -1,4 +1,3 @@
-import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
@@ -16,6 +15,10 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
       {
         protocol: 'https',
         hostname: 'images.pexels.com',
@@ -87,31 +90,15 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/admin',
-        destination: '/admin/collections/pages',
+        destination: '/studio',
         permanent: false,
       },
     ]
   },
 
-  // Webpack configuration
-  webpack: (config, { isServer }) => {
-    // Fix for canvas module
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        canvas: false,
-        encoding: false,
-      }
-    }
-    return config
-  },
-
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
-
-  // Turbopack compatibility
-  transpilePackages: ['@payloadcms/next'],
 
   // Environment variables available to the client
   env: {
@@ -119,4 +106,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withPayload(nextConfig)
+export default nextConfig

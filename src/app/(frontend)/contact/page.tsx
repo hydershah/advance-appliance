@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
+import { fetchSettings } from '@/sanity/fetchers'
 import { JsonLd } from '@/components/JsonLd'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
 
@@ -9,9 +9,6 @@ import { Contact as Design1Contact } from '@/designs/design1/pages'
 /**
  * Contact Page - Server Component
  */
-
-// Prevent pre-rendering during build (database may not exist)
-export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -24,12 +21,8 @@ export default async function ContactPage() {
   const designTheme = getCurrentDesignTheme()
 
   try {
-    const payload = await getPayloadClient()
-
     // Fetch site settings
-    const settings = await payload.findGlobal({
-      slug: 'settings',
-    })
+    const settings = await fetchSettings()
 
     const components = getDesignComponents(designTheme)
     const { Header, Footer, ContactForm } = components
@@ -406,7 +399,7 @@ export default async function ContactPage() {
     </>
   )
   } catch {
-    // Database unavailable - fall back to static design
+    // CMS unavailable - fall back to static design
     return <Design1Contact />
   }
 }

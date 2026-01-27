@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import type { APIError, APISuccessResponse } from '@/payload-types'
+import type { APIErrorResponse as APIError, APISuccessResponse } from '@/lib/api'
 
 /**
  * Standard HTTP status codes

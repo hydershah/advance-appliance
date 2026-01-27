@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getPayloadClient } from '@/utilities/getPayloadClient'
+import { fetchAllPages, fetchPageBySlug, fetchSettings } from '@/sanity/fetchers'
+import { urlFor } from '@/sanity/image'
 import { JsonLd } from '@/components/JsonLd'
 import { BlockRenderer } from '@/components/BlockRenderer'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
-import type { Media } from '@/payload-types'
 
 // Import static page components for fallbacks
 import { BrandPage as Design1BrandPage, AreaPage as Design1AreaPage, BlogPost as Design1BlogPost } from '@/designs/design1/pages'
@@ -38,22 +38,18 @@ function findBlogPostBySlug(slug: string) {
 
 export async function generateStaticParams() {
   try {
-    const payload = await getPayloadClient()
+    const pages = await fetchAllPages()
 
-    const pages = await payload.find({
-      collection: 'pages',
-      where: {
-        status: { equals: 'published' },
-        slug: { not_equals: 'home' }, // Exclude home page
-      },
-      limit: 100,
-    })
-
-    return pages.docs.map((page) => ({
-      slug: [page.slug],
-    }))
+    return pages
+      .filter((page) => {
+        const slug = typeof page.slug === 'object' ? page.slug.current : page.slug
+        return slug !== 'home'
+      })
+      .map((page) => ({
+        slug: [typeof page.slug === 'object' ? page.slug.current : page.slug],
+      }))
   } catch {
-    // Database may not exist during build (e.g., Docker)
+    // CMS may not be available during build
     return []
   }
 }
@@ -104,18 +100,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // Try CMS page
   try {
-    const payload = await getPayloadClient()
-
-    const pageResult = await payload.find({
-      collection: 'pages',
-      where: {
-        slug: { equals: pageSlug },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-    })
-
-    const page = pageResult.docs[0]
+    const page = await fetchPageBySlug(pageSlug)
 
     if (!page) {
       return {
@@ -123,18 +108,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       }
     }
 
-    const settings = await payload.findGlobal({
-      slug: 'settings',
-    })
+    const settings = await fetchSettings()
 
-    const title = page.meta?.seo?.title || page.title
-    const description = page.meta?.seo?.description || ''
-    const image =
-      typeof page.meta?.seo?.image === 'object' && page.meta?.seo?.image !== null
-        ? (page.meta.seo.image as Media).url
-        : typeof settings.seo?.defaultImage === 'object' &&
-          settings.seo?.defaultImage !== null
-        ? (settings.seo.defaultImage as Media).url
+    const seo = page.seo || page.meta?.seo
+    const title = seo?.title || page.title
+    const description = seo?.description || ''
+    const image = seo?.image
+      ? urlFor(seo.image).url()
+      : settings.seo?.defaultImage
+        ? urlFor(settings.seo.defaultImage).url()
         : undefined
 
     return {
@@ -182,29 +164,15 @@ export default async function DynamicPage({ params }: PageProps) {
 
   // Try CMS page
   try {
-    const payload = await getPayloadClient()
-
     // Fetch page content
-    const pageResult = await payload.find({
-      collection: 'pages',
-      where: {
-        slug: { equals: pageSlug },
-        status: { equals: 'published' },
-      },
-      limit: 1,
-      depth: 2,
-    })
-
-    const page = pageResult.docs[0]
+    const page = await fetchPageBySlug(pageSlug)
 
     if (!page) {
       notFound()
     }
 
     // Fetch site settings
-    const settings = await payload.findGlobal({
-      slug: 'settings',
-    })
+    const settings = await fetchSettings()
 
     // Get current design theme
     const designTheme = getCurrentDesignTheme()
@@ -216,10 +184,10 @@ export default async function DynamicPage({ params }: PageProps) {
       '@context': 'https://schema.org' as const,
       '@type': 'WebPage' as const,
       name: page.title,
-      description: page.meta?.seo?.description || undefined,
+      description: (page.seo || page.meta?.seo)?.description || undefined,
       url: `${process.env.NEXT_PUBLIC_SERVER_URL}/${pageSlug}`,
-      datePublished: page.createdAt,
-      dateModified: page.updatedAt,
+      datePublished: page._createdAt,
+      dateModified: page._updatedAt,
     }
 
     return (
@@ -245,7 +213,7 @@ export default async function DynamicPage({ params }: PageProps) {
       </>
     )
   } catch {
-    // Database error - show not found
+    // CMS error - show not found
     notFound()
   }
 }

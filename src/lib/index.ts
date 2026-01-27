@@ -4,9 +4,7 @@
  */
 
 export * from './getDesignComponents'
-export * from './payloadFetchers'
 export * from './utils'
 export * from './api'
 export * from './schema'
 export * from './seo'
-export * from './payload'

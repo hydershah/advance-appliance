@@ -28,6 +28,7 @@ const navigation: NavItem[] = [
       { label: 'Stove Repair', href: '/services/stove-repair' },
     ],
   },
+  { label: 'Our Brands', href: '/our-brands' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact Us', href: '/contact' },
 ];
