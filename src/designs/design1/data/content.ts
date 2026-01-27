@@ -33,7 +33,7 @@ export const businessInfo = {
 export const images = {
   logo: 'https://appliancenj.com/wp-content/uploads/2016/05/logo.png',
   favicon: 'https://appliancenj.com/wp-content/uploads/2016/05/favicon.png',
-  hero: 'https://images.pexels.com/photos/8005397/pexels-photo-8005397.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1',
+  hero: '/njhero-opt.webp',
   hero2: 'https://appliancenj.com/wp-content/uploads/2016/04/slider2.jpg',
   hero3: 'https://appliancenj.com/wp-content/uploads/2016/04/slider3.jpg',
   kitchen: 'https://appliancenj.com/wp-content/uploads/2016/05/repair-nj.jpg',

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { businessInfo } from '../data/content';
 
 interface HeroProps {
@@ -29,7 +30,11 @@ const Hero: React.FC<HeroProps> = ({
 
   return (
     <section className={`relative ${heightClasses[height]} flex items-center overflow-hidden`}>
-      <div className="absolute inset-0 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${image})` }} />
+      {image.startsWith('/') ? (
+        <Image src={image} alt={title} fill className="object-cover" priority sizes="100vw" quality={80} />
+      ) : (
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} />
+      )}
       <div className={`absolute inset-0 ${overlayClasses[overlay]}`} />
       <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#D4AF37]/30 to-transparent" />
       <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-[#D4AF37]/30 to-transparent" />
