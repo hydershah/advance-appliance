@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
       redirectPath = `/services/${slug}`
       break
     case 'service-areas':
-      redirectPath = `/service-areas/${slug}`
+      redirectPath = `/areas/${slug}`
       break
     case 'blog-posts':
       redirectPath = `/blog/${slug}`

@@ -19,7 +19,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
     { question: `How quickly can you respond to emergencies in ${area.name}?`, answer: `For emergencies in ${area.name}, we typically respond within 2-4 hours.` },
     { question: `Do you charge extra for service in ${area.name}?`, answer: `No, there are no additional travel charges for ${area.name}. Our standard $89 diagnostic fee applies.` },
   ];
-  const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Service Areas', url: '/our-service-area' }, { name: area.name, url: `/${area.slug}` }];
+  const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Service Areas', url: '/our-service-area' }, { name: area.name, url: `/areas/${area.slug}` }];
 
   return (
     <>
@@ -110,7 +110,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
             <SectionHeading subtitle="We Also Serve" title="Other Service Areas" align="center" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
               {otherAreas.slice(0, 8).map((a) => (
-                <a key={a.id} href={`/${a.slug}`} className="group p-6 bg-white border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-lg">
+                <a key={a.id} href={`/areas/${a.slug}`} className="group p-6 bg-white border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-lg">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">{a.name}</h3>

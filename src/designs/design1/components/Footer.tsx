@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
             <h3 className="text-[#D4AF37] text-xs uppercase tracking-[0.2em] mb-6">Service Areas</h3>
             <ul className="space-y-3">
               {serviceAreas.slice(0, 8).map((area) => (
-                <li key={area.id}><a href={`/${area.slug}`} className="text-gray-400 text-sm hover:text-white transition-colors">{area.name}</a></li>
+                <li key={area.id}><a href={`/areas/${area.slug}`} className="text-gray-400 text-sm hover:text-white transition-colors">{area.name}</a></li>
               ))}
               <li><a href="/our-service-area" className="text-[#D4AF37] text-sm hover:text-white transition-colors">View All Areas</a></li>
             </ul>

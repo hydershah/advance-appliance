@@ -126,7 +126,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     areasData.docs.forEach((area) => {
       sitemap.push({
-        url: `${baseUrl}/service-areas/${area.slug}`,
+        url: `${baseUrl}/areas/${area.slug}`,
         lastModified: new Date(area.updatedAt),
         changeFrequency: 'monthly',
         priority: 0.7,

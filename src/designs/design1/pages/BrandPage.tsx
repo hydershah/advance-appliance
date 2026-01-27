@@ -218,7 +218,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
               {serviceAreas.slice(0, 18).map((area) => (
                 <a
                   key={area.id}
-                  href={`/${area.slug}`}
+                  href={`/areas/${area.slug}`}
                   className="group bg-gray-50 p-4 text-center hover:bg-[#D4AF37] transition-colors"
                 >
                   <span className="text-gray-700 text-sm group-hover:text-white transition-colors">{area.name}</span>

@@ -63,7 +63,7 @@ const ServiceAreas: React.FC = () => {
               {monmouthAreas.map((area) => (
                 <a
                   key={area.id}
-                  href={`/${area.slug}`}
+                  href={`/areas/${area.slug}`}
                   className="group bg-white p-6 border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 text-center"
                 >
                   <h4 className="font-serif text-base text-black group-hover:text-[#D4AF37] transition-colors">
@@ -89,7 +89,7 @@ const ServiceAreas: React.FC = () => {
               {middlesexAreas.map((area) => (
                 <a
                   key={area.id}
-                  href={`/${area.slug}`}
+                  href={`/areas/${area.slug}`}
                   className="group bg-white p-6 border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 text-center"
                 >
                   <h4 className="font-serif text-base text-black group-hover:text-[#D4AF37] transition-colors">

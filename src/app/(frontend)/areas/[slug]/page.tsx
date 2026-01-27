@@ -6,6 +6,13 @@ import { JsonLd, generateServiceSchema } from '@/components/JsonLd'
 import { RichText } from '@/components/RichText'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
 import type { Media, Service } from '@/payload-types'
+import { AreaPage as Design1AreaPage } from '@/designs/design1/pages'
+import { serviceAreas } from '@/designs/design1/data/content'
+
+// Helper to find static area by slug
+function findStaticAreaBySlug(slug: string) {
+  return serviceAreas.find(a => a.slug === slug)
+}
 
 /**
  * Service Area Detail Page - Server Component
@@ -18,6 +25,11 @@ interface ServiceAreaPageProps {
 }
 
 export async function generateStaticParams() {
+  // Start with static area slugs
+  const staticParams = serviceAreas.map((area) => ({
+    slug: area.slug,
+  }))
+
   try {
     const payload = await getPayloadClient()
 
@@ -29,12 +41,22 @@ export async function generateStaticParams() {
       limit: 100,
     })
 
-    return areas.docs.map((area) => ({
+    const dbParams = areas.docs.map((area) => ({
       slug: area.slug,
     }))
+
+    // Merge, preferring DB entries but including all static ones
+    const allSlugs = new Set(dbParams.map(p => p.slug))
+    const merged = [...dbParams]
+    for (const param of staticParams) {
+      if (!allSlugs.has(param.slug)) {
+        merged.push(param)
+      }
+    }
+    return merged
   } catch {
     // Database may not exist during build (e.g., Docker)
-    return []
+    return staticParams
   }
 }
 
@@ -42,69 +64,105 @@ export async function generateMetadata({
   params,
 }: ServiceAreaPageProps): Promise<Metadata> {
   const { slug } = await params
-  const payload = await getPayloadClient()
 
-  const areaResult = await payload.find({
-    collection: 'service-areas',
-    where: {
-      slug: { equals: slug },
-      status: { equals: 'published' },
-    },
-    limit: 1,
-  })
+  // Try database first
+  try {
+    const payload = await getPayloadClient()
 
-  const area = areaResult.docs[0]
+    const areaResult = await payload.find({
+      collection: 'service-areas',
+      where: {
+        slug: { equals: slug },
+        status: { equals: 'published' },
+      },
+      limit: 1,
+    })
 
-  if (!area) {
+    const area = areaResult.docs[0]
+
+    if (area) {
+      const title = area.meta?.seo?.title || `${area.name} - Service Area`
+      const description = area.meta?.seo?.description || area.excerpt || ''
+      const image =
+        typeof area.meta?.seo?.image === 'object' && area.meta?.seo?.image !== null
+          ? (area.meta.seo.image as Media).url
+          : typeof area.image === 'object' && area.image !== null
+          ? (area.image as Media).url
+          : undefined
+
+      return {
+        title,
+        description,
+        openGraph: {
+          title,
+          description,
+          images: image ? [{ url: image }] : undefined,
+        },
+        twitter: {
+          title,
+          description,
+          images: image ? [image] : undefined,
+        },
+      }
+    }
+  } catch {
+    // Database unavailable, fall through to static
+  }
+
+  // Fallback to static data
+  const staticArea = findStaticAreaBySlug(slug)
+  if (staticArea) {
     return {
-      title: 'Area Not Found',
+      title: `Appliance Repair in ${staticArea.name}, NJ - Advanced Appliance`,
+      description: `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ. Same-day service, all major brands. Call (732) 416-7430.`,
+      openGraph: {
+        title: `Appliance Repair in ${staticArea.name}, NJ`,
+        description: `Professional appliance repair services in ${staticArea.name}, New Jersey.`,
+      },
     }
   }
 
-  const title = area.meta?.seo?.title || `${area.name} - Service Area`
-  const description = area.meta?.seo?.description || area.excerpt || ''
-  const image =
-    typeof area.meta?.seo?.image === 'object' && area.meta?.seo?.image !== null
-      ? (area.meta.seo.image as Media).url
-      : typeof area.image === 'object' && area.image !== null
-      ? (area.image as Media).url
-      : undefined
-
   return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      images: image ? [{ url: image }] : undefined,
-    },
-    twitter: {
-      title,
-      description,
-      images: image ? [image] : undefined,
-    },
+    title: 'Area Not Found',
   }
 }
 
 export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) {
   const { slug } = await params
-  const payload = await getPayloadClient()
 
-  // Fetch service area
-  const areaResult = await payload.find({
-    collection: 'service-areas',
-    where: {
-      slug: { equals: slug },
-      status: { equals: 'published' },
-    },
-    limit: 1,
-    depth: 2,
-  })
+  // Try database first
+  let area: any = null
+  let payload: any = null
+  try {
+    payload = await getPayloadClient()
 
-  const area = areaResult.docs[0]
+    const areaResult = await payload.find({
+      collection: 'service-areas',
+      where: {
+        slug: { equals: slug },
+        status: { equals: 'published' },
+      },
+      limit: 1,
+      depth: 2,
+    })
 
+    area = areaResult.docs[0]
+  } catch {
+    // Database unavailable, fall through to static
+  }
+
+  // Fallback to static data
   if (!area) {
+    const staticArea = findStaticAreaBySlug(slug)
+    if (staticArea) {
+      return <Design1AreaPage area={staticArea} />
+    }
     notFound()
+  }
+
+  // Ensure payload is available for DB-sourced areas
+  if (!payload) {
+    payload = await getPayloadClient()
   }
 
   // Fetch services for this area
