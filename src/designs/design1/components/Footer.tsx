@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
               <img
                 src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
                 alt="Advanced Appliance Repair"
-                className="h-14 w-auto"
+                className="h-14 w-auto brightness-0 invert"
               />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">

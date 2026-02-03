@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, brands, images } from '../data/content';
@@ -107,12 +109,12 @@ const Brands: React.FC = () => {
             />
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-16">
               {[
-                { name: 'Refrigerators', image: images.refrigerator, link: '/refrigerator-repair-service-nj' },
-                { name: 'Washers', image: images.washer, link: '/washer-repair-service-nj' },
-                { name: 'Dryers', image: images.dryer, link: '/dryer-repair-service-nj' },
-                { name: 'Dishwashers', image: images.dishwasher, link: '/dishwasher-repair-service-nj' },
-                { name: 'Ovens', image: images.oven, link: '/oven-repair-service-nj' },
-                { name: 'Cooktops', image: images.cooktop, link: '/cooktop-repair-service-nj' },
+                { name: 'Refrigerators', image: images.refrigerator, link: '/services/refrigerator-repair' },
+                { name: 'Washers', image: images.washer, link: '/services/washer-repair' },
+                { name: 'Dryers', image: images.dryer, link: '/services/dryer-repair' },
+                { name: 'Dishwashers', image: images.dishwasher, link: '/services/dishwasher-repair' },
+                { name: 'Ovens', image: images.oven, link: '/services/oven-range-repair' },
+                { name: 'Cooktops', image: images.cooktop, link: '/services/cooktop-repair' },
               ].map((appliance, i) => (
                 <a
                   key={i}

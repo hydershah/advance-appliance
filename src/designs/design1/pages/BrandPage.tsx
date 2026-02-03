@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, services, serviceAreas, testimonials, images, brands } from '../data/content';

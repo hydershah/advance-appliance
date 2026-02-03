@@ -63,25 +63,81 @@ export const services: Service[] = [
     icon: 'refrigerator',
     shortDescription: 'Expert repair for all premium refrigerator brands including Sub-Zero, Viking, and more.',
     description: 'Our certified technicians specialize in repairing high-end refrigerators from the worlds most prestigious brands. From temperature regulation issues to compressor failures, we diagnose and resolve problems with precision and care.',
+    longDescription: `Your refrigerator is the hardest-working appliance in your home, running 24 hours a day, 365 days a year to keep your food fresh and safe. When it breaks down, you need fast, reliable service from technicians who understand the complexity of modern refrigeration systems. At Advanced Appliance Repair Service, we have been repairing refrigerators throughout Monmouth and Middlesex Counties since 1992.
+
+Our factory-trained technicians are certified to work on all major brands, from everyday models to high-end units like Sub-Zero, Viking, and Thermador. We understand that luxury refrigerators require specialized knowledge and genuine OEM parts to maintain their performance and warranty coverage. Whether you have a French door, side-by-side, top-freezer, or built-in refrigerator, we have the expertise to diagnose and repair it correctly the first time.
+
+We stock our service vehicles with the most commonly needed parts, allowing us to complete most repairs in a single visit. For complex issues or specialty parts, we provide accurate timelines and keep you informed throughout the process. Our $100 diagnostic fee is applied to your repair cost, and all work is backed by our 90-180 day warranty on parts and labor.`,
     features: [
       'Same-day service availability',
       'Factory-trained technicians',
       'Genuine OEM replacement parts',
       '90-180 day warranty on all repairs',
       'Sub-Zero, Viking, Thermador specialists',
+      'Built-in and integrated unit experts',
+      'Compressor and sealed system repair',
+      'Ice maker and water dispenser service',
+    ],
+    commonProblems: [
+      { title: 'Not Cooling Properly', description: 'Temperature fluctuations, warm spots, or complete cooling failure often indicate compressor, thermostat, or sealed system issues.' },
+      { title: 'Excessive Frost Buildup', description: 'Ice accumulation in the freezer or refrigerator section typically points to defrost system malfunctions or door seal problems.' },
+      { title: 'Water Leaking', description: 'Puddles under or inside your refrigerator can result from clogged drain lines, faulty water inlet valves, or damaged door gaskets.' },
+      { title: 'Strange Noises', description: 'Clicking, buzzing, humming, or grinding sounds may indicate failing compressors, fan motors, or ice maker components.' },
+      { title: 'Ice Maker Not Working', description: 'No ice production is commonly caused by frozen water lines, defective water inlet valves, or faulty ice maker modules.' },
+      { title: 'Running Constantly', description: 'A refrigerator that never cycles off wastes energy and often signals dirty condenser coils, failing door seals, or thermostat issues.' },
+    ],
+    warningSigns: [
+      'Food spoiling faster than usual',
+      'Visible condensation inside the unit',
+      'Ice buildup on freezer walls',
+      'Unusual sounds during operation',
+      'Higher than normal energy bills',
+      'Water pooling under the refrigerator',
+      'Warm spots in the refrigerator section',
+      'Refrigerator running non-stop',
+    ],
+    repairProcess: [
+      'Schedule your appointment online or by phone - same-day service often available',
+      'Our technician arrives on time in a fully-stocked service vehicle',
+      'We perform a complete diagnostic assessment for a $100 fee',
+      'You receive a detailed estimate before any repair work begins',
+      'We complete the repair using genuine OEM parts',
+      'We test the unit thoroughly to ensure proper operation',
+      'You receive documentation and warranty information',
+    ],
+    preventionTips: [
+      'Clean condenser coils every 6-12 months to maintain efficiency',
+      'Check and replace door gaskets if they show signs of wear',
+      'Keep the refrigerator at 37-40°F and freezer at 0°F',
+      'Avoid overloading to allow proper air circulation',
+      'Replace water filters every 6 months',
+      'Clean the interior regularly to prevent odors and bacteria',
+      'Leave space between the wall and refrigerator for ventilation',
     ],
     faqs: [
       {
         question: 'How long does a refrigerator repair typically take?',
-        answer: 'Most refrigerator repairs are completed within 1-2 hours. Complex issues may require additional visits for parts or diagnostics.',
+        answer: 'Most refrigerator repairs are completed within 1-2 hours during a single visit. Complex issues involving compressors or sealed systems may require additional time or a follow-up visit for parts. We always provide accurate time estimates before beginning work.',
       },
       {
         question: 'Do you repair built-in refrigerators?',
-        answer: 'Yes, we specialize in built-in and integrated refrigerators from all major luxury brands.',
+        answer: 'Yes, we specialize in built-in and integrated refrigerators from Sub-Zero, Viking, Thermador, Miele, and other luxury brands. Our technicians receive ongoing factory training to stay current with the latest models and technologies.',
       },
       {
         question: 'What brands do you service?',
-        answer: 'We service Sub-Zero, Viking, Wolf, Thermador, Miele, Bosch, Liebherr, and many other premium brands.',
+        answer: 'We service all major brands including Sub-Zero, Viking, Wolf, Thermador, Miele, Bosch, Liebherr, Samsung, LG, GE, Whirlpool, KitchenAid, Frigidaire, Maytag, Kenmore, and many more.',
+      },
+      {
+        question: 'Is it worth repairing an old refrigerator?',
+        answer: 'Generally, if your refrigerator is less than 10-15 years old and the repair cost is less than half the price of a new unit, repair is usually the better choice. We provide honest assessments and will tell you if replacement makes more sense.',
+      },
+      {
+        question: 'How much does refrigerator repair cost?',
+        answer: 'Our diagnostic fee is $100, which is applied to the repair cost if you proceed. Total repair costs depend on the issue and parts needed. We provide a complete estimate before starting any work, so there are no surprises.',
+      },
+      {
+        question: 'Can you repair a refrigerator that is not cooling at all?',
+        answer: 'Yes, complete cooling failure can be caused by various issues including compressor failure, thermostat problems, or refrigerant leaks. Our technicians have the tools and expertise to diagnose and repair all cooling system problems.',
       },
     ],
     image: 'https://images.pexels.com/photos/5824883/pexels-photo-5824883.jpeg',
@@ -93,21 +149,82 @@ export const services: Service[] = [
     icon: 'washer',
     shortDescription: 'Professional washing machine repair for residential and high-capacity units.',
     description: 'From front-load to top-load washers, our experts handle all types of washing machine repairs. We understand the intricacies of luxury laundry appliances and provide meticulous service.',
+    longDescription: `A broken washing machine disrupts your entire household routine. Piles of dirty laundry accumulate quickly, and trips to the laundromat are inconvenient and expensive. At Advanced Appliance Repair Service, we understand the urgency of washer repairs and offer fast, reliable service throughout Monmouth and Middlesex Counties in New Jersey.
+
+Our technicians are factory-trained to repair all types of washing machines, from traditional top-loaders to sophisticated front-load units with steam cycles and smart connectivity. We specialize in premium brands like Miele, Bosch, Speed Queen, and LG, but we service all major manufacturers. With over 30 years of experience, we have seen every type of washer problem and know how to fix it right the first time.
+
+Modern washing machines are complex appliances with electronic control boards, multiple sensors, and precision motors. Attempting DIY repairs can void warranties and cause additional damage. Our professional technicians have the diagnostic tools and genuine OEM parts needed to restore your washer to peak performance, backed by our 90-180 day warranty on all repairs.`,
     features: [
       'All washer types serviced',
       'Leak detection and repair',
       'Motor and pump replacement',
       'Electronic control board repair',
       'Miele, Bosch, Speed Queen specialists',
+      'Front-load and top-load experts',
+      'Drain and spin cycle repair',
+      'Bearing and seal replacement',
+    ],
+    commonProblems: [
+      { title: 'Not Draining', description: 'Water remaining in the drum after a cycle typically indicates pump failures, clogged drain hoses, or lid switch problems.' },
+      { title: 'Won\'t Spin', description: 'Spin cycle failures are often caused by worn drive belts, faulty lid switches, motor coupling issues, or unbalanced loads.' },
+      { title: 'Leaking Water', description: 'Leaks can originate from door seals, water inlet valves, drain hoses, or internal tub components.' },
+      { title: 'Excessive Vibration', description: 'Violent shaking during spin cycles usually indicates worn shock absorbers, damaged suspension springs, or an unbalanced drum.' },
+      { title: 'Won\'t Start', description: 'A washer that won\'t turn on may have electrical issues, faulty door latches, or failed control boards.' },
+      { title: 'Unusual Odors', description: 'Musty or mildew smells often develop in front-load washers due to moisture trapped in door gaskets and detergent dispensers.' },
+    ],
+    warningSigns: [
+      'Clothes still wet after spin cycle',
+      'Water on the floor during or after washing',
+      'Loud banging or thumping during operation',
+      'Burning smell during use',
+      'Error codes on the display panel',
+      'Washer stops mid-cycle',
+      'Unusual grinding or squealing noises',
+      'Door won\'t lock or unlock properly',
+    ],
+    repairProcess: [
+      'Contact us by phone or schedule online for prompt service',
+      'Our technician arrives with common washer parts in stock',
+      'We diagnose the problem with professional testing equipment',
+      'You receive a detailed repair estimate before we begin',
+      'Repairs are completed using manufacturer-approved parts',
+      'We run test cycles to verify proper operation',
+      'Your repair is covered by our 90-180 day warranty',
+    ],
+    preventionTips: [
+      'Don\'t overload the washer - follow capacity guidelines',
+      'Use HE detergent in high-efficiency machines',
+      'Leave the door open after cycles to prevent mold',
+      'Clean the detergent dispenser monthly',
+      'Inspect and clean the drain pump filter regularly',
+      'Check pockets for coins and debris before washing',
+      'Level the machine to prevent excessive vibration',
+      'Replace water supply hoses every 5 years',
     ],
     faqs: [
       {
         question: 'Why is my washer leaking?',
-        answer: 'Leaks can be caused by damaged door seals, faulty water inlet valves, or drain hose issues. Our technicians will identify and fix the source.',
+        answer: 'Leaks can be caused by damaged door seals, faulty water inlet valves, loose hose connections, or drain pump issues. Front-load washers commonly leak from worn door boot gaskets. Our technicians will identify the exact source and repair it properly.',
       },
       {
         question: 'My washer won\'t spin. Can you fix it?',
-        answer: 'Yes, spin cycle issues are commonly caused by lid switch problems, motor coupling failures, or belt issues. We repair all of these.',
+        answer: 'Yes, spin cycle issues are commonly caused by lid switch problems, motor coupling failures, worn drive belts, or control board malfunctions. We repair all of these issues and can usually complete the repair in one visit.',
+      },
+      {
+        question: 'Why does my front-load washer smell bad?',
+        answer: 'Mold and mildew growth in the door gasket and detergent dispenser causes odors in front-load washers. We can clean and treat these areas, replace damaged gaskets, and show you how to prevent future odor problems.',
+      },
+      {
+        question: 'How long do washing machines typically last?',
+        answer: 'Most washing machines last 10-15 years with proper maintenance. High-quality brands like Speed Queen and Miele often last longer. If your washer is under 10 years old, repair is usually more economical than replacement.',
+      },
+      {
+        question: 'Do you repair high-efficiency (HE) washers?',
+        answer: 'Yes, we repair all high-efficiency washers including front-load and top-load HE models. Our technicians are trained on the latest HE technology from all major manufacturers.',
+      },
+      {
+        question: 'Why is my washer so loud during the spin cycle?',
+        answer: 'Loud spinning is typically caused by worn drum bearings, damaged shock absorbers, or foreign objects caught between the drum and tub. Ignoring these sounds can lead to more expensive repairs, so it\'s best to have it checked promptly.',
       },
     ],
     image: 'https://images.pexels.com/photos/5591581/pexels-photo-5591581.jpeg',
@@ -119,21 +236,82 @@ export const services: Service[] = [
     icon: 'dryer',
     shortDescription: 'Fast, reliable dryer repair services for gas and electric units.',
     description: 'Whether your dryer is not heating, making unusual noises, or failing to start, our technicians have the expertise to restore it to optimal performance.',
+    longDescription: `When your dryer stops working, laundry day becomes a major hassle. Wet clothes piling up, trips to the laundromat, and the inconvenience of air-drying can quickly become overwhelming. Advanced Appliance Repair Service provides fast, expert dryer repair throughout Monmouth and Middlesex Counties, getting your laundry routine back on track.
+
+We repair both gas and electric dryers from all major manufacturers. Our technicians are trained to work on everything from basic models to sophisticated units with steam functions, sensor drying, and smart connectivity. We understand the differences between gas and electric systems and have the specialized tools needed to service both safely and effectively.
+
+A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn\'t just inconvenient - it\'s costing you money on energy bills and may be a fire hazard if the issue involves the ventilation system. We always inspect the exhaust system as part of our service because clogged vents are the leading cause of dryer fires. Trust our 30+ years of experience to keep your dryer running safely and efficiently.`,
     features: [
       'Gas and electric dryer repair',
       'Heating element replacement',
       'Thermal fuse repair',
       'Drum and belt service',
       'Ventilation inspection included',
+      'Gas valve and igniter service',
+      'Motor and blower repair',
+      'Control board diagnostics',
+    ],
+    commonProblems: [
+      { title: 'Not Heating', description: 'No heat output is commonly caused by failed heating elements, blown thermal fuses, faulty gas igniters, or broken thermostats.' },
+      { title: 'Takes Too Long to Dry', description: 'Extended drying times usually indicate restricted airflow from clogged vents, worn drum seals, or failing heating components.' },
+      { title: 'Won\'t Start', description: 'A dryer that won\'t turn on may have door switch issues, thermal fuse failures, or control board problems.' },
+      { title: 'Making Loud Noises', description: 'Squealing, thumping, or grinding sounds often indicate worn drum rollers, damaged belts, or failing bearings.' },
+      { title: 'Drum Not Turning', description: 'A broken drive belt, worn drum rollers, or motor issues can prevent the drum from spinning.' },
+      { title: 'Overheating', description: 'Excessive heat can result from clogged vents, failed thermostats, or malfunctioning cycling thermostats.' },
+    ],
+    warningSigns: [
+      'Clothes taking multiple cycles to dry',
+      'Dryer is hot to the touch on the outside',
+      'Burning smell during operation',
+      'Clothes are very hot but still damp',
+      'Loud squealing, banging, or grinding noises',
+      'Dryer shuts off before clothes are dry',
+      'No heat coming from the dryer',
+      'Excessive lint around the dryer',
+    ],
+    repairProcess: [
+      'Schedule service online or call for same-day appointments',
+      'Our technician arrives with common dryer parts and tools',
+      'We perform complete diagnostics including vent inspection',
+      'You receive an honest estimate before repairs begin',
+      'Repairs are made with quality OEM components',
+      'We test the dryer through a complete cycle',
+      'All work is backed by our 90-180 day warranty',
+    ],
+    preventionTips: [
+      'Clean the lint filter before every load',
+      'Have the vent professionally cleaned annually',
+      'Don\'t overload the dryer',
+      'Use rigid metal vent duct, not flexible plastic',
+      'Keep the area around the dryer clear',
+      'Inspect the exterior vent flap regularly',
+      'Don\'t dry items with rubber, plastic, or foam',
+      'Schedule regular maintenance every 2-3 years',
     ],
     faqs: [
       {
         question: 'Why is my dryer not heating?',
-        answer: 'Common causes include a faulty heating element, broken thermal fuse, or gas igniter issues. We diagnose and repair all heating problems.',
+        answer: 'For electric dryers, common causes include a faulty heating element, broken thermal fuse, or failed thermostat. Gas dryers may have igniter, gas valve, or flame sensor issues. We diagnose and repair all heating problems for both types.',
       },
       {
         question: 'How often should I clean my dryer vent?',
-        answer: 'We recommend professional dryer vent cleaning at least once a year to prevent fire hazards and improve efficiency.',
+        answer: 'We recommend professional dryer vent cleaning at least once a year. If you do many loads per week, you may need cleaning more frequently. Clogged vents are the leading cause of dryer fires and significantly reduce efficiency.',
+      },
+      {
+        question: 'Is it safe to repair a gas dryer myself?',
+        answer: 'We strongly recommend professional service for gas dryers. Gas leaks can cause fires and explosions, and improper repairs can create dangerous situations. Our technicians are trained in safe gas appliance repair procedures.',
+      },
+      {
+        question: 'Why does my dryer take so long to dry clothes?',
+        answer: 'Extended drying times are usually caused by restricted airflow from clogged lint filters, blocked vents, or failing blower wheels. It can also indicate heating element problems or worn drum seals letting heat escape.',
+      },
+      {
+        question: 'Why is my dryer making a squealing noise?',
+        answer: 'Squealing typically indicates worn drum glides, a fraying belt, or dry idler pulley bearings. These parts wear over time and should be replaced before they fail completely and cause further damage.',
+      },
+      {
+        question: 'Can you repair dryers with steam features?',
+        answer: 'Yes, we repair all modern dryers including those with steam refresh, wrinkle release, and sanitize cycles. Our technicians stay current with the latest dryer technology through ongoing training.',
       },
     ],
     image: 'https://images.pexels.com/photos/5591464/pexels-photo-5591464.jpeg',
@@ -145,21 +323,82 @@ export const services: Service[] = [
     icon: 'dishwasher',
     shortDescription: 'Expert dishwasher repair for premium brands like Miele, Bosch, and Thermador.',
     description: 'Our dishwasher repair services cover everything from drainage issues to electronic control failures. We ensure your dishes come out spotless every time.',
+    longDescription: `A malfunctioning dishwasher means hours of hand-washing dishes, wasted water, and the frustration of dealing with dirty dishes piling up in your sink. At Advanced Appliance Repair Service, we provide fast, professional dishwasher repair throughout Monmouth and Middlesex Counties, restoring this essential time-saving appliance to perfect working order.
+
+Modern dishwashers are sophisticated appliances with multiple wash cycles, soil sensors, and efficient drying systems. Our technicians are factory-trained on premium brands like Miele, Bosch, Thermador, and KitchenAid, as well as all major manufacturers. We understand the unique requirements of European dishwashers and the specific issues that can affect different brands.
+
+Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking water onto your kitchen floor, we have the expertise to diagnose and repair the problem quickly. We stock common parts on our service vehicles and use only genuine OEM components to ensure lasting repairs. Our goal is to complete your repair in a single visit whenever possible.`,
     features: [
       'All major brands serviced',
       'Pump and motor repair',
       'Door latch replacement',
       'Spray arm and rack repair',
       'Water inlet valve service',
+      'Control board diagnostics',
+      'Leak detection and repair',
+      'European brand specialists',
+    ],
+    commonProblems: [
+      { title: 'Not Draining', description: 'Standing water in the bottom of the dishwasher usually indicates drain pump failure, clogged filters, or blocked drain hoses.' },
+      { title: 'Dishes Not Clean', description: 'Poor cleaning results from clogged spray arms, low water temperature, faulty wash pumps, or detergent dispenser issues.' },
+      { title: 'Leaking Water', description: 'Leaks can come from worn door gaskets, faulty water inlet valves, cracked tubs, or loose hose connections.' },
+      { title: 'Won\'t Start', description: 'A dishwasher that won\'t run may have door latch problems, control board failures, or electrical issues.' },
+      { title: 'Not Drying Dishes', description: 'Wet dishes after the cycle indicate heating element failures, rinse aid dispenser problems, or vent issues.' },
+      { title: 'Making Strange Noises', description: 'Grinding, humming, or squealing sounds often point to wash pump problems, spray arm obstructions, or motor issues.' },
+    ],
+    warningSigns: [
+      'Water remaining in the bottom after cycles',
+      'Dishes still dirty or spotty after washing',
+      'Water leaking onto the floor',
+      'Unusual sounds during operation',
+      'Dishwasher not starting or stopping mid-cycle',
+      'Dishes not drying properly',
+      'Error codes on the display',
+      'Detergent not dissolving completely',
+    ],
+    repairProcess: [
+      'Book your appointment online or by phone',
+      'Our technician arrives with diagnostic equipment and common parts',
+      'We inspect all components and identify the problem',
+      'You approve the repair estimate before we proceed',
+      'We complete the repair with genuine manufacturer parts',
+      'We run a test cycle to verify proper operation',
+      'Your repair is protected by our 90-180 day warranty',
+    ],
+    preventionTips: [
+      'Scrape dishes but don\'t pre-rinse excessively',
+      'Clean the filter every month',
+      'Run hot water at the sink before starting',
+      'Use quality detergent and rinse aid',
+      'Don\'t overload or block spray arms',
+      'Clean spray arms periodically',
+      'Run an empty cycle with dishwasher cleaner monthly',
+      'Check the door gasket for debris and damage',
     ],
     faqs: [
       {
         question: 'Why are my dishes still dirty after washing?',
-        answer: 'This could be due to clogged spray arms, a faulty wash pump, or water temperature issues. We will diagnose and resolve the problem.',
+        answer: 'Poor cleaning can result from clogged spray arms, low water temperature, insufficient water fill, faulty wash pumps, or incorrect loading. Our technicians diagnose the specific cause and make the necessary repairs.',
       },
       {
         question: 'My dishwasher won\'t drain. What should I do?',
-        answer: 'Contact us immediately. Drainage issues can be caused by clogged filters, pump failures, or drain hose problems.',
+        answer: 'Check if the filter is clogged and clear the garbage disposal if connected. If it still won\'t drain, you likely have a pump failure, blocked drain hose, or control board issue that requires professional repair.',
+      },
+      {
+        question: 'Why is my dishwasher leaking?',
+        answer: 'Leaks commonly come from worn door gaskets, faulty water inlet valves, loose hose clamps, or cracked components. We identify the leak source and repair it properly to prevent water damage to your floors and cabinets.',
+      },
+      {
+        question: 'Do you repair Bosch and Miele dishwashers?',
+        answer: 'Yes, we specialize in European brands including Bosch, Miele, Thermador, and Gaggenau. Our technicians receive factory training on these brands and use genuine OEM parts for all repairs.',
+      },
+      {
+        question: 'Why doesn\'t my dishwasher dry the dishes?',
+        answer: 'Drying issues can be caused by heating element failure, rinse aid dispenser problems, vent fan issues, or selecting the wrong cycle. Some European dishwashers use condensation drying which works differently than heated drying.',
+      },
+      {
+        question: 'How long should a dishwasher last?',
+        answer: 'Most dishwashers last 9-12 years. Premium brands like Miele often last longer with proper maintenance. If your dishwasher is under 8 years old, repair is usually more economical than replacement.',
       },
     ],
     image: 'https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg',
@@ -171,21 +410,82 @@ export const services: Service[] = [
     icon: 'oven',
     shortDescription: 'Comprehensive oven and range repair for Wolf, Viking, and Thermador.',
     description: 'From temperature calibration to igniter replacement, our technicians are trained to service the most sophisticated cooking appliances on the market.',
+    longDescription: `Your oven and range are the centerpiece of your kitchen, essential for preparing family meals, entertaining guests, and enjoying home-cooked food. When these appliances malfunction, your entire cooking routine is disrupted. Advanced Appliance Repair Service provides expert oven and range repair throughout Monmouth and Middlesex Counties, with specialized knowledge of premium brands.
+
+We are factory-authorized to service professional-grade ranges from Wolf, Viking, Thermador, and other luxury manufacturers. These commercial-style appliances require specialized training and genuine parts to maintain their exceptional performance. Our technicians understand the high standards expected by owners of these premium appliances and deliver service to match.
+
+Whether you have a freestanding range, wall oven, double oven, or professional-style cooktop and oven combination, we have the expertise to repair it. We service both gas and electric models, including convection ovens, steam ovens, and smart ovens with WiFi connectivity. Safety is paramount with cooking appliances, and we ensure every repair meets manufacturer specifications.`,
     features: [
       'Gas and electric oven repair',
       'Igniter and burner service',
       'Temperature calibration',
       'Door seal replacement',
       'Self-cleaning system repair',
+      'Convection fan service',
+      'Control board repair',
+      'Wolf, Viking, Thermador certified',
+    ],
+    commonProblems: [
+      { title: 'Not Heating Properly', description: 'Incorrect temperatures can result from faulty heating elements, defective temperature sensors, or calibration issues.' },
+      { title: 'Uneven Cooking', description: 'Hot spots and uneven results often indicate convection fan problems, heating element issues, or improper calibration.' },
+      { title: 'Gas Igniter Problems', description: 'Weak or no ignition is typically caused by worn igniters, faulty gas valves, or spark module failures.' },
+      { title: 'Self-Clean Not Working', description: 'Self-cleaning failures can result from door latch issues, temperature sensor problems, or control board malfunctions.' },
+      { title: 'Door Won\'t Close', description: 'Door alignment issues, worn hinges, or broken springs can prevent proper door closure and heat retention.' },
+      { title: 'Oven Light Not Working', description: 'Burned out bulbs, faulty sockets, or wiring issues can leave your oven interior dark.' },
+    ],
+    warningSigns: [
+      'Food cooking unevenly or at wrong temperature',
+      'Gas smell when oven is off',
+      'Oven taking longer to preheat',
+      'Self-cleaning cycle not working',
+      'Oven not maintaining temperature',
+      'Error codes on the display',
+      'Strange clicking or sparking sounds',
+      'Door not sealing properly',
+    ],
+    repairProcess: [
+      'Contact us to schedule a convenient appointment',
+      'Our certified technician arrives with specialized tools',
+      'We perform thorough diagnostics and safety checks',
+      'You receive a detailed estimate for your approval',
+      'Repairs are completed with OEM parts',
+      'We verify temperature accuracy and proper operation',
+      'All repairs include our 90-180 day warranty',
+    ],
+    preventionTips: [
+      'Clean spills promptly to prevent smoke and damage',
+      'Use the self-cleaning feature sparingly',
+      'Check and replace damaged door gaskets',
+      'Don\'t line oven bottom with foil',
+      'Keep burner ports and igniters clean',
+      'Have gas connections inspected periodically',
+      'Avoid slamming the oven door',
+      'Schedule professional cleaning and inspection annually',
     ],
     faqs: [
       {
         question: 'My oven is not heating evenly. Can you fix it?',
-        answer: 'Yes, uneven heating is often caused by a faulty heating element, temperature sensor, or convection fan. We repair all of these issues.',
+        answer: 'Yes, uneven heating is often caused by a faulty heating element, failed temperature sensor, malfunctioning convection fan, or calibration issues. We diagnose the specific cause and make the necessary repairs to restore even cooking.',
       },
       {
         question: 'Do you repair commercial-style ranges?',
-        answer: 'Absolutely. We specialize in Viking, Wolf, and other professional-grade ranges.',
+        answer: 'Absolutely. We specialize in Viking, Wolf, Thermador, and other professional-grade ranges. Our technicians have factory training and certification to work on these premium appliances.',
+      },
+      {
+        question: 'Why won\'t my gas oven ignite?',
+        answer: 'The most common cause is a weak or failed igniter. Gas igniters wear out over time and lose their ability to glow hot enough to open the gas valve. We can test and replace igniters, gas valves, and spark modules as needed.',
+      },
+      {
+        question: 'Is it safe to use a gas oven that clicks but doesn\'t light?',
+        answer: 'No, you should not attempt to use a gas oven that isn\'t igniting properly. If you smell gas, turn off the appliance, ventilate the area, and call for professional service. Repeated clicking can also damage the spark module.',
+      },
+      {
+        question: 'Can you calibrate my oven temperature?',
+        answer: 'Yes, we can calibrate oven temperatures to ensure accuracy. Some ovens allow user calibration adjustment, while others require sensor replacement or control board programming.',
+      },
+      {
+        question: 'Why does my oven smoke when I use the self-clean feature?',
+        answer: 'Some smoke during self-cleaning is normal as food residue burns off at high temperatures. However, excessive smoke may indicate heavy buildup, worn door gaskets, or ventilation problems. We can inspect and address these issues.',
       },
     ],
     image: 'https://images.pexels.com/photos/6996086/pexels-photo-6996086.jpeg',
@@ -197,21 +497,82 @@ export const services: Service[] = [
     icon: 'cooktop',
     shortDescription: 'Professional cooktop repair for gas, electric, and induction models.',
     description: 'Our cooktop repair services cover all types including gas, electric, and induction cooktops from premium manufacturers.',
+    longDescription: `Cooktops are the workhorses of any kitchen, handling everything from quick weekday meals to elaborate weekend cooking projects. When a burner won\'t light, an element won\'t heat, or your induction cooktop displays an error code, you need expert repair service fast. Advanced Appliance Repair Service provides professional cooktop repair throughout Monmouth and Middlesex Counties.
+
+We service all types of cooktops including gas, electric coil, smoothtop ceramic, and induction models. Each type presents unique repair challenges, from gas valve and igniter issues to cracked glass surfaces and induction board failures. Our technicians are trained on all technologies and carry the specialized parts and tools needed for each type of repair.
+
+Induction cooktops have become increasingly popular in luxury kitchens, and we have expertise in this advanced technology. We can diagnose and repair induction coil failures, control board issues, and cooling fan problems. For gas cooktops, we handle everything from simple igniter replacements to complex gas valve repairs, always prioritizing safety in every repair.`,
     features: [
       'Gas burner repair',
       'Induction cooktop service',
       'Electric element replacement',
       'Control panel repair',
       'Glass top replacement',
+      'Igniter and spark module service',
+      'Gas valve repair',
+      'Touch control diagnostics',
+    ],
+    commonProblems: [
+      { title: 'Gas Burner Won\'t Ignite', description: 'Ignition failures typically result from clogged burner ports, worn igniters, or faulty spark modules.' },
+      { title: 'Electric Element Not Heating', description: 'Non-heating elements are usually caused by burned-out coils, faulty infinite switches, or wiring problems.' },
+      { title: 'Induction Not Working', description: 'Induction failures can involve coil problems, control board issues, or incompatible cookware detection.' },
+      { title: 'Cracked Glass Surface', description: 'Impact damage or extreme temperature changes can crack ceramic glass cooktop surfaces, requiring replacement.' },
+      { title: 'Uneven Flame', description: 'Yellow, uneven, or weak flames indicate clogged burner ports, improper gas pressure, or air mixture problems.' },
+      { title: 'Touch Controls Not Responding', description: 'Unresponsive touch controls may result from moisture, dirty surfaces, or failed control boards.' },
+    ],
+    warningSigns: [
+      'Burner won\'t light or lights slowly',
+      'Uneven or yellow gas flames',
+      'Electric element not heating fully',
+      'Clicking but no ignition',
+      'Cracked or chipped glass surface',
+      'Touch controls not responding',
+      'Error codes on display',
+      'Strange smells during use',
+    ],
+    repairProcess: [
+      'Schedule your repair appointment at a convenient time',
+      'Our technician arrives equipped for all cooktop types',
+      'We diagnose the issue with specialized testing equipment',
+      'You approve the estimate before work begins',
+      'Repairs are completed with manufacturer parts',
+      'We test all burners and functions',
+      'Your repair is covered by our warranty',
+    ],
+    preventionTips: [
+      'Keep burner ports clean and free of debris',
+      'Clean spills promptly to prevent buildup',
+      'Use flat-bottomed cookware on glass and induction surfaces',
+      'Don\'t drag cookware across glass surfaces',
+      'Avoid using oversized or warped pans',
+      'Ensure proper ventilation for gas cooktops',
+      'Use induction-compatible cookware',
+      'Have gas connections inspected annually',
     ],
     faqs: [
       {
         question: 'My gas burner won\'t ignite. What\'s wrong?',
-        answer: 'This is typically caused by a faulty igniter, clogged burner ports, or spark module issues. Our technicians can diagnose and repair it.',
+        answer: 'This is typically caused by clogged burner ports, a faulty igniter, or spark module issues. Sometimes simply cleaning the burner cap and ports resolves the issue. If cleaning doesn\'t help, the igniter likely needs replacement.',
       },
       {
         question: 'Can you repair cracked cooktop glass?',
-        answer: 'Yes, we can replace damaged glass cooktop surfaces for most major brands.',
+        answer: 'Cracked glass cannot be repaired and must be replaced. We can replace damaged glass cooktop surfaces for most major brands. We recommend replacement even for small cracks to prevent further damage and potential safety hazards.',
+      },
+      {
+        question: 'Why is my gas flame yellow instead of blue?',
+        answer: 'Yellow flames indicate incomplete combustion, usually caused by clogged burner ports, incorrect air-to-gas mixture, or low gas pressure. Blue flames with yellow tips are normal; entirely yellow flames should be addressed.',
+      },
+      {
+        question: 'Do you repair induction cooktops?',
+        answer: 'Yes, we repair all induction cooktop brands. Induction technology requires specialized knowledge of electronics and magnetic heating systems. Our technicians can diagnose and repair coil failures, control board issues, and cooling fan problems.',
+      },
+      {
+        question: 'Why won\'t my induction cooktop recognize my pan?',
+        answer: 'Induction cooktops require magnetic cookware. If your pan doesn\'t stick to a magnet, it won\'t work on induction. If compatible cookware still isn\'t detected, there may be a coil or sensor issue requiring professional diagnosis.',
+      },
+      {
+        question: 'Is it worth repairing an old cooktop?',
+        answer: 'Most cooktops last 15-20 years. If yours is less than 10 years old and the repair cost is reasonable, repair is usually the better choice. Glass replacement on newer units is often worthwhile; major repairs on older units may not be.',
       },
     ],
     image: 'https://images.pexels.com/photos/6489117/pexels-photo-6489117.jpeg',
@@ -223,21 +584,82 @@ export const services: Service[] = [
     icon: 'freezer',
     shortDescription: 'Fast freezer repair to prevent food loss and restore optimal performance.',
     description: 'Freezer problems require immediate attention. Our technicians respond quickly to diagnose and repair issues before your food is compromised.',
+    longDescription: `A malfunctioning freezer puts hundreds of dollars worth of frozen food at risk. Whether you have a standalone freezer, chest freezer, or the freezer compartment of your refrigerator, problems require immediate attention. Advanced Appliance Repair Service provides fast, reliable freezer repair throughout Monmouth and Middlesex Counties.
+
+Freezers are relatively simple appliances compared to full refrigerators, but they still require expert diagnosis to identify problems correctly. Issues can range from minor thermostat adjustments to major compressor failures. Our technicians carry the diagnostic equipment needed to test sealed systems, measure refrigerant levels, and evaluate compressor performance.
+
+We understand that freezer problems are time-sensitive. Depending on the issue and your freezer's condition, you may only have 24-48 hours before food begins to thaw. That's why we prioritize freezer repairs and offer same-day service whenever possible. Our goal is to diagnose and repair your freezer quickly to save your food and give you peace of mind.`,
     features: [
       'Emergency service available',
       'Compressor repair',
       'Thermostat replacement',
       'Defrost system repair',
       'Door seal service',
+      'Evaporator and condenser service',
+      'Temperature control repair',
+      'Chest and upright freezer service',
+    ],
+    commonProblems: [
+      { title: 'Not Freezing', description: 'Complete freezing failure often indicates compressor problems, refrigerant leaks, or thermostat failures.' },
+      { title: 'Frost Buildup', description: 'Excessive frost accumulation results from defrost system failures, damaged door seals, or frequent door opening.' },
+      { title: 'Running Constantly', description: 'A freezer that never cycles off may have dirty coils, failing door seals, or thermostat issues.' },
+      { title: 'Temperature Fluctuations', description: 'Inconsistent temperatures can be caused by thermostat problems, airflow restrictions, or defrost system issues.' },
+      { title: 'Strange Noises', description: 'Clicking, buzzing, or humming sounds may indicate compressor problems, fan motor issues, or ice buildup.' },
+      { title: 'Not Running At All', description: 'A completely dead freezer may have electrical problems, failed start relays, or compressor failures.' },
+    ],
+    warningSigns: [
+      'Food thawing or soft to the touch',
+      'Excessive frost buildup on walls',
+      'Freezer running constantly',
+      'Unusual buzzing or clicking sounds',
+      'Ice cream too soft or melted',
+      'Condensation on the outside',
+      'Door not sealing properly',
+      'Higher than normal energy bills',
+    ],
+    repairProcess: [
+      'Call us immediately - freezer repairs are prioritized',
+      'Our technician arrives quickly with diagnostic equipment',
+      'We test the sealed system and all components',
+      'You receive an honest assessment and repair estimate',
+      'Repairs are completed with quality parts',
+      'We verify the freezer reaches and maintains proper temperature',
+      'Your repair is protected by our warranty',
+    ],
+    preventionTips: [
+      'Keep the freezer at least 3/4 full for efficiency',
+      'Clean condenser coils every 6-12 months',
+      'Check door seals for wear and proper seal',
+      'Don\'t put hot food directly in the freezer',
+      'Organize contents for easy access to reduce door-open time',
+      'Defrost manual-defrost freezers when frost exceeds 1/4 inch',
+      'Ensure adequate ventilation around the unit',
+      'Have the sealed system inspected if you notice temperature issues',
     ],
     faqs: [
       {
         question: 'My freezer is running but not freezing. What should I do?',
-        answer: 'This could indicate a refrigerant leak, compressor issue, or thermostat failure. Call us for immediate diagnosis.',
+        answer: 'This could indicate a refrigerant leak, compressor issue, failed thermostat, or blocked evaporator. First check that the thermostat is set correctly and the coils are clean. If the problem persists, call us for immediate diagnosis.',
       },
       {
         question: 'How do I know if my freezer needs repair?',
-        answer: 'Signs include frost buildup, unusual noises, temperature fluctuations, or the unit running constantly.',
+        answer: 'Signs include frost buildup, unusual noises, temperature fluctuations, food thawing, the unit running constantly, or ice cream being too soft. If you notice any of these signs, it\'s best to call for service before the problem worsens.',
+      },
+      {
+        question: 'How long will my frozen food last if the freezer breaks?',
+        answer: 'A full freezer will keep food frozen for about 48 hours if the door stays closed. A half-full freezer maintains temperature for about 24 hours. Minimize door openings and consider transferring food to a neighbor\'s freezer or cooler with ice.',
+      },
+      {
+        question: 'Why is my freezer making a clicking sound?',
+        answer: 'Clicking often indicates the compressor is trying to start but failing, usually due to a bad start relay or compressor issue. This requires professional diagnosis. The clicking sound is the overload protector cycling as the compressor fails to start.',
+      },
+      {
+        question: 'Should I repair or replace an old freezer?',
+        answer: 'Freezers typically last 15-20 years. If yours is under 10 years old and the repair cost is less than half the replacement cost, repair is usually worthwhile. For older units with compressor failures, replacement may be more economical.',
+      },
+      {
+        question: 'Do you repair commercial freezers?',
+        answer: 'We primarily service residential freezers but can repair some commercial units. For large commercial freezer systems, we recommend contacting a commercial refrigeration specialist for the best service.',
       },
     ],
     image: 'https://images.pexels.com/photos/5824884/pexels-photo-5824884.jpeg',
@@ -249,21 +671,82 @@ export const services: Service[] = [
     icon: 'iceMaker',
     shortDescription: 'Expert ice maker repair for built-in units and refrigerator ice makers.',
     description: 'From standalone ice machines to refrigerator-integrated units, we repair all types of ice makers with precision and expertise.',
+    longDescription: `Ice makers have become an essential convenience in modern kitchens. Whether built into your refrigerator or a standalone under-counter unit, a malfunctioning ice maker is more than an inconvenience - it affects your daily routine and entertaining capabilities. Advanced Appliance Repair Service provides expert ice maker repair throughout Monmouth and Middlesex Counties.
+
+Refrigerator ice makers and standalone ice machines operate on different principles, and both require specific expertise to repair properly. Refrigerator ice makers are integrated with the freezer's cooling system and involve water valves, fill tubes, motors, and sensors. Standalone ice makers have their own refrigeration systems, water management components, and ice harvesting mechanisms.
+
+We diagnose and repair all ice maker problems, from simple water line issues to complex mechanical failures. Our technicians understand the specific requirements of luxury brands like Sub-Zero, Viking, and U-Line, as well as all major refrigerator manufacturers. We carry common ice maker parts and can usually complete repairs in a single visit.`,
     features: [
       'Built-in ice maker repair',
       'Refrigerator ice maker service',
       'Water line repair',
       'Bin and dispenser service',
       'Commercial ice machine repair',
+      'Under-counter ice maker service',
+      'Water filter system repair',
+      'Harvest mechanism repair',
+    ],
+    commonProblems: [
+      { title: 'Not Making Ice', description: 'No ice production can result from frozen water lines, faulty inlet valves, defective ice maker modules, or thermostat issues.' },
+      { title: 'Ice Cubes Too Small', description: 'Undersized cubes usually indicate low water pressure, clogged water filters, or partially blocked water inlet valves.' },
+      { title: 'Ice Tastes Bad', description: 'Off-flavors typically come from old water filters, contaminated water lines, or food odors absorbed from the freezer.' },
+      { title: 'Ice Maker Leaking', description: 'Water leaks can come from cracked fill tubes, loose connections, or faulty water inlet valves.' },
+      { title: 'Ice Clumping Together', description: 'Clumped ice results from infrequent use, temperature fluctuations, or problems with the ice dispenser mechanism.' },
+      { title: 'Dispenser Not Working', description: 'Dispenser failures can involve motor problems, auger jams, or control board issues.' },
+    ],
+    warningSigns: [
+      'No ice being produced',
+      'Ice cubes are hollow or too small',
+      'Ice has an unusual taste or smell',
+      'Water leaking from the ice maker',
+      'Ice cubes stuck together in clumps',
+      'Strange noises from the ice maker',
+      'Dispenser not releasing ice',
+      'Ice maker cycling but producing nothing',
+    ],
+    repairProcess: [
+      'Schedule a convenient service appointment',
+      'Our technician inspects the ice maker and water supply',
+      'We diagnose the specific problem with testing',
+      'You approve the repair estimate',
+      'We complete repairs with OEM parts',
+      'We test ice production and dispenser function',
+      'Your repair includes our standard warranty',
+    ],
+    preventionTips: [
+      'Replace water filters every 6 months',
+      'Use the ice regularly to prevent clumping',
+      'Keep the freezer at the proper temperature (0°F)',
+      'Clean the ice bin periodically',
+      'Ensure the water line isn\'t kinked',
+      'Don\'t store strong-smelling foods near the ice maker',
+      'Have water quality tested if ice tastes bad',
+      'Clean the condenser coils on standalone units',
     ],
     faqs: [
       {
         question: 'Why is my ice maker not making ice?',
-        answer: 'Common causes include frozen water lines, faulty water inlet valves, or thermostat issues. We diagnose and fix all ice maker problems.',
+        answer: 'Common causes include frozen water lines, faulty water inlet valves, defective ice maker modules, or thermostat issues. First check that the water supply is connected and the shutoff arm isn\'t raised. If these are fine, professional diagnosis is needed.',
       },
       {
         question: 'My ice tastes bad. What should I do?',
-        answer: 'Bad-tasting ice is usually caused by a dirty water filter or contaminated water line. We can clean and service your ice maker.',
+        answer: 'Bad-tasting ice is usually caused by an old water filter (replace every 6 months), contaminated water lines, or food odors in the freezer. We can flush the water system, replace filters, and clean the ice maker to resolve taste issues.',
+      },
+      {
+        question: 'Why are my ice cubes so small?',
+        answer: 'Small or hollow cubes typically indicate low water pressure, a clogged filter, or a partially blocked water inlet valve. We can test water flow and pressure to determine the cause and make appropriate repairs.',
+      },
+      {
+        question: 'Do you repair built-in ice makers like Sub-Zero and U-Line?',
+        answer: 'Yes, we specialize in premium built-in ice makers from Sub-Zero, Viking, U-Line, and other luxury brands. Our technicians have factory training on these specialized units.',
+      },
+      {
+        question: 'Why is my ice maker leaking water?',
+        answer: 'Leaks can come from cracked fill tubes, loose water line connections, failed inlet valves, or ice jams causing overflow. We identify the leak source and repair it properly to prevent water damage.',
+      },
+      {
+        question: 'How often should I clean my ice maker?',
+        answer: 'Built-in refrigerator ice makers should be cleaned every 3-6 months. Standalone ice machines should be cleaned and sanitized monthly for food safety. Regular cleaning improves ice quality and extends equipment life.',
       },
     ],
     image: 'https://images.pexels.com/photos/5824885/pexels-photo-5824885.jpeg',
@@ -275,21 +758,82 @@ export const services: Service[] = [
     icon: 'stove',
     shortDescription: 'Complete stove repair services for all premium brands and models.',
     description: 'Our stove repair services ensure your cooking appliance operates safely and efficiently. We handle everything from burner issues to complete overhauls.',
+    longDescription: `Your stove is central to your kitchen, handling daily meals and special occasions alike. When it malfunctions, you need a repair service that understands both the technical requirements and the importance of getting you back to cooking quickly. Advanced Appliance Repair Service provides comprehensive stove repair throughout Monmouth and Middlesex Counties.
+
+We repair all types of stoves - gas, electric, and dual-fuel models from every major manufacturer. Gas stoves require expertise in gas valves, igniters, and safety systems. Electric stoves involve heating elements, infinite switches, and electronic controls. Our technicians are trained on all systems and carry the diagnostic tools needed for accurate troubleshooting.
+
+Safety is our top priority with stove repair, especially for gas models. We ensure all gas connections are secure and test for leaks after every repair. We also verify that safety systems are functioning correctly to protect your family. With over 30 years of experience, you can trust Advanced Appliance to keep your stove operating safely and efficiently.`,
     features: [
       'Gas and electric stove repair',
       'Burner replacement',
       'Thermostat calibration',
       'Safety valve service',
       'Complete diagnostics',
+      'Igniter and spark module repair',
+      'Element and switch replacement',
+      'Control board service',
+    ],
+    commonProblems: [
+      { title: 'Burner Won\'t Light', description: 'Gas burners may fail to ignite due to clogged ports, faulty igniters, or gas valve problems.' },
+      { title: 'Electric Element Not Heating', description: 'Non-heating elements typically indicate burned-out coils, failed infinite switches, or wiring issues.' },
+      { title: 'Uneven Heat', description: 'Inconsistent heating can result from warped elements, faulty thermostats, or gas pressure issues.' },
+      { title: 'Gas Smell', description: 'Gas odors may indicate loose connections, failed valves, or pilot light issues on older models.' },
+      { title: 'Burner Flame Issues', description: 'Yellow flames, weak flames, or flames lifting off the burner indicate combustion or gas flow problems.' },
+      { title: 'Controls Not Responding', description: 'Unresponsive knobs or touch controls may have switch failures or control board problems.' },
+    ],
+    warningSigns: [
+      'Gas burner won\'t ignite',
+      'Electric element glowing unevenly',
+      'Smell of gas when stove is off',
+      'Clicking but no ignition',
+      'Knobs difficult to turn',
+      'Flames yellow instead of blue',
+      'Element stays on after turning off',
+      'Burner flame too high or too low',
+    ],
+    repairProcess: [
+      'Contact us to schedule your repair',
+      'Our technician arrives with stove parts and gas testing equipment',
+      'We diagnose all components and check safety systems',
+      'You receive a detailed estimate before we proceed',
+      'Repairs are completed to manufacturer specifications',
+      'We test all burners and safety features',
+      'Your repair is backed by our warranty',
+    ],
+    preventionTips: [
+      'Clean burner grates and drip pans regularly',
+      'Don\'t use foil to line drip pans',
+      'Keep burner ports clear of food debris',
+      'Wipe up spills promptly',
+      'Use proper-sized cookware for burners',
+      'Have gas connections checked annually',
+      'Replace worn knobs that are hard to turn',
+      'Schedule professional maintenance every few years',
     ],
     faqs: [
       {
         question: 'I smell gas from my stove. What should I do?',
-        answer: 'If you smell gas, turn off the stove, ventilate the area, and call us immediately. Do not use any electrical switches.',
+        answer: 'If you smell gas, turn off the stove immediately, do not operate any electrical switches, ventilate the area by opening windows, and evacuate if the smell is strong. Call us or your gas company. Do not attempt to diagnose gas leaks yourself.',
       },
       {
         question: 'Can you convert my stove from natural gas to propane?',
-        answer: 'Yes, we offer gas conversion services for most stove models.',
+        answer: 'Yes, we offer gas conversion services for most stove models. Conversion requires changing orifices and adjusting the air-to-fuel mixture for safe, efficient operation. This should only be done by qualified technicians.',
+      },
+      {
+        question: 'Why does my gas burner light on one side only?',
+        answer: 'Partial ignition usually indicates clogged burner ports. Food debris and grease can block the small holes around the burner head. We clean and clear all ports to restore proper flame distribution around the entire burner.',
+      },
+      {
+        question: 'Why is my electric burner not heating evenly?',
+        answer: 'Uneven heating typically indicates a warped or damaged element, a failing infinite switch, or loose wiring connections. Warped elements don\'t make full contact with cookware and should be replaced.',
+      },
+      {
+        question: 'How long do stove igniters last?',
+        answer: 'Gas stove igniters typically last 8-10 years with normal use. Signs of a failing igniter include slow ignition, weak sparking, or no spark at all. Igniter replacement is a common and straightforward repair.',
+      },
+      {
+        question: 'Do you repair vintage or antique stoves?',
+        answer: 'We can repair many vintage stoves, though parts availability varies. For antique stoves, we assess the unit and let you know what repairs are possible. Some vintage parts can be rebuilt or substituted with compatible components.',
       },
     ],
     image: 'https://images.pexels.com/photos/6489116/pexels-photo-6489116.jpeg',

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Header, Footer, BreadcrumbSchema } from '../components';
 import { businessInfo } from '../data/content';

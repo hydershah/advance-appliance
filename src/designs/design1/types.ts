@@ -5,6 +5,11 @@ export interface FAQ {
   answer: string;
 }
 
+export interface ServiceProblem {
+  title: string;
+  description: string;
+}
+
 export interface Service {
   id: string;
   name: string;
@@ -12,7 +17,13 @@ export interface Service {
   icon: string;
   shortDescription: string;
   description: string;
+  longDescription: string; // Extended SEO content (2-3 paragraphs)
   features: string[];
+  commonProblems: ServiceProblem[]; // "Common problems we fix"
+  warningSignsTitle?: string; // Custom title for warning signs
+  warningSigns: string[]; // "Signs your appliance needs repair"
+  repairProcess: string[]; // "Our repair process" steps
+  preventionTips: string[]; // Maintenance tips
   faqs: FAQ[];
   image: string;
 }

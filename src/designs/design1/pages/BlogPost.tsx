@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Header, Footer, SectionHeading, CTAButton, ArticleSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, blogPosts } from '../data/content';
