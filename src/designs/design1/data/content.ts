@@ -36,11 +36,11 @@ export const images = {
   hero: '/njhero-opt.webp',
   hero2: 'https://appliancenj.com/wp-content/uploads/2016/04/slider2.jpg',
   hero3: 'https://appliancenj.com/wp-content/uploads/2016/04/slider3.jpg',
-  kitchen: 'https://appliancenj.com/wp-content/uploads/2016/05/repair-nj.jpg',
-  living: 'https://images.pexels.com/photos/19689230/pexels-photo-19689230.jpeg',
-  about: 'https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg',
-  team: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg',
-  contact: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg',
+  kitchen: '/technician-service.webp',
+  living: '/Kitchen_Appliances_Photo.webp',
+  about: '/Advanced-Appliance-Repair-Service.webp',
+  team: '/technician-service.webp',
+  contact: '/technician-work.webp',
   // Process icons
   iconBook: 'https://appliancenj.com/wp-content/uploads/2016/04/note-2.png',
   iconRepair: 'https://appliancenj.com/wp-content/uploads/2016/04/repair-2.png',
@@ -140,7 +140,7 @@ We stock our service vehicles with the most commonly needed parts, allowing us t
         answer: 'Yes, complete cooling failure can be caused by various issues including compressor failure, thermostat problems, or refrigerant leaks. Our technicians have the tools and expertise to diagnose and repair all cooling system problems.',
       },
     ],
-    image: 'https://images.pexels.com/photos/5824883/pexels-photo-5824883.jpeg',
+    image: '/Appliances_Photo_1694007.webp',
   },
   {
     id: '2',
@@ -227,7 +227,7 @@ Modern washing machines are complex appliances with electronic control boards, m
         answer: 'Loud spinning is typically caused by worn drum bearings, damaged shock absorbers, or foreign objects caught between the drum and tub. Ignoring these sounds can lead to more expensive repairs, so it\'s best to have it checked promptly.',
       },
     ],
-    image: 'https://images.pexels.com/photos/5591581/pexels-photo-5591581.jpeg',
+    image: '/Appliances_Photo_7614539.webp',
   },
   {
     id: '3',
@@ -314,7 +314,7 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
         answer: 'Yes, we repair all modern dryers including those with steam refresh, wrinkle release, and sanitize cycles. Our technicians stay current with the latest dryer technology through ongoing training.',
       },
     ],
-    image: 'https://images.pexels.com/photos/5591464/pexels-photo-5591464.jpeg',
+    image: '/Appliances_Photo_7614539.webp',
   },
   {
     id: '4',
@@ -401,7 +401,7 @@ Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking wa
         answer: 'Most dishwashers last 9-12 years. Premium brands like Miele often last longer with proper maintenance. If your dishwasher is under 8 years old, repair is usually more economical than replacement.',
       },
     ],
-    image: 'https://images.pexels.com/photos/6195125/pexels-photo-6195125.jpeg',
+    image: '/Kitchen_Appliances_Photo_1.webp',
   },
   {
     id: '5',
@@ -488,7 +488,7 @@ Whether you have a freestanding range, wall oven, double oven, or professional-s
         answer: 'Some smoke during self-cleaning is normal as food residue burns off at high temperatures. However, excessive smoke may indicate heavy buildup, worn door gaskets, or ventilation problems. We can inspect and address these issues.',
       },
     ],
-    image: 'https://images.pexels.com/photos/6996086/pexels-photo-6996086.jpeg',
+    image: '/Appliances_Photo_7614540.webp',
   },
   {
     id: '6',
@@ -575,7 +575,7 @@ Induction cooktops have become increasingly popular in luxury kitchens, and we h
         answer: 'Most cooktops last 15-20 years. If yours is less than 10 years old and the repair cost is reasonable, repair is usually the better choice. Glass replacement on newer units is often worthwhile; major repairs on older units may not be.',
       },
     ],
-    image: 'https://images.pexels.com/photos/6489117/pexels-photo-6489117.jpeg',
+    image: '/Appliances_Photo_8146322.webp',
   },
   {
     id: '7',
@@ -662,7 +662,7 @@ We understand that freezer problems are time-sensitive. Depending on the issue a
         answer: 'We primarily service residential freezers but can repair some commercial units. For large commercial freezer systems, we recommend contacting a commercial refrigeration specialist for the best service.',
       },
     ],
-    image: 'https://images.pexels.com/photos/5824884/pexels-photo-5824884.jpeg',
+    image: '/Appliances_Photo_1694007.webp',
   },
   {
     id: '8',
@@ -749,7 +749,7 @@ We diagnose and repair all ice maker problems, from simple water line issues to 
         answer: 'Built-in refrigerator ice makers should be cleaned every 3-6 months. Standalone ice machines should be cleaned and sanitized monthly for food safety. Regular cleaning improves ice quality and extends equipment life.',
       },
     ],
-    image: 'https://images.pexels.com/photos/5824885/pexels-photo-5824885.jpeg',
+    image: '/Kitchen_Appliances_Photo_2.webp',
   },
   {
     id: '9',
@@ -836,7 +836,7 @@ Safety is our top priority with stove repair, especially for gas models. We ensu
         answer: 'We can repair many vintage stoves, though parts availability varies. For antique stoves, we assess the unit and let you know what repairs are possible. Some vintage parts can be rebuilt or substituted with compatible components.',
       },
     ],
-    image: 'https://images.pexels.com/photos/6489116/pexels-photo-6489116.jpeg',
+    image: '/Appliances_Photo_7614540.webp',
   },
 ];
 
@@ -990,28 +990,28 @@ export const teamMembers: TeamMember[] = [
     name: 'Michael Richardson',
     role: 'Founder & Master Technician',
     bio: 'With over 25 years of experience in luxury appliance repair, Michael founded Advanced Appliance Repair Service to bring premium service to discerning homeowners. He holds factory certifications from Sub-Zero, Wolf, and Viking.',
-    image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg',
+    image: '/technician-service.webp',
   },
   {
     id: '2',
     name: 'David Thompson',
     role: 'Senior Service Technician',
     bio: 'David specializes in refrigeration systems and has been with our team for 15 years. His expertise in Sub-Zero and Miele appliances is unparalleled in the region.',
-    image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg',
+    image: '/technician-work.webp',
   },
   {
     id: '3',
     name: 'James Wilson',
     role: 'Cooking Appliance Specialist',
     bio: 'James is our Wolf and Viking expert with specialized training in high-end cooking appliances. He brings 12 years of dedicated experience to every repair.',
-    image: 'https://images.pexels.com/photos/2340978/pexels-photo-2340978.jpeg',
+    image: '/technician-service.webp',
   },
   {
     id: '4',
     name: 'Sarah Mitchell',
     role: 'Customer Service Manager',
     bio: 'Sarah ensures every client receives the white-glove service they deserve. She coordinates our scheduling to minimize wait times and maximize convenience.',
-    image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg',
+    image: '/technician-work.webp',
   },
 ];
 
