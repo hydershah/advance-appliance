@@ -17,7 +17,7 @@ const Reviews: React.FC = () => {
           title="Our Reviews"
           subtitle="Customer Testimonials"
           description="We have a lot of happy & satisfied local customers. We are overwhelmed with grateful reviews from your family, friends, and neighbors that were serviced over the years."
-          image={images.contact}
+          image={images.reviews}
           showCTA={false}
           overlay="gradient"
           height="medium"

@@ -13,7 +13,7 @@ const Services: React.FC = () => {
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title="Our Repair Services" subtitle="Expert Solutions" description="Comprehensive repair services for all premium appliance brands." image={images.kitchen} showCTA={true} overlay="gradient" height="medium" align="center" />
+        <Hero title="Our Repair Services" subtitle="Expert Solutions" description="Comprehensive repair services for all premium appliance brands." image={images.services} showCTA={true} overlay="gradient" height="medium" align="center" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">

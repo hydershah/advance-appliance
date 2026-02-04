@@ -29,29 +29,33 @@ export const businessInfo = {
   yearsInBusiness: 30,
 };
 
-// Images - from live site
+// Images - local high-quality images
 export const images = {
   logo: 'https://appliancenj.com/wp-content/uploads/2016/05/logo.png',
   favicon: 'https://appliancenj.com/wp-content/uploads/2016/05/favicon.png',
+  // Hero/Cover images for different pages
   hero: '/njhero-opt.webp',
-  hero2: 'https://appliancenj.com/wp-content/uploads/2016/04/slider2.jpg',
-  hero3: 'https://appliancenj.com/wp-content/uploads/2016/04/slider3.jpg',
-  kitchen: '/technician-service.webp',
-  living: '/Kitchen_Appliances_Photo.webp',
+  kitchen: '/Appliances_Photo_8146322.webp',
   about: '/Advanced-Appliance-Repair-Service.webp',
+  contact: '/Kitchen_Appliances_Photo_1.webp',
   team: '/technician-service.webp',
-  contact: '/technician-work.webp',
+  services: '/Kitchen_Appliances_Photo_1.webp',
+  brands: '/Appliances_Photo_1694007.webp',
+  reviews: '/technician-service.webp',
+  tips: '/Kitchen_Appliances_Photo_2.webp',
+  serviceAreas: '/Appliances_Photo_7614540.webp',
+  blog: '/Kitchen_Appliances_Photo.webp',
   // Process icons
   iconBook: 'https://appliancenj.com/wp-content/uploads/2016/04/note-2.png',
   iconRepair: 'https://appliancenj.com/wp-content/uploads/2016/04/repair-2.png',
   iconRelax: 'https://appliancenj.com/wp-content/uploads/2016/04/relax-2.png',
-  // Appliance images
-  oven: 'https://appliancenj.com/wp-content/uploads/2016/04/oven.png',
-  cooktop: 'https://appliancenj.com/wp-content/uploads/2016/04/cooker-2.jpg',
-  dishwasher: 'https://appliancenj.com/wp-content/uploads/2016/04/dishwasher-1.png',
-  refrigerator: 'https://appliancenj.com/wp-content/uploads/2016/04/refrigerator.jpg',
-  washer: 'https://appliancenj.com/wp-content/uploads/2016/04/ge-washer-metallic-silver.jpg',
-  dryer: 'https://appliancenj.com/wp-content/uploads/2016/04/Dispatcher-dry-mini-main.jpg',
+  // Appliance images (local high-quality)
+  oven: '/Appliances_Photo_7614540.webp',
+  cooktop: '/Appliances_Photo_8146322.webp',
+  dishwasher: '/Kitchen_Appliances_Photo_1.webp',
+  refrigerator: '/Appliances_Photo_1694007.webp',
+  washer: '/Appliances_Photo_7614539.webp',
+  dryer: '/Appliances_Photo_7534280.webp',
 };
 
 // Services
@@ -314,7 +318,7 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
         answer: 'Yes, we repair all modern dryers including those with steam refresh, wrinkle release, and sanitize cycles. Our technicians stay current with the latest dryer technology through ongoing training.',
       },
     ],
-    image: '/Appliances_Photo_7614539.webp',
+    image: '/Appliances_Photo_7534280.webp',
   },
   {
     id: '4',
@@ -662,7 +666,7 @@ We understand that freezer problems are time-sensitive. Depending on the issue a
         answer: 'We primarily service residential freezers but can repair some commercial units. For large commercial freezer systems, we recommend contacting a commercial refrigeration specialist for the best service.',
       },
     ],
-    image: '/Appliances_Photo_1694007.webp',
+    image: '/Appliances_Photo_1694007_2.webp',
   },
   {
     id: '8',
@@ -836,7 +840,7 @@ Safety is our top priority with stove repair, especially for gas models. We ensu
         answer: 'We can repair many vintage stoves, though parts availability varies. For antique stoves, we assess the unit and let you know what repairs are possible. Some vintage parts can be rebuilt or substituted with compatible components.',
       },
     ],
-    image: '/Appliances_Photo_7614540.webp',
+    image: '/Kitchen_Appliances_Photo.webp',
   },
 ];
 
@@ -1094,7 +1098,7 @@ While some issues can be DIY fixes, most washer problems require professional di
 Don't wait for small problems to become big ones. Contact Advanced Appliance for fast, reliable service.`,
     author: 'Advanced Appliance Team',
     date: '2024-11-20',
-    image: 'https://appliancenj.com/wp-content/uploads/2016/04/ge-washer-metallic-silver.jpg',
+    image: '/Appliances_Photo_7614539.webp',
     category: 'Tips',
     tags: ['Washer', 'Emergency', 'Repair', 'Tips'],
     readTime: 4,
@@ -1131,7 +1135,7 @@ On gas dryers, you should hear a clicking sound when the igniter activates. No c
 If these steps don't solve the problem, you likely have a faulty heating element, thermal fuse, or thermostat. These repairs require professional service.`,
     author: 'Advanced Appliance Team',
     date: '2024-11-15',
-    image: 'https://appliancenj.com/wp-content/uploads/2016/04/Dispatcher-dry-mini-main.jpg',
+    image: '/Appliances_Photo_7534280.webp',
     category: 'Tips',
     tags: ['Dryer', 'Heating', 'Troubleshooting', 'Tips'],
     readTime: 5,
@@ -1168,7 +1172,7 @@ Before starting your dishwasher, run hot water in your sink until it's hot. This
 If these steps don't solve your drainage problem, you may have a faulty drain pump, clogged drain valve, or other mechanical issue. That's when you need our expert technicians.`,
     author: 'Advanced Appliance Team',
     date: '2024-11-10',
-    image: 'https://appliancenj.com/wp-content/uploads/2016/04/dishwasher-1.png',
+    image: '/Kitchen_Appliances_Photo_2.webp',
     category: 'Tips',
     tags: ['Dishwasher', 'Draining', 'DIY', 'Tips'],
     readTime: 4,
@@ -1212,7 +1216,7 @@ Some repairs are best left to the experts:
 Advanced Appliance has been serving Monmouth and Middlesex counties for over 30 years. We're factory-authorized for all major brands.`,
     author: 'Advanced Appliance Team',
     date: '2024-11-05',
-    image: 'https://appliancenj.com/wp-content/uploads/2016/04/oven.png',
+    image: '/Appliances_Photo_7614540.webp',
     category: 'Guide',
     tags: ['Kitchen', 'Appliances', 'Maintenance', 'Guide'],
     readTime: 6,

@@ -81,7 +81,7 @@ const UsefulTips: React.FC = () => {
           title="Useful Tips"
           subtitle="Appliance Care Guide"
           description="Expert advice to help you maintain your appliances and prevent costly repairs."
-          image={images.kitchen}
+          image={images.tips}
           showCTA={false}
           overlay="gradient"
           height="medium"

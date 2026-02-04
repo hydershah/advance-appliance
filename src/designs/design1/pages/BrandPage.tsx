@@ -32,7 +32,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
           title={`${brand.name} Appliance Repair Service in NJ`}
           subtitle="Factory Authorized Service"
           description={`Expert ${brand.name} appliance repair throughout Monmouth and Middlesex Counties. Over 30 years of experience with factory-trained technicians.`}
-          image={images.kitchen}
+          image={images.brands}
           showCTA={true}
           overlay="gradient"
           height="medium"

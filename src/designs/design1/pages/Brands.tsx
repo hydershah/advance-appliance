@@ -22,7 +22,7 @@ const Brands: React.FC = () => {
           title="Our Brands"
           subtitle="Appliances That We Repair"
           description="At Advanced Appliance Service, we provide professional repair of kitchen and laundry appliances for over 30 years. We service all domestic and foreign makes and models."
-          image={images.kitchen}
+          image={images.brands}
           showCTA={false}
           overlay="gradient"
           height="medium"

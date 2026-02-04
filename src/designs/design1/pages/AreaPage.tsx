@@ -29,7 +29,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title={`Appliance Repair in ${area.name}, NJ`} subtitle={`Serving ${area.county} County`} description={`Premium appliance repair services for ${area.name} residents.`} image={images.kitchen} showCTA={true} overlay="gradient" height="medium" align="left" />
+        <Hero title={`Appliance Repair in ${area.name}, NJ`} subtitle={`Serving ${area.county} County`} description={`Premium appliance repair services for ${area.name} residents.`} image={images.serviceAreas} showCTA={true} overlay="gradient" height="medium" align="left" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">

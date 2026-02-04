@@ -21,7 +21,7 @@ const ServiceAreas: React.FC = () => {
           title="Our Service Area"
           subtitle="Serving Central New Jersey"
           description="We provide professional appliance repair services throughout Monmouth and Middlesex Counties. Same-day service available."
-          image={images.kitchen}
+          image={images.serviceAreas}
           showCTA={false}
           overlay="gradient"
           height="medium"
