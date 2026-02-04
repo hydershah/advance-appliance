@@ -45,6 +45,7 @@ export const images = {
   tips: '/Kitchen_Appliances_Photo_2.webp',
   serviceAreas: '/Appliances_Photo_7614540.webp',
   blog: '/Kitchen_Appliances_Photo.webp',
+  living: '/Kitchen_Appliances_Photo.webp',
   // Process icons
   iconBook: 'https://appliancenj.com/wp-content/uploads/2016/04/note-2.png',
   iconRepair: 'https://appliancenj.com/wp-content/uploads/2016/04/repair-2.png',
