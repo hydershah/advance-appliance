@@ -1,9 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
-import { fetchAllServices, fetchSettings } from '@/sanity/fetchers'
-import { urlFor } from '@/sanity/image'
-import { JsonLd } from '@/components/JsonLd'
-import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
 
 // Import static design pages for fallback when CMS is unavailable
 import { Services as Design1Services } from '@/designs/design1/pages'
