@@ -60,88 +60,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  // Get current design theme
-  const designTheme = getCurrentDesignTheme()
-
   // TEMPORARY: Use static content directly for urgent client review
   // TODO: Switch back to Sanity CMS after credentials are configured
+  // To revert: See git history for Sanity CMS version
   return <Design1Home />
-
-  /* Sanity CMS version - will reactivate after setup
-  try {
-    // Fetch home page content and settings from Sanity
-    const [page, settings] = await Promise.all([
-      fetchPageBySlug('home'),
-      fetchSettings(),
-    ])
-
-    const components = getDesignComponents(designTheme)
-    const { Header, Footer } = components
-
-    // Build LocalBusiness schema
-    const localBusinessSchema = {
-      '@context': 'https://schema.org' as const,
-      '@type': 'LocalBusiness' as const,
-      name: settings.siteName,
-      description: settings.tagline || undefined,
-      telephone: settings.contact?.phone,
-      email: settings.contact?.email,
-      address: settings.contact?.address
-        ? {
-            '@type': 'PostalAddress' as const,
-            streetAddress: settings.contact.address,
-            addressLocality: settings.contact.city || undefined,
-            addressRegion: settings.contact.state || undefined,
-            postalCode: settings.contact.zip || undefined,
-            addressCountry: 'US',
-          }
-        : undefined,
-      openingHours: settings.hours
-        ? [
-            settings.hours.monday ? `Mo ${settings.hours.monday}` : null,
-            settings.hours.tuesday ? `Tu ${settings.hours.tuesday}` : null,
-            settings.hours.wednesday ? `We ${settings.hours.wednesday}` : null,
-            settings.hours.thursday ? `Th ${settings.hours.thursday}` : null,
-            settings.hours.friday ? `Fr ${settings.hours.friday}` : null,
-            settings.hours.saturday ? `Sa ${settings.hours.saturday}` : null,
-            settings.hours.sunday ? `Su ${settings.hours.sunday}` : null,
-          ].filter(Boolean) as string[]
-        : undefined,
-      sameAs: settings.social
-        ? [
-            settings.social.facebook,
-            settings.social.instagram,
-            settings.social.twitter,
-            settings.social.youtube,
-            settings.social.linkedin,
-            settings.social.yelp,
-            settings.social.googleBusiness,
-          ].filter(Boolean) as string[]
-        : undefined,
-      url: process.env.NEXT_PUBLIC_SERVER_URL,
-    }
-
-    return (
-      <>
-        <JsonLd data={localBusinessSchema} />
-
-        {page && page.layout ? (
-          // CMS-driven content with dynamic Header/Footer
-          <>
-            <Header settings={settings} />
-            <main className="min-h-screen">
-              <BlockRenderer blocks={page.layout} designTheme={designTheme} />
-            </main>
-            <Footer settings={settings} />
-          </>
-        ) : (
-          <Design1Home />
-        )}
-      </>
-    )
-  } catch {
-    // CMS unavailable - fall back to static design
-    return <Design1Home />
-  }
-  */
 }
