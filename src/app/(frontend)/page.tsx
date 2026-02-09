@@ -63,6 +63,11 @@ export default async function HomePage() {
   // Get current design theme
   const designTheme = getCurrentDesignTheme()
 
+  // TEMPORARY: Use static content directly for urgent client review
+  // TODO: Switch back to Sanity CMS after credentials are configured
+  return <Design1Home />
+
+  /* Sanity CMS version - will reactivate after setup
   try {
     // Fetch home page content and settings from Sanity
     const [page, settings] = await Promise.all([
@@ -138,4 +143,5 @@ export default async function HomePage() {
     // CMS unavailable - fall back to static design
     return <Design1Home />
   }
+  */
 }

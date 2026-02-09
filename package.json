@@ -12,7 +12,8 @@
     "clean": "rm -rf .next out node_modules/.cache",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "analyze": "cross-env ANALYZE=true next build",
-    "verify:seo": "node scripts/verify-seo.js"
+    "verify:seo": "node scripts/verify-seo.js",
+    "seed:sanity": "ts-node --project tsconfig.json scripts/seed-sanity-data.ts"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.2",

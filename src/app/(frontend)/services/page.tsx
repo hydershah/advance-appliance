@@ -22,6 +22,11 @@ export default async function ServicesPage() {
   // Get current design theme
   const designTheme = getCurrentDesignTheme()
 
+  // TEMPORARY: Use static content directly for urgent client review
+  // TODO: Switch back to Sanity CMS after credentials are configured
+  return <Design1Services />
+
+  /* Sanity CMS version - will reactivate after setup
   try {
     // Fetch all published services
     const services = await fetchAllServices()
@@ -180,4 +185,5 @@ export default async function ServicesPage() {
     // CMS unavailable - fall back to static design
     return <Design1Services />
   }
+  */
 }
