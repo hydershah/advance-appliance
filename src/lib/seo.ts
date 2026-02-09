@@ -281,11 +281,7 @@ export const BUSINESS_INFO = {
     'Dryer Repair',
     'Dishwasher Repair',
     'Oven Repair',
-    'Range Repair',
     'Cooktop Repair',
-    'Freezer Repair',
-    'Ice Maker Repair',
-    'Stove Repair',
   ],
   brands: [
     'Sub-Zero',
