@@ -56,7 +56,7 @@ export const images = {
   dishwasher: '/images/dishwasher-repair.webp',
   refrigerator: '/Appliances_Photo_1694007.webp',
   washer: '/Appliances_Photo_7614539.webp',
-  dryer: '/Appliances_Photo_7534280.webp',
+  dryer: '/images/dryer-repair.webp',
 };
 
 // Services
@@ -319,7 +319,7 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
         answer: 'Yes, we repair all modern dryers including those with steam refresh, wrinkle release, and sanitize cycles. Our technicians stay current with the latest dryer technology through ongoing training.',
       },
     ],
-    image: '/Appliances_Photo_7534280.webp',
+    image: '/images/dryer-repair.webp',
   },
   {
     id: '4',
