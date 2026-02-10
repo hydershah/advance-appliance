@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
       <div className="border-t border-gray-800">
         <div className="container mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-            <p>&copy; {currentYear} {businessInfo.name}. All rights reserved.</p>
+            <p suppressHydrationWarning>&copy; {currentYear} {businessInfo.name}. All rights reserved.</p>
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4 md:mt-0">
               <a href="/our-brands" className="hover:text-white transition-colors">Our Brands</a>
               <a href="/our-reviews" className="hover:text-white transition-colors">Our Reviews</a>
