@@ -31,7 +31,7 @@ const Hero: React.FC<HeroProps> = ({
   return (
     <section className={`relative ${heightClasses[height]} flex items-center overflow-hidden`}>
       {image.startsWith('/') ? (
-        <Image src={image} alt={title} fill className="object-cover" priority sizes="100vw" quality={80} />
+        <Image src={image} alt={title} fill className="object-cover object-[center_60%]" priority sizes="100vw" quality={80} />
       ) : (
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} />
       )}
