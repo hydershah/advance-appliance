@@ -53,7 +53,7 @@ export const images = {
   // Appliance images (local high-quality)
   oven: '/Appliances_Photo_7614540.webp',
   cooktop: '/Appliances_Photo_8146322.webp',
-  dishwasher: '/Kitchen_Appliances_Photo_1.webp',
+  dishwasher: '/images/dishwasher-repair.webp',
   refrigerator: '/Appliances_Photo_1694007.webp',
   washer: '/Appliances_Photo_7614539.webp',
   dryer: '/Appliances_Photo_7534280.webp',
@@ -406,7 +406,7 @@ Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking wa
         answer: 'Most dishwashers last 9-12 years. Premium brands like Miele often last longer with proper maintenance. If your dishwasher is under 8 years old, repair is usually more economical than replacement.',
       },
     ],
-    image: '/Kitchen_Appliances_Photo_1.webp',
+    image: '/images/dishwasher-repair.webp',
   },
   {
     id: '5',
