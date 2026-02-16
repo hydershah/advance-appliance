@@ -142,7 +142,7 @@ export default async function AboutPage() {
                         Fast Service
                       </h3>
                       <p className="text-gray-700">
-                        Same-day appointments available with prompt, reliable service.
+                        Appointments available with prompt, reliable service.
                       </p>
                     </div>
 

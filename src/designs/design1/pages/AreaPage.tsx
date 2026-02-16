@@ -13,10 +13,10 @@ interface AreaPageProps {
 const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
   const area = areaProp || serviceAreas.find((a) => a.slug === areaSlug) || serviceAreas[0];
   if (!area) return null;
-  const otherAreas = serviceAreas.filter((a) => a.id !== area.id);
+  const otherAreas = serviceAreas.filter((a) => a.id !== area.id).sort((a, b) => a.name.localeCompare(b.name));
   const areaTestimonials = testimonials.filter((t) => t.location.toLowerCase().includes(area.name.toLowerCase()));
   const areaFaqs = [
-    { question: `Do you offer same-day service in ${area.name}?`, answer: `Yes, we offer same-day service in ${area.name}. Call us before noon for best availability.` },
+    { question: `How quickly can you schedule service in ${area.name}?`, answer: `We typically offer next-day service in ${area.name}. Call us for best availability.` },
     { question: `What areas of ${area.name} do you cover?`, answer: `We serve all of ${area.name} including zip codes ${area.zipCodes.join(', ')}.` },
     { question: `How quickly can you respond to emergencies in ${area.name}?`, answer: `For emergencies in ${area.name}, we typically respond within 2-4 hours.` },
     { question: `Do you charge extra for service in ${area.name}?`, answer: `No, there are no additional travel charges for ${area.name}. Our standard $89 diagnostic fee applies.` },
@@ -29,7 +29,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title={`Appliance Repair in ${area.name}, NJ`} subtitle={`Serving ${area.county} County`} description={`Premium appliance repair services for ${area.name} residents.`} image={images.serviceAreas} showCTA={true} overlay="gradient" height="medium" align="left" />
+        <Hero title={`Appliance Repair in ${area.name}, NJ`} subtitle={`Serving ${area.county} County`} description={`Professional appliance repair services for ${area.name} residents.`} image={images.serviceAreas} showCTA={true} overlay="gradient" height="medium" align="left" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
@@ -48,7 +48,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
                 <SectionHeading subtitle={`${area.county} County, ${area.state}`} title={`Trusted Appliance Repair in ${area.name}`} align="left" />
                 <div className="space-y-6 mt-8">
                   <p className="text-gray-600 leading-relaxed">{area.description}</p>
-                  <p className="text-gray-600 leading-relaxed">Our factory-certified technicians have been serving {area.name} homeowners for over 25 years.</p>
+                  <p className="text-gray-600 leading-relaxed">Our factory-trained technicians have been serving {area.name} homeowners for over 25 years.</p>
                 </div>
                 <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-100 mt-8">
                   <div className="text-center"><div className="font-serif text-3xl text-[#D4AF37]">25+</div><div className="text-gray-500 text-xs uppercase tracking-wider mt-1">Years Serving {area.name}</div></div>
@@ -57,7 +57,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
                 </div>
               </div>
               <div className="relative">
-                <div className="aspect-square overflow-hidden"><img src={images.living} alt={`Luxury home in ${area.name}`} className="w-full h-full object-cover" /></div>
+                <div className="aspect-square overflow-hidden"><img src={images.living} alt={`Home in ${area.name}`} className="w-full h-full object-cover" /></div>
                 <div className="absolute -bottom-8 -left-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
               </div>
             </div>
@@ -78,7 +78,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
           <div className="container mx-auto px-6">
             <p className="text-center text-xs uppercase tracking-[0.3em] text-gray-500 mb-8">Brands We Service in {area.name}</p>
             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
-              {brands.slice(0, 8).map((brand, i) => <span key={i} className="text-gray-400 text-lg font-serif hover:text-[#D4AF37] transition-colors cursor-default">{brand.name}</span>)}
+              {brands.slice(0, 10).map((brand, i) => <span key={i} className="text-gray-400 text-lg font-serif hover:text-[#D4AF37] transition-colors cursor-default">{brand.name}</span>)}
             </div>
           </div>
         </section>

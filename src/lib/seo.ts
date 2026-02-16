@@ -141,7 +141,7 @@ export const COMMON_KEYWORDS = {
     'appliance service',
     'appliance maintenance',
     'emergency appliance repair',
-    'same day appliance repair',
+    'fast appliance repair',
     'professional appliance technician',
   ],
   appliances: [
@@ -172,10 +172,10 @@ export const COMMON_KEYWORDS = {
     'Colts Neck NJ',
     'Holmdel NJ',
   ],
-  luxury: [
-    'luxury appliance repair',
+  specialty: [
+    'high-end appliance repair',
     'high-end appliance service',
-    'premium appliance technician',
+    'professional appliance technician',
     'commercial grade appliance repair',
   ],
 }
@@ -190,7 +190,7 @@ export function getServiceKeywords(service: string, location?: string): string[]
     `${service} maintenance`,
     `professional ${service} repair`,
     `emergency ${service} repair`,
-    `same day ${service} repair`,
+    `fast ${service} repair`,
   ]
 
   if (location) {
@@ -244,7 +244,7 @@ export const BUSINESS_INFO = {
     'Englishtown, NJ',
     'Fair Haven, NJ',
     'Farmingdale, NJ',
-    'Fords, NJ',
+
     'Freehold, NJ',
     'Hazlet, NJ',
     'Holmdel, NJ',

@@ -9,7 +9,7 @@ export const LocalBusinessSchema: React.FC<LocalBusinessSchemaProps> = () => {
     '@type': 'LocalBusiness',
     '@id': 'https://advancedappliancerepair.com',
     name: businessInfo.name,
-    description: 'Premium appliance repair services for luxury brands including Sub-Zero, Viking, Wolf, Thermador, and Miele. Serving Short Hills, Summit, Chatham, Millburn, and Morganville, NJ.',
+    description: 'Expert appliance repair services for high-end brands including Sub-Zero, Viking, Wolf, Thermador, and Miele. Serving Short Hills, Summit, Chatham, Millburn, and Morganville, NJ.',
     url: 'https://advancedappliancerepair.com',
     telephone: businessInfo.phone,
     email: businessInfo.email,

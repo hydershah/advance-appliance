@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Read customer reviews and testimonials. We have satisfied local customers throughout Monmouth and Middlesex Counties, NJ.',
   openGraph: {
     title: 'Our Reviews - Advanced Appliance Repair Service',
-    description: 'Read customer reviews and testimonials from satisfied homeowners throughout Central New Jersey.',
+    description: 'Read customer reviews and testimonials from satisfied homeowners in parts of Monmouth and Middlesex Counties.',
   },
 }
 

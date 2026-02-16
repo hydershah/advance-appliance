@@ -38,8 +38,8 @@ import { generateMetadata } from '@/lib/seo'
 
 export const metadata = generateMetadata({
   title: 'Advanced Appliance Repair Service | Expert Repair in NJ',
-  description: 'Professional luxury appliance repair in Monmouth & Middlesex Counties. Same-day service. Call (732) 416-7430',
-  keywords: ['appliance repair NJ', 'luxury appliance service'],
+  description: 'Professional high-end appliance repair in parts of Monmouth & Middlesex Counties. Factory-trained technicians. Call (732) 416-7430',
+  keywords: ['appliance repair NJ', 'high-end appliance service'],
 })
 
 export default function HomePage() {
@@ -166,7 +166,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const area = await getServiceArea(params.slug)
 
   return generateMetadata({
-    title: `Appliance Repair in ${area.name} | Same-Day Service`,
+    title: `Appliance Repair in ${area.name} | Expert Service`,
     description: `Professional appliance repair in ${area.name}. Expert service for all major brands. Call (732) 416-7430`,
     keywords: [`appliance repair ${area.name}`, `${area.name} appliance service`],
     canonical: `/service-areas/${params.slug}`,
@@ -227,8 +227,8 @@ export default function ContactPage() {
 ```tsx
 const faqSchema = generateFAQPageSchema([
   {
-    question: 'Do you offer same-day service?',
-    answer: 'Yes, we offer same-day service for most repairs in Monmouth and Middlesex Counties.'
+    question: 'How quickly can you schedule service?',
+    answer: 'We typically offer next-day service for most repairs in parts of Monmouth and Middlesex Counties.'
   },
   {
     question: 'What brands do you service?',

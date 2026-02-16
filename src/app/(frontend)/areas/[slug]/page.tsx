@@ -97,7 +97,7 @@ export async function generateMetadata({
   if (staticArea) {
     return {
       title: `Appliance Repair in ${staticArea.name}, NJ - Advanced Appliance`,
-      description: `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ. Same-day service, all major brands. Call (732) 416-7430.`,
+      description: `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ. All major brands serviced. Call (732) 416-7430.`,
       openGraph: {
         title: `Appliance Repair in ${staticArea.name}, NJ`,
         description: `Professional appliance repair services in ${staticArea.name}, New Jersey.`,

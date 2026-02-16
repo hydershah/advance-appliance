@@ -11,7 +11,7 @@ import { Home as Design1Home } from '@/designs/design1/pages'
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Advanced Appliance Repair Service | Expert Repair in NJ',
-    description: 'Professional luxury appliance repair services in Monmouth & Middlesex Counties, NJ. Expert technicians, same-day service available.',
+    description: 'Professional high-end appliance repair services in Monmouth & Middlesex Counties, NJ. Expert technicians, reliable service.',
   }
 }
 

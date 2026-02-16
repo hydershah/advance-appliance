@@ -5,7 +5,7 @@ import { Service, Testimonial, TeamMember, BlogPost, ServiceArea, Brand, Certifi
 // Business Information
 export const businessInfo = {
   name: 'Advanced Appliance Repair Service',
-  tagline: 'Factory-Authorized Appliance Repair in Monmouth & Middlesex Counties, NJ',
+  tagline: 'Professional Appliance Repair in Monmouth & Middlesex Counties, NJ',
   phone: '(732) 416-7430',
   tollFree: '(800) 664-0650',
   email: 'service@appliancenj.com',
@@ -69,18 +69,18 @@ export const services: Service[] = [
     name: 'Refrigerator Repair',
     slug: 'refrigerator-repair',
     icon: 'refrigerator',
-    shortDescription: 'Expert repair for all premium refrigerator brands including Sub-Zero, Viking, and more.',
+    shortDescription: 'Expert repair for all high-end refrigerator brands including Sub-Zero, Viking, and more.',
     description: 'Our certified technicians specialize in repairing high-end refrigerators from the worlds most prestigious brands. From temperature regulation issues to compressor failures, we diagnose and resolve problems with precision and care.',
     longDescription: `Your refrigerator is the hardest-working appliance in your home, running 24 hours a day, 365 days a year to keep your food fresh and safe. When it breaks down, you need fast, reliable service from technicians who understand the complexity of modern refrigeration systems. At Advanced Appliance Repair Service, we have been repairing refrigerators throughout Monmouth and Middlesex Counties since 1992.
 
-Our factory-trained technicians are certified to work on all major brands, from everyday models to high-end units like Sub-Zero, Viking, and Thermador. We understand that luxury refrigerators require specialized knowledge and genuine OEM parts to maintain their performance and warranty coverage. Whether you have a French door, side-by-side, top-freezer, or built-in refrigerator, we have the expertise to diagnose and repair it correctly the first time.
+Our factory-trained technicians are certified to work on all major brands, from everyday models to high-end units like Sub-Zero, Viking, and Thermador. We understand that high-end refrigerators require specialized knowledge and genuine OEM parts to maintain their performance and warranty coverage. Whether you have a French door, side-by-side, top-freezer, or built-in refrigerator, we have the expertise to diagnose and repair it correctly the first time.
 
-We stock our service vehicles with the most commonly needed parts, allowing us to complete most repairs in a single visit. For complex issues or specialty parts, we provide accurate timelines and keep you informed throughout the process. Our $100 diagnostic fee is applied to your repair cost, and all work is backed by our 90-180 day warranty on parts and labor.`,
+We stock our service vehicles with the most commonly needed parts, allowing us to complete most repairs in a single visit. For complex issues or specialty parts, we provide accurate timelines and keep you informed throughout the process. Our $100 diagnostic fee is applied to your repair cost, and all work is backed by our 365-day warranty on parts and labor.`,
     features: [
-      'Same-day service availability',
+      'Prompt service scheduling',
       'Factory-trained technicians',
       'Genuine OEM replacement parts',
-      '90-180 day warranty on all repairs',
+      '365-day warranty on all repairs',
       'Sub-Zero, Viking, Thermador specialists',
       'Built-in and integrated unit experts',
       'Compressor and sealed system repair',
@@ -105,7 +105,7 @@ We stock our service vehicles with the most commonly needed parts, allowing us t
       'Refrigerator running non-stop',
     ],
     repairProcess: [
-      'Schedule your appointment online or by phone - same-day service often available',
+      'Schedule your appointment online or by phone',
       'Our technician arrives on time in a fully-stocked service vehicle',
       'We perform a complete diagnostic assessment for a $100 fee',
       'You receive a detailed estimate before any repair work begins',
@@ -129,7 +129,7 @@ We stock our service vehicles with the most commonly needed parts, allowing us t
       },
       {
         question: 'Do you repair built-in refrigerators?',
-        answer: 'Yes, we specialize in built-in and integrated refrigerators from Sub-Zero, Viking, Thermador, Miele, and other luxury brands. Our technicians receive ongoing factory training to stay current with the latest models and technologies.',
+        answer: 'Yes, we specialize in built-in and integrated refrigerators from Sub-Zero, Viking, Thermador, Miele, and other high-end brands. Our technicians receive ongoing factory training to stay current with the latest models and technologies.',
       },
       {
         question: 'What brands do you service?',
@@ -156,12 +156,12 @@ We stock our service vehicles with the most commonly needed parts, allowing us t
     slug: 'washer-repair',
     icon: 'washer',
     shortDescription: 'Professional washing machine repair for residential and high-capacity units.',
-    description: 'From front-load to top-load washers, our experts handle all types of washing machine repairs. We understand the intricacies of luxury laundry appliances and provide meticulous service.',
+    description: 'From front-load to top-load washers, our experts handle all types of washing machine repairs. We understand the intricacies of high-end laundry appliances and provide meticulous service.',
     longDescription: `A broken washing machine disrupts your entire household routine. Piles of dirty laundry accumulate quickly, and trips to the laundromat are inconvenient and expensive. At Advanced Appliance Repair Service, we understand the urgency of washer repairs and offer fast, reliable service throughout Monmouth and Middlesex Counties in New Jersey.
 
-Our technicians are factory-trained to repair all types of washing machines, from traditional top-loaders to sophisticated front-load units with steam cycles and smart connectivity. We specialize in premium brands like Miele, Bosch, Speed Queen, and LG, but we service all major manufacturers. With over 30 years of experience, we have seen every type of washer problem and know how to fix it right the first time.
+Our technicians are factory-trained to repair all types of washing machines, from traditional top-loaders to sophisticated front-load units with steam cycles and smart connectivity. We specialize in brands like Miele, Bosch, Speed Queen, and LG, but we service all major manufacturers. With over 30 years of experience, we have seen every type of washer problem and know how to fix it right the first time.
 
-Modern washing machines are complex appliances with electronic control boards, multiple sensors, and precision motors. Attempting DIY repairs can void warranties and cause additional damage. Our professional technicians have the diagnostic tools and genuine OEM parts needed to restore your washer to peak performance, backed by our 90-180 day warranty on all repairs.`,
+Modern washing machines are complex appliances with electronic control boards, multiple sensors, and precision motors. Attempting DIY repairs can void warranties and cause additional damage. Our professional technicians have the diagnostic tools and genuine OEM parts needed to restore your washer to peak performance, backed by our 365-day warranty on all repairs.`,
     features: [
       'All washer types serviced',
       'Leak detection and repair',
@@ -197,7 +197,7 @@ Modern washing machines are complex appliances with electronic control boards, m
       'You receive a detailed repair estimate before we begin',
       'Repairs are completed using manufacturer-approved parts',
       'We run test cycles to verify proper operation',
-      'Your repair is covered by our 90-180 day warranty',
+      'Your repair is covered by our 365-day warranty',
     ],
     preventionTips: [
       'Don\'t overload the washer - follow capacity guidelines',
@@ -278,13 +278,13 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
       'Excessive lint around the dryer',
     ],
     repairProcess: [
-      'Schedule service online or call for same-day appointments',
+      'Schedule service online or call for an appointment',
       'Our technician arrives with common dryer parts and tools',
       'We perform complete diagnostics including vent inspection',
       'You receive an honest estimate before repairs begin',
       'Repairs are made with quality OEM components',
       'We test the dryer through a complete cycle',
-      'All work is backed by our 90-180 day warranty',
+      'All work is backed by our 365-day warranty',
     ],
     preventionTips: [
       'Clean the lint filter before every load',
@@ -329,11 +329,11 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
     name: 'Dishwasher Repair',
     slug: 'dishwasher-repair',
     icon: 'dishwasher',
-    shortDescription: 'Expert dishwasher repair for premium brands like Miele, Bosch, and Thermador.',
+    shortDescription: 'Expert dishwasher repair for brands like Miele, Bosch, and Thermador.',
     description: 'Our dishwasher repair services cover everything from drainage issues to electronic control failures. We ensure your dishes come out spotless every time.',
     longDescription: `A malfunctioning dishwasher means hours of hand-washing dishes, wasted water, and the frustration of dealing with dirty dishes piling up in your sink. At Advanced Appliance Repair Service, we provide fast, professional dishwasher repair throughout Monmouth and Middlesex Counties, restoring this essential time-saving appliance to perfect working order.
 
-Modern dishwashers are sophisticated appliances with multiple wash cycles, soil sensors, and efficient drying systems. Our technicians are factory-trained on premium brands like Miele, Bosch, Thermador, and KitchenAid, as well as all major manufacturers. We understand the unique requirements of European dishwashers and the specific issues that can affect different brands.
+Modern dishwashers are sophisticated appliances with multiple wash cycles, soil sensors, and efficient drying systems. Our technicians are factory-trained on brands like Miele, Bosch, Thermador, and KitchenAid, as well as all major manufacturers. We understand the unique requirements of European dishwashers and the specific issues that can affect different brands.
 
 Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking water onto your kitchen floor, we have the expertise to diagnose and repair the problem quickly. We stock common parts on our service vehicles and use only genuine OEM components to ensure lasting repairs. Our goal is to complete your repair in a single visit whenever possible.`,
     features: [
@@ -371,7 +371,7 @@ Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking wa
       'You approve the repair estimate before we proceed',
       'We complete the repair with genuine manufacturer parts',
       'We run a test cycle to verify proper operation',
-      'Your repair is protected by our 90-180 day warranty',
+      'Your repair is protected by our 365-day warranty',
     ],
     preventionTips: [
       'Scrape dishes but don\'t pre-rinse excessively',
@@ -406,7 +406,7 @@ Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking wa
       },
       {
         question: 'How long should a dishwasher last?',
-        answer: 'Most dishwashers last 9-12 years. Premium brands like Miele often last longer with proper maintenance. If your dishwasher is under 8 years old, repair is usually more economical than replacement.',
+        answer: 'Most dishwashers last 9-12 years. High-end brands like Miele often last longer with proper maintenance. If your dishwasher is under 8 years old, repair is usually more economical than replacement.',
       },
     ],
     image: '/images/dishwasher-repair.webp',
@@ -418,9 +418,9 @@ Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking wa
     icon: 'oven',
     shortDescription: 'Comprehensive oven repair for Wolf, Viking, and Thermador.',
     description: 'From temperature calibration to igniter replacement, our technicians are trained to service the most sophisticated cooking appliances on the market.',
-    longDescription: `Your oven is the centerpiece of your kitchen, essential for preparing family meals, entertaining guests, and enjoying home-cooked food. When it malfunctions, your entire cooking routine is disrupted. Advanced Appliance Repair Service provides expert oven repair throughout Monmouth and Middlesex Counties, with specialized knowledge of premium brands.
+    longDescription: `Your oven is the centerpiece of your kitchen, essential for preparing family meals, entertaining guests, and enjoying home-cooked food. When it malfunctions, your entire cooking routine is disrupted. Advanced Appliance Repair Service provides expert oven repair throughout Monmouth and Middlesex Counties, with specialized knowledge of high-end brands.
 
-We are factory-authorized to service professional-grade ovens from Wolf, Viking, Thermador, and other luxury manufacturers. These commercial-style appliances require specialized training and genuine parts to maintain their exceptional performance. Our technicians understand the high standards expected by owners of these premium appliances and deliver service to match.
+We service professional-grade ovens from Wolf, Viking, Thermador, and other high-end manufacturers. These commercial-style appliances require specialized training and genuine parts to maintain their exceptional performance. Our technicians understand the high standards expected by owners of these high-end appliances and deliver service to match.
 
 Whether you have a freestanding oven, wall oven, double oven, or professional-style cooking appliance, we have the expertise to repair it. We service both gas and electric models, including convection ovens, steam ovens, and smart ovens with WiFi connectivity. Safety is paramount with cooking appliances, and we ensure every repair meets manufacturer specifications.`,
     features: [
@@ -458,7 +458,7 @@ Whether you have a freestanding oven, wall oven, double oven, or professional-st
       'You receive a detailed estimate for your approval',
       'Repairs are completed with OEM parts',
       'We verify temperature accuracy and proper operation',
-      'All repairs include our 90-180 day warranty',
+      'All repairs include our 365-day warranty',
     ],
     preventionTips: [
       'Clean spills promptly to prevent smoke and damage',
@@ -477,7 +477,7 @@ Whether you have a freestanding oven, wall oven, double oven, or professional-st
       },
       {
         question: 'Do you repair commercial-style ranges?',
-        answer: 'Absolutely. We specialize in Viking, Wolf, Thermador, and other professional-grade ranges. Our technicians have factory training and certification to work on these premium appliances.',
+        answer: 'Absolutely. We specialize in Viking, Wolf, Thermador, and other professional-grade ranges. Our technicians have factory training and certification to work on these high-end appliances.',
       },
       {
         question: 'Why won\'t my gas oven ignite?',
@@ -504,12 +504,12 @@ Whether you have a freestanding oven, wall oven, double oven, or professional-st
     slug: 'cooktop-repair',
     icon: 'cooktop',
     shortDescription: 'Professional cooktop repair for gas, electric, and induction models.',
-    description: 'Our cooktop repair services cover all types including gas, electric, and induction cooktops from premium manufacturers.',
+    description: 'Our cooktop repair services cover all types including gas, electric, and induction cooktops from all major manufacturers.',
     longDescription: `Cooktops are the workhorses of any kitchen, handling everything from quick weekday meals to elaborate weekend cooking projects. When a burner won\'t light, an element won\'t heat, or your induction cooktop displays an error code, you need expert repair service fast. Advanced Appliance Repair Service provides professional cooktop repair throughout Monmouth and Middlesex Counties.
 
 We service all types of cooktops including gas, electric coil, smoothtop ceramic, and induction models. Each type presents unique repair challenges, from gas valve and igniter issues to cracked glass surfaces and induction board failures. Our technicians are trained on all technologies and carry the specialized parts and tools needed for each type of repair.
 
-Induction cooktops have become increasingly popular in luxury kitchens, and we have expertise in this advanced technology. We can diagnose and repair induction coil failures, control board issues, and cooling fan problems. For gas cooktops, we handle everything from simple igniter replacements to complex gas valve repairs, always prioritizing safety in every repair.`,
+Induction cooktops have become increasingly popular in high-end kitchens, and we have expertise in this advanced technology. We can diagnose and repair induction coil failures, control board issues, and cooling fan problems. For gas cooktops, we handle everything from simple igniter replacements to complex gas valve repairs, always prioritizing safety in every repair.`,
     features: [
       'Gas burner repair',
       'Induction cooktop service',
@@ -589,7 +589,7 @@ Induction cooktops have become increasingly popular in luxury kitchens, and we h
 
 
 // Brands - from live site (with repair page slugs)
-// Premium/Featured Brands (with logos)
+// Featured Brands (with logos)
 export const brands: Brand[] = [
   { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Sub-zero-logo.jpg', featured: true },
   { name: 'Viking', slug: 'viking-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Viking-logo.jpg', featured: true },
@@ -738,7 +738,7 @@ export const teamMembers: TeamMember[] = [
     id: '1',
     name: 'Michael Richardson',
     role: 'Founder & Master Technician',
-    bio: 'With over 25 years of experience in luxury appliance repair, Michael founded Advanced Appliance Repair Service to bring premium service to discerning homeowners. He holds factory certifications from Sub-Zero, Wolf, and Viking.',
+    bio: 'With over 25 years of experience in high-end appliance repair, Michael founded Advanced Appliance Repair Service to bring expert service to homeowners. He holds factory certifications from Sub-Zero, Wolf, and Viking.',
     image: '/technician-service.webp',
   },
   {
@@ -766,46 +766,45 @@ export const teamMembers: TeamMember[] = [
 
 // Service Areas - All 38 locations from live site (Monmouth & Middlesex Counties)
 export const serviceAreas: ServiceArea[] = [
-  { id: '1', name: 'Aberdeen', slug: 'appliance-repair-in-aberdeen-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair services in Aberdeen, NJ. Same-day service available for all major kitchen and laundry appliances.', zipCodes: ['07747'] },
-  { id: '2', name: 'Belford', slug: 'appliance-repair-belford-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Belford, NJ. Factory-authorized service for all major brands.', zipCodes: ['07718'] },
-  { id: '3', name: 'Colts Neck', slug: 'appliance-repair-colts-neck-nj', county: 'Monmouth', state: 'NJ', description: 'Premium appliance repair services in Colts Neck, NJ. Serving luxury homes with expert care.', zipCodes: ['07722'] },
+  { id: '1', name: 'Aberdeen', slug: 'appliance-repair-in-aberdeen-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair services in Aberdeen, NJ. All major kitchen and laundry appliances serviced.', zipCodes: ['07747'] },
+  { id: '2', name: 'Belford', slug: 'appliance-repair-belford-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Belford, NJ. Professional service for all major brands.', zipCodes: ['07718'] },
+  { id: '3', name: 'Colts Neck', slug: 'appliance-repair-colts-neck-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair services in Colts Neck, NJ. Serving homes with expert care.', zipCodes: ['07722'] },
   { id: '4', name: 'Deal', slug: 'appliance-repair-in-deal-nj', county: 'Monmouth', state: 'NJ', description: 'Trusted appliance repair in Deal, NJ. Over 30 years of experience serving the shore community.', zipCodes: ['07723'] },
   { id: '5', name: 'Eatontown', slug: 'appliance-repair-eatontown-nj', county: 'Monmouth', state: 'NJ', description: 'Fast, reliable appliance repair in Eatontown, NJ. All major brands serviced.', zipCodes: ['07724'] },
-  { id: '6', name: 'Edison', slug: 'appliance-repair-in-edison-nj', county: 'Middlesex', state: 'NJ', description: 'Professional appliance repair services in Edison, NJ. Same-day appointments available.', zipCodes: ['08817', '08818', '08820', '08837'] },
+  { id: '6', name: 'Edison', slug: 'appliance-repair-in-edison-nj', county: 'Middlesex', state: 'NJ', description: 'Professional appliance repair services in Edison, NJ. All major brands serviced.', zipCodes: ['08817', '08818', '08820', '08837'] },
   { id: '7', name: 'Englishtown', slug: 'appliance-repair-in-englishtown-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Englishtown, NJ. Serving residential and commercial customers.', zipCodes: ['07726'] },
   { id: '8', name: 'Fair Haven', slug: 'appliance-repair-in-fair-haven-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in Fair Haven, NJ. Licensed, bonded, and insured technicians.', zipCodes: ['07704'] },
-  { id: '9', name: 'Farmingdale', slug: 'appliance-repair-in-farmingdale-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair services in Farmingdale, NJ. Factory-authorized parts and service.', zipCodes: ['07727'] },
-  { id: '10', name: 'Fords', slug: 'appliance-repair-in-fords-nj', county: 'Middlesex', state: 'NJ', description: 'Trusted appliance repair in Fords, NJ. Same-day service for most repairs.', zipCodes: ['08863'] },
+  { id: '9', name: 'Farmingdale', slug: 'appliance-repair-in-farmingdale-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair services in Farmingdale, NJ. Professional parts and service.', zipCodes: ['07727'] },
+
   { id: '11', name: 'Freehold', slug: 'appliance-repair-in-freehold-nj', county: 'Monmouth', state: 'NJ', description: 'Comprehensive appliance repair in Freehold, NJ. Serving the historic downtown and surrounding areas.', zipCodes: ['07728'] },
   { id: '12', name: 'Hazlet', slug: 'appliance-repair-in-hazlet-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair in Hazlet, NJ. Over 30 years of experience.', zipCodes: ['07730'] },
   { id: '13', name: 'Holmdel', slug: 'appliance-repair-in-holmdel-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Holmdel, NJ. Specializing in high-end appliances.', zipCodes: ['07733'] },
   { id: '14', name: 'Keansburg', slug: 'appliance-repair-in-keansburg-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair in Keansburg, NJ. Fast turnaround times.', zipCodes: ['07734'] },
   { id: '15', name: 'Keyport', slug: 'appliance-repair-in-keyport-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in Keyport, NJ. All major brands serviced.', zipCodes: ['07735'] },
-  { id: '16', name: 'Leonardo', slug: 'appliance-repair-in-leonardo-nj', county: 'Monmouth', state: 'NJ', description: 'Trusted appliance repair in Leonardo, NJ. Factory-authorized service center.', zipCodes: ['07737'] },
-  { id: '17', name: 'Lincroft', slug: 'appliance-repair-in-lincroft-nj', county: 'Monmouth', state: 'NJ', description: 'Premium appliance repair in Lincroft, NJ. Serving luxury homes with care.', zipCodes: ['07738'] },
-  { id: '18', name: 'Little Silver', slug: 'appliance-repair-in-little-silver-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Little Silver, NJ. Same-day appointments available.', zipCodes: ['07739'] },
+  { id: '16', name: 'Leonardo', slug: 'appliance-repair-in-leonardo-nj', county: 'Monmouth', state: 'NJ', description: 'Trusted appliance repair in Leonardo, NJ. Professional service center.', zipCodes: ['07737'] },
+  { id: '17', name: 'Lincroft', slug: 'appliance-repair-in-lincroft-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair in Lincroft, NJ. Serving homes with expert care.', zipCodes: ['07738'] },
+  { id: '18', name: 'Little Silver', slug: 'appliance-repair-in-little-silver-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Little Silver, NJ. All major brands serviced.', zipCodes: ['07739'] },
   { id: '19', name: 'Manalapan', slug: 'appliance-repair-in-manalapan-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair in Manalapan, NJ. All appliances serviced.', zipCodes: ['07726'] },
   { id: '20', name: 'Marlboro', slug: 'appliance-repair-marlboro-nj', county: 'Monmouth', state: 'NJ', description: 'Comprehensive appliance repair in Marlboro, NJ. Licensed and insured technicians.', zipCodes: ['07746'] },
   { id: '21', name: 'Matawan', slug: 'appliance-repair-in-matawan-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair in Matawan, NJ. Over 30 years serving the community.', zipCodes: ['07747'] },
-  { id: '22', name: 'Metuchen', slug: 'appliance-repair-in-metuchen-nj', county: 'Middlesex', state: 'NJ', description: 'Quality appliance repair in Metuchen, NJ. Same-day service for most repairs.', zipCodes: ['08840'] },
+  { id: '22', name: 'Metuchen', slug: 'appliance-repair-in-metuchen-nj', county: 'Middlesex', state: 'NJ', description: 'Quality appliance repair in Metuchen, NJ. All major brands serviced.', zipCodes: ['08840'] },
   { id: '23', name: 'Middletown', slug: 'appliance-repair-in-middletown-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Middletown, NJ. All major brands and appliances.', zipCodes: ['07748'] },
-  { id: '24', name: 'Morganville', slug: 'appliance-repair-in-morganville-nj', county: 'Monmouth', state: 'NJ', description: 'Our home base! Premium appliance repair services in Morganville, NJ. Factory-authorized for all major brands.', zipCodes: ['07751'] },
+  { id: '24', name: 'Morganville', slug: 'appliance-repair-in-morganville-nj', county: 'Monmouth', state: 'NJ', description: 'Our home base! Professional appliance repair services in Morganville, NJ. Expert service for all major brands.', zipCodes: ['07751'] },
   { id: '25', name: 'Neptune', slug: 'appliance-repair-in-neptune-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair in Neptune, NJ. Serving the shore community.', zipCodes: ['07753', '07754'] },
-  { id: '26', name: 'Ocean', slug: 'appliance-repair-in-ocean-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Ocean Township, NJ. All major brands serviced with same-day availability.', zipCodes: ['07712'] },
+  { id: '26', name: 'Ocean', slug: 'appliance-repair-in-ocean-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Ocean Township, NJ. All major brands serviced.', zipCodes: ['07712'] },
   { id: '27', name: 'Oceanport', slug: 'appliance-repair-in-oceanport-nj', county: 'Monmouth', state: 'NJ', description: 'Trusted appliance repair in Oceanport, NJ. Fast, reliable service.', zipCodes: ['07757'] },
-  { id: '28', name: 'Old Bridge', slug: 'appliance-repair-in-old-bridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Old Bridge, NJ. Same-day appointments available.', zipCodes: ['08857'] },
+  { id: '28', name: 'Old Bridge', slug: 'appliance-repair-in-old-bridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Old Bridge, NJ. All major brands serviced.', zipCodes: ['08857'] },
   { id: '29', name: 'Parlin', slug: 'appliance-repair-in-parlin-nj', county: 'Middlesex', state: 'NJ', description: 'Expert appliance repair in Parlin, NJ. All appliances and brands serviced.', zipCodes: ['08859'] },
   { id: '30', name: 'Perth Amboy', slug: 'appliance-repair-in-perth-amboy-nj', county: 'Middlesex', state: 'NJ', description: 'Reliable appliance repair in Perth Amboy, NJ. Over 30 years of experience.', zipCodes: ['08861', '08862'] },
   { id: '31', name: 'Port Monmouth', slug: 'appliance-repair-in-port-monmouth-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in Port Monmouth, NJ. Licensed and insured.', zipCodes: ['07758'] },
-  { id: '32', name: 'Red Bank', slug: 'appliance-repair-in-red-bank-nj', county: 'Monmouth', state: 'NJ', description: 'Premium appliance repair in Red Bank, NJ. Serving downtown and surrounding areas.', zipCodes: ['07701', '07702'] },
-  { id: '33', name: 'Rumson', slug: 'appliance-repair-in-rumson-nj', county: 'Monmouth', state: 'NJ', description: 'Luxury appliance repair in Rumson, NJ. Specializing in high-end brands.', zipCodes: ['07760'] },
+  { id: '32', name: 'Red Bank', slug: 'appliance-repair-in-red-bank-nj', county: 'Monmouth', state: 'NJ', description: 'Professional appliance repair in Red Bank, NJ. Serving downtown and surrounding areas.', zipCodes: ['07701', '07702'] },
+  { id: '33', name: 'Rumson', slug: 'appliance-repair-in-rumson-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Rumson, NJ. Specializing in high-end brands.', zipCodes: ['07760'] },
   { id: '34', name: 'Sayreville', slug: 'appliance-repair-in-sayreville-nj', county: 'Middlesex', state: 'NJ', description: 'Professional appliance repair in Sayreville, NJ. All major brands serviced.', zipCodes: ['08871', '08872'] },
-  { id: '35', name: 'Shrewsbury', slug: 'appliance-repair-in-shrewsbury-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Shrewsbury, NJ. Same-day service available.', zipCodes: ['07702'] },
+  { id: '35', name: 'Shrewsbury', slug: 'appliance-repair-in-shrewsbury-nj', county: 'Monmouth', state: 'NJ', description: 'Expert appliance repair in Shrewsbury, NJ. All major brands serviced.', zipCodes: ['07702'] },
   { id: '36', name: 'South Amboy', slug: 'appliance-repair-in-south-amboy-nj', county: 'Middlesex', state: 'NJ', description: 'Trusted appliance repair in South Amboy, NJ. Over 30 years of experience.', zipCodes: ['08879'] },
-  { id: '37', name: 'Tinton Falls', slug: 'appliance-repair-in-tinton-falls-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair in Tinton Falls, NJ. Factory-authorized service.', zipCodes: ['07724', '07753'] },
+  { id: '37', name: 'Tinton Falls', slug: 'appliance-repair-in-tinton-falls-nj', county: 'Monmouth', state: 'NJ', description: 'Reliable appliance repair in Tinton Falls, NJ. Professional service.', zipCodes: ['07724', '07753'] },
   { id: '38', name: 'West Long Branch', slug: 'appliance-repair-in-west-long-branch-nj', county: 'Monmouth', state: 'NJ', description: 'Quality appliance repair in West Long Branch, NJ. All appliances and brands.', zipCodes: ['07764'] },
-  { id: '39', name: 'Woodbridge', slug: 'appliance-repair-in-woodbridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Woodbridge, NJ. Same-day appointments available.', zipCodes: ['07095'] },
-  { id: '40', name: 'Oakhurst', slug: 'appliance-repair-in-oakhurst-nj', county: 'Monmouth', state: 'NJ', description: 'Fast, high quality appliance repair in Oakhurst, NJ. Professional certified technicians servicing all major brands.', zipCodes: ['07755'] },
+  { id: '39', name: 'Woodbridge', slug: 'appliance-repair-in-woodbridge-nj', county: 'Middlesex', state: 'NJ', description: 'Comprehensive appliance repair in Woodbridge, NJ. All major brands serviced.', zipCodes: ['07095'] },
 ];
 
 // Blog Posts - from live site
@@ -831,7 +830,7 @@ If there's water in the drum, you'll need to manually drain it. Most washers hav
 
 ## Step 4: Call a Professional
 
-While some issues can be DIY fixes, most washer problems require professional diagnosis. Our technicians can usually provide same-day service.
+While some issues can be DIY fixes, most washer problems require professional diagnosis. Our technicians can usually provide fast, reliable service.
 
 ## Common Washer Emergencies
 
@@ -959,7 +958,7 @@ Some repairs are best left to the experts:
 - Compressor failures
 - Electronic control boards
 
-Advanced Appliance has been serving Monmouth and Middlesex counties for over 30 years. We're factory-authorized for all major brands.`,
+Advanced Appliance has been serving Monmouth and Middlesex counties for over 30 years. We provide professional service for all major brands.`,
     author: 'Advanced Appliance Team',
     date: '2024-11-05',
     image: '/Appliances_Photo_7614540.webp',
@@ -983,9 +982,9 @@ export const certifications: Certification[] = [
 export const trustBadges = [
   { title: '$100 Diagnostic Fee', description: 'Plus parts and labor. No hidden fees' },
   { title: '24/7 Assistance', description: 'Live operators available around the clock' },
-  { title: 'Same Day Service', description: 'Schedule today, service tomorrow' },
-  { title: '90-180 Day Warranty', description: 'Coverage on parts with matching labor warranty' },
-  { title: '30+ Years Experience', description: 'Factory-authorized since 1992' },
+  { title: 'Fast Scheduling', description: 'Schedule today, service tomorrow' },
+  { title: '365-Day Warranty', description: 'Coverage on parts with matching labor warranty' },
+  { title: '30+ Years Experience', description: 'Professional service since 1992' },
   { title: 'Genuine OEM Parts', description: 'We use only manufacturer parts' },
 ];
 
@@ -1025,7 +1024,7 @@ export const howItWorks = [
   {
     step: 3,
     title: 'Relax',
-    description: 'Our 90-180 day warranty covers all repairs on parts and labor.',
+    description: 'Our 365-day warranty covers all repairs on parts and labor.',
     icon: 'relax'
   },
 ];
@@ -1034,19 +1033,19 @@ export const howItWorks = [
 export const generalFaqs: FAQ[] = [
   {
     question: 'What areas do you serve?',
-    answer: 'We provide appliance repair services throughout Monmouth and Middlesex counties in Central New Jersey, including Morganville, Marlboro, Holmdel, Red Bank, Freehold, Old Bridge, Edison, and 30+ other communities.',
+    answer: 'We provide appliance repair services in parts of Monmouth and Middlesex Counties, including Morganville, Marlboro, Holmdel, Red Bank, Freehold, Old Bridge, Edison, and many other communities.',
   },
   {
-    question: 'Do you offer same-day service?',
-    answer: 'Yes! Schedule your appointment today, and we can often provide service tomorrow. For emergencies, same-day service may be available.',
+    question: 'How quickly can you schedule service?',
+    answer: 'Schedule your appointment today, and we can often provide service the next day. For emergencies, we do our best to accommodate urgent requests.',
   },
   {
     question: 'What brands do you repair?',
-    answer: 'We are factory-authorized for Sub-Zero, Viking, Thermador, Miele, and Wolf. We also service Samsung, LG, Bosch, KitchenAid, Whirlpool, GE, Maytag, Kenmore, Jenn-Air, Electrolux, and many more.',
+    answer: 'We are factory-trained to service Sub-Zero, Viking, Thermador, Miele, and Wolf. We also service Samsung, LG, Bosch, KitchenAid, Whirlpool, GE, Maytag, Kenmore, Jenn-Air, Electrolux, and many more.',
   },
   {
     question: 'Do you provide warranties on repairs?',
-    answer: 'Yes, all our repairs come with a 90-180 day warranty on parts with matching labor warranty coverage.',
+    answer: 'Yes, all our repairs come with a 365-day warranty on parts with matching labor warranty coverage.',
   },
   {
     question: 'How much does a service call cost?',

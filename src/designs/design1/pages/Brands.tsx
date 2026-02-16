@@ -43,9 +43,9 @@ const Brands: React.FC = () => {
         <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
             <SectionHeading
-              subtitle="Factory Authorized"
-              title="Premium Brands We Service"
-              description="We are factory-authorized service providers for these prestigious appliance brands."
+              subtitle="Factory Trained"
+              title="Featured Brands We Service"
+              description="We are factory-trained service providers for these respected appliance brands."
               align="center"
             />
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-16">

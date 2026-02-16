@@ -8,8 +8,8 @@ const ServiceAreas: React.FC = () => {
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Our Service Area', url: '/our-service-area' }];
 
   // Group areas by county
-  const monmouthAreas = serviceAreas.filter(a => a.county === 'Monmouth');
-  const middlesexAreas = serviceAreas.filter(a => a.county === 'Middlesex');
+  const monmouthAreas = serviceAreas.filter(a => a.county === 'Monmouth').sort((a, b) => a.name.localeCompare(b.name));
+  const middlesexAreas = serviceAreas.filter(a => a.county === 'Middlesex').sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
@@ -19,8 +19,8 @@ const ServiceAreas: React.FC = () => {
       <main>
         <Hero
           title="Our Service Area"
-          subtitle="Serving Central New Jersey"
-          description="We provide professional appliance repair services throughout Monmouth and Middlesex Counties. Same-day service available."
+          subtitle="Serving Our Local Communities"
+          description="We provide professional appliance repair services in parts of Monmouth and Middlesex Counties."
           image={images.serviceAreas}
           showCTA={false}
           overlay="gradient"
@@ -44,7 +44,7 @@ const ServiceAreas: React.FC = () => {
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-gray-600 text-lg leading-relaxed">
                 Advanced Appliance Repair Service is headquartered in Morganville, NJ and proudly
-                serves the communities of Monmouth and Middlesex Counties in Central New Jersey.
+                serves communities in parts of Monmouth and Middlesex Counties.
                 With over 30 years of experience, we provide fast, reliable appliance repair services
                 to residential customers throughout the region.
               </p>
@@ -117,13 +117,13 @@ const ServiceAreas: React.FC = () => {
                 <div className="space-y-6 mt-8">
                   <p className="text-gray-600 leading-relaxed">
                     As a locally-owned and operated business based in Morganville, we understand
-                    the needs of Central New Jersey homeowners. Our technicians live and work in
+                    the needs of local homeowners. Our technicians live and work in
                     the communities we serve, allowing us to provide fast response times and
                     personalized service.
                   </p>
                   <ul className="space-y-4">
                     {[
-                      'Same-day and next-day appointments available',
+                      'Next-day appointments available',
                       'No extra charge for evening or weekend service',
                       'Factory-trained technicians for all major brands',
                       'Local office with 24/7 live operators',

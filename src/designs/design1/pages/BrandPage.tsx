@@ -30,7 +30,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
       <main>
         <Hero
           title={`${brand.name} Appliance Repair Service in NJ`}
-          subtitle="Factory Authorized Service"
+          subtitle="Expert Repair Service"
           description={`Expert ${brand.name} appliance repair throughout Monmouth and Middlesex Counties. Over 30 years of experience with factory-trained technicians.`}
           image={images.brands}
           showCTA={true}
@@ -73,21 +73,20 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                 <div className="space-y-6 mt-8">
                   <p className="text-gray-600 leading-relaxed">
                     Advanced Appliance Repair Service has been providing expert {brand.name} appliance
-                    repair throughout Central New Jersey for over 30 years. Our factory-trained
+                    repair in parts of Monmouth and Middlesex Counties for over 30 years. Our factory-trained
                     technicians have the expertise and genuine parts to service all {brand.name}
                     appliances, ensuring your investment is properly maintained.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
                     Whether you need routine maintenance or emergency repair, our team is ready
-                    to help. We offer same-day and next-day appointments, with most repairs
+                    to help. We offer next-day appointments, with most repairs
                     completed on the first visit.
                   </p>
                   <ul className="space-y-4">
                     {[
                       `Factory-trained ${brand.name} technicians`,
                       'Genuine OEM replacement parts',
-                      '90-180 day warranty on all repairs',
-                      'Same-day service available',
+                      '365-day warranty on all repairs',
                       'Transparent pricing with no hidden fees',
                     ].map((item, i) => (
                       <li key={i} className="flex items-start">
@@ -160,8 +159,8 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
               {[
                 { title: '$100 Diagnostic', description: 'Clear pricing with no hidden fees' },
-                { title: 'Same-Day Service', description: 'Fast response when you need it' },
-                { title: '90-Day Warranty', description: 'All repairs guaranteed' },
+                { title: 'Fast Scheduling', description: 'Next-day appointments available' },
+                { title: '365-Day Warranty', description: 'All repairs guaranteed' },
                 { title: '30+ Years', description: 'Experience you can trust' },
               ].map((item, i) => (
                 <div key={i} className="text-center group">

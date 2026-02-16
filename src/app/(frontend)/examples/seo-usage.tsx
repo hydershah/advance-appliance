@@ -46,10 +46,10 @@ export function HomePage() {
 export const homeMetadata: Metadata = generateMetadata({
   title: 'Advanced Appliance Repair Service | Expert Repair in Monmouth & Middlesex Counties, NJ',
   description:
-    'Professional luxury appliance repair in Monmouth & Middlesex Counties, NJ. Same-day service for Sub-Zero, Wolf, Viking & all major brands. Call (732) 416-7430',
+    'Professional high-end appliance repair in parts of Monmouth & Middlesex Counties, NJ. Factory-trained technicians for Sub-Zero, Wolf, Viking & all major brands. Call (732) 416-7430',
   keywords: [
     'appliance repair NJ',
-    'luxury appliance service',
+    'high-end appliance service',
     'Monmouth County appliance repair',
     'Middlesex County appliance repair',
   ],
@@ -76,12 +76,12 @@ export function ServicePage() {
     {
       question: 'How quickly can you repair my refrigerator?',
       answer:
-        'We offer same-day service for most refrigerator repairs in Monmouth and Middlesex Counties.',
+        'We typically offer next-day service for most refrigerator repairs in parts of Monmouth and Middlesex Counties.',
     },
     {
       question: 'Do you repair Sub-Zero refrigerators?',
       answer:
-        'Yes, we specialize in luxury brands including Sub-Zero, Viking, Wolf, and all major manufacturers.',
+        'Yes, we specialize in high-end brands including Sub-Zero, Viking, Wolf, and all major manufacturers.',
     },
   ])
 
@@ -102,7 +102,7 @@ export function ServicePage() {
 export const serviceMetadata: Metadata = generateMetadata({
   title: 'Refrigerator Repair Service in Monmouth & Middlesex Counties, NJ',
   description:
-    'Expert refrigerator repair for Sub-Zero, Viking, Wolf & all brands. Same-day service available. Call (732) 416-7430 for professional refrigerator repair in NJ.',
+    'Expert refrigerator repair for Sub-Zero, Viking, Wolf & all brands. Factory-trained technicians. Call (732) 416-7430 for professional refrigerator repair in NJ.',
   keywords: getServiceKeywords('refrigerator', 'Monmouth County NJ'),
   canonical: '/services/refrigerator-repair',
 })
@@ -180,9 +180,9 @@ export function ServiceAreaPage() {
 
 // Service area metadata
 export const serviceAreaMetadata: Metadata = generateMetadata({
-  title: 'Appliance Repair Service in Morganville, NJ | Same-Day Service',
+  title: 'Appliance Repair Service in Morganville, NJ | Expert Service',
   description:
-    'Professional appliance repair in Morganville, NJ. We service all major brands with same-day availability. Call (732) 416-7430 for expert repair.',
+    'Professional appliance repair in Morganville, NJ. We service all major brands with expert technicians. Call (732) 416-7430 for professional repair.',
   keywords: [
     'appliance repair Morganville NJ',
     'Morganville appliance service',
@@ -218,7 +218,7 @@ export function ContactPage() {
 export const contactMetadata: Metadata = generateMetadata({
   title: 'Contact Us | Advanced Appliance Repair Service in NJ',
   description:
-    'Get in touch with Advanced Appliance Repair Service. Call (732) 416-7430 or visit us at 23 Reids Hill Road, Morganville, NJ 07751. Same-day service available.',
+    'Get in touch with Advanced Appliance Repair Service. Call (732) 416-7430 or visit us at 23 Reids Hill Road, Morganville, NJ 07751. Expert service available.',
   keywords: ['contact appliance repair', 'appliance repair phone number', 'Morganville NJ'],
   canonical: '/contact',
 })

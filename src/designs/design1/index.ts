@@ -1,5 +1,5 @@
 // Design 1 - Elegant Minimalist Theme
-// A luxury appliance repair website with clean, sophisticated design
+// A high-end appliance repair website with clean, sophisticated design
 
 export * from './components';
 export * from './pages';
@@ -10,7 +10,7 @@ export * from './data/content';
 export const design1Metadata = {
   name: 'Elegant Minimalist',
   version: '1.0.0',
-  description: 'A clean, sophisticated theme with premium luxury aesthetics',
+  description: 'A clean, sophisticated theme with high-end aesthetics',
   colorPalette: {
     primary: '#D4AF37',
     secondary: '#000000',

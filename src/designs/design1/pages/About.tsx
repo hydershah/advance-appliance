@@ -11,7 +11,7 @@ const About: React.FC = () => {
     { title: 'Integrity', description: 'We believe in honest assessments and transparent pricing.' },
     { title: 'Excellence', description: 'We pursue excellence in every repair using genuine parts.' },
     { title: 'Reliability', description: 'When we make an appointment, we keep it.' },
-    { title: 'Community', description: 'We are proud to serve New Jersey families.' },
+    { title: 'Community', description: 'We are proud to serve families in Monmouth and Middlesex Counties.' },
   ];
 
   return (
@@ -20,7 +20,7 @@ const About: React.FC = () => {
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title="Our Story" subtitle="About Us" description="For over 25 years, Advanced Appliance Repair Service has been the trusted choice for luxury appliance care." image={images.about} showCTA={false} overlay="gradient" height="medium" align="center" />
+        <Hero title="Our Story" subtitle="About Us" description="For over 25 years, Advanced Appliance Repair Service has been the trusted choice for high-end appliance care." image={images.about} showCTA={false} overlay="gradient" height="medium" align="center" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
@@ -42,15 +42,15 @@ const About: React.FC = () => {
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
-                <div className="aspect-[4/5] overflow-hidden"><img src={images.kitchen} alt="Luxury kitchen" className="w-full h-full object-cover" /></div>
+                <div className="aspect-[4/5] overflow-hidden"><img src={images.kitchen} alt="Modern kitchen" className="w-full h-full object-cover" /></div>
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
                 <div className="absolute top-8 -left-8 bg-[#D4AF37] text-black p-8 hidden lg:block"><span className="font-serif text-4xl block">1998</span><span className="text-xs uppercase tracking-wider">Est.</span></div>
               </div>
               <div>
                 <SectionHeading subtitle="Our Story" title="A Legacy of Excellence" align="left" />
                 <div className="space-y-6 mt-8">
-                  <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service was founded in 1998 by Michael Richardson, a factory-trained technician with a passion for luxury appliances.</p>
-                  <p className="text-gray-600 leading-relaxed">From our humble beginnings with a single service van, we have grown into the region's most trusted name in luxury appliance repair.</p>
+                  <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service was founded in 1998 by Michael Richardson, a factory-trained technician with a passion for high-end appliances.</p>
+                  <p className="text-gray-600 leading-relaxed">From our humble beginnings with a single service van, we have grown into the region's most trusted name in appliance repair.</p>
                 </div>
               </div>
             </div>

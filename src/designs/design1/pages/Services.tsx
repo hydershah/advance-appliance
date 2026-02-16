@@ -13,7 +13,7 @@ const Services: React.FC = () => {
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title="Our Repair Services" subtitle="Expert Solutions" description="Comprehensive repair services for all premium appliance brands." image={images.services} showCTA={true} overlay="gradient" height="medium" align="center" />
+        <Hero title="Our Repair Services" subtitle="Expert Solutions" description="Comprehensive repair services for all major appliance brands." image={images.services} showCTA={true} overlay="gradient" height="medium" align="center" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
@@ -43,7 +43,7 @@ const Services: React.FC = () => {
 
         <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Brands We Service" title="Factory-Certified for Premium Brands" align="center" />
+            <SectionHeading subtitle="Brands We Service" title="Factory-Trained for High-End Brands" align="center" />
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mt-16">
               {brands.map((brand, i) => (
                 <div key={i} className="flex items-center justify-center p-6 border border-gray-200 hover:border-[#D4AF37] transition-colors group">

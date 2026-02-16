@@ -10,7 +10,7 @@ import { Services as Design1Services } from '@/designs/design1/pages'
 export const metadata: Metadata = {
   title: 'Our Services',
   description:
-    'Professional appliance repair services for all major brands. Expert technicians, same-day service available.',
+    'Professional appliance repair services for all major brands. Factory-trained technicians serving parts of Monmouth and Middlesex Counties.',
 }
 
 export default async function ServicesPage() {

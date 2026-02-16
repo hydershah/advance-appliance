@@ -60,7 +60,7 @@ const Blog: React.FC = () => {
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title="Expert Insights" subtitle="Our Blog" description="Tips, guides, and industry insights from our team of luxury appliance experts." image={images.blog} showCTA={false} overlay="gradient" height="small" align="center" />
+        <Hero title="Expert Insights" subtitle="Our Blog" description="Tips, guides, and industry insights from our team of high-end appliance experts." image={images.blog} showCTA={false} overlay="gradient" height="small" align="center" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">

@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
               />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Factory-authorized appliance repair in Monmouth & Middlesex Counties, NJ. Serving Central New Jersey since 1992.
+              Professional appliance repair in parts of Monmouth & Middlesex Counties, NJ. Serving local communities since 1992.
             </p>
             <div className="flex space-x-4">
               <a href={businessInfo.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-[#D4AF37] hover:border-[#D4AF37] transition-colors" aria-label="Facebook">
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-[#D4AF37] text-xs uppercase tracking-[0.2em] mb-6">Service Areas</h3>
             <ul className="space-y-3">
-              {serviceAreas.slice(0, 8).map((area) => (
+              {[...serviceAreas].sort((a, b) => a.name.localeCompare(b.name)).slice(0, 8).map((area) => (
                 <li key={area.id}><a href={`/areas/${area.slug}`} className="text-gray-400 text-sm hover:text-white transition-colors">{area.name}</a></li>
               ))}
               <li><a href="/our-service-area" className="text-[#D4AF37] text-sm hover:text-white transition-colors">View All Areas</a></li>
@@ -93,14 +93,17 @@ const Footer: React.FC = () => {
 
       <div className="border-t border-gray-800">
         <div className="container mx-auto px-6 py-8">
-          <p className="text-center text-xs uppercase tracking-[0.2em] text-gray-500 mb-4">Authorized Service for Premium Brands</p>
+          <p className="text-center text-xs uppercase tracking-[0.2em] text-gray-500 mb-4">Professional Service for High-End Brands</p>
           <div className="flex flex-wrap justify-center items-center gap-8 text-gray-500 text-sm">
             <span>Sub-Zero</span><span className="text-[#D4AF37]">|</span>
             <span>Viking</span><span className="text-[#D4AF37]">|</span>
             <span>Wolf</span><span className="text-[#D4AF37]">|</span>
             <span>Thermador</span><span className="text-[#D4AF37]">|</span>
             <span>Miele</span><span className="text-[#D4AF37]">|</span>
-            <span>Bosch</span>
+            <span>Samsung</span><span className="text-[#D4AF37]">|</span>
+            <span>LG</span><span className="text-[#D4AF37]">|</span>
+            <span>KitchenAid</span><span className="text-[#D4AF37]">|</span>
+            <span>Jenn-Air</span>
           </div>
         </div>
       </div>

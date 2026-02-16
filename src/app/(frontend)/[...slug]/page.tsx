@@ -63,10 +63,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (brand) {
     return {
       title: `${brand.name} Appliance Repair Service in NJ - Advanced Appliance`,
-      description: `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 90-180 day warranty. Call (732) 416-7430.`,
+      description: `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 365-day warranty. Call (732) 416-7430.`,
       openGraph: {
         title: `${brand.name} Appliance Repair Service in NJ`,
-        description: `Expert ${brand.name} appliance repair throughout Central New Jersey.`,
+        description: `Expert ${brand.name} appliance repair in parts of Monmouth and Middlesex Counties.`,
       },
     }
   }
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (area) {
     return {
       title: `Appliance Repair in ${area.name}, NJ - Advanced Appliance`,
-      description: `Professional appliance repair in ${area.name}, ${area.county} County, NJ. Same-day service, all major brands. Call (732) 416-7430.`,
+      description: `Professional appliance repair in ${area.name}, ${area.county} County, NJ. All major brands serviced. Call (732) 416-7430.`,
       openGraph: {
         title: `Appliance Repair in ${area.name}, NJ`,
         description: `Professional appliance repair services in ${area.name}, New Jersey.`,
