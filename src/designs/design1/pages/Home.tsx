@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <LocalBusinessSchema page="home" />
       <Header />
       <main>
-        <Hero title="Exceptional Care for Your High-End Appliances" subtitle="Expert Repair Services" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, and Thermador. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
+        <Hero title="Exceptional Care for Your Premier Appliances" subtitle="Expert Repair Services" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, and Thermador. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
 
         {/* Trust Badges */}
         <section className="py-16 bg-white border-b border-gray-100">
@@ -32,7 +32,7 @@ const Home: React.FC = () => {
         {/* Services */}
         <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Our Expertise" title="Expert Appliance Repair Services" description="From refrigerators to cooktops, our factory-trained technicians provide expert repair services for all your high-end appliances." align="center" />
+            <SectionHeading subtitle="Our Expertise" title="Expert Appliance Repair Services" description="From refrigerators to cooktops, our factory-trained technicians provide expert repair services for all your premier appliances." align="center" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
               {services.slice(0, 6).map((service) => <ServiceCard key={service.id} service={service} variant="default" />)}
             </div>
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
                 <div className="space-y-6 mt-8">
                   <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service has been the trusted choice for homeowners in parts of Monmouth and Middlesex Counties since 1992.</p>
                   <ul className="space-y-4">
-                    {['Factory-trained on all major high-end brands', 'Flexible scheduling with next-day availability', 'Genuine OEM parts with 365-day warranty', 'Transparent pricing with no hidden fees'].map((item, i) => (
+                    {['Factory-trained on all major premier brands', 'Flexible scheduling with next-day availability', 'Genuine OEM parts with 365-day warranty', 'Transparent pricing with no hidden fees'].map((item, i) => (
                       <li key={i} className="flex items-start"><svg className="w-5 h-5 text-[#D4AF37] mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg><span className="text-gray-700">{item}</span></li>
                     ))}
                   </ul>
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
         {/* Brands */}
         <section className="py-16 bg-white border-y border-gray-100">
           <div className="container mx-auto px-6">
-            <p className="text-center text-xs uppercase tracking-[0.3em] text-gray-500 mb-8">Professional Service for High-End Brands</p>
+            <p className="text-center text-xs uppercase tracking-[0.3em] text-gray-500 mb-8">Professional Service for Premier Brands</p>
             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
               {brands.slice(0, 10).map((brand, i) => <span key={i} className="text-gray-400 text-lg font-serif hover:text-[#D4AF37] transition-colors cursor-default">{brand.name}</span>)}
             </div>
@@ -77,7 +77,7 @@ const Home: React.FC = () => {
         {/* Testimonials */}
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Client Testimonials" title="Trusted by Homeowners in Our Service Area" description="Discover why homeowners choose Advanced Appliance for their high-end appliance care." align="center" />
+            <SectionHeading subtitle="Client Testimonials" title="Trusted by Homeowners in Our Service Area" description="Discover why homeowners choose Advanced Appliance for their premier appliance care." align="center" />
             <div className="mt-16 max-w-4xl mx-auto"><TestimonialCarousel testimonials={testimonials} autoPlay={true} interval={7000} /></div>
           </div>
         </section>

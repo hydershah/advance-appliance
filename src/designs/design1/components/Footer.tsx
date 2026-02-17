@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
 
       <div className="border-t border-gray-800">
         <div className="container mx-auto px-6 py-8">
-          <p className="text-center text-xs uppercase tracking-[0.2em] text-gray-500 mb-4">Professional Service for High-End Brands</p>
+          <p className="text-center text-xs uppercase tracking-[0.2em] text-gray-500 mb-4">Professional Service for Premier Brands</p>
           <div className="flex flex-wrap justify-center items-center gap-8 text-gray-500 text-sm">
             <span>Sub-Zero</span><span className="text-[#D4AF37]">|</span>
             <span>Viking</span><span className="text-[#D4AF37]">|</span>

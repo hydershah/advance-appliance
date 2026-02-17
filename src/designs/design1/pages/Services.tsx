@@ -34,7 +34,7 @@ const Services: React.FC = () => {
 
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Featured Services" title="Specialized in High-End Appliances" align="center" />
+            <SectionHeading subtitle="Featured Services" title="Specialized in Premier Appliances" align="center" />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
               {services.slice(0, 4).map((service) => <ServiceCard key={service.id} service={service} variant="featured" />)}
             </div>
@@ -43,7 +43,7 @@ const Services: React.FC = () => {
 
         <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Brands We Service" title="Factory-Trained for High-End Brands" align="center" />
+            <SectionHeading subtitle="Brands We Service" title="Factory-Trained for Premier Brands" align="center" />
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mt-16">
               {brands.map((brand, i) => (
                 <div key={i} className="flex items-center justify-center p-6 border border-gray-200 hover:border-[#D4AF37] transition-colors group">

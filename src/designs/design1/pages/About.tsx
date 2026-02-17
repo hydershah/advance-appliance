@@ -20,7 +20,7 @@ const About: React.FC = () => {
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title="Our Story" subtitle="About Us" description="For over 25 years, Advanced Appliance Repair Service has been the trusted choice for high-end appliance care." image={images.about} showCTA={false} overlay="gradient" height="medium" align="center" />
+        <Hero title="Our Story" subtitle="About Us" description="For over 25 years, Advanced Appliance Repair Service has been the trusted choice for premier appliance care." image={images.about} showCTA={false} overlay="gradient" height="medium" align="center" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
@@ -49,7 +49,7 @@ const About: React.FC = () => {
               <div>
                 <SectionHeading subtitle="Our Story" title="A Legacy of Excellence" align="left" />
                 <div className="space-y-6 mt-8">
-                  <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service was founded in 1998 by Michael Richardson, a factory-trained technician with a passion for high-end appliances.</p>
+                  <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service was founded in 1998 by Michael Richardson, a factory-trained technician with a passion for premier appliances.</p>
                   <p className="text-gray-600 leading-relaxed">From our humble beginnings with a single service van, we have grown into the region's most trusted name in appliance repair.</p>
                 </div>
               </div>

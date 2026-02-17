@@ -58,10 +58,10 @@ export const metadata: Metadata = {
     template: '%s | Advanced Appliance Repair Service',
   },
   description:
-    'Professional high-end appliance repair services in parts of Monmouth & Middlesex Counties, NJ. Factory-trained technicians for Sub-Zero, Wolf, Viking & all major brands. Call (732) 416-7430',
+    'Professional premier appliance repair services in parts of Monmouth & Middlesex Counties, NJ. Factory-trained technicians for Sub-Zero, Wolf, Viking & all major brands. Call (732) 416-7430',
   keywords: [
     'appliance repair NJ',
-    'high-end appliance service',
+    'premier appliance service',
     'refrigerator repair Monmouth County',
     'washer repair Middlesex County',
     'dryer repair New Jersey',
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
     siteName: 'Advanced Appliance Repair Service',
     title: 'Advanced Appliance Repair Service | Expert Repair in NJ',
     description:
-      'Professional high-end appliance repair in parts of Monmouth & Middlesex Counties. Factory-trained technicians for all major brands. Call (732) 416-7430',
+      'Professional premier appliance repair in parts of Monmouth & Middlesex Counties. Factory-trained technicians for all major brands. Call (732) 416-7430',
     images: [
       {
         url: '/og-image.jpg',
@@ -110,7 +110,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Advanced Appliance Repair Service | Expert Repair in NJ',
     description:
-      'Professional high-end appliance repair. Factory-trained technicians for all major brands in parts of Monmouth & Middlesex Counties.',
+      'Professional premier appliance repair. Factory-trained technicians for all major brands in parts of Monmouth & Middlesex Counties.',
     images: ['/og-image.jpg'],
     creator: '@advanceappliance',
     site: '@advanceappliance',

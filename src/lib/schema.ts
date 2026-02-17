@@ -18,7 +18,7 @@ export function generateLocalBusinessSchema() {
     name: BUSINESS_INFO.name,
     legalName: BUSINESS_INFO.legalName,
     description:
-      'Professional high-end appliance repair services in parts of Monmouth and Middlesex Counties, NJ. Factory-trained technicians specializing in Sub-Zero, Wolf, Viking, and all major appliance brands.',
+      'Professional premier appliance repair services in parts of Monmouth and Middlesex Counties, NJ. Factory-trained technicians specializing in Sub-Zero, Wolf, Viking, and all major appliance brands.',
     url: BASE_URL,
     logo: {
       '@type': 'ImageObject',
@@ -311,7 +311,7 @@ export function generateWebSiteSchema() {
     url: BASE_URL,
     name: BUSINESS_INFO.name,
     description:
-      'Professional high-end appliance repair services in parts of Monmouth and Middlesex Counties, NJ',
+      'Professional premier appliance repair services in parts of Monmouth and Middlesex Counties, NJ',
     publisher: {
       '@id': `${BASE_URL}/#organization`,
     },

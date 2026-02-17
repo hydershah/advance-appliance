@@ -130,7 +130,7 @@ export async function GET(request: NextRequest) {
                   marginTop: '8px',
                 }}
               >
-                Professional High-End Appliance Service
+                Professional Premier Appliance Service
               </div>
             </div>
 

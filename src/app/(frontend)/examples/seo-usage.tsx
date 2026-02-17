@@ -46,10 +46,10 @@ export function HomePage() {
 export const homeMetadata: Metadata = generateMetadata({
   title: 'Advanced Appliance Repair Service | Expert Repair in Monmouth & Middlesex Counties, NJ',
   description:
-    'Professional high-end appliance repair in parts of Monmouth & Middlesex Counties, NJ. Factory-trained technicians for Sub-Zero, Wolf, Viking & all major brands. Call (732) 416-7430',
+    'Professional premier appliance repair in parts of Monmouth & Middlesex Counties, NJ. Factory-trained technicians for Sub-Zero, Wolf, Viking & all major brands. Call (732) 416-7430',
   keywords: [
     'appliance repair NJ',
-    'high-end appliance service',
+    'premier appliance service',
     'Monmouth County appliance repair',
     'Middlesex County appliance repair',
   ],
@@ -81,7 +81,7 @@ export function ServicePage() {
     {
       question: 'Do you repair Sub-Zero refrigerators?',
       answer:
-        'Yes, we specialize in high-end brands including Sub-Zero, Viking, Wolf, and all major manufacturers.',
+        'Yes, we specialize in premier brands including Sub-Zero, Viking, Wolf, and all major manufacturers.',
     },
   ])
 

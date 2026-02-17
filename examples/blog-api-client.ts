@@ -264,7 +264,7 @@ async function _examples() {
       content: BlogAPIClient.createSimpleContent(
         'Regular maintenance is key to keeping your luxury refrigerator running smoothly...'
       ),
-      excerpt: 'Learn essential maintenance tips for your high-end refrigerator',
+      excerpt: 'Learn essential maintenance tips for your premier refrigerator',
       status: 'published',
       author: 'John Smith',
       categories: [

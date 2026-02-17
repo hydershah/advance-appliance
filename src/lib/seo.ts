@@ -173,8 +173,8 @@ export const COMMON_KEYWORDS = {
     'Holmdel NJ',
   ],
   specialty: [
-    'high-end appliance repair',
-    'high-end appliance service',
+    'premier appliance repair',
+    'premier appliance service',
     'professional appliance technician',
     'commercial grade appliance repair',
   ],

@@ -38,8 +38,8 @@ import { generateMetadata } from '@/lib/seo'
 
 export const metadata = generateMetadata({
   title: 'Advanced Appliance Repair Service | Expert Repair in NJ',
-  description: 'Professional high-end appliance repair in parts of Monmouth & Middlesex Counties. Factory-trained technicians. Call (732) 416-7430',
-  keywords: ['appliance repair NJ', 'high-end appliance service'],
+  description: 'Professional premier appliance repair in parts of Monmouth & Middlesex Counties. Factory-trained technicians. Call (732) 416-7430',
+  keywords: ['appliance repair NJ', 'premier appliance service'],
 })
 
 export default function HomePage() {

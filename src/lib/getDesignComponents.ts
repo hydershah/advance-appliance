@@ -56,7 +56,7 @@ export function getCurrentDesignTheme(): DesignTheme {
 export const designMetadata = {
   '1': {
     name: 'Elegant Minimalist',
-    description: 'Clean, sophisticated design with high-end aesthetics',
+    description: 'Clean, sophisticated design with premier aesthetics',
     colorScheme: {
       primary: '#D4AF37',
       secondary: '#000000',
