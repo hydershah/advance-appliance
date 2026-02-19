@@ -2,9 +2,17 @@
 
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, ContactForm, FAQAccordion, LocalBusinessSchema, BreadcrumbSchema, FAQSchema } from '../components';
-import { businessInfo, generalFaqs, serviceAreas, images } from '../data/content';
+import { businessInfo, generalFaqs as staticGeneralFaqs, serviceAreas as staticServiceAreas, images } from '../data/content';
+import type { FAQ, ServiceArea } from '../types';
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  generalFaqs?: FAQ[];
+  serviceAreas?: ServiceArea[];
+}
+
+const Contact: React.FC<ContactProps> = ({ generalFaqs: faqsProp, serviceAreas: areasProp }) => {
+  const generalFaqs = faqsProp || staticGeneralFaqs;
+  const serviceAreas = areasProp || staticServiceAreas;
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }];
 
   return (

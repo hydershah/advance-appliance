@@ -2,9 +2,15 @@
 
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, serviceAreas, images } from '../data/content';
+import { businessInfo, serviceAreas as staticServiceAreas, images } from '../data/content';
+import type { ServiceArea } from '../types';
 
-const ServiceAreas: React.FC = () => {
+interface ServiceAreasProps {
+  serviceAreas?: ServiceArea[];
+}
+
+const ServiceAreas: React.FC<ServiceAreasProps> = ({ serviceAreas: serviceAreasProp }) => {
+  const serviceAreas = serviceAreasProp || staticServiceAreas;
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Our Service Area', url: '/our-service-area' }];
 
   // Group areas by county

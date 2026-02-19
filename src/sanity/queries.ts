@@ -92,7 +92,9 @@ export const serviceBySlugQuery = groq`
 
 export const allServicesQuery = groq`
   *[_type == "service" && status == "published"] | order(name asc) [0...100]{
-    _id, name, slug, status, excerpt, image{..., asset->}, icon, _updatedAt
+    _id, name, slug, status, excerpt, image{..., asset->}, icon,
+    longDescription, commonProblems, warningSigns, repairProcess,
+    preventionTips, features, faqs, _updatedAt
   }
 `
 
@@ -113,7 +115,8 @@ export const serviceAreaBySlugQuery = groq`
 
 export const allServiceAreasQuery = groq`
   *[_type == "serviceArea" && status == "published"] | order(name asc) [0...100]{
-    _id, name, slug, status, excerpt, image{..., asset->}, _updatedAt
+    _id, name, slug, status, excerpt, county, state, zipCodes,
+    image{..., asset->}, _updatedAt
   }
 `
 
@@ -161,6 +164,91 @@ export const featuredTestimonialsQuery = groq`
   *[_type == "testimonial" && status == "published" && featured == true] | order(date desc) [0...50]{
     _id, customerName, rating, content, date, location, featured, status,
     service->{_id, name, slug}
+  }
+`
+
+// ============================================================
+// Team Members
+// ============================================================
+
+export const allTeamMembersQuery = groq`
+  *[_type == "teamMember" && status == "published"] | order(order asc) [0...50]{
+    _id, name, position, photo{..., asset->}, shortBio, specialties,
+    certifications, yearsOfExperience, order
+  }
+`
+
+// ============================================================
+// Brands
+// ============================================================
+
+export const allBrandsQuery = groq`
+  *[_type == "brand" && status == "published"] | order(order asc, name asc) [0...200]{
+    _id, name, slug, logo{..., asset->}, logoUrl, description, featured, order
+  }
+`
+
+export const featuredBrandsQuery = groq`
+  *[_type == "brand" && status == "published" && featured == true] | order(order asc, name asc) [0...20]{
+    _id, name, slug, logo{..., asset->}, logoUrl, description, featured, order
+  }
+`
+
+export const brandBySlugQuery = groq`
+  *[_type == "brand" && slug.current == $slug && status == "published"][0]{
+    ...,
+    logo{..., asset->},
+    seo{..., image{..., asset->}}
+  }
+`
+
+// ============================================================
+// Certifications
+// ============================================================
+
+export const allCertificationsQuery = groq`
+  *[_type == "certification" && status == "published"] | order(order asc) [0...50]{
+    _id, name, issuer, year, order
+  }
+`
+
+// ============================================================
+// Trust Badges
+// ============================================================
+
+export const allTrustBadgesQuery = groq`
+  *[_type == "trustBadge" && status == "published"] | order(order asc) [0...20]{
+    _id, title, description, icon, order
+  }
+`
+
+// ============================================================
+// Specials & Offers
+// ============================================================
+
+export const allSpecialsQuery = groq`
+  *[_type == "special" && status == "published"] | order(order asc) [0...20]{
+    _id, title, description, icon, order, validUntil
+  }
+`
+
+// ============================================================
+// How It Works
+// ============================================================
+
+export const allHowItWorksQuery = groq`
+  *[_type == "howItWorksStep" && status == "published"] | order(step asc) [0...10]{
+    _id, step, title, description, icon
+  }
+`
+
+// ============================================================
+// General FAQs
+// ============================================================
+
+export const allGeneralFaqsQuery = groq`
+  *[_type == "generalFaq" && status == "published"] | order(order asc) [0...50]{
+    _id, question, answer, category, order
   }
 `
 

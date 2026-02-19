@@ -23,6 +23,23 @@ export const settingsType = defineType({
       type: 'image',
       options: { hotspot: true },
     }),
+    defineField({
+      name: 'tollFreePhone',
+      title: 'Toll-Free Phone',
+      type: 'string',
+      description: 'e.g., (800) 664-0650',
+    }),
+    defineField({
+      name: 'founded',
+      title: 'Year Founded',
+      type: 'number',
+      description: 'e.g., 1992',
+    }),
+    defineField({
+      name: 'yearsInBusiness',
+      title: 'Years in Business',
+      type: 'number',
+    }),
     // Contact
     defineField({
       name: 'contact',
@@ -50,6 +67,7 @@ export const settingsType = defineType({
         { name: 'friday', title: 'Friday', type: 'string' },
         { name: 'saturday', title: 'Saturday', type: 'string' },
         { name: 'sunday', title: 'Sunday', type: 'string' },
+        { name: 'liveOperators', title: 'Live Operators Availability', type: 'string' },
         { name: 'emergencyNote', title: 'Emergency Service Note', type: 'text', rows: 2 },
       ],
     }),

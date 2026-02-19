@@ -64,6 +64,7 @@
     "out",
     "build",
     "dist",
-    "examples"
+    "examples",
+    "scripts"
   ]
 }

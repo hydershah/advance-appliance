@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import { Reviews as Design1Reviews } from '@/designs/design1/pages'
+import { fetchTestimonials } from '@/sanity/fetchers'
+import { adaptTestimonial } from '@/lib/sanityAdapters'
 
 export const metadata: Metadata = {
   title: 'Our Reviews - Advanced Appliance Repair Service',
@@ -10,6 +12,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ReviewsPage() {
-  return <Design1Reviews />
+export default async function ReviewsPage() {
+  try {
+    const cmsTestimonials = await fetchTestimonials()
+    return <Design1Reviews testimonials={cmsTestimonials?.length ? cmsTestimonials.map(adaptTestimonial) : undefined} />
+  } catch {
+    return <Design1Reviews />
+  }
 }

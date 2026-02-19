@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import { Brands as Design1Brands } from '@/designs/design1/pages'
+import { fetchAllBrands } from '@/sanity/fetchers'
+import { adaptBrand } from '@/lib/sanityAdapters'
 
 export const metadata: Metadata = {
   title: 'Our Brands - Advanced Appliance Repair Service',
@@ -10,6 +12,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BrandsPage() {
-  return <Design1Brands />
+export default async function BrandsPage() {
+  try {
+    const cmsBrands = await fetchAllBrands()
+    return <Design1Brands brands={cmsBrands?.length ? cmsBrands.map(adaptBrand) : undefined} />
+  } catch {
+    return <Design1Brands />
+  }
 }

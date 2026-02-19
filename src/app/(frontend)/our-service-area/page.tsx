@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import { ServiceAreas as Design1ServiceAreas } from '@/designs/design1/pages'
+import { fetchAllServiceAreas } from '@/sanity/fetchers'
+import { adaptServiceArea } from '@/lib/sanityAdapters'
 
 export const metadata: Metadata = {
   title: 'Our Service Area - Advanced Appliance Repair Service',
@@ -10,6 +12,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ServiceAreasPage() {
-  return <Design1ServiceAreas />
+export default async function ServiceAreasPage() {
+  try {
+    const cmsAreas = await fetchAllServiceAreas()
+    return <Design1ServiceAreas serviceAreas={cmsAreas?.length ? cmsAreas.map(adaptServiceArea) : undefined} />
+  } catch {
+    return <Design1ServiceAreas />
+  }
 }

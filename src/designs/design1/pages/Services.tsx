@@ -2,9 +2,17 @@
 
 import React from 'react';
 import { Header, Footer, Hero, ServiceCard, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, services, brands, images } from '../data/content';
+import { businessInfo, services as staticServices, brands as staticBrands, images } from '../data/content';
+import type { Service, Brand } from '../types';
 
-const Services: React.FC = () => {
+interface ServicesProps {
+  services?: Service[];
+  brands?: Brand[];
+}
+
+const Services: React.FC<ServicesProps> = ({ services: servicesProp, brands: brandsProp }) => {
+  const services = servicesProp || staticServices;
+  const brands = brandsProp || staticBrands;
   const breadcrumbs = [{ name: 'Home', url: 'https://advancedappliancerepair.com/' }, { name: 'Services', url: 'https://advancedappliancerepair.com/services' }];
 
   return (

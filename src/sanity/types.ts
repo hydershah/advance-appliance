@@ -25,6 +25,9 @@ export interface Settings extends SanityDocument {
   siteName: string
   tagline?: string
   logo?: SanityImageSource
+  tollFreePhone?: string
+  founded?: number
+  yearsInBusiness?: number
   contact?: {
     phone: string
     email: string
@@ -41,6 +44,7 @@ export interface Settings extends SanityDocument {
     friday?: string
     saturday?: string
     sunday?: string
+    liveOperators?: string
     emergencyNote?: string
   }
   social?: {
@@ -84,6 +88,11 @@ export interface Service extends SanityDocument {
   icon?: string
   features?: string[]
   faqs?: Array<{ _key: string; question: string; answer: string }>
+  longDescription?: string
+  commonProblems?: Array<{ _key: string; title: string; description: string }>
+  warningSigns?: string[]
+  repairProcess?: string[]
+  preventionTips?: string[]
   relatedServices?: Service[]
   seo?: SeoFields
   meta?: { seo?: SeoFields }
@@ -98,6 +107,9 @@ export interface ServiceArea extends SanityDocument {
   excerpt?: string
   description: PortableTextBlock[]
   image?: SanityImageSource
+  county?: string
+  state?: string
+  zipCodes?: string[]
   services?: Service[]
   neighborhoods?: Array<{ _key: string; name: string }>
   coordinates?: {
@@ -162,6 +174,71 @@ export interface TeamMember extends SanityDocument {
     linkedin?: string
     twitter?: string
   }
+  order: number
+}
+
+// Brand
+export interface Brand extends SanityDocument {
+  _type: 'brand'
+  name: string
+  slug: { _type: 'slug'; current: string }
+  status: 'draft' | 'published'
+  logo?: SanityImageSource
+  logoUrl?: string
+  description?: string
+  featured: boolean
+  order: number
+  seo?: SeoFields
+}
+
+// Certification
+export interface Certification extends SanityDocument {
+  _type: 'certification'
+  name: string
+  issuer: string
+  year?: string
+  status: 'draft' | 'published'
+  order: number
+}
+
+// Trust Badge
+export interface TrustBadge extends SanityDocument {
+  _type: 'trustBadge'
+  title: string
+  description?: string
+  icon?: string
+  status: 'draft' | 'published'
+  order: number
+}
+
+// Special / Offer
+export interface Special extends SanityDocument {
+  _type: 'special'
+  title: string
+  description: string
+  icon?: string
+  status: 'draft' | 'published'
+  order: number
+  validUntil?: string
+}
+
+// How It Works Step
+export interface HowItWorksStep extends SanityDocument {
+  _type: 'howItWorksStep'
+  step: number
+  title: string
+  description: string
+  icon?: string
+  status: 'draft' | 'published'
+}
+
+// General FAQ
+export interface GeneralFaq extends SanityDocument {
+  _type: 'generalFaq'
+  question: string
+  answer: string
+  category?: string
+  status: 'draft' | 'published'
   order: number
 }
 

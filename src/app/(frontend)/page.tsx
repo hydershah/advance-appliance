@@ -1,12 +1,7 @@
 import { Metadata } from 'next'
-
-// Import static design pages for fallback when no CMS content exists
 import { Home as Design1Home } from '@/designs/design1/pages'
-
-/**
- * Homepage - Server Component
- * Renders the home page with content from Sanity CMS
- */
+import { fetchAllServices, fetchTestimonials, fetchFeaturedBrands, fetchAllTrustBadges, fetchAllServiceAreas } from '@/sanity/fetchers'
+import { adaptService, adaptTestimonial, adaptBrand, adaptTrustBadge, adaptServiceArea } from '@/lib/sanityAdapters'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -16,8 +11,25 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  // TEMPORARY: Use static content directly for urgent client review
-  // TODO: Switch back to Sanity CMS after credentials are configured
-  // To revert: See git history for Sanity CMS version
-  return <Design1Home />
+  try {
+    const [cmsServices, cmsTestimonials, cmsBrands, cmsTrustBadges, cmsServiceAreas] = await Promise.all([
+      fetchAllServices(),
+      fetchTestimonials({ featured: true }),
+      fetchFeaturedBrands(),
+      fetchAllTrustBadges(),
+      fetchAllServiceAreas(),
+    ])
+
+    return (
+      <Design1Home
+        services={cmsServices?.length ? cmsServices.map(adaptService) : undefined}
+        testimonials={cmsTestimonials?.length ? cmsTestimonials.map(adaptTestimonial) : undefined}
+        brands={cmsBrands?.length ? cmsBrands.map(adaptBrand) : undefined}
+        trustBadges={cmsTrustBadges?.length ? cmsTrustBadges.map(adaptTrustBadge) : undefined}
+        serviceAreas={cmsServiceAreas?.length ? cmsServiceAreas.map(adaptServiceArea) : undefined}
+      />
+    )
+  } catch {
+    return <Design1Home />
+  }
 }

@@ -60,6 +60,26 @@ export const serviceAreaType = defineType({
       description: 'Services offered in this area',
     }),
     defineField({
+      name: 'county',
+      title: 'County',
+      type: 'string',
+      description: 'e.g., "Monmouth", "Middlesex"',
+    }),
+    defineField({
+      name: 'state',
+      title: 'State',
+      type: 'string',
+      description: 'e.g., "NJ"',
+      initialValue: 'NJ',
+    }),
+    defineField({
+      name: 'zipCodes',
+      title: 'ZIP Codes',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'ZIP codes served in this area',
+    }),
+    defineField({
       name: 'neighborhoods',
       title: 'Neighborhoods',
       type: 'array',

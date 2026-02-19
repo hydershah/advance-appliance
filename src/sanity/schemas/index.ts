@@ -5,6 +5,12 @@ import { serviceAreaType } from './documents/serviceArea'
 import { blogPostType } from './documents/blogPost'
 import { testimonialType } from './documents/testimonial'
 import { teamMemberType } from './documents/teamMember'
+import { brandType } from './documents/brand'
+import { certificationType } from './documents/certification'
+import { trustBadgeType } from './documents/trustBadge'
+import { specialType } from './documents/special'
+import { howItWorksStepType } from './documents/howItWorksStep'
+import { generalFaqType } from './documents/generalFaq'
 
 // Singletons
 import { settingsType } from './singletons/settings'
@@ -31,6 +37,12 @@ export const schemaTypes = [
   blogPostType,
   testimonialType,
   teamMemberType,
+  brandType,
+  certificationType,
+  trustBadgeType,
+  specialType,
+  howItWorksStepType,
+  generalFaqType,
   // Singletons
   settingsType,
   // Objects

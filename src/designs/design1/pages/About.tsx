@@ -2,9 +2,15 @@
 
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, certifications, images } from '../data/content';
+import { businessInfo, certifications as staticCertifications, images } from '../data/content';
+import type { Certification } from '../types';
 
-const About: React.FC = () => {
+interface AboutProps {
+  certifications?: Certification[];
+}
+
+const About: React.FC<AboutProps> = ({ certifications: certificationsProp }) => {
+  const certifications = certificationsProp || staticCertifications;
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about' }];
   const stats = [{ value: '25+', label: 'Years of Experience' }, { value: '10,000+', label: 'Repairs Completed' }, { value: '98%', label: 'Customer Satisfaction' }, { value: '24hr', label: 'Response Time' }];
   const values = [

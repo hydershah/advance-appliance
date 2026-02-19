@@ -17,6 +17,15 @@ import {
   blogPostsByCategoryQuery,
   allTestimonialsQuery,
   featuredTestimonialsQuery,
+  allTeamMembersQuery,
+  allBrandsQuery,
+  featuredBrandsQuery,
+  brandBySlugQuery,
+  allCertificationsQuery,
+  allTrustBadgesQuery,
+  allSpecialsQuery,
+  allHowItWorksQuery,
+  allGeneralFaqsQuery,
   searchPagesQuery,
   searchServicesQuery,
   searchBlogPostsQuery,
@@ -28,6 +37,13 @@ import type {
   ServiceArea,
   BlogPost,
   Testimonial,
+  TeamMember,
+  Brand,
+  Certification,
+  TrustBadge,
+  Special,
+  HowItWorksStep,
+  GeneralFaq,
 } from './types'
 
 /**
@@ -115,6 +131,69 @@ export async function fetchTestimonials(options?: {
     return await client.fetch<Testimonial[]>(featuredTestimonialsQuery)
   }
   return await client.fetch<Testimonial[]>(allTestimonialsQuery)
+}
+
+/**
+ * Fetch all published team members
+ */
+export async function fetchAllTeamMembers(): Promise<TeamMember[]> {
+  return await client.fetch<TeamMember[]>(allTeamMembersQuery)
+}
+
+/**
+ * Fetch all published brands
+ */
+export async function fetchAllBrands(): Promise<Brand[]> {
+  return await client.fetch<Brand[]>(allBrandsQuery)
+}
+
+/**
+ * Fetch featured brands only
+ */
+export async function fetchFeaturedBrands(): Promise<Brand[]> {
+  return await client.fetch<Brand[]>(featuredBrandsQuery)
+}
+
+/**
+ * Fetch a single brand by slug
+ */
+export async function fetchBrandBySlug(slug: string): Promise<Brand | null> {
+  return await client.fetch<Brand | null>(brandBySlugQuery, { slug })
+}
+
+/**
+ * Fetch all published certifications
+ */
+export async function fetchAllCertifications(): Promise<Certification[]> {
+  return await client.fetch<Certification[]>(allCertificationsQuery)
+}
+
+/**
+ * Fetch all published trust badges
+ */
+export async function fetchAllTrustBadges(): Promise<TrustBadge[]> {
+  return await client.fetch<TrustBadge[]>(allTrustBadgesQuery)
+}
+
+/**
+ * Fetch all published specials/offers
+ */
+export async function fetchAllSpecials(): Promise<Special[]> {
+  return await client.fetch<Special[]>(allSpecialsQuery)
+}
+
+/**
+ * Fetch all how-it-works steps
+ */
+export async function fetchAllHowItWorks(): Promise<HowItWorksStep[]> {
+  return await client.fetch<HowItWorksStep[]>(allHowItWorksQuery)
+}
+
+/**
+ * Fetch all general FAQs
+ */
+export async function fetchAllGeneralFaqs(): Promise<GeneralFaq[]> {
+  return await client.fetch<GeneralFaq[]>(allGeneralFaqsQuery)
 }
 
 /**

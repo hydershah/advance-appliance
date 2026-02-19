@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { fetchBlogPostBySlug } from '@/sanity/fetchers'
+import { adaptBlogPost } from '@/lib/sanityAdapters'
 
 // Import static design pages for fallback when CMS is unavailable
 import { BlogPost as Design1BlogPost } from '@/designs/design1/pages'
@@ -8,7 +9,7 @@ import { blogPosts as staticBlogPosts } from '@/designs/design1/data/content'
 
 /**
  * Blog Post Detail Page - Server Component
- * Falls back to static design when CMS is unavailable
+ * CMS-first with static fallback
  */
 
 interface BlogPostPageProps {
@@ -27,7 +28,28 @@ export async function generateMetadata({
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
 
-  // Check static blog posts first
+  // Try CMS first
+  try {
+    const post = await fetchBlogPostBySlug(slug)
+    if (post) {
+      const title = post.meta?.seo?.title || post.seo?.title || post.title
+      const description = post.meta?.seo?.description || post.seo?.description || post.excerpt || ''
+      return {
+        title: `${title} - Advanced Appliance Repair Service`,
+        description,
+        openGraph: {
+          title,
+          description,
+          type: 'article',
+          publishedTime: post.publishedDate || post._createdAt,
+        },
+      }
+    }
+  } catch {
+    // CMS unavailable, fall through to static
+  }
+
+  // Fallback to static blog posts
   const staticPost = findStaticBlogPostBySlug(slug)
   if (staticPost) {
     return {
@@ -44,57 +66,27 @@ export async function generateMetadata({
     }
   }
 
-  // Try CMS
-  try {
-    const post = await fetchBlogPostBySlug(slug)
-
-    if (!post) {
-      return {
-        title: 'Post Not Found',
-      }
-    }
-
-    const title = post.meta?.seo?.title || post.seo?.title || post.title
-    const description = post.meta?.seo?.description || post.seo?.description || post.excerpt || ''
-
-    return {
-      title,
-      description,
-      openGraph: {
-        title,
-        description,
-        type: 'article',
-        publishedTime: post.publishedDate || post._createdAt,
-      },
-    }
-  } catch {
-    return {
-      title: 'Post Not Found',
-    }
-  }
+  return { title: 'Post Not Found' }
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
 
-  // Check static blog posts first - this is the primary fallback
+  // Try CMS first
+  try {
+    const cmsPost = await fetchBlogPostBySlug(slug)
+    if (cmsPost) {
+      return <Design1BlogPost post={adaptBlogPost(cmsPost)} />
+    }
+  } catch {
+    // CMS unavailable, fall through to static
+  }
+
+  // Fallback to static blog post
   const staticPost = findStaticBlogPostBySlug(slug)
   if (staticPost) {
     return <Design1BlogPost postSlug={slug} />
   }
 
-  // Try CMS if no static post found
-  try {
-    const post = await fetchBlogPostBySlug(slug)
-
-    if (!post) {
-      notFound()
-    }
-
-    // If CMS has the post, use the static design component for now
-    return <Design1BlogPost postSlug={slug} />
-  } catch {
-    // CMS error - show not found
-    notFound()
-  }
+  notFound()
 }

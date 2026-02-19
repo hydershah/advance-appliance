@@ -2,9 +2,15 @@
 
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, blogPosts, images } from '../data/content';
+import { businessInfo, blogPosts as staticBlogPosts, images } from '../data/content';
+import type { BlogPost } from '../types';
 
-const UsefulTips: React.FC = () => {
+interface UsefulTipsProps {
+  blogPosts?: BlogPost[];
+}
+
+const UsefulTips: React.FC<UsefulTipsProps> = ({ blogPosts: blogPostsProp }) => {
+  const blogPosts = blogPostsProp || staticBlogPosts;
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Useful Tips', url: '/useful-tips' }];
 
   // Quick tips data

@@ -2,14 +2,15 @@
 
 import React from 'react';
 import { Header, Footer, Hero, ServiceCard, SectionHeading, CTAButton, FAQAccordion, ContactForm, ServiceSchema, BreadcrumbSchema, FAQSchema } from '../components';
-import { businessInfo, services, brands } from '../data/content';
+import { businessInfo, services as staticServices, brands } from '../data/content';
+import type { Service } from '../types';
 
-interface ServiceDetailProps { serviceSlug?: string; }
+interface ServiceDetailProps { serviceSlug?: string; service?: Service; }
 
-const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerator-repair' }) => {
-  const service = services.find((s) => s.slug === serviceSlug) ?? services[0];
+const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerator-repair', service: serviceProp }) => {
+  const service = serviceProp || staticServices.find((s) => s.slug === serviceSlug) || staticServices[0];
   if (!service) return null;
-  const relatedServices = services.filter((s) => s.id !== service.id).slice(0, 3);
+  const relatedServices = (serviceProp ? [] : staticServices).filter((s) => s.id !== service.id).slice(0, 3);
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: service.name, url: `/services/${service.slug}` }];
 
   return (

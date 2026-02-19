@@ -22,6 +22,14 @@ const structure = (S: any) =>
       S.documentTypeListItem('blogPost').title('Blog Posts'),
       S.documentTypeListItem('testimonial').title('Testimonials'),
       S.documentTypeListItem('teamMember').title('Team Members'),
+      S.divider(),
+      // Marketing Content
+      S.documentTypeListItem('brand').title('Brands'),
+      S.documentTypeListItem('certification').title('Certifications'),
+      S.documentTypeListItem('trustBadge').title('Trust Badges'),
+      S.documentTypeListItem('special').title('Specials & Offers'),
+      S.documentTypeListItem('howItWorksStep').title('How It Works Steps'),
+      S.documentTypeListItem('generalFaq').title('General FAQs'),
     ])
 
 export default defineConfig({

@@ -2,8 +2,12 @@
 
 import React, { useState } from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, blogPosts, images } from '../data/content';
+import { businessInfo, blogPosts as staticBlogPosts, images } from '../data/content';
 import { BlogPost } from '../types';
+
+interface BlogProps {
+  blogPosts?: BlogPost[];
+}
 
 interface BlogCardProps { post: BlogPost; featured?: boolean; }
 
@@ -48,7 +52,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
   );
 };
 
-const Blog: React.FC = () => {
+const Blog: React.FC<BlogProps> = ({ blogPosts: blogPostsProp }) => {
+  const blogPosts = blogPostsProp || staticBlogPosts;
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }];
   const categories = ['All', ...new Set(blogPosts.map((post) => post.category))];

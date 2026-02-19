@@ -2,9 +2,15 @@
 
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, testimonials, images } from '../data/content';
+import { businessInfo, testimonials as staticTestimonials, images } from '../data/content';
+import type { Testimonial } from '../types';
 
-const Reviews: React.FC = () => {
+interface ReviewsProps {
+  testimonials?: Testimonial[];
+}
+
+const Reviews: React.FC<ReviewsProps> = ({ testimonials: testimonialsProp }) => {
+  const testimonials = testimonialsProp || staticTestimonials;
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Our Reviews', url: '/our-reviews' }];
 
   return (

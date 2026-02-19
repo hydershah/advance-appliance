@@ -2,9 +2,23 @@
 
 import React from 'react';
 import { Header, Footer, Hero, ServiceCard, TestimonialCarousel, SectionHeading, CTAButton, LocalBusinessSchema } from '../components';
-import { businessInfo, services, testimonials, serviceAreas, trustBadges, brands, images } from '../data/content';
+import { businessInfo, services as staticServices, testimonials as staticTestimonials, serviceAreas as staticServiceAreas, trustBadges as staticTrustBadges, brands as staticBrands, images } from '../data/content';
+import type { Service, Testimonial, ServiceArea, Brand } from '../types';
 
-const Home: React.FC = () => {
+interface HomeProps {
+  services?: Service[];
+  testimonials?: Testimonial[];
+  serviceAreas?: ServiceArea[];
+  trustBadges?: { title: string; description: string }[];
+  brands?: Brand[];
+}
+
+const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testimonialsProp, serviceAreas: serviceAreasProp, trustBadges: trustBadgesProp, brands: brandsProp }) => {
+  const services = servicesProp || staticServices;
+  const testimonials = testimonialsProp || staticTestimonials;
+  const serviceAreas = serviceAreasProp || staticServiceAreas;
+  const trustBadges = trustBadgesProp || staticTrustBadges;
+  const brands = brandsProp || staticBrands;
   return (
     <>
       <LocalBusinessSchema page="home" />

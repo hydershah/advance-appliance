@@ -84,6 +84,50 @@ export const serviceType = defineType({
       ],
     }),
     defineField({
+      name: 'longDescription',
+      title: 'Long Description',
+      type: 'text',
+      rows: 15,
+      description: 'Extended marketing copy (2-3 paragraphs) for the service detail page',
+    }),
+    defineField({
+      name: 'commonProblems',
+      title: 'Common Problems',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', title: 'Problem Title', type: 'string', validation: (Rule) => Rule.required() },
+            { name: 'description', title: 'Description', type: 'text', rows: 2, validation: (Rule) => Rule.required() },
+          ],
+          preview: { select: { title: 'title' } },
+        },
+      ],
+      description: 'Common problems we fix for this appliance type',
+    }),
+    defineField({
+      name: 'warningSigns',
+      title: 'Warning Signs',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Signs your appliance needs repair',
+    }),
+    defineField({
+      name: 'repairProcess',
+      title: 'Repair Process Steps',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Our step-by-step repair process',
+    }),
+    defineField({
+      name: 'preventionTips',
+      title: 'Prevention Tips',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Maintenance tips to prevent issues',
+    }),
+    defineField({
       name: 'relatedServices',
       title: 'Related Services',
       type: 'array',

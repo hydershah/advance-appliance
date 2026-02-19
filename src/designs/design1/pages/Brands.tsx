@@ -2,9 +2,15 @@
 
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, brands, images } from '../data/content';
+import { businessInfo, brands as staticBrands, images } from '../data/content';
+import type { Brand } from '../types';
 
-const Brands: React.FC = () => {
+interface BrandsProps {
+  brands?: Brand[];
+}
+
+const Brands: React.FC<BrandsProps> = ({ brands: brandsProp }) => {
+  const brands = brandsProp || staticBrands;
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Our Brands', url: '/our-brands' }];
 
   // Premium brands with logos
