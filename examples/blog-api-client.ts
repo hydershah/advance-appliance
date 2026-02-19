@@ -260,9 +260,9 @@ async function _examples() {
   try {
     // Example 1: Create a simple blog post
     const simplePost = await client.createPost({
-      title: 'How to Maintain Your Luxury Refrigerator',
+      title: 'How to Maintain Your Premier Refrigerator',
       content: BlogAPIClient.createSimpleContent(
-        'Regular maintenance is key to keeping your luxury refrigerator running smoothly...'
+        'Regular maintenance is key to keeping your premier refrigerator running smoothly...'
       ),
       excerpt: 'Learn essential maintenance tips for your premier refrigerator',
       status: 'published',
@@ -274,7 +274,7 @@ async function _examples() {
       tags: [
         { tag: 'refrigerator' },
         { tag: 'maintenance' },
-        { tag: 'luxury appliances' },
+        { tag: 'premier appliances' },
       ],
     })
     console.log('Created post:', simplePost.data.slug)
@@ -308,17 +308,17 @@ async function _examples() {
     })
 
     // Example 4: Get a specific post
-    const post = await client.getPost('maintain-luxury-refrigerator')
+    const post = await client.getPost('maintain-premier-refrigerator')
     console.log('Post details:', post.data.title)
 
     // Example 5: Update a post
-    const updatedPost = await client.updatePost('maintain-luxury-refrigerator', {
+    const updatedPost = await client.updatePost('maintain-premier-refrigerator', {
       excerpt: 'Updated excerpt with more details...',
       tags: [
         { tag: 'refrigerator' },
         { tag: 'maintenance' },
         { tag: 'tips' },
-        { tag: 'luxury' },
+        { tag: 'premier' },
       ],
     })
     console.log('Updated post:', updatedPost.data.slug)

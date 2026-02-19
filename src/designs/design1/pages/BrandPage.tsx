@@ -262,7 +262,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                 Need {brand.name} Repair?
               </h2>
               <p className="text-white/70 text-lg leading-relaxed mb-10">
-                Schedule your appointment today. Our factory-trained technicians are ready to help.
+                Schedule your next day appointment. Our factory-trained technicians are ready to help.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <CTAButton href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`} variant="primary" size="lg" icon="phone">

@@ -58,7 +58,7 @@ const Services: React.FC = () => {
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center">
               <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8" />
-              <span className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] font-light mb-4 block">Schedule Today</span>
+              <span className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] font-light mb-4 block">Schedule Next Day</span>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Ready to Restore Your Appliance?</h2>
               <p className="text-white/70 text-lg leading-relaxed mb-10">Contact us today for expert diagnosis and repair.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -180,12 +180,12 @@ const ServiceAreas: React.FC = () => {
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center">
               <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8" />
-              <span className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] font-light mb-4 block">Schedule Today</span>
+              <span className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] font-light mb-4 block">Schedule Next Day</span>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">
                 Need Appliance Repair in Your Area?
               </h2>
               <p className="text-white/70 text-lg leading-relaxed mb-10">
-                Schedule your appointment today for service tomorrow. Our technicians are ready to help.
+                Schedule your appointment for next day service. Our technicians are ready to help.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <CTAButton href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`} variant="primary" size="lg" icon="phone">

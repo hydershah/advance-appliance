@@ -125,8 +125,8 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
     // CMS unavailable, fall through to static
   }
 
-  // Fallback to static data
-  if (!area) {
+  // Fallback to static data if area or settings unavailable
+  if (!area || !settings) {
     const staticArea = findStaticAreaBySlug(slug)
     if (staticArea) {
       return <Design1AreaPage area={staticArea} />

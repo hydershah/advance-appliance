@@ -35,7 +35,7 @@ export const images = {
   favicon: 'https://appliancenj.com/wp-content/uploads/2016/05/favicon.png',
   // Hero/Cover images for different pages
   hero: '/njhero-opt.webp',
-  kitchen: '/Appliances_Photo_8146322.webp',
+  kitchen: 'https://appliancenj.com/wp-content/uploads/2026/02/your-guide-to-appliance-repair-in-monmouth-county-nj-411541-1024x1024.webp',
   about: '/Advanced-Appliance-Repair-Service.webp',
   contact: '/Kitchen_Appliances_Photo_1.webp',
   team: '/technician-service.webp',
@@ -70,7 +70,7 @@ export const services: Service[] = [
     slug: 'refrigerator-repair',
     icon: 'refrigerator',
     shortDescription: 'Expert repair for all premier refrigerator brands including Sub-Zero, Viking, and more.',
-    description: 'Our certified technicians specialize in repairing premier refrigerators from the worlds most prestigious brands. From temperature regulation issues to compressor failures, we diagnose and resolve problems with precision and care.',
+    description: 'Our certified technicians specialize in repairing refrigerators from all major brands. From temperature regulation issues to compressor failures, we diagnose and resolve problems with precision and care.',
     longDescription: `Your refrigerator is the hardest-working appliance in your home, running 24 hours a day, 365 days a year to keep your food fresh and safe. When it breaks down, you need fast, reliable service from technicians who understand the complexity of modern refrigeration systems. At Advanced Appliance Repair Service, we have been repairing refrigerators throughout Monmouth and Middlesex Counties since 1992.
 
 Our factory-trained technicians are certified to work on all major brands, from everyday models to premier units like Sub-Zero, Viking, and Thermador. We understand that premier refrigerators require specialized knowledge and genuine OEM parts to maintain their performance and warranty coverage. Whether you have a French door, side-by-side, top-freezer, or built-in refrigerator, we have the expertise to diagnose and repair it correctly the first time.
@@ -759,7 +759,7 @@ export const teamMembers: TeamMember[] = [
     id: '4',
     name: 'Sarah Mitchell',
     role: 'Customer Service Manager',
-    bio: 'Sarah ensures every client receives the white-glove service they deserve. She coordinates our scheduling to minimize wait times and maximize convenience.',
+    bio: 'Sarah ensures every client receives the attentive service they deserve. She coordinates our scheduling to minimize wait times and maximize convenience.',
     image: '/technician-work.webp',
   },
 ];
@@ -982,7 +982,7 @@ export const certifications: Certification[] = [
 export const trustBadges = [
   { title: '$100 Diagnostic Fee', description: 'Plus parts and labor. No hidden fees' },
   { title: '24/7 Assistance', description: 'Live operators available around the clock' },
-  { title: 'Fast Scheduling', description: 'Schedule today, service tomorrow' },
+  { title: 'Fast Scheduling', description: 'Schedule next day, service tomorrow' },
   { title: '365-Day Warranty', description: 'Coverage on parts with matching labor warranty' },
   { title: '30+ Years Experience', description: 'Professional service since 1992' },
   { title: 'Genuine OEM Parts', description: 'We use only manufacturer parts' },
@@ -1037,7 +1037,7 @@ export const generalFaqs: FAQ[] = [
   },
   {
     question: 'How quickly can you schedule service?',
-    answer: 'Schedule your appointment today, and we can often provide service the next day. For emergencies, we do our best to accommodate urgent requests.',
+    answer: 'Schedule your appointment, and we can often provide next day service. For emergencies, we do our best to accommodate urgent requests.',
   },
   {
     question: 'What brands do you repair?',

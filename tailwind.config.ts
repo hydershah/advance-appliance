@@ -46,7 +46,7 @@ const config: Config = {
             900: '#111827',
           },
         },
-        // Design 2: Modern Professional Luxury (Navy & Cream)
+        // Design 2: Modern Professional Premier (Navy & Cream)
         modern: {
           navy: {
             50: '#f0f4f8',
@@ -152,7 +152,7 @@ const config: Config = {
           white: '#ffffff',
           cream: '#fafaf8',
         },
-        // Design 4: Bamo Luxury Minimal (Warm Off-White + Dark Charcoal)
+        // Design 4: Bamo Premier Minimal (Warm Off-White + Dark Charcoal)
         bamo: {
           bg: '#fffaf2',        // Warm off-white background (NOT pure white)
           text: '#2d2926',      // Deep charcoal text (NOT black)

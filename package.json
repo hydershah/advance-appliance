@@ -1,7 +1,7 @@
 {
   "name": "advance-appliance-repair",
   "version": "1.0.0",
-  "description": "Luxury appliance repair website with Sanity CMS and Next.js",
+  "description": "Premier appliance repair website with Sanity CMS and Next.js",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--no-deprecation' next dev -p 3001",

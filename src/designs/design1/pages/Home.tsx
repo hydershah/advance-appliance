@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <LocalBusinessSchema page="home" />
       <Header />
       <main>
-        <Hero title="Exceptional Care for Your Premier Appliances" subtitle="Expert Repair Services" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, and Thermador. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
+        <Hero title="Exceptional Care for Your Premier Appliances" subtitle="Profesional Repair Services" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, Thermador, Miele, LG, and Samsung. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
 
         {/* Trust Badges */}
         <section className="py-16 bg-white border-b border-gray-100">
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
               </div>
               <div>
-                <SectionHeading subtitle="Why Choose Us" title="30+ Years of Excellence in Appliance Care" align="left" />
+                <SectionHeading subtitle="Why Choose Us" title="30+ Years of Excellence in Premier Appliance Care" align="left" />
                 <div className="space-y-6 mt-8">
                   <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service has been the trusted choice for homeowners in parts of Monmouth and Middlesex Counties since 1992.</p>
                   <ul className="space-y-4">
@@ -77,7 +77,7 @@ const Home: React.FC = () => {
         {/* Testimonials */}
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Client Testimonials" title="Trusted by Homeowners in Our Service Area" description="Discover why homeowners choose Advanced Appliance for their premier appliance care." align="center" />
+            <SectionHeading subtitle="Client Testimonials" title="Trusted by Homeowners in Our Community" description="Discover why homeowners choose Advanced Appliance for their premier appliance care." align="center" />
             <div className="mt-16 max-w-4xl mx-auto"><TestimonialCarousel testimonials={testimonials} autoPlay={true} interval={7000} /></div>
           </div>
         </section>
