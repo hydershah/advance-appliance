@@ -132,7 +132,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
               <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8" />
               <span className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] font-light mb-4 block">{area.name} Appliance Repair</span>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Ready to Schedule Your Service?</h2>
-              <p className="text-white/70 text-lg leading-relaxed mb-10">Contact us today for expert appliance repair in {area.name}.</p>
+              <p className="text-white/70 text-lg leading-relaxed mb-10">Contact us today for professional appliance repair in {area.name}.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <CTAButton href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`} variant="primary" size="lg" icon="phone">Call {businessInfo.phone}</CTAButton>
                 <CTAButton href="/contact" variant="outline" size="lg" icon="arrow">Schedule Online</CTAButton>

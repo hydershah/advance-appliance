@@ -92,7 +92,14 @@ export async function fetchServiceAreaBySlug(slug: string): Promise<ServiceArea 
  * Fetch all published service areas
  */
 export async function fetchAllServiceAreas(): Promise<ServiceArea[]> {
-  return await client.fetch<ServiceArea[]>(allServiceAreasQuery)
+  const areas = await client.fetch<ServiceArea[]>(allServiceAreasQuery)
+  const seen = new Set<string>()
+  return areas.filter((area) => {
+    const key = area.name
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
 }
 
 /**

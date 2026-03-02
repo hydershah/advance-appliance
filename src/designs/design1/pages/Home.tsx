@@ -24,7 +24,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
       <LocalBusinessSchema page="home" />
       <Header />
       <main>
-        <Hero title="Exceptional Care for Your Premier Appliances" subtitle="Profesional Repair Services" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, Thermador, Miele, LG, and Samsung. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
+        <Hero title="Exceptional Care for Your Premier Appliances" subtitle="Profesional Repair Services" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, Thermador, Miele, LG, Samsung and more. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
 
         {/* Trust Badges */}
         <section className="py-16 bg-white border-b border-gray-100">
@@ -46,7 +46,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
         {/* Services */}
         <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Our Expertise" title="Expert Appliance Repair Services" description="From refrigerators to cooktops, our factory-trained technicians provide expert repair services for all your premier appliances." align="center" />
+            <SectionHeading subtitle="Our Services" title="Precision Appliance Repair" description="From refrigerators to cooktops, our factory-trained technicians provide skilled repair services for all your premier appliances." align="center" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
               {services.slice(0, 6).map((service) => <ServiceCard key={service.id} service={service} variant="default" />)}
             </div>
@@ -67,7 +67,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
                 <div className="space-y-6 mt-8">
                   <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service has been the trusted choice for homeowners in parts of Monmouth and Middlesex Counties since 1992.</p>
                   <ul className="space-y-4">
-                    {['Factory-trained on all major premier brands', 'Flexible scheduling with next-day availability', 'Genuine OEM parts with 365-day warranty', 'Transparent pricing with no hidden fees'].map((item, i) => (
+                    {['Factory-trained on all major premier brands', 'Flexible scheduling with next-day availability', 'Genuine OEM parts with up to 1-year warranty', 'Transparent pricing with no hidden fees'].map((item, i) => (
                       <li key={i} className="flex items-start"><svg className="w-5 h-5 text-[#D4AF37] mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg><span className="text-gray-700">{item}</span></li>
                     ))}
                   </ul>
@@ -83,7 +83,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
           <div className="container mx-auto px-6">
             <p className="text-center text-xs uppercase tracking-[0.3em] text-gray-500 mb-8">Professional Service for Premier Brands</p>
             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
-              {brands.slice(0, 10).map((brand, i) => <span key={i} className="text-gray-400 text-lg font-serif hover:text-[#D4AF37] transition-colors cursor-default">{brand.name}</span>)}
+              {brands.filter(b => ['Sub-Zero', 'Viking', 'Thermador', 'Miele', 'Wolf', 'LG', 'Samsung', 'KitchenAid', 'Jenn-Air', 'Bosch', 'Maytag', 'Whirlpool', 'GE', 'Frigidaire'].includes(b.name)).map((brand, i) => <span key={i} className="text-gray-400 text-lg font-serif hover:text-[#D4AF37] transition-colors cursor-default">{brand.name}</span>)}
             </div>
           </div>
         </section>
@@ -122,7 +122,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
             <div className="max-w-3xl mx-auto text-center">
               <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8" />
               <span className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] font-light mb-4 block">Ready to Get Started?</span>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Experience the Difference of Expert Care</h2>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Experience the Difference of Quality Care</h2>
               <p className="text-white/70 text-lg leading-relaxed mb-10">Join hundreds of satisfied homeowners who trust Advanced Appliance for their appliance repair needs.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <CTAButton href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`} variant="primary" size="lg" icon="phone">Call {businessInfo.phone}</CTAButton>

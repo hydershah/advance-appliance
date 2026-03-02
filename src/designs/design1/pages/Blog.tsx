@@ -65,7 +65,7 @@ const Blog: React.FC<BlogProps> = ({ blogPosts: blogPostsProp }) => {
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title="Expert Insights" subtitle="Our Blog" description="Tips, guides, and industry insights from our team of premier appliance experts." image={images.blog} showCTA={false} overlay="gradient" height="small" align="center" />
+        <Hero title="Industry Insights" subtitle="Our Blog" description="Tips, guides, and industry insights from our team of premier appliance specialists." image={images.blog} showCTA={false} overlay="gradient" height="small" align="center" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
@@ -106,7 +106,7 @@ const Blog: React.FC<BlogProps> = ({ blogPosts: blogPostsProp }) => {
         <section className="py-24 bg-white">
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mx-auto text-center">
-              <SectionHeading subtitle="Stay Informed" title="Subscribe to Our Newsletter" description="Get expert tips and exclusive offers delivered to your inbox." align="center" />
+              <SectionHeading subtitle="Stay Informed" title="Subscribe to Our Newsletter" description="Get helpful tips and exclusive offers delivered to your inbox." align="center" />
               <form className="mt-8 flex flex-col sm:flex-row gap-4">
                 <input type="email" placeholder="Enter your email address" className="flex-1 px-4 py-3 border border-gray-200 focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none transition-colors" />
                 <CTAButton type="submit" variant="primary" size="md">Subscribe</CTAButton>
@@ -120,7 +120,7 @@ const Blog: React.FC<BlogProps> = ({ blogPosts: blogPostsProp }) => {
             <div className="max-w-3xl mx-auto text-center">
               <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8" />
               <span className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] font-light mb-4 block">Need Service?</span>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Expert Help Just a Call Away</h2>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Skilled Help Just a Call Away</h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <CTAButton href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`} variant="primary" size="lg" icon="phone">Call {businessInfo.phone}</CTAButton>
                 <CTAButton href="/contact" variant="outline" size="lg" icon="arrow">Schedule Service</CTAButton>

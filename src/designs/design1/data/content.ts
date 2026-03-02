@@ -75,12 +75,12 @@ export const services: Service[] = [
 
 Our factory-trained technicians are certified to work on all major brands, from everyday models to premier units like Sub-Zero, Viking, and Thermador. We understand that premier refrigerators require specialized knowledge and genuine OEM parts to maintain their performance and warranty coverage. Whether you have a French door, side-by-side, top-freezer, or built-in refrigerator, we have the expertise to diagnose and repair it correctly the first time.
 
-We stock our service vehicles with the most commonly needed parts, allowing us to complete most repairs in a single visit. For complex issues or specialty parts, we provide accurate timelines and keep you informed throughout the process. Our $100 diagnostic fee is applied to your repair cost, and all work is backed by our 365-day warranty on parts and labor.`,
+We stock our service vehicles with the most commonly needed parts, allowing us to complete most repairs in a single visit. For complex issues or specialty parts, we provide accurate timelines and keep you informed throughout the process. Our $100 diagnostic fee is applied to your repair cost, and all work is backed by our up to 1-year warranty on parts and labor.`,
     features: [
       'Prompt service scheduling',
       'Factory-trained technicians',
       'Genuine OEM replacement parts',
-      '365-day warranty on all repairs',
+      'up to 1-year warranty on all repairs',
       'Sub-Zero, Viking, Thermador specialists',
       'Built-in and integrated unit experts',
       'Compressor and sealed system repair',
@@ -161,7 +161,7 @@ We stock our service vehicles with the most commonly needed parts, allowing us t
 
 Our technicians are factory-trained to repair all types of washing machines, from traditional top-loaders to sophisticated front-load units with steam cycles and smart connectivity. We specialize in brands like Miele, Bosch, Speed Queen, and LG, but we service all major manufacturers. With over 30 years of experience, we have seen every type of washer problem and know how to fix it right the first time.
 
-Modern washing machines are complex appliances with electronic control boards, multiple sensors, and precision motors. Attempting DIY repairs can void warranties and cause additional damage. Our professional technicians have the diagnostic tools and genuine OEM parts needed to restore your washer to peak performance, backed by our 365-day warranty on all repairs.`,
+Modern washing machines are complex appliances with electronic control boards, multiple sensors, and precision motors. Attempting DIY repairs can void warranties and cause additional damage. Our professional technicians have the diagnostic tools and genuine OEM parts needed to restore your washer to peak performance, backed by our up to 1-year warranty on all repairs.`,
     features: [
       'All washer types serviced',
       'Leak detection and repair',
@@ -197,7 +197,7 @@ Modern washing machines are complex appliances with electronic control boards, m
       'You receive a detailed repair estimate before we begin',
       'Repairs are completed using manufacturer-approved parts',
       'We run test cycles to verify proper operation',
-      'Your repair is covered by our 365-day warranty',
+      'Your repair is covered by our up to 1-year warranty',
     ],
     preventionTips: [
       'Don\'t overload the washer - follow capacity guidelines',
@@ -284,7 +284,7 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
       'You receive an honest estimate before repairs begin',
       'Repairs are made with quality OEM components',
       'We test the dryer through a complete cycle',
-      'All work is backed by our 365-day warranty',
+      'All work is backed by our up to 1-year warranty',
     ],
     preventionTips: [
       'Clean the lint filter before every load',
@@ -371,7 +371,7 @@ Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking wa
       'You approve the repair estimate before we proceed',
       'We complete the repair with genuine manufacturer parts',
       'We run a test cycle to verify proper operation',
-      'Your repair is protected by our 365-day warranty',
+      'Your repair is protected by our up to 1-year warranty',
     ],
     preventionTips: [
       'Scrape dishes but don\'t pre-rinse excessively',
@@ -458,7 +458,7 @@ Whether you have a freestanding oven, wall oven, double oven, or professional-st
       'You receive a detailed estimate for your approval',
       'Repairs are completed with OEM parts',
       'We verify temperature accuracy and proper operation',
-      'All repairs include our 365-day warranty',
+      'All repairs include our up to 1-year warranty',
     ],
     preventionTips: [
       'Clean spills promptly to prevent smoke and damage',
@@ -983,7 +983,7 @@ export const trustBadges = [
   { title: '$100 Diagnostic Fee', description: 'Plus parts and labor. No hidden fees' },
   { title: '24/7 Assistance', description: 'Live operators available around the clock' },
   { title: 'Fast Scheduling', description: 'Schedule next day, service tomorrow' },
-  { title: '365-Day Warranty', description: 'Coverage on parts with matching labor warranty' },
+  { title: '1-Year Warranty', description: 'Coverage on parts with matching labor warranty' },
   { title: '30+ Years Experience', description: 'Professional service since 1992' },
   { title: 'Genuine OEM Parts', description: 'We use only manufacturer parts' },
 ];
@@ -1024,7 +1024,7 @@ export const howItWorks = [
   {
     step: 3,
     title: 'Relax',
-    description: 'Our 365-day warranty covers all repairs on parts and labor.',
+    description: 'Our up to 1-year warranty covers all repairs on parts and labor.',
     icon: 'relax'
   },
 ];
@@ -1045,7 +1045,7 @@ export const generalFaqs: FAQ[] = [
   },
   {
     question: 'Do you provide warranties on repairs?',
-    answer: 'Yes, all our repairs come with a 365-day warranty on parts with matching labor warranty coverage.',
+    answer: 'Yes, all our repairs come with up to 1-year warranty on parts with matching labor warranty coverage.',
   },
   {
     question: 'How much does a service call cost?',

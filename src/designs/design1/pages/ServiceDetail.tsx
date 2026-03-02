@@ -20,7 +20,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
       <FAQSchema faqs={service.faqs} />
       <Header />
       <main>
-        <Hero title={service.name} subtitle="Expert Repair Service" description={service.shortDescription} image={service.image} showCTA={true} overlay="gradient" height="medium" align="left" />
+        <Hero title={service.name} subtitle="Certified Repair Service" description={service.shortDescription} image={service.image} showCTA={true} overlay="gradient" height="medium" align="left" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
@@ -40,7 +40,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
                 {/* Introduction */}
                 <div className="mb-12">
                   <div className="w-16 h-px bg-[#D4AF37] mb-8" />
-                  <h2 className="font-serif text-3xl md:text-4xl text-black font-light mb-6">Expert {service.name} in Monmouth & Middlesex Counties</h2>
+                  <h2 className="font-serif text-3xl md:text-4xl text-black font-light mb-6">Professional {service.name} in Monmouth & Middlesex Counties</h2>
                   <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
                   {service.longDescription && (
                     <div className="prose prose-gray max-w-none">
@@ -165,14 +165,14 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
                 <div className="sticky top-32 space-y-6">
                   <div className="bg-gray-50 p-6 border border-gray-100">
                     <h4 className="font-serif text-xl text-black mb-4">Schedule Your Repair</h4>
-                    <p className="text-gray-600 text-sm mb-4">Contact us today for expert {service.name.toLowerCase()} in Monmouth and Middlesex Counties.</p>
+                    <p className="text-gray-600 text-sm mb-4">Contact us today for professional {service.name.toLowerCase()} in Monmouth and Middlesex Counties.</p>
                     <a href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`} className="block w-full px-6 py-4 bg-[#D4AF37] text-black text-center text-sm uppercase tracking-wider hover:bg-[#C4A030] transition-colors mb-3">{businessInfo.phone}</a>
                     <a href="/contact" className="block w-full px-6 py-4 border border-black text-black text-center text-sm uppercase tracking-wider hover:bg-black hover:text-white transition-colors">Book Online</a>
                   </div>
 
                   <div className="bg-black text-white p-6 text-center">
                     <svg className="w-10 h-10 mx-auto text-[#D4AF37] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    <h4 className="font-serif text-lg mb-2">365-Day Warranty</h4>
+                    <h4 className="font-serif text-lg mb-2">1-Year Warranty</h4>
                     <p className="text-white/70 text-sm">All repairs backed by our comprehensive parts and labor warranty</p>
                   </div>
 

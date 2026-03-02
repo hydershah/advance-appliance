@@ -30,8 +30,8 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
       <main>
         <Hero
           title={`${brand.name} Appliance Repair Service in NJ`}
-          subtitle="Expert Repair Service"
-          description={`Expert ${brand.name} appliance repair throughout Monmouth and Middlesex Counties. Over 30 years of experience with factory-trained technicians.`}
+          subtitle="Certified Repair Service"
+          description={`Trusted ${brand.name} appliance repair throughout Monmouth and Middlesex Counties. Over 30 years of experience with factory-trained technicians.`}
           image={images.brands}
           showCTA={true}
           overlay="gradient"
@@ -66,15 +66,15 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                   </div>
                 )}
                 <SectionHeading
-                  subtitle="Expert Service"
+                  subtitle="Skilled Technicians"
                   title={`${brand.name} Repair Specialists`}
                   align="left"
                 />
                 <div className="space-y-6 mt-8">
                   <p className="text-gray-600 leading-relaxed">
-                    Advanced Appliance Repair Service has been providing expert {brand.name} appliance
+                    Advanced Appliance Repair Service has been providing trusted {brand.name} appliance
                     repair in parts of Monmouth and Middlesex Counties for over 30 years. Our factory-trained
-                    technicians have the expertise and genuine parts to service all {brand.name}
+                    technicians have the knowledge and genuine parts to service all {brand.name}
                     appliances, ensuring your investment is properly maintained.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
@@ -134,7 +134,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                     {brand.name} {service.name}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    Expert {service.name.toLowerCase()} for {brand.name} appliances. Fast diagnosis and quality repairs.
+                    Skilled {service.name.toLowerCase()} for {brand.name} appliances. Fast diagnosis and quality repairs.
                   </p>
                   <span className="text-[#D4AF37] text-sm flex items-center">
                     Learn More
@@ -160,7 +160,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
               {[
                 { title: '$100 Diagnostic', description: 'Clear pricing with no hidden fees' },
                 { title: 'Fast Scheduling', description: 'Next-day appointments available' },
-                { title: '365-Day Warranty', description: 'All repairs guaranteed' },
+                { title: '1-Year Warranty', description: 'All repairs guaranteed' },
                 { title: '30+ Years', description: 'Experience you can trust' },
               ].map((item, i) => (
                 <div key={i} className="text-center group">
