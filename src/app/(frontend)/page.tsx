@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import { Home as Design1Home } from '@/designs/design1/pages'
+
+export const revalidate = 300 // revalidate every 5 minutes
 import { fetchAllServices, fetchTestimonials, fetchFeaturedBrands, fetchAllTrustBadges, fetchAllServiceAreas } from '@/sanity/fetchers'
 import { adaptService, adaptTestimonial, adaptBrand, adaptTrustBadge, adaptServiceArea } from '@/lib/sanityAdapters'
 

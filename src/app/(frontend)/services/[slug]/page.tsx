@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+
+export const revalidate = 300 // revalidate every 5 minutes
 import { fetchServiceBySlug } from '@/sanity/fetchers'
 import { adaptService } from '@/lib/sanityAdapters'
 import { ServiceDetail as Design1ServiceDetail } from '@/designs/design1/pages'

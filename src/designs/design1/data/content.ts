@@ -35,7 +35,7 @@ export const images = {
   favicon: 'https://appliancenj.com/wp-content/uploads/2016/05/favicon.png',
   // Hero/Cover images for different pages
   hero: '/njhero-opt.webp',
-  kitchen: 'https://appliancenj.com/wp-content/uploads/2026/02/your-guide-to-appliance-repair-in-monmouth-county-nj-411541-1024x1024.webp',
+  kitchen: '/why-choose-us.png',
   about: '/Advanced-Appliance-Repair-Service.webp',
   contact: '/Kitchen_Appliances_Photo_1.webp',
   team: '/technician-service.webp',
