@@ -596,27 +596,26 @@ export const brands: Brand[] = [
   { name: 'Thermador', slug: 'thermador-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Thermador.png', featured: true },
   { name: 'Miele', slug: 'miele-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Miele-logo.png', featured: true },
   { name: 'Wolf', slug: 'wolf-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Wolf-logo.jpg', featured: true },
-  // Major Brands
-  { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj' },
-  { name: 'LG', slug: 'lg-appliance-repair-service-nj' },
+  // Major Brands (Featured)
+  { name: 'LG', slug: 'lg-appliance-repair-service-nj', logo: '/brands/lg.png', featured: true },
+  { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj', logo: '/brands/samsung.png', featured: true },
+  { name: 'KitchenAid', slug: 'kitchenaid-appliance-repair-service-nj', logo: '/brands/kitchenaid.png', featured: true },
+  { name: 'Jenn-Air', slug: 'jenn-air-appliance-repair-service-nj', logo: '/brands/jennair.png', featured: true },
+  { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj', logo: '/brands/electrolux.png', featured: true },
+  { name: 'GE', slug: 'general-electric-ge-appliance-repair-service-nj', logo: '/brands/ge.png', featured: true },
+  { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj', logo: '/brands/maytag.png', featured: true },
+  { name: 'Whirlpool', slug: 'whirlpool-appliance-repair-service-nj', logo: '/brands/whirlpool.png', featured: true },
+  { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj', logo: '/brands/frigidaire.png', featured: true },
+  { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj', logo: '/brands/kenmore.png', featured: true },
+  // Other Major Brands
   { name: 'Bosch', slug: 'bosch-appliance-repair-service-nj' },
-  { name: 'KitchenAid', slug: 'kitchenaid-appliance-repair-service-nj' },
-  { name: 'Jenn-Air', slug: 'jenn-air-appliance-repair-service-nj' },
-  { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj' },
-  { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj' },
-  { name: 'GE', slug: 'general-electric-ge-appliance-repair-service-nj' },
   { name: 'GE Profile', slug: 'ge-profile-appliance-repair-service-nj' },
   { name: 'GE Monogram', slug: 'ge-monogram-appliance-repair-service-nj' },
   { name: 'GE Cafe', slug: 'ge-cafe-appliance-repair-service-nj' },
-  { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj' },
-  { name: 'Whirlpool', slug: 'whirlpool-appliance-repair-service-nj' },
-  { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj' },
   // Additional Brands from live site
   { name: 'Admiral', slug: 'admiral-appliance-repair-service-nj' },
   { name: 'Amana', slug: 'amana-appliance-repair-service-nj' },
-  { name: 'Americana', slug: 'americana-appliance-repair-service-nj' },
   { name: 'Asko', slug: 'asko-appliance-repair-service-nj' },
-  { name: 'Avanti', slug: 'avanti-appliance-repair-service-nj' },
   { name: 'Caloric', slug: 'caloric-appliance-repair-service-nj' },
   { name: 'Dacor', slug: 'dacor-appliance-repair-service-nj' },
   { name: 'DCS', slug: 'dcs-appliance-repair-service-nj' },
@@ -644,7 +643,6 @@ export const brands: Brand[] = [
   { name: 'Whirlpool Duet', slug: 'whirlpool-duet-appliance-repair-service-nj' },
   { name: 'Whirlpool Cabrio', slug: 'whirlpool-carbio-appliance-repair-service-nj' },
   { name: 'Whirlpool Gold', slug: 'whirlpool-gold-appliance-repair-service-nj' },
-  { name: 'Haier', slug: 'haier-appliance-repair-service-nj' },
 ];
 
 // Testimonials - from live site reviews
@@ -972,10 +970,16 @@ Advanced Appliance has been serving Monmouth and Middlesex counties for over 30 
 export const certifications: Certification[] = [
   { name: 'Sub-Zero Certified', issuer: 'Sub-Zero Group', year: '2024' },
   { name: 'Wolf Factory Trained', issuer: 'Wolf Appliance', year: '2024' },
-  { name: 'Viking Authorized Service', issuer: 'Viking Range', year: '2024' },
+  { name: 'Viking Certified Service', issuer: 'Viking Range', year: '2024' },
   { name: 'Thermador Certified', issuer: 'BSH Home Appliances', year: '2024' },
   { name: 'Miele Premier Partner', issuer: 'Miele', year: '2024' },
   { name: 'EPA 608 Certified', issuer: 'EPA', year: '2023' },
+  { name: 'AHAM NARDA Certified', issuer: 'AHAM', year: '2024' },
+  { name: 'PSA World Member', issuer: 'PSA World', year: '2024' },
+  { name: 'MSA World Member', issuer: 'MSA World', year: '2024' },
+  { name: 'United Servicers Association', issuer: 'United Servicers', year: '2024' },
+  { name: 'Samsung Factory Trained', issuer: 'Samsung', year: '2024' },
+  { name: 'LG Factory Trained', issuer: 'LG', year: '2024' },
 ];
 
 // Trust Badges - matching live site

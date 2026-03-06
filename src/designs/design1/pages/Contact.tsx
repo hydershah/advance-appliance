@@ -90,7 +90,7 @@ const Contact: React.FC<ContactProps> = ({ generalFaqs: faqsProp, serviceAreas: 
 
         <section className="py-0">
           <div className="relative h-[500px]">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25280949928!2d-74.31899037223515!3d40.69701929411892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3e65e00000001%3A0x7ead5d9a9ec2f3e7!2sNew%20Jersey!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale" />
+            <iframe src={`https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed`} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale" />
             <div className="absolute top-8 left-8 lg:left-16 bg-white p-8 shadow-xl max-w-sm max-h-[440px] overflow-hidden flex flex-col">
               <h3 className="font-serif text-xl mb-4">Our Service Area</h3>
               <p className="text-gray-600 text-sm mb-6">We proudly serve Monmouth and Middlesex counties in New Jersey.</p>

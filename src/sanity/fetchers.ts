@@ -78,7 +78,14 @@ export async function fetchServiceBySlug(slug: string): Promise<Service | null> 
  * Fetch all published services
  */
 export async function fetchAllServices(): Promise<Service[]> {
-  return await client.fetch<Service[]>(allServicesQuery)
+  const services = await client.fetch<Service[]>(allServicesQuery)
+  const seen = new Set<string>()
+  return services.filter((service) => {
+    const key = service.name
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
 }
 
 /**

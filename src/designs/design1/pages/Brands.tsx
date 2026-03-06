@@ -27,7 +27,7 @@ const Brands: React.FC<BrandsProps> = ({ brands: brandsProp }) => {
         <Hero
           title="Our Brands"
           subtitle="Appliances That We Repair"
-          description="At Advanced Appliance Service, we provide professional repair of kitchen and laundry appliances for over 30 years. We service all domestic and foreign makes and models."
+          description="At Advanced Appliance, we provide professional repair of kitchen and laundry appliances for over 30 years. We service all domestic and foreign makes and models."
           image={images.brands}
           showCTA={false}
           overlay="gradient"

@@ -311,9 +311,7 @@ async function seedBrands() {
     { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj', featured: false },
     { name: 'Admiral', slug: 'admiral-appliance-repair-service-nj', featured: false },
     { name: 'Amana', slug: 'amana-appliance-repair-service-nj', featured: false },
-    { name: 'Americana', slug: 'americana-appliance-repair-service-nj', featured: false },
     { name: 'Asko', slug: 'asko-appliance-repair-service-nj', featured: false },
-    { name: 'Avanti', slug: 'avanti-appliance-repair-service-nj', featured: false },
     { name: 'Caloric', slug: 'caloric-appliance-repair-service-nj', featured: false },
     { name: 'Dacor', slug: 'dacor-appliance-repair-service-nj', featured: false },
     { name: 'DCS', slug: 'dcs-appliance-repair-service-nj', featured: false },
@@ -341,7 +339,6 @@ async function seedBrands() {
     { name: 'Whirlpool Duet', slug: 'whirlpool-duet-appliance-repair-service-nj', featured: false },
     { name: 'Whirlpool Cabrio', slug: 'whirlpool-carbio-appliance-repair-service-nj', featured: false },
     { name: 'Whirlpool Gold', slug: 'whirlpool-gold-appliance-repair-service-nj', featured: false },
-    { name: 'Haier', slug: 'haier-appliance-repair-service-nj', featured: false },
   ]
 
   for (let i = 0; i < brands.length; i++) {
@@ -491,10 +488,16 @@ async function seedCertifications() {
   const certs = [
     { name: 'Sub-Zero Certified', issuer: 'Sub-Zero Group', year: '2024' },
     { name: 'Wolf Factory Trained', issuer: 'Wolf Appliance', year: '2024' },
-    { name: 'Viking Authorized Service', issuer: 'Viking Range', year: '2024' },
+    { name: 'Viking Certified Service', issuer: 'Viking Range', year: '2024' },
     { name: 'Thermador Certified', issuer: 'BSH Home Appliances', year: '2024' },
     { name: 'Miele Premier Partner', issuer: 'Miele', year: '2024' },
     { name: 'EPA 608 Certified', issuer: 'EPA', year: '2023' },
+    { name: 'AHAM NARDA Certified', issuer: 'AHAM', year: '2024' },
+    { name: 'PSA World Member', issuer: 'PSA World', year: '2024' },
+    { name: 'MSA World Member', issuer: 'MSA World', year: '2024' },
+    { name: 'United Servicers Association', issuer: 'United Servicers', year: '2024' },
+    { name: 'Samsung Factory Trained', issuer: 'Samsung', year: '2024' },
+    { name: 'LG Factory Trained', issuer: 'LG', year: '2024' },
   ]
 
   for (let i = 0; i < certs.length; i++) {

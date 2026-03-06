@@ -12,7 +12,7 @@ interface AboutProps {
 const About: React.FC<AboutProps> = ({ certifications: certificationsProp }) => {
   const certifications = certificationsProp || staticCertifications;
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about' }];
-  const stats = [{ value: '25+', label: 'Years of Experience' }, { value: '10,000+', label: 'Repairs Completed' }, { value: '98%', label: 'Customer Satisfaction' }, { value: '24hr', label: 'Response Time' }];
+  const stats = [{ value: '30+', label: 'Years of Experience' }, { value: '10,000+', label: 'Repairs Completed' }, { value: '98%', label: 'Customer Satisfaction' }, { value: '24hr', label: 'Response Time' }];
   const values = [
     { title: 'Integrity', description: 'We believe in honest assessments and transparent pricing.' },
     { title: 'Excellence', description: 'We pursue excellence in every repair using genuine parts.' },
@@ -26,7 +26,7 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp }) => 
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title="Our Story" subtitle="About Us" description="For over 25 years, Advanced Appliance Repair Service has been the trusted choice for premier appliance care." image={images.about} showCTA={false} overlay="gradient" height="medium" align="center" />
+        <Hero title="Our Story" subtitle="About Us" description="For over 30 years, homeowners throughout Central New Jersey have trusted us to keep their kitchens and laundry rooms running smoothly." image={images.about} showCTA={false} overlay="gradient" height="medium" align="center" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
@@ -50,13 +50,19 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp }) => 
               <div className="relative">
                 <div className="aspect-[4/5] overflow-hidden"><img src={images.kitchen} alt="Modern kitchen" className="w-full h-full object-cover" /></div>
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
-                <div className="absolute top-8 -left-8 bg-[#D4AF37] text-black p-8 hidden lg:block"><span className="font-serif text-4xl block">1998</span><span className="text-xs uppercase tracking-wider">Est.</span></div>
+                <div className="absolute top-8 -left-8 bg-[#D4AF37] text-black p-8 hidden lg:block"><span className="font-serif text-4xl block">1992</span><span className="text-xs uppercase tracking-wider">Est.</span></div>
               </div>
               <div>
                 <SectionHeading subtitle="Our Story" title="A Legacy of Excellence" align="left" />
                 <div className="space-y-6 mt-8">
-                  <p className="text-gray-600 leading-relaxed">Advanced Appliance Repair Service was founded in 1998 by Michael Richardson, a factory-trained technician with a passion for premier appliances.</p>
-                  <p className="text-gray-600 leading-relaxed">From our humble beginnings with a single service van, we have grown into the region's most trusted name in appliance repair.</p>
+                  <p className="text-gray-600 leading-relaxed">For over 30 years, homeowners throughout Central New Jersey have trusted us to keep their kitchens and laundry rooms running smoothly. Based in Morganville in Marlboro Township, we&apos;re proud to be a local company that believes great service is built on experience, precision, and treating customers the right way.</p>
+                  <p className="text-gray-600 leading-relaxed">Our company was founded in 1992 by mechanical and electrical engineers who recognized the need for a higher level of professionalism in appliance repair. Their vision was simple: bring real technical expertise to the service industry and repair appliances the way manufacturers intended.</p>
+                  <p className="text-gray-600 leading-relaxed">Today, that same standard guides everything we do.</p>
+                  <p className="text-gray-600 leading-relaxed">We are not a franchise and not a referral service. When you call us, you&apos;re getting experienced professionals who specialize in appliance diagnostics and repair—not general handymen. As a factory-authorized service provider, our technicians meet strict manufacturer standards and are trained to get the job done right the first time.</p>
+                  <p className="text-gray-600 leading-relaxed">We believe details matter. From careful diagnostics to a clean, professional repair, our goal is simple: fix the problem properly and leave your home exactly the way we found it.</p>
+                  <p className="text-gray-600 leading-relaxed">Customers choose us because we offer reliable next-day in-home service, manufacturer-authorized repairs, and work that is fully warranted for your peace of mind.</p>
+                  <p className="text-gray-600 leading-relaxed">And of course, we are licensed, bonded, and insured—because your home deserves nothing less.</p>
+                  <p className="text-gray-600 leading-relaxed">For three decades and counting, we&apos;ve built our reputation one satisfied customer at a time.</p>
                 </div>
               </div>
             </div>
@@ -65,7 +71,22 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp }) => 
 
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
+            <SectionHeading subtitle="What We Do" title="Expert Repairs for Every Brand" align="center" />
+            <div className="max-w-4xl mx-auto mt-12 space-y-6">
+              <p className="text-gray-600 leading-relaxed">At Advanced Appliance, we&apos;ve been professionally repairing kitchen and laundry appliances for over 30 years. Our technicians are trained to service all major domestic and international brands, and we&apos;re experienced with virtually every model on the market.</p>
+              <p className="text-gray-600 leading-relaxed">From washers and dryers to refrigerators, dishwashers, cooktops, and ovens—gas or electric—we&apos;ve seen it all and fixed it all.</p>
+              <p className="text-gray-600 leading-relaxed">And it doesn&apos;t matter where you purchased your appliance. If it&apos;s in your home, we can repair it.</p>
+              <p className="text-gray-600 leading-relaxed">Every repair we perform uses new, genuine manufacturer parts whenever possible. These original components are backed by the manufacturer&apos;s warranty, giving you confidence that your appliance is being repaired with the same quality parts it was built with. In addition, our repairs include a matching labor warranty, so you know the job is done right.</p>
+              <p className="text-gray-600 leading-relaxed">To keep your downtime to a minimum, we partner with the nation&apos;s leading appliance parts suppliers, allowing us to source most parts quickly—often within just a few days, not weeks.</p>
+              <p className="text-gray-600 leading-relaxed">No matter the brand in your home, you can count on fast, reliable, professional repairs from technicians who know appliances inside and out.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-24 lg:py-32 bg-white">
+          <div className="container mx-auto px-6">
             <SectionHeading subtitle="Our Values" title="What We Stand For" align="center" />
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
               {values.map((value, i) => (
                 <div key={i} className="bg-white p-8 border border-gray-100 hover:border-[#D4AF37] transition-colors text-center group">
