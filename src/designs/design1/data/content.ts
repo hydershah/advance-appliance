@@ -979,6 +979,7 @@ export const certifications: Certification[] = [
   { name: 'MSA World Member', issuer: 'MSA World', year: '2024' },
   { name: 'United Servicers Association', issuer: 'United Servicers', year: '2024' },
   { name: 'Samsung Factory Trained', issuer: 'Samsung', year: '2024' },
+  { name: 'KitchenAid Certified', issuer: 'KitchenAid', year: '2024' },
   { name: 'LG Factory Trained', issuer: 'LG', year: '2024' },
 ];
 
