@@ -3,6 +3,8 @@ import { About as Design1About } from '@/designs/design1/pages'
 import { fetchAllCertifications, fetchAboutPage } from '@/sanity/fetchers'
 import { adaptCertification } from '@/lib/sanityAdapters'
 
+export const revalidate = 300 // revalidate every 5 minutes
+
 export const metadata: Metadata = {
   title: 'About Us - Advanced Appliance Repair Service',
   description:
