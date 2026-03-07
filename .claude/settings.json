@@ -2,8 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npx tsx -e \":*)",
-      "Bash(NEXT_PUBLIC_SANITY_PROJECT_ID=pn7otrra SANITY_API_TOKEN=\"skR6JytHz1bCAbeiZU4aHm67bFKGKbxu1m0QitJRKzhXwEvJZPN69kEyKBIOmUoH1uZ4PWqXHytUJ1bXA5SgX6kmfbg4noIO8NYBTupbtEidmDcxrEEInCP9OtW2qgq56MpuyNiWJ1ftYTmTa6DXn8PxyeoOUx1HlCkVzmzv6GbmKQck5Yuk\" npx tsx scripts/seed-sanity.ts)",
-      "Bash(TOKEN=\"skR6JytHz1bCAbeiZU4aHm67bFKGKbxu1m0QitJRKzhXwEvJZPN69kEyKBIOmUoH1uZ4PWqXHytUJ1bXA5SgX6kmfbg4noIO8NYBTupbtEidmDcxrEEInCP9OtW2qgq56MpuyNiWJ1ftYTmTa6DXn8PxyeoOUx1HlCkVzmzv6GbmKQck5Yuk\")",
+      "Bash(NEXT_PUBLIC_SANITY_PROJECT_ID=pn7otrra SANITY_API_TOKEN=\"REVOKED_SANITY_TOKEN\" npx tsx scripts/seed-sanity.ts)",
+      "Bash(TOKEN=\"REVOKED_SANITY_TOKEN\")",
       "Bash(curl -s \"https://pn7otrra.api.sanity.io/v2024-01-01/data/query/production\" --data-urlencode \"query=array::unique\\(*[]._type\\)\")",
       "Bash(npx tsx /tmp/check-sanity.ts)",
       "Bash(npx tsx scripts/check-viking.ts)",
