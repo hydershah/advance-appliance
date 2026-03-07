@@ -83,7 +83,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
           <div className="container mx-auto px-6">
             <p className="text-center text-xs uppercase tracking-[0.3em] text-gray-500 mb-8">Professional Service for Premier Brands</p>
             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
-              {brands.filter(b => ['Sub-Zero', 'Viking', 'Thermador', 'Miele', 'Wolf', 'LG', 'Samsung', 'KitchenAid', 'Jenn-Air', 'Bosch', 'Maytag', 'Whirlpool', 'GE', 'Frigidaire'].includes(b.name)).map((brand, i) => <span key={i} className="text-gray-400 text-lg font-serif hover:text-[#D4AF37] transition-colors cursor-default">{brand.name}</span>)}
+              {brands.filter(b => ['Sub-Zero', 'Viking', 'Thermador', 'Miele', 'Wolf', 'LG', 'Samsung', 'KitchenAid', 'Jenn-Air', 'Electrolux', 'GE', 'Maytag', 'Whirlpool', 'Frigidaire', 'Kenmore'].includes(b.name)).map((brand, i) => <span key={i} className="text-gray-400 text-lg font-serif hover:text-[#D4AF37] transition-colors cursor-default">{brand.name}</span>)}
             </div>
           </div>
         </section>

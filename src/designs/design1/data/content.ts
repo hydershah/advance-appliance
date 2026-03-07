@@ -599,12 +599,12 @@ export const brands: Brand[] = [
   // Major Brands (Featured)
   { name: 'LG', slug: 'lg-appliance-repair-service-nj', logo: '/brands/lg.png', featured: true },
   { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj', logo: '/brands/samsung.png', featured: true },
-  { name: 'KitchenAid', slug: 'kitchenaid-appliance-repair-service-nj', logo: '/brands/kitchenaid.png', featured: true },
+  { name: 'KitchenAid', slug: 'kitchenaid-appliance-repair-service-nj', logo: '/brands/kitchenaid.jpg', featured: true },
   { name: 'Jenn-Air', slug: 'jenn-air-appliance-repair-service-nj', logo: '/brands/jennair.png', featured: true },
-  { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj', logo: '/brands/electrolux.png', featured: true },
+  { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj', logo: '/brands/electrolux.jpg', featured: true },
   { name: 'GE', slug: 'general-electric-ge-appliance-repair-service-nj', logo: '/brands/ge.png', featured: true },
   { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj', logo: '/brands/maytag.png', featured: true },
-  { name: 'Whirlpool', slug: 'whirlpool-appliance-repair-service-nj', logo: '/brands/whirlpool.png', featured: true },
+  { name: 'Whirlpool', slug: 'whirlpool-appliance-repair-service-nj', logo: '/brands/whirlpool.jpg', featured: true },
   { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj', logo: '/brands/frigidaire.png', featured: true },
   { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj', logo: '/brands/kenmore.png', featured: true },
   // Other Major Brands

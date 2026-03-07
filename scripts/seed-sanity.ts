@@ -36,6 +36,26 @@ function slug(value: string) {
   return { _type: 'slug', current: value }
 }
 
+async function seedAboutPage() {
+  console.log('Seeding about page...')
+  const doc = {
+    _id: 'aboutPage',
+    _type: 'aboutPage',
+    expertRepairsSubtitle: 'What We Do',
+    expertRepairsTitle: 'Expert Repairs for Every Brand',
+    expertRepairsParagraphs: [
+      "At Advanced Appliance, we've been professionally repairing kitchen and laundry appliances for over 30 years. Our technicians are trained to service all major domestic and international brands, and we're experienced with virtually every model on the market.",
+      "From washers and dryers to refrigerators, dishwashers, cooktops, and ovens\u2014gas or electric\u2014we've seen it all and fixed it all.",
+      "And it doesn't matter where you purchased your appliance. If it's in your home, we can repair it.",
+      "Every repair we perform uses new, genuine manufacturer parts whenever possible. These original components are backed by the manufacturer's warranty, giving you confidence that your appliance is being repaired with the same quality parts it was built with. In addition, our repairs include a matching labor warranty, so you know the job is done right.",
+      "To keep your downtime to a minimum, we partner with the nation's leading appliance parts suppliers, allowing us to source most parts quickly\u2014often within just a few days, not weeks.",
+      "No matter the brand in your home, you can count on fast, reliable, professional repairs from technicians who know appliances inside and out.",
+    ],
+  }
+  await client.createOrReplace(doc)
+  console.log('  About page seeded.')
+}
+
 async function seedSettings() {
   console.log('Seeding settings...')
   const doc = {
@@ -295,20 +315,20 @@ async function seedBrands() {
     { name: 'Thermador', slug: 'thermador-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2021/06/Thermador.png', featured: true },
     { name: 'Miele', slug: 'miele-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2021/06/Miele-logo.png', featured: true },
     { name: 'Wolf', slug: 'wolf-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2021/06/Wolf-logo.jpg', featured: true },
-    { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj', featured: false },
-    { name: 'LG', slug: 'lg-appliance-repair-service-nj', featured: false },
+    { name: 'LG', slug: 'lg-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/04/LG.png', featured: true },
+    { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/04/Samsung.png', featured: true },
+    { name: 'KitchenAid', slug: 'kitchenaid-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/04/KitchenAid.jpg', featured: true },
+    { name: 'Jenn-Air', slug: 'jenn-air-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/04/Jenn-air.png', featured: true },
+    { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/04/Electrolux.jpg', featured: true },
+    { name: 'GE', slug: 'general-electric-ge-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/04/GE.png', featured: true },
+    { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/04/Maytag.png', featured: true },
+    { name: 'Whirlpool', slug: 'whirlpool-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/04/Whirlpool.jpg', featured: true },
+    { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/07/Frigidaire-mini.png', featured: true },
+    { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj', logoUrl: 'https://appliancenj.com/wp-content/uploads/2016/04/Kenmore.png', featured: true },
     { name: 'Bosch', slug: 'bosch-appliance-repair-service-nj', featured: false },
-    { name: 'KitchenAid', slug: 'kitchenaid-appliance-repair-service-nj', featured: false },
-    { name: 'Jenn-Air', slug: 'jenn-air-appliance-repair-service-nj', featured: false },
-    { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj', featured: false },
-    { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj', featured: false },
-    { name: 'GE', slug: 'general-electric-ge-appliance-repair-service-nj', featured: false },
     { name: 'GE Profile', slug: 'ge-profile-appliance-repair-service-nj', featured: false },
     { name: 'GE Monogram', slug: 'ge-monogram-appliance-repair-service-nj', featured: false },
     { name: 'GE Cafe', slug: 'ge-cafe-appliance-repair-service-nj', featured: false },
-    { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj', featured: false },
-    { name: 'Whirlpool', slug: 'whirlpool-appliance-repair-service-nj', featured: false },
-    { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj', featured: false },
     { name: 'Admiral', slug: 'admiral-appliance-repair-service-nj', featured: false },
     { name: 'Amana', slug: 'amana-appliance-repair-service-nj', featured: false },
     { name: 'Asko', slug: 'asko-appliance-repair-service-nj', featured: false },
@@ -623,6 +643,7 @@ async function main() {
 
   try {
     await seedSettings()
+    await seedAboutPage()
     await seedServices()
     await seedServiceAreas()
     await seedBrands()

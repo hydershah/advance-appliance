@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { Contact as Design1Contact } from '@/designs/design1/pages'
-import { fetchAllGeneralFaqs, fetchAllServiceAreas } from '@/sanity/fetchers'
+import { fetchAllGeneralFaqs, fetchAllServiceAreas, fetchSettings } from '@/sanity/fetchers'
 import { adaptGeneralFaq, adaptServiceArea } from '@/lib/sanityAdapters'
 
 export const metadata: Metadata = {
@@ -16,14 +16,16 @@ export const metadata: Metadata = {
 
 export default async function ContactPage() {
   try {
-    const [cmsFaqs, cmsAreas] = await Promise.all([
+    const [cmsFaqs, cmsAreas, settings] = await Promise.all([
       fetchAllGeneralFaqs(),
       fetchAllServiceAreas(),
+      fetchSettings(),
     ])
     return (
       <Design1Contact
         generalFaqs={cmsFaqs?.length ? cmsFaqs.map(adaptGeneralFaq) : undefined}
         serviceAreas={cmsAreas?.length ? cmsAreas.map(adaptServiceArea) : undefined}
+        mapEmbedUrl={settings?.mapEmbedUrl}
       />
     )
   } catch {

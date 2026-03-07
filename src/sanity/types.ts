@@ -47,6 +47,7 @@ export interface Settings extends SanityDocument {
     liveOperators?: string
     emergencyNote?: string
   }
+  mapEmbedUrl?: string
   social?: {
     facebook?: string
     instagram?: string
@@ -61,6 +62,14 @@ export interface Settings extends SanityDocument {
     defaultDescription?: string
     defaultImage?: SanityImageSource
   }
+}
+
+// About Page singleton
+export interface AboutPage extends SanityDocument {
+  _type: 'aboutPage'
+  expertRepairsSubtitle?: string
+  expertRepairsTitle?: string
+  expertRepairsParagraphs?: string[]
 }
 
 // Page

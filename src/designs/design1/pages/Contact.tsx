@@ -8,9 +8,12 @@ import type { FAQ, ServiceArea } from '../types';
 interface ContactProps {
   generalFaqs?: FAQ[];
   serviceAreas?: ServiceArea[];
+  mapEmbedUrl?: string;
 }
 
-const Contact: React.FC<ContactProps> = ({ generalFaqs: faqsProp, serviceAreas: areasProp }) => {
+const DEFAULT_MAP_URL = 'https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed';
+
+const Contact: React.FC<ContactProps> = ({ generalFaqs: faqsProp, serviceAreas: areasProp, mapEmbedUrl }) => {
   const generalFaqs = faqsProp || staticGeneralFaqs;
   const serviceAreas = areasProp || staticServiceAreas;
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }];
@@ -90,7 +93,7 @@ const Contact: React.FC<ContactProps> = ({ generalFaqs: faqsProp, serviceAreas: 
 
         <section className="py-0">
           <div className="relative h-[500px]">
-            <iframe src={`https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed`} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale" />
+            <iframe src={mapEmbedUrl || DEFAULT_MAP_URL} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale" />
             <div className="absolute top-8 left-8 lg:left-16 bg-white p-8 shadow-xl max-w-sm max-h-[440px] overflow-hidden flex flex-col">
               <h3 className="font-serif text-xl mb-4">Our Service Area</h3>
               <p className="text-gray-600 text-sm mb-6">We proudly serve Monmouth and Middlesex counties in New Jersey.</p>

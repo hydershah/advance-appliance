@@ -16,6 +16,18 @@ export const settingsQuery = groq`
 `
 
 // ============================================================
+// About Page
+// ============================================================
+
+export const aboutPageQuery = groq`
+  *[_type == "aboutPage"][0]{
+    expertRepairsSubtitle,
+    expertRepairsTitle,
+    expertRepairsParagraphs
+  }
+`
+
+// ============================================================
 // Pages
 // ============================================================
 

@@ -6,6 +6,7 @@
 import { client } from './client'
 import {
   settingsQuery,
+  aboutPageQuery,
   pageBySlugQuery,
   allPagesQuery,
   serviceBySlugQuery,
@@ -32,6 +33,7 @@ import {
 } from './queries'
 import type {
   Settings,
+  AboutPage,
   Page,
   Service,
   ServiceArea,
@@ -51,6 +53,13 @@ import type {
  */
 export async function fetchSettings(): Promise<Settings> {
   return await client.fetch<Settings>(settingsQuery)
+}
+
+/**
+ * Fetch about page content
+ */
+export async function fetchAboutPage(): Promise<AboutPage | null> {
+  return await client.fetch<AboutPage | null>(aboutPageQuery)
 }
 
 /**

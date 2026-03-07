@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { About as Design1About } from '@/designs/design1/pages'
-import { fetchAllCertifications } from '@/sanity/fetchers'
+import { fetchAllCertifications, fetchAboutPage } from '@/sanity/fetchers'
 import { adaptCertification } from '@/lib/sanityAdapters'
 
 export const metadata: Metadata = {
@@ -16,8 +16,23 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   try {
-    const cmsCertifications = await fetchAllCertifications()
-    return <Design1About certifications={cmsCertifications?.length ? cmsCertifications.map(adaptCertification) : undefined} />
+    const [cmsCertifications, aboutData] = await Promise.all([
+      fetchAllCertifications(),
+      fetchAboutPage(),
+    ])
+
+    const expertRepairs = aboutData ? {
+      subtitle: aboutData.expertRepairsSubtitle,
+      title: aboutData.expertRepairsTitle,
+      paragraphs: aboutData.expertRepairsParagraphs,
+    } : undefined
+
+    return (
+      <Design1About
+        certifications={cmsCertifications?.length ? cmsCertifications.map(adaptCertification) : undefined}
+        expertRepairs={expertRepairs}
+      />
+    )
   } catch {
     return <Design1About />
   }

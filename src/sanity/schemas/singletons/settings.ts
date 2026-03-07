@@ -71,6 +71,14 @@ export const settingsType = defineType({
         { name: 'emergencyNote', title: 'Emergency Service Note', type: 'text', rows: 2 },
       ],
     }),
+    // Map
+    defineField({
+      name: 'mapEmbedUrl',
+      title: 'Google Maps Embed URL',
+      type: 'url',
+      description: 'The Google Maps embed URL for the contact page map. Get this from Google Maps → Share → Embed a map.',
+      validation: (Rule) => Rule.uri({ scheme: ['https'] }),
+    }),
     // Social Media
     defineField({
       name: 'social',

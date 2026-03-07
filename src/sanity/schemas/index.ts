@@ -14,6 +14,7 @@ import { generalFaqType } from './documents/generalFaq'
 
 // Singletons
 import { settingsType } from './singletons/settings'
+import { aboutPageType } from './singletons/aboutPage'
 
 // Object types
 import { seoType } from './objects/seo'
@@ -45,6 +46,7 @@ export const schemaTypes = [
   generalFaqType,
   // Singletons
   settingsType,
+  aboutPageType,
   // Objects
   seoType,
   // Blocks

@@ -5,14 +5,35 @@ import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, B
 import { businessInfo, certifications as staticCertifications, images } from '../data/content';
 import type { Certification } from '../types';
 
-interface AboutProps {
-  certifications?: Certification[];
+interface ExpertRepairsSection {
+  subtitle?: string;
+  title?: string;
+  paragraphs?: string[];
 }
 
-const About: React.FC<AboutProps> = ({ certifications: certificationsProp }) => {
+interface AboutProps {
+  certifications?: Certification[];
+  expertRepairs?: ExpertRepairsSection;
+}
+
+const defaultExpertRepairs: ExpertRepairsSection = {
+  subtitle: 'What We Do',
+  title: 'Expert Repairs for Every Brand',
+  paragraphs: [
+    "At Advanced Appliance, we've been professionally repairing kitchen and laundry appliances for over 30 years. Our technicians are trained to service all major domestic and international brands, and we're experienced with virtually every model on the market.",
+    "From washers and dryers to refrigerators, dishwashers, cooktops, and ovens\u2014gas or electric\u2014we've seen it all and fixed it all.",
+    "And it doesn't matter where you purchased your appliance. If it's in your home, we can repair it.",
+    "Every repair we perform uses new, genuine manufacturer parts whenever possible. These original components are backed by the manufacturer's warranty, giving you confidence that your appliance is being repaired with the same quality parts it was built with. In addition, our repairs include a matching labor warranty, so you know the job is done right.",
+    "To keep your downtime to a minimum, we partner with the nation's leading appliance parts suppliers, allowing us to source most parts quickly\u2014often within just a few days, not weeks.",
+    "No matter the brand in your home, you can count on fast, reliable, professional repairs from technicians who know appliances inside and out.",
+  ],
+};
+
+const About: React.FC<AboutProps> = ({ certifications: certificationsProp, expertRepairs: expertRepairsProp }) => {
   const certifications = certificationsProp || staticCertifications;
+  const expertRepairs = expertRepairsProp || defaultExpertRepairs;
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about' }];
-  const stats = [{ value: '30+', label: 'Years of Experience' }, { value: '10,000+', label: 'Repairs Completed' }, { value: '98%', label: 'Customer Satisfaction' }, { value: '24hr', label: 'Response Time' }];
+  const stats = [{ value: '30+', label: 'Years of Experience' }, { value: '250,000+', label: 'Repairs Completed' }, { value: '98%', label: 'Customer Satisfaction' }, { value: '24hr', label: 'Response Time' }];
   const values = [
     { title: 'Integrity', description: 'We believe in honest assessments and transparent pricing.' },
     { title: 'Excellence', description: 'We pursue excellence in every repair using genuine parts.' },
@@ -71,14 +92,11 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp }) => 
 
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="What We Do" title="Expert Repairs for Every Brand" align="center" />
+            <SectionHeading subtitle={expertRepairs.subtitle || 'What We Do'} title={expertRepairs.title || 'Expert Repairs for Every Brand'} align="center" />
             <div className="max-w-4xl mx-auto mt-12 space-y-6">
-              <p className="text-gray-600 leading-relaxed">At Advanced Appliance, we&apos;ve been professionally repairing kitchen and laundry appliances for over 30 years. Our technicians are trained to service all major domestic and international brands, and we&apos;re experienced with virtually every model on the market.</p>
-              <p className="text-gray-600 leading-relaxed">From washers and dryers to refrigerators, dishwashers, cooktops, and ovens—gas or electric—we&apos;ve seen it all and fixed it all.</p>
-              <p className="text-gray-600 leading-relaxed">And it doesn&apos;t matter where you purchased your appliance. If it&apos;s in your home, we can repair it.</p>
-              <p className="text-gray-600 leading-relaxed">Every repair we perform uses new, genuine manufacturer parts whenever possible. These original components are backed by the manufacturer&apos;s warranty, giving you confidence that your appliance is being repaired with the same quality parts it was built with. In addition, our repairs include a matching labor warranty, so you know the job is done right.</p>
-              <p className="text-gray-600 leading-relaxed">To keep your downtime to a minimum, we partner with the nation&apos;s leading appliance parts suppliers, allowing us to source most parts quickly—often within just a few days, not weeks.</p>
-              <p className="text-gray-600 leading-relaxed">No matter the brand in your home, you can count on fast, reliable, professional repairs from technicians who know appliances inside and out.</p>
+              {(expertRepairs.paragraphs || []).map((text, i) => (
+                <p key={i} className="text-gray-600 leading-relaxed">{text}</p>
+              ))}
             </div>
           </div>
         </section>
