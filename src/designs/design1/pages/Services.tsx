@@ -31,6 +31,76 @@ const Services: React.FC<ServicesProps> = ({ services: servicesProp, brands: bra
           </div>
         </div>
 
+        <section className="py-20 lg:py-28 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div>
+                  <div className="w-12 h-px bg-[#D4AF37] mb-6" />
+                  <h2 className="font-serif text-3xl md:text-4xl font-light leading-tight mb-6 text-gray-900">
+                    Expert Repair Services You Can Trust
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    At Advanced Appliance Repair, we specialize in diagnosing and repairing high-end household appliances with precision and care. Our factory-trained technicians bring years of hands-on experience to every service call.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-8">
+                    Whether it&apos;s a Sub-Zero refrigerator, a Wolf range, or a Miele dishwasher, we use genuine manufacturer parts and proven repair techniques to restore your appliances to peak performance.
+                  </p>
+                  <div className="flex flex-wrap gap-x-8 gap-y-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-[#D4AF37]" />
+                      <span className="text-sm text-gray-700">Same-Day Diagnostics</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-[#D4AF37]" />
+                      <span className="text-sm text-gray-700">Factory-Certified Parts</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-[#D4AF37]" />
+                      <span className="text-sm text-gray-700">90-Day Warranty</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-[#D4AF37]" />
+                      <span className="text-sm text-gray-700">Licensed & Insured</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-gray-50 border border-gray-100 p-8 lg:p-10">
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 border border-[#D4AF37] flex items-center justify-center flex-shrink-0">
+                        <span className="text-[#D4AF37] text-lg font-serif">1</span>
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-lg text-gray-900 mb-1">Schedule Your Visit</h3>
+                        <p className="text-sm text-gray-500">Call or book online for a convenient appointment time.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 border border-[#D4AF37] flex items-center justify-center flex-shrink-0">
+                        <span className="text-[#D4AF37] text-lg font-serif">2</span>
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-lg text-gray-900 mb-1">Precision Diagnosis</h3>
+                        <p className="text-sm text-gray-500">Our technician identifies the issue with professional-grade tools.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 border border-[#D4AF37] flex items-center justify-center flex-shrink-0">
+                        <span className="text-[#D4AF37] text-lg font-serif">3</span>
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-lg text-gray-900 mb-1">Quality Repair</h3>
+                        <p className="text-sm text-gray-500">We fix it right the first time with genuine manufacturer parts.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
             <SectionHeading subtitle="What We Repair" title="Complete Appliance Repair Solutions" description="From refrigerators to cooktops, we service all major appliances." align="center" />
