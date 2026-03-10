@@ -45,8 +45,41 @@ const Brands: React.FC<BrandsProps> = ({ brands: brandsProp }) => {
           </div>
         </div>
 
-        {/* Premium Brands Section */}
+        {/* About Our Service Section */}
         <section className="py-24 lg:py-32 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <SectionHeading
+                subtitle="Who We Are"
+                title="Expert Appliance Repair You Can Trust"
+                align="center"
+              />
+              <div className="mt-12 space-y-6 text-gray-600 text-lg leading-relaxed">
+                <p>
+                  At Advanced Appliance, we've been professionally repairing kitchen and laundry appliances for over 30 years. Our technicians are trained to service all major domestic and international brands, and we're experienced with virtually every model on the market.
+                </p>
+                <p>
+                  From washers and dryers to refrigerators, dishwashers, cooktops, and ovens—gas or electric—we've seen it all and fixed it all.
+                </p>
+                <p>
+                  And it doesn't matter where you purchased your appliance. If it's in your home, we can repair it.
+                </p>
+                <p>
+                  Every repair we perform uses new, genuine manufacturer parts whenever possible. These original components are backed by the manufacturer's warranty, giving you confidence that your appliance is being repaired with the same quality parts it was built with. In addition, our repairs include a matching labor warranty, so you know the job is done right.
+                </p>
+                <p>
+                  To keep your downtime to a minimum, we partner with the nation's leading appliance parts suppliers, allowing us to source most parts quickly—often within just a few days, not weeks.
+                </p>
+                <p>
+                  No matter the brand in your home, you can count on fast, reliable, professional repairs from technicians who know appliances inside and out.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Premium Brands Section */}
+        <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
             <SectionHeading
               subtitle="Factory Trained"
