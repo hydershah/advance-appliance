@@ -24,7 +24,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
       <LocalBusinessSchema page="home" />
       <Header />
       <main>
-        <Hero title="Exceptional Care for Your Advanced Appliances" subtitle="Profesional Repair Service" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, Thermador, Miele, LG, Samsung and more. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
+        <Hero title="Exceptional Care for Your Advanced Appliances" subtitle="Professional Repair Service" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, Thermador, Miele, KitchenAid, LG, Samsung and more. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
 
         {/* Trust Badges */}
         <section className="py-16 bg-white border-b border-gray-100">
@@ -85,8 +85,8 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
             {(() => {
               const brandOrder = ['Sub-Zero', 'Viking', 'Thermador', 'Miele', 'Wolf', 'LG', 'Samsung', 'KitchenAid', 'Jenn-Air', 'Electrolux', 'GE', 'Maytag', 'Whirlpool', 'Frigidaire', 'Kenmore'];
               const sorted = brandOrder.map(name => brands.find(b => b.name === name)).filter(Boolean) as typeof brands;
-              const row1 = sorted.slice(0, 7);
-              const row2 = sorted.slice(7);
+              const row1 = sorted.slice(0, 5);
+              const row2 = sorted.slice(5);
               return (
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
