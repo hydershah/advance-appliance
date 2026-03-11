@@ -51,12 +51,12 @@ export const images = {
   iconRepair: 'https://appliancenj.com/wp-content/uploads/2016/04/repair-2.png',
   iconRelax: 'https://appliancenj.com/wp-content/uploads/2016/04/relax-2.png',
   // Appliance images (local high-quality)
-  oven: '/Appliances_Photo_7614540.webp',
-  cooktop: '/Appliances_Photo_8146322.webp',
-  dishwasher: '/images/dishwasher-repair.webp',
-  refrigerator: '/Appliances_Photo_1694007.webp',
-  washer: '/Appliances_Photo_7614539.webp',
-  dryer: '/images/dryer-repair.webp',
+  oven: '/images/oven-front.webp',
+  cooktop: '/images/cooktop-front.webp',
+  dishwasher: '/images/dishwasher-front.webp',
+  refrigerator: '/images/refrigerator-front.webp',
+  washer: '/images/washer-front.webp',
+  dryer: '/images/dryer-front.webp',
   freezer: '/Appliances_Photo_1694007_2.webp',
   range: '/images/range-stove-repair.png',
   stove: '/Kitchen_Appliances_Photo_1.webp',
@@ -148,7 +148,7 @@ We stock our service vehicles with the most commonly needed parts, allowing us t
         answer: 'Yes, complete cooling failure can be caused by various issues including compressor failure, thermostat problems, or refrigerant leaks. Our technicians have the tools and expertise to diagnose and repair all cooling system problems.',
       },
     ],
-    image: '/Appliances_Photo_1694007.webp',
+    image: '/images/refrigerator-front.webp',
   },
   {
     id: '2',
@@ -235,7 +235,7 @@ Modern washing machines are complex appliances with electronic control boards, m
         answer: 'Loud spinning is typically caused by worn drum bearings, damaged shock absorbers, or foreign objects caught between the drum and tub. Ignoring these sounds can lead to more expensive repairs, so it\'s best to have it checked promptly.',
       },
     ],
-    image: '/Appliances_Photo_7614539.webp',
+    image: '/images/washer-front.webp',
   },
   {
     id: '3',
@@ -322,7 +322,7 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
         answer: 'Yes, we repair all modern dryers including those with steam refresh, wrinkle release, and sanitize cycles. Our technicians stay current with the latest dryer technology through ongoing training.',
       },
     ],
-    image: '/images/dryer-repair.webp',
+    image: '/images/dryer-front.webp',
   },
   {
     id: '4',
@@ -409,7 +409,7 @@ Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking wa
         answer: 'Most dishwashers last 9-12 years. Premier brands like Miele often last longer with proper maintenance. If your dishwasher is under 8 years old, repair is usually more economical than replacement.',
       },
     ],
-    image: '/images/dishwasher-repair.webp',
+    image: '/images/dishwasher-front.webp',
   },
   {
     id: '5',
@@ -496,7 +496,7 @@ Whether you have a freestanding oven, wall oven, double oven, or professional-st
         answer: 'Some smoke during self-cleaning is normal as food residue burns off at high temperatures. However, excessive smoke may indicate heavy buildup, worn door gaskets, or ventilation problems. We can inspect and address these issues.',
       },
     ],
-    image: '/Appliances_Photo_7614540.webp',
+    image: '/images/oven-front.webp',
   },
   {
     id: '6',
@@ -583,7 +583,7 @@ Induction cooktops have become increasingly popular in premier kitchens, and we 
         answer: 'Most cooktops last 15-20 years. If yours is less than 10 years old and the repair cost is reasonable, repair is usually the better choice. Glass replacement on newer units is often worthwhile; major repairs on older units may not be.',
       },
     ],
-    image: '/Appliances_Photo_8146322.webp',
+    image: '/images/cooktop-front.webp',
   },
 ];
 
