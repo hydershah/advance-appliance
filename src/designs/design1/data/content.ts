@@ -69,13 +69,13 @@ export const services: Service[] = [
     name: 'Refrigerator Repair',
     slug: 'refrigerator-repair',
     icon: 'refrigerator',
-    shortDescription: 'Expert repair for all premier refrigerator brands including Sub-Zero, Viking, and more.',
+    shortDescription: 'Expert repair for all premier refrigerator brands including Sub-Zero, Viking, Miele, Thermador, KitchenAid, LG, Samsung, Jenn-Air, GE, and many more.',
     description: 'Our certified technicians specialize in repairing refrigerators from all major brands. From temperature regulation issues to compressor failures, we diagnose and resolve problems with precision and care.',
     longDescription: `Your refrigerator is the hardest-working appliance in your home, running 24 hours a day, 365 days a year to keep your food fresh and safe. When it breaks down, you need fast, reliable service from technicians who understand the complexity of modern refrigeration systems. At Advanced Appliance Repair Service, we have been repairing refrigerators throughout Monmouth and Middlesex Counties since 1992.
 
 Our factory-trained technicians are certified to work on all major brands, from everyday models to premier units like Sub-Zero, Viking, and Thermador. We understand that premier refrigerators require specialized knowledge and genuine OEM parts to maintain their performance and warranty coverage. Whether you have a French door, side-by-side, top-freezer, or built-in refrigerator, we have the expertise to diagnose and repair it correctly the first time.
 
-We stock our service vehicles with the most commonly needed parts, allowing us to complete most repairs in a single visit. For complex issues or specialty parts, we provide accurate timelines and keep you informed throughout the process. Our $100 diagnostic fee is applied to your repair cost, and all work is backed by our up to 1-year warranty on parts and labor.`,
+We stock our service vehicles with the most commonly needed parts, allowing us to complete most repairs in a single visit. For complex issues or specialty parts, we provide accurate timelines and keep you informed throughout the process. Our $100 diagnostic fee covers the service call, and all work is backed by our up to 1-year warranty on parts and labor.`,
     features: [
       'Prompt service scheduling',
       'Factory-trained technicians',
@@ -155,7 +155,7 @@ We stock our service vehicles with the most commonly needed parts, allowing us t
     name: 'Washer Repair',
     slug: 'washer-repair',
     icon: 'washer',
-    shortDescription: 'Professional washing machine repair for residential and high-capacity units.',
+    shortDescription: 'Professional washing machine repair for residential top-loading and front-loading units and laundry centers.',
     description: 'From front-load to top-load washers, our experts handle all types of washing machine repairs. We understand the intricacies of premier laundry appliances and provide meticulous service.',
     longDescription: `A broken washing machine disrupts your entire household routine. Piles of dirty laundry accumulate quickly, and trips to the laundromat are inconvenient and expensive. At Advanced Appliance Repair Service, we understand the urgency of washer repairs and offer fast, reliable service throughout Monmouth and Middlesex Counties in New Jersey.
 
@@ -329,7 +329,7 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
     name: 'Dishwasher Repair',
     slug: 'dishwasher-repair',
     icon: 'dishwasher',
-    shortDescription: 'Expert dishwasher repair for brands like Miele, Bosch, and Thermador.',
+    shortDescription: 'Expert dishwasher repair for brands like Miele, Bosch, Samsung, LG, GE, KitchenAid, Jenn-Air, and many more.',
     description: 'Our dishwasher repair services cover everything from drainage issues to electronic control failures. We ensure your dishes come out spotless every time.',
     longDescription: `A malfunctioning dishwasher means hours of hand-washing dishes, wasted water, and the frustration of dealing with dirty dishes piling up in your sink. At Advanced Appliance Repair Service, we provide fast, professional dishwasher repair throughout Monmouth and Middlesex Counties, restoring this essential time-saving appliance to perfect working order.
 
@@ -416,7 +416,7 @@ Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking wa
     name: 'Oven Repair',
     slug: 'oven-repair',
     icon: 'oven',
-    shortDescription: 'Comprehensive oven repair for Wolf, Viking, and Thermador.',
+    shortDescription: 'Comprehensive oven repair for Wolf, Viking, Thermador, Miele, GE, Monogram, KitchenAid, Jenn-Air, Samsung, LG, and many more.',
     description: 'From temperature calibration to igniter replacement, our technicians are trained to service the most sophisticated cooking appliances on the market.',
     longDescription: `Your oven is the centerpiece of your kitchen, essential for preparing family meals, entertaining guests, and enjoying home-cooked food. When it malfunctions, your entire cooking routine is disrupted. Advanced Appliance Repair Service provides expert oven repair throughout Monmouth and Middlesex Counties, with specialized knowledge of premier brands.
 
@@ -584,6 +584,93 @@ Induction cooktops have become increasingly popular in premier kitchens, and we 
       },
     ],
     image: '/images/cooktop-front.webp',
+  },
+  {
+    id: '7',
+    name: 'Range / Stove Repair',
+    slug: 'range-repair',
+    icon: 'range',
+    shortDescription: 'Expert range and stove repair for gas, electric, and dual-fuel models from all major brands including Viking, Wolf, Thermador, and more.',
+    description: 'Our certified technicians specialize in repairing all types of ranges. From burner and oven issues to electronic control problems, we restore your range to full working order with genuine parts.',
+    longDescription: `Your range is the centerpiece of your kitchen, combining cooktop and oven functionality in one essential appliance. When any part of your range stops working, it can bring your cooking to a halt. At Advanced Appliance Repair Service, we have been repairing ranges of all types throughout Monmouth and Middlesex Counties since 1992.
+
+Our factory-trained technicians are experts in gas, electric, and dual-fuel range repair. We service all major brands including Viking, Wolf, Thermador, GE, Whirlpool, Samsung, LG, KitchenAid, Bosch, and many more. Whether you have a freestanding, slide-in, or professional-style range, we have the specialized knowledge to diagnose and repair it correctly.
+
+Ranges combine multiple heating systems, gas connections, electronic controls, and mechanical components, making them one of the more complex appliances to repair. Our technicians understand these systems thoroughly and carry commonly needed parts on our service vehicles. Our $100 diagnostic fee covers the service call, and all work is backed by our up to 1-year warranty on parts and labor.`,
+    features: [
+      'Gas, electric, and dual-fuel expertise',
+      'Factory-trained technicians',
+      'Genuine OEM replacement parts',
+      'Up to 1-year warranty on all repairs',
+      'Viking, Wolf, Thermador specialists',
+      'Slide-in, freestanding, and pro-style models',
+      'Electronic control and ignition repair',
+      'Gas leak detection and safety checks',
+    ],
+    commonProblems: [
+      { title: 'Burners Not Lighting', description: 'Gas burners that won\'t ignite are commonly caused by clogged burner ports, faulty igniters, or spark module failures.' },
+      { title: 'Oven Not Heating', description: 'An oven that won\'t heat can result from a bad igniter, faulty bake or broil element, or temperature sensor malfunction.' },
+      { title: 'Uneven Cooking', description: 'Hot spots or uneven baking often indicates a failing heating element, malfunctioning convection fan, or temperature calibration issues.' },
+      { title: 'Gas Smell', description: 'A persistent gas odor when burners are off is a safety concern that may indicate a leaking gas valve, loose connection, or cracked supply line.' },
+      { title: 'Control Panel Issues', description: 'Unresponsive buttons, error codes, or display failures typically point to control board or touchpad problems.' },
+      { title: 'Door Won\'t Close Properly', description: 'Misaligned doors, worn hinges, or broken springs prevent proper closure and cause heat loss during cooking.' },
+    ],
+    warningSigns: [
+      'Gas odor when range is off',
+      'Burners producing yellow or orange flames',
+      'Oven temperature doesn\'t match setting',
+      'Clicking sounds without ignition',
+      'Error codes on the display',
+      'Food cooking unevenly',
+      'Range taking longer to heat up',
+      'Sparking or arcing from electric elements',
+    ],
+    repairProcess: [
+      'Schedule your repair appointment at a convenient time',
+      'Our technician arrives equipped for gas and electric repairs',
+      'We perform comprehensive diagnostics on all range systems',
+      'You receive a detailed estimate before any work begins',
+      'Repairs are completed with manufacturer-approved parts',
+      'We test all burners, oven functions, and safety systems',
+      'Your repair is covered by our warranty',
+    ],
+    preventionTips: [
+      'Clean burner grates and ports regularly',
+      'Wipe up spills promptly to prevent buildup',
+      'Avoid using aluminum foil on the oven floor',
+      'Run the self-clean cycle only 2-3 times per year',
+      'Check and replace worn door gaskets',
+      'Use properly sized cookware on burners',
+      'Have gas connections inspected annually',
+      'Keep ventilation openings clear and unblocked',
+    ],
+    faqs: [
+      {
+        question: 'My gas range keeps clicking but won\'t light. What should I do?',
+        answer: 'Continuous clicking usually means the igniter is working but the burner isn\'t receiving gas properly. Clean the burner cap and ports with a pin or needle. If cleaning doesn\'t help, the spark module or gas valve may need service.',
+      },
+      {
+        question: 'Is it safe to use my range if I smell gas?',
+        answer: 'No. If you smell gas when all burners are off, turn off the gas supply, open windows, and leave the area. Do not use electrical switches or create sparks. Call your gas company first, then contact us for repair once the area is safe.',
+      },
+      {
+        question: 'What\'s the difference between a range and a stove?',
+        answer: 'The terms are often used interchangeably. Technically, a range combines a cooktop and oven in one unit. A stove historically referred to a heating device. In modern usage, both terms typically mean the same appliance.',
+      },
+      {
+        question: 'Can you convert my range from natural gas to propane?',
+        answer: 'Yes, most gas ranges can be converted between natural gas and propane with a conversion kit. This involves replacing orifices and adjusting the regulator. We can perform this conversion safely and ensure proper operation.',
+      },
+      {
+        question: 'Why is my electric range element glowing but not heating properly?',
+        answer: 'If the element glows red but doesn\'t produce enough heat, it may have a broken coil section, a faulty infinite switch, or a wiring issue. A partially broken element can still glow without reaching full temperature.',
+      },
+      {
+        question: 'How long do ranges typically last?',
+        answer: 'Gas ranges typically last 15-20 years, while electric ranges average 13-15 years. Premium brands often last longer with proper maintenance. If your range is under 10 years old, repair is usually more cost-effective than replacement.',
+      },
+    ],
+    image: '/images/range-stove-repair.png',
   },
 ];
 
