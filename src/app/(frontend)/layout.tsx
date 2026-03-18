@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import {
   Inter,
   Playfair_Display,
@@ -183,6 +184,24 @@ export default function FrontendLayout({
         </a>
 
         <div id="main-content">{children}</div>
+
+        {/* Retell AI Chat Widget */}
+        <Script
+          id="retell-widget"
+          src="https://dashboard.retellai.com/retell-widget.js"
+          type="module"
+          strategy="afterInteractive"
+          data-public-key="public_key_c1905a5062116c55e1cf8"
+          data-agent-id="agent_8179546a2d50fe1ecceb17a2a2"
+          data-title="Advanced Appliance Repair"
+          data-logo-url="/favicon.png"
+          data-color="#000000"
+          data-bot-name="Sarah"
+          data-popup-message="Hi! Need help with appliance repair? I'm here to assist."
+          data-show-ai-popup="true"
+          data-show-ai-popup-time="5"
+          data-auto-open="false"
+        />
       </body>
     </html>
   )
