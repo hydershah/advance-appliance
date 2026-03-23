@@ -821,31 +821,27 @@ export const testimonials: Testimonial[] = [
 export const teamMembers: TeamMember[] = [
   {
     id: '1',
-    name: 'Michael Richardson',
-    role: 'Founder & Master Technician',
-    bio: 'With over 25 years of experience in premier appliance repair, Michael founded Advanced Appliance Repair Service to bring expert service to homeowners. He holds factory certifications from Sub-Zero, Wolf, and Viking.',
-    image: '/technician-service.webp',
+    role: 'Master Technician',
+    bio: 'Over 30 years of hands-on experience repairing all major appliance brands. Factory-certified and dedicated to getting the job done right the first time.',
+    image: '/team/technician-portrait.webp',
   },
   {
     id: '2',
-    name: 'David Thompson',
     role: 'Senior Service Technician',
-    bio: 'David specializes in refrigeration systems and has been with our team for 15 years. His expertise in Sub-Zero and Miele appliances is unparalleled in the region.',
-    image: '/technician-work.webp',
+    bio: 'Specializing in refrigeration and dishwasher systems with decades of expertise. Known for thorough diagnostics and reliable repairs.',
+    image: '/team/technician-arrival.webp',
   },
   {
     id: '3',
-    name: 'James Wilson',
-    role: 'Cooking Appliance Specialist',
-    bio: 'James is our Wolf and Viking expert with specialized training in premier cooking appliances. He brings 12 years of dedicated experience to every repair.',
-    image: '/technician-service.webp',
+    role: 'Appliance Repair Specialist',
+    bio: 'Expert in oven, range, and cooktop repairs. Trained on all major domestic and international brands with a commitment to quality service.',
+    image: '/team/technician-oven-repair.webp',
   },
   {
     id: '4',
-    name: 'Sarah Mitchell',
-    role: 'Customer Service Manager',
-    bio: 'Sarah ensures every client receives the attentive service they deserve. She coordinates our scheduling to minimize wait times and maximize convenience.',
-    image: '/technician-work.webp',
+    role: 'Field Service Technician',
+    bio: 'Providing professional in-home appliance repair throughout Monmouth and Middlesex Counties. Prompt, reliable, and factory-authorized.',
+    image: '/team/technician-dishwasher-repair.webp',
   },
 ];
 

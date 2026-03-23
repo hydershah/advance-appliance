@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, certifications as staticCertifications, images } from '../data/content';
+import { businessInfo, certifications as staticCertifications, images, teamMembers } from '../data/content';
 import type { Certification } from '../types';
 
 interface ExpertRepairsSection {
@@ -91,6 +91,39 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
         </section>
 
         <section className="py-24 lg:py-32 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <SectionHeading subtitle="Our Team" title="Meet the Experts" align="center" />
+            <p className="text-gray-600 text-center max-w-2xl mx-auto mt-4 mb-12">Our factory-certified technicians bring decades of combined experience to every repair. When you call Advanced Appliance, these are the professionals who show up at your door.</p>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {teamMembers.map((member) => (
+                <div key={member.id} className="group overflow-hidden bg-white border border-gray-100 hover:border-[#D4AF37] transition-all">
+                  <div className="aspect-square overflow-hidden">
+                    <img src={member.image} alt={member.role} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="p-4 text-center">
+                    <h3 className="font-serif text-base text-black">{member.role}</h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="overflow-hidden border border-gray-100">
+                <img src="/team/team-photo.webp" alt="Advanced Appliance team" className="w-full h-full object-cover" />
+              </div>
+              <div className="overflow-hidden border border-gray-100 bg-black">
+                <video className="w-full h-full object-cover" controls poster="/team/technician-doorstep.webp">
+                  <source src="/team/team-video.mov" type="video/quicktime" />
+                  <source src="/team/team-video.mov" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
             <SectionHeading subtitle={expertRepairs.subtitle || 'What We Do'} title={expertRepairs.title || 'Expert Repairs for Every Brand'} align="center" />
             <div className="max-w-4xl mx-auto mt-12 space-y-6">
