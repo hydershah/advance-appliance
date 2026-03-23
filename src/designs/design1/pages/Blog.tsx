@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, blogPosts as staticBlogPosts, images } from '../data/content';
 import { BlogPost } from '../types';
@@ -16,9 +18,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
 
   if (featured) {
     return (
-      <a href={`/blog/${post.slug}`} className="group block">
+      <Link href={`/blog/${post.slug}`} className="group block">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="aspect-[4/3] overflow-hidden"><img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+          <div className="aspect-[4/3] overflow-hidden relative"><Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 50vw" /></div>
           <div className="flex flex-col justify-center">
             <div className="flex items-center space-x-4 mb-4">
               <span className="text-[#D4AF37] text-xs uppercase tracking-wider">{post.category}</span>
@@ -33,13 +35,13 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     );
   }
 
   return (
-    <a href={`/blog/${post.slug}`} className="group block">
-      <div className="aspect-[4/3] overflow-hidden mb-6"><img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+    <Link href={`/blog/${post.slug}`} className="group block">
+      <div className="aspect-[4/3] overflow-hidden mb-6 relative"><Image src={post.image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" /></div>
       <div className="flex items-center space-x-4 mb-3">
         <span className="text-[#D4AF37] text-xs uppercase tracking-wider">{post.category}</span>
         <span className="text-gray-400">|</span>
@@ -48,7 +50,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
       <h3 className="font-serif text-xl text-black mb-3 group-hover:text-[#D4AF37] transition-colors">{post.title}</h3>
       <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">{post.excerpt}</p>
       <span className="text-gray-500 text-xs">{post.readTime} min read</span>
-    </a>
+    </Link>
   );
 };
 
@@ -70,7 +72,7 @@ const Blog: React.FC<BlogProps> = ({ blogPosts: blogPostsProp }) => {
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
             <nav className="flex items-center space-x-2 text-sm">
-              <a href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</a><span className="text-gray-300">/</span><span className="text-[#D4AF37]">Blog</span>
+              <Link href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</Link><span className="text-gray-300">/</span><span className="text-[#D4AF37]">Blog</span>
             </nav>
           </div>
         </div>

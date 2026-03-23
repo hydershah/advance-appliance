@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, services, serviceAreas, testimonials, images, brands } from '../data/content';
 import { Brand } from '../types';
@@ -42,9 +44,9 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
             <nav className="flex items-center space-x-2 text-sm">
-              <a href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</a>
+              <Link href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</Link>
               <span className="text-gray-300">/</span>
-              <a href="/our-brands" className="text-gray-500 hover:text-[#D4AF37]">Our Brands</a>
+              <Link href="/our-brands" className="text-gray-500 hover:text-[#D4AF37]">Our Brands</Link>
               <span className="text-gray-300">/</span>
               <span className="text-[#D4AF37]">{brand.name} Repair</span>
             </nav>
@@ -58,10 +60,12 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
               <div>
                 {brand.logo && (
                   <div className="mb-8">
-                    <img
+                    <Image
                       src={brand.logo}
                       alt={`${brand.name} logo`}
-                      className="h-20 object-contain"
+                      width={200}
+                      height={80}
+                      className="h-20 w-auto object-contain"
                     />
                   </div>
                 )}
@@ -86,7 +90,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                     {[
                       `Factory-trained ${brand.name} technicians`,
                       'Genuine OEM replacement parts',
-                      '365-day warranty on all repairs',
+                      '1-year warranty on all repairs',
                       'Transparent pricing with no hidden fees',
                     ].map((item, i) => (
                       <li key={i} className="flex items-start">
@@ -105,8 +109,8 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                 </div>
               </div>
               <div className="relative">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={images.kitchen} alt={`${brand.name} appliance repair`} className="w-full h-full object-cover" />
+                <div className="aspect-[4/3] overflow-hidden relative">
+                  <Image src={images.kitchen} alt={`${brand.name} appliance repair`} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                 </div>
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
               </div>
@@ -125,7 +129,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
               {brandServices.map((service) => (
-                <a
+                <Link
                   key={service.id}
                   href={`/services/${service.slug}`}
                   className="group bg-white p-8 border border-gray-100 hover:border-[#D4AF37] transition-all duration-300"
@@ -142,7 +146,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -217,13 +221,13 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
             />
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-16">
               {serviceAreas.slice(0, 18).map((area) => (
-                <a
+                <Link
                   key={area.id}
                   href={`/areas/${area.slug}`}
                   className="group bg-gray-50 p-4 text-center hover:bg-[#D4AF37] transition-colors"
                 >
                   <span className="text-gray-700 text-sm group-hover:text-white transition-colors">{area.name}</span>
-                </a>
+                </Link>
               ))}
             </div>
             <div className="text-center mt-8">
@@ -240,13 +244,13 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
             <p className="text-center text-xs uppercase tracking-[0.3em] text-gray-500 mb-8">We Also Service</p>
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
               {brands.filter(b => b.name !== brand.name).slice(0, 8).map((b, i) => (
-                <a
+                <Link
                   key={i}
                   href={`/${b.slug}`}
                   className="text-gray-400 text-sm hover:text-[#D4AF37] transition-colors"
                 >
                   {b.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

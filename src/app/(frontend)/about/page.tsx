@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { About as Design1About } from '@/designs/design1/pages'
+import Design1About from '@/designs/design1/pages/About'
 import { fetchAllCertifications, fetchAboutPage } from '@/sanity/fetchers'
 import { adaptCertification } from '@/lib/sanityAdapters'
 
@@ -9,10 +9,12 @@ export const metadata: Metadata = {
   title: 'About Us - Advanced Appliance Repair Service',
   description:
     'Learn about our professional appliance repair services, expert technicians, and commitment to excellence in Monmouth and Middlesex Counties, NJ.',
+  alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Us - Advanced Appliance Repair Service',
     description:
       'For over 25 years, Advanced Appliance Repair Service has been the trusted choice for premier appliance care.',
+    images: [{ url: '/api/og?title=About+Us&subtitle=30%2B+Years+of+Excellence+in+Appliance+Repair&category=About', width: 1200, height: 630 }],
   },
 }
 

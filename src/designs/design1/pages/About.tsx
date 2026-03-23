@@ -1,8 +1,10 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, certifications as staticCertifications, images, teamMembers } from '../data/content';
+import { businessInfo, certifications as staticCertifications, images } from '../data/content';
 import type { Certification } from '../types';
 
 interface ExpertRepairsSection {
@@ -52,7 +54,7 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
             <nav className="flex items-center space-x-2 text-sm">
-              <a href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</a><span className="text-gray-300">/</span><span className="text-[#D4AF37]">About Us</span>
+              <Link href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</Link><span className="text-gray-300">/</span><span className="text-[#D4AF37]">About Us</span>
             </nav>
           </div>
         </div>
@@ -69,7 +71,7 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
-                <div className="aspect-[4/5] overflow-hidden"><img src={images.kitchen} alt="Modern kitchen" className="w-full h-full object-cover" /></div>
+                <div className="aspect-[4/5] overflow-hidden relative"><Image src={images.kitchen} alt="Modern kitchen" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" /></div>
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
                 <div className="absolute top-8 -left-8 bg-[#D4AF37] text-black p-8 hidden lg:block"><span className="font-serif text-4xl block">1992</span><span className="text-xs uppercase tracking-wider">Est.</span></div>
               </div>
@@ -90,40 +92,12 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </section>
 
+        <div className="grid grid-cols-2">
+          <div className="aspect-[3/2] overflow-hidden relative"><Image src="/team/technician-portrait.webp" alt="Our technician" fill className="object-cover" sizes="50vw" /></div>
+          <div className="aspect-[3/2] overflow-hidden relative"><Image src="/team/technician-arrival.webp" alt="Technician arriving for service" fill className="object-cover" sizes="50vw" /></div>
+        </div>
+
         <section className="py-24 lg:py-32 bg-gray-50">
-          <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Our Team" title="Meet the Experts" align="center" />
-            <p className="text-gray-600 text-center max-w-2xl mx-auto mt-4 mb-12">Our factory-certified technicians bring decades of combined experience to every repair. When you call Advanced Appliance, these are the professionals who show up at your door.</p>
-
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {teamMembers.map((member) => (
-                <div key={member.id} className="group overflow-hidden bg-white border border-gray-100 hover:border-[#D4AF37] transition-all">
-                  <div className="aspect-square overflow-hidden">
-                    <img src={member.image} alt={member.role} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="p-4 text-center">
-                    <h3 className="font-serif text-base text-black">{member.role}</h3>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="overflow-hidden border border-gray-100">
-                <img src="/team/team-photo.webp" alt="Advanced Appliance team" className="w-full h-full object-cover" />
-              </div>
-              <div className="overflow-hidden border border-gray-100 bg-black">
-                <video className="w-full h-full object-cover" controls poster="/team/technician-doorstep.webp">
-                  <source src="/team/team-video.mov" type="video/quicktime" />
-                  <source src="/team/team-video.mov" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
             <SectionHeading subtitle={expertRepairs.subtitle || 'What We Do'} title={expertRepairs.title || 'Expert Repairs for Every Brand'} align="center" />
             <div className="max-w-4xl mx-auto mt-12 space-y-6">
@@ -152,6 +126,11 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </section>
 
+        <div className="grid grid-cols-2">
+          <div className="aspect-[3/2] overflow-hidden relative"><Image src="/team/technician-oven-repair.webp" alt="Oven repair in progress" fill className="object-cover" sizes="50vw" /></div>
+          <div className="aspect-[3/2] overflow-hidden relative"><Image src="/team/technician-dishwasher-repair.webp" alt="Dishwasher repair in progress" fill className="object-cover" sizes="50vw" /></div>
+        </div>
+
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
             <SectionHeading subtitle="Credentials" title="Certifications & Accreditations" align="center" />
@@ -165,6 +144,21 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
                   <p className="text-gray-500 text-xs">{cert.issuer}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <div className="aspect-video overflow-hidden rounded relative"><Image src="/team/team-photo.webp" alt="Advanced Appliance team" fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" /></div>
+              <div className="aspect-video overflow-hidden rounded bg-black">
+                <video className="w-full h-full object-cover" controls poster="/team/technician-doorstep.webp">
+                  <source src="/team/team-video.mov" type="video/quicktime" />
+                  <source src="/team/team-video.mov" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </div>
         </section>

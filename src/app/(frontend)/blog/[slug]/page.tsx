@@ -4,7 +4,7 @@ import { fetchBlogPostBySlug } from '@/sanity/fetchers'
 import { adaptBlogPost } from '@/lib/sanityAdapters'
 
 // Import static design pages for fallback when CMS is unavailable
-import { BlogPost as Design1BlogPost } from '@/designs/design1/pages'
+import Design1BlogPost from '@/designs/design1/pages/BlogPost'
 import { blogPosts as staticBlogPosts } from '@/designs/design1/data/content'
 
 /**
@@ -37,11 +37,13 @@ export async function generateMetadata({
       return {
         title: `${title} - Advanced Appliance Repair Service`,
         description,
+        alternates: { canonical: `/blog/${slug}` },
         openGraph: {
           title,
           description,
           type: 'article',
           publishedTime: post.publishedDate || post._createdAt,
+          images: [{ url: `/api/og?title=${encodeURIComponent(title)}&category=Blog`, width: 1200, height: 630 }],
         },
       }
     }
@@ -55,13 +57,14 @@ export async function generateMetadata({
     return {
       title: `${staticPost.title} - Advanced Appliance Repair Service`,
       description: staticPost.excerpt,
+      alternates: { canonical: `/blog/${slug}` },
       openGraph: {
         title: staticPost.title,
         description: staticPost.excerpt,
         type: 'article',
         publishedTime: staticPost.date,
         authors: staticPost.author ? [staticPost.author] : undefined,
-        images: staticPost.image ? [{ url: staticPost.image }] : undefined,
+        images: [{ url: `/api/og?title=${encodeURIComponent(staticPost.title)}&category=Blog`, width: 1200, height: 630 }],
       },
     }
   }

@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Header, Footer, SectionHeading, CTAButton, ArticleSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, blogPosts } from '../data/content';
 import { BlogPost as BlogPostType } from '../types';
@@ -46,8 +48,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ postSlug, post: postProp }) => {
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
             <nav className="flex items-center space-x-2 text-sm">
-              <a href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</a><span className="text-gray-300">/</span>
-              <a href="/blog" className="text-gray-500 hover:text-[#D4AF37]">Blog</a><span className="text-gray-300">/</span>
+              <Link href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</Link><span className="text-gray-300">/</span>
+              <Link href="/blog" className="text-gray-500 hover:text-[#D4AF37]">Blog</Link><span className="text-gray-300">/</span>
               <span className="text-[#D4AF37] truncate max-w-xs">{post.title}</span>
             </nav>
           </div>
@@ -93,11 +95,11 @@ const BlogPost: React.FC<BlogPostProps> = ({ postSlug, post: postProp }) => {
                     <h4 className="font-serif text-xl text-black mb-6">Related Articles</h4>
                     <div className="space-y-6">
                       {relatedPosts.map((p) => (
-                        <a key={p.id} href={`/blog/${p.slug}`} className="group block">
-                          <div className="aspect-[4/3] overflow-hidden mb-4"><img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /></div>
+                        <Link key={p.id} href={`/blog/${p.slug}`} className="group block">
+                          <div className="aspect-[4/3] overflow-hidden mb-4 relative"><Image src={p.image} alt={p.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 25vw" /></div>
                           <span className="text-[#D4AF37] text-xs uppercase tracking-wider">{p.category}</span>
                           <h4 className="font-serif text-lg text-black mt-2 group-hover:text-[#D4AF37] transition-colors line-clamp-2">{p.title}</h4>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -112,14 +114,14 @@ const BlogPost: React.FC<BlogPostProps> = ({ postSlug, post: postProp }) => {
             <SectionHeading subtitle="Keep Reading" title="More From Our Blog" align="center" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
               {relatedPosts.map((p) => (
-                <a key={p.id} href={`/blog/${p.slug}`} className="group block bg-white border border-gray-100 hover:border-[#D4AF37] transition-colors">
-                  <div className="aspect-[4/3] overflow-hidden"><img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" /></div>
+                <Link key={p.id} href={`/blog/${p.slug}`} className="group block bg-white border border-gray-100 hover:border-[#D4AF37] transition-colors">
+                  <div className="aspect-[4/3] overflow-hidden relative"><Image src={p.image} alt={p.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" /></div>
                   <div className="p-6">
                     <span className="text-[#D4AF37] text-xs uppercase tracking-wider">{p.category}</span>
                     <h3 className="font-serif text-lg text-black mt-2 mb-3 group-hover:text-[#D4AF37] transition-colors">{p.title}</h3>
                     <p className="text-gray-600 text-sm line-clamp-2">{p.excerpt}</p>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
             <div className="text-center mt-12"><CTAButton href="/blog" variant="outline" size="lg" icon="arrow">View All Articles</CTAButton></div>

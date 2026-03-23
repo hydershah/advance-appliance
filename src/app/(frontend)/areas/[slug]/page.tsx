@@ -7,7 +7,7 @@ import type { Service } from '@/sanity/types'
 import { JsonLd } from '@/components/JsonLd'
 import { RichText } from '@/components/RichText'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
-import { AreaPage as Design1AreaPage } from '@/designs/design1/pages'
+import Design1AreaPage from '@/designs/design1/pages/AreaPage'
 import { serviceAreas } from '@/designs/design1/data/content'
 
 // Helper to find static area by slug
@@ -76,10 +76,11 @@ export async function generateMetadata({
       return {
         title,
         description,
+        alternates: { canonical: `/areas/${slug}` },
         openGraph: {
           title,
           description,
-          images: image ? [{ url: image }] : undefined,
+          images: image ? [{ url: image }] : [{ url: `/api/og?title=${encodeURIComponent(String(area.name))}&subtitle=Appliance+Repair+Service&category=Service+Area`, width: 1200, height: 630 }],
         },
         twitter: {
           title,
@@ -98,9 +99,11 @@ export async function generateMetadata({
     return {
       title: `Appliance Repair in ${staticArea.name}, NJ - Advanced Appliance`,
       description: `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ. All major brands serviced. Call (732) 416-7430.`,
+      alternates: { canonical: `/areas/${slug}` },
       openGraph: {
         title: `Appliance Repair in ${staticArea.name}, NJ`,
         description: `Professional appliance repair services in ${staticArea.name}, New Jersey.`,
+        images: [{ url: `/api/og?title=Appliance+Repair+in+${encodeURIComponent(staticArea.name)},+NJ&category=Service+Area`, width: 1200, height: 630 }],
       },
     }
   }

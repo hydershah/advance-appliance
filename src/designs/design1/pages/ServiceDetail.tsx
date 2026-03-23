@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Header, Footer, Hero, ServiceCard, SectionHeading, CTAButton, FAQAccordion, ContactForm, ServiceSchema, BreadcrumbSchema, FAQSchema } from '../components';
 import { businessInfo, services as staticServices, brands } from '../data/content';
 import type { Service } from '../types';
@@ -25,8 +26,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
             <nav className="flex items-center space-x-2 text-sm">
-              <a href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</a><span className="text-gray-300">/</span>
-              <a href="/services" className="text-gray-500 hover:text-[#D4AF37]">Services</a><span className="text-gray-300">/</span>
+              <Link href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</Link><span className="text-gray-300">/</span>
+              <Link href="/services" className="text-gray-500 hover:text-[#D4AF37]">Services</Link><span className="text-gray-300">/</span>
               <span className="text-[#D4AF37]">{service.name}</span>
             </nav>
           </div>
@@ -197,7 +198,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
                       </li>
                       <li className="flex items-start">
                         <svg className="w-4 h-4 text-[#D4AF37] mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
-                        <span className="text-gray-700">$100 diagnostic fee (applied to repair)</span>
+                        <span className="text-gray-700">$100 diagnostic fee</span>
                       </li>
                       <li className="flex items-start">
                         <svg className="w-4 h-4 text-[#D4AF37] mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>

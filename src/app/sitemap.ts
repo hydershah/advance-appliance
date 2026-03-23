@@ -47,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   sitemap.push({
-    url: `${baseUrl}/service-areas`,
+    url: `${baseUrl}/our-service-area`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.8,

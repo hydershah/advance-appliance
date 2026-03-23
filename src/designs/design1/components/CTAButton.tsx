@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 interface CTAButtonProps {
   href?: string;
@@ -33,7 +34,14 @@ const CTAButton: React.FC<CTAButtonProps> = ({ href, onClick, children, variant 
 
   const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass} ${className}`;
 
-  if (href) return <a href={href} className={combinedClasses}>{(icon === 'phone' || icon === 'calendar') && <IconComponent />}{children}{icon === 'arrow' && <IconComponent />}</a>;
+  // Use Link for internal paths, <a> for tel:/mailto:/external
+  if (href) {
+    const isInternal = href.startsWith('/') && !href.startsWith('//');
+    if (isInternal) {
+      return <Link href={href} className={combinedClasses}>{(icon === 'phone' || icon === 'calendar') && <IconComponent />}{children}{icon === 'arrow' && <IconComponent />}</Link>;
+    }
+    return <a href={href} className={combinedClasses}>{(icon === 'phone' || icon === 'calendar') && <IconComponent />}{children}{icon === 'arrow' && <IconComponent />}</a>;
+  }
   return <button type={type} onClick={onClick} disabled={disabled} className={combinedClasses}>{(icon === 'phone' || icon === 'calendar') && <IconComponent />}{children}{icon === 'arrow' && <IconComponent />}</button>;
 };
 

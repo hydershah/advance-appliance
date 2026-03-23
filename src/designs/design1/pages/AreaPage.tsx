@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Header, Footer, Hero, ServiceCard, SectionHeading, CTAButton, FAQAccordion, TestimonialCard, LocalBusinessSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, services, serviceAreas, testimonials, brands, images } from '../data/content';
 import { ServiceArea } from '../types';
@@ -34,8 +36,8 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
             <nav className="flex items-center space-x-2 text-sm">
-              <a href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</a><span className="text-gray-300">/</span>
-              <a href="/our-service-area" className="text-gray-500 hover:text-[#D4AF37]">Service Areas</a><span className="text-gray-300">/</span>
+              <Link href="/" className="text-gray-500 hover:text-[#D4AF37]">Home</Link><span className="text-gray-300">/</span>
+              <Link href="/our-service-area" className="text-gray-500 hover:text-[#D4AF37]">Service Areas</Link><span className="text-gray-300">/</span>
               <span className="text-[#D4AF37]">{area.name}</span>
             </nav>
           </div>
@@ -57,7 +59,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
                 </div>
               </div>
               <div className="relative">
-                <div className="aspect-square overflow-hidden"><img src={images.living} alt={`Home in ${area.name}`} className="w-full h-full object-cover" /></div>
+                <div className="aspect-square overflow-hidden relative"><Image src={images.living} alt={`Home in ${area.name}`} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" /></div>
                 <div className="absolute -bottom-8 -left-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
               </div>
             </div>
@@ -112,7 +114,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
             <SectionHeading subtitle="We Also Serve" title="Other Service Areas" align="center" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
               {otherAreas.slice(0, 8).map((a) => (
-                <a key={a.id} href={`/areas/${a.slug}`} className="group p-6 bg-white border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-lg">
+                <Link key={a.id} href={`/areas/${a.slug}`} className="group p-6 bg-white border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-lg">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">{a.name}</h3>
@@ -120,7 +122,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
                     </div>
                     <svg className="w-5 h-5 text-[#D4AF37] transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

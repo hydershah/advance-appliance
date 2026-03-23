@@ -100,7 +100,7 @@ export const metadata: Metadata = {
       'Professional premier appliance repair in parts of Monmouth & Middlesex Counties. Factory-trained technicians for all major brands. Call (732) 416-7430',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/api/og?title=Advanced+Appliance+Repair+Service&subtitle=Expert+Repair+in+Monmouth+%26+Middlesex+Counties,+NJ',
         width: 1200,
         height: 630,
         alt: 'Advanced Appliance Repair Service - Professional Technicians',
@@ -112,7 +112,7 @@ export const metadata: Metadata = {
     title: 'Advanced Appliance Repair Service | Expert Repair in NJ',
     description:
       'Professional premier appliance repair. Factory-trained technicians for all major brands in parts of Monmouth & Middlesex Counties.',
-    images: ['/og-image.jpg'],
+    images: ['/api/og?title=Advanced+Appliance+Repair+Service&subtitle=Expert+Repair+in+Monmouth+%26+Middlesex+Counties,+NJ'],
     creator: '@advanceappliance',
     site: '@advanceappliance',
   },
@@ -127,13 +127,13 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
-    other: {
-      'msvalidate.01': 'your-bing-verification-code',
-    },
-  },
+  // verification: {
+  //   google: 'REPLACE_WITH_ACTUAL_CODE',
+  //   yandex: 'REPLACE_WITH_ACTUAL_CODE',
+  //   other: {
+  //     'msvalidate.01': 'REPLACE_WITH_ACTUAL_CODE',
+  //   },
+  // },
   category: 'business',
   applicationName: 'Advanced Appliance Repair Service',
   appleWebApp: {

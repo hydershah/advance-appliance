@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Home as Design1Home } from '@/designs/design1/pages'
+import Design1Home from '@/designs/design1/pages/Home'
 
 export const revalidate = 300 // revalidate every 5 minutes
 import { fetchAllServices, fetchTestimonials, fetchFeaturedBrands, fetchAllTrustBadges, fetchAllServiceAreas } from '@/sanity/fetchers'
@@ -9,6 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Advanced Appliance Repair Service | Expert Repair in NJ',
     description: 'Professional premier appliance repair services in Monmouth & Middlesex Counties, NJ. Expert technicians, reliable service.',
+    alternates: { canonical: '/' },
   }
 }
 

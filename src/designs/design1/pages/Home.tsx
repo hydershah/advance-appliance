@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Header, Footer, Hero, ServiceCard, TestimonialCarousel, SectionHeading, CTAButton, LocalBusinessSchema } from '../components';
 import { businessInfo, services as staticServices, testimonials as staticTestimonials, serviceAreas as staticServiceAreas, trustBadges as staticTrustBadges, brands as staticBrands, images } from '../data/content';
 import type { Service, Testimonial, ServiceArea, Brand } from '../types';
@@ -59,7 +61,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
-                <div className="aspect-[4/3] overflow-hidden"><img src={images.kitchen} alt="Modern kitchen" className="w-full h-full object-cover" /></div>
+                <div className="aspect-[4/3] overflow-hidden relative"><Image src={images.kitchen} alt="Modern kitchen" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" /></div>
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
               </div>
               <div>
@@ -115,13 +117,13 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
             <SectionHeading subtitle="Service Areas" title="Serving Our Local Communities" description="We provide professional appliance repair services in parts of Monmouth and Middlesex Counties." align="center" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
               {[...serviceAreas].sort((a, b) => a.name.localeCompare(b.name)).map((area) => (
-                <a key={area.id} href={`/areas/${area.slug}`} className="group p-8 border border-gray-200 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-lg">
+                <Link key={area.id} href={`/areas/${area.slug}`} className="group p-8 border border-gray-200 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-lg">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-serif text-xl text-black group-hover:text-[#D4AF37] transition-colors">{area.name}</h3>
                     <svg className="w-5 h-5 text-[#D4AF37] transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                   </div>
                   <p className="text-gray-500 text-sm">{area.county} County, {area.state}</p>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

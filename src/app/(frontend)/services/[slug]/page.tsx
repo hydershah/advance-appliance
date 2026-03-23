@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 export const revalidate = 300 // revalidate every 5 minutes
 import { fetchServiceBySlug } from '@/sanity/fetchers'
 import { adaptService } from '@/lib/sanityAdapters'
-import { ServiceDetail as Design1ServiceDetail } from '@/designs/design1/pages'
+import Design1ServiceDetail from '@/designs/design1/pages/ServiceDetail'
 import { services as staticServices } from '@/designs/design1/data/content'
 
 interface ServicePageProps {
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     if (service) {
       const title = service.seo?.title || service.name
       const description = service.seo?.description || service.excerpt || ''
-      return { title, description, openGraph: { title, description } }
+      return { title, description, alternates: { canonical: `/services/${slug}` }, openGraph: { title, description, images: [{ url: `/api/og?title=${encodeURIComponent(title)}&category=Service`, width: 1200, height: 630 }] } }
     }
   } catch {
     // CMS unavailable
@@ -36,6 +36,12 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     return {
       title: `${staticService.name} - Advanced Appliance Repair Service`,
       description: staticService.shortDescription,
+      alternates: { canonical: `/services/${slug}` },
+      openGraph: {
+        title: `${staticService.name} - Advanced Appliance Repair Service`,
+        description: staticService.shortDescription,
+        images: [{ url: `/api/og?title=${encodeURIComponent(staticService.name)}&category=Service`, width: 1200, height: 630 }],
+      },
     }
   }
 

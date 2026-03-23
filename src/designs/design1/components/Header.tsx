@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { businessInfo } from '../data/content';
 
 interface NavItem {
@@ -20,7 +22,7 @@ const navigation: NavItem[] = [
       { label: 'Cooktop Repair', href: '/services/cooktop-repair' },
       { label: 'Dryer Repair', href: '/services/dryer-repair' },
       { label: 'Dishwasher Repair', href: '/services/dishwasher-repair' },
-{ label: 'Oven Repair', href: '/services/oven-repair' },
+      { label: 'Oven Repair', href: '/services/oven-repair' },
       { label: 'Range / Stove Repair', href: '/services/range-repair' },
       { label: 'Refrigerator Repair', href: '/services/refrigerator-repair' },
       { label: 'Washer Repair', href: '/services/washer-repair' },
@@ -53,15 +55,18 @@ const Header: React.FC = () => {
       >
         <div className="container mx-auto px-6">
           <nav className="flex justify-between items-center">
-            <a href="/" className="flex items-center flex-shrink-0">
-              <img
+            <Link href="/" className="flex items-center flex-shrink-0">
+              <Image
                 src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
                 alt="Advanced Appliance Repair"
+                width={220}
+                height={48}
                 className={`h-10 md:h-12 w-auto max-w-[180px] md:max-w-[220px] object-contain transition-all duration-300 ${
                   isScrolled ? '' : 'brightness-0 invert'
                 }`}
+                priority
               />
-            </a>
+            </Link>
 
             <div className="hidden xl:flex items-center space-x-6">
               {navigation.map((item) => (
@@ -71,7 +76,7 @@ const Header: React.FC = () => {
                   onMouseEnter={() => item.children && setActiveDropdown(item.label)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <a
+                  <Link
                     href={item.href}
                     className={`font-medium text-xs uppercase tracking-wider transition-colors duration-300 hover:text-[#D4AF37] whitespace-nowrap ${
                       isScrolled ? 'text-black' : 'text-white'
@@ -83,18 +88,18 @@ const Header: React.FC = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
-                  </a>
+                  </Link>
                   {item.children && activeDropdown === item.label && (
                     <div className="absolute top-full left-0 pt-4 w-56">
                       <div className="bg-white shadow-xl border border-gray-100 py-2">
                         {item.children.map((child) => (
-                          <a
+                          <Link
                             key={child.label}
                             href={child.href}
                             className="block px-5 py-2.5 text-sm text-gray-700 hover:text-[#D4AF37] hover:bg-gray-50 transition-colors"
                           >
                             {child.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -141,11 +146,11 @@ const Header: React.FC = () => {
         <nav className="p-6 overflow-y-auto h-full pb-32">
           {navigation.map((item) => (
             <div key={item.label} className="mb-4">
-              <a href={item.href} className="block py-3 text-lg font-light border-b border-gray-100 hover:text-[#D4AF37]">{item.label}</a>
+              <Link href={item.href} className="block py-3 text-lg font-light border-b border-gray-100 hover:text-[#D4AF37]">{item.label}</Link>
               {item.children && (
                 <div className="pl-4 mt-2">
                   {item.children.map((child) => (
-                    <a key={child.label} href={child.href} className="block py-2 text-sm text-gray-600 hover:text-[#D4AF37]">{child.label}</a>
+                    <Link key={child.label} href={child.href} className="block py-2 text-sm text-gray-600 hover:text-[#D4AF37]">{child.label}</Link>
                   ))}
                 </div>
               )}

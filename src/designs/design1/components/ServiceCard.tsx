@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Service } from '../types';
 
 interface ServiceCardProps {
@@ -23,20 +25,20 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, variant = 'default' 
 
   if (variant === 'minimal') {
     return (
-      <a href={`/services/${service.slug}`} className="group block p-6 border border-gray-200 hover:border-[#D4AF37] transition-all duration-300">
+      <Link href={`/services/${service.slug}`} className="group block p-6 border border-gray-200 hover:border-[#D4AF37] transition-all duration-300">
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12 flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300">{IconComponent && <IconComponent className="w-6 h-6" />}</div>
           <span className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">{service.name}</span>
         </div>
-      </a>
+      </Link>
     );
   }
 
   if (variant === 'featured') {
     return (
-      <a href={`/services/${service.slug}`} className="group relative block overflow-hidden">
-        <div className="aspect-[4/3] overflow-hidden">
-          <img src={service.image} alt={service.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+      <Link href={`/services/${service.slug}`} className="group relative block overflow-hidden">
+        <div className="aspect-[4/3] overflow-hidden relative">
+          <Image src={service.image} alt={service.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8">
@@ -47,12 +49,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, variant = 'default' 
             Learn More<svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </div>
         </div>
-      </a>
+      </Link>
     );
   }
 
   return (
-    <a href={`/services/${service.slug}`} className="group block bg-white border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-xl">
+    <Link href={`/services/${service.slug}`} className="group block bg-white border border-gray-100 hover:border-[#D4AF37] transition-all duration-300 hover:shadow-xl">
       <div className="p-8 border-b border-gray-100 group-hover:border-[#D4AF37]/30 transition-colors">
         <div className="w-16 h-16 mx-auto flex items-center justify-center border border-[#D4AF37] text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-300">{IconComponent && <IconComponent className="w-8 h-8" />}</div>
       </div>
@@ -63,7 +65,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, variant = 'default' 
           View Details<svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </span>
       </div>
-    </a>
+    </Link>
   );
 };
 

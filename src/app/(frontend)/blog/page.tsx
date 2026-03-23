@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Blog as Design1Blog } from '@/designs/design1/pages'
+import Design1Blog from '@/designs/design1/pages/Blog'
 import { fetchAllBlogPosts } from '@/sanity/fetchers'
 import { adaptBlogPost } from '@/lib/sanityAdapters'
 
@@ -7,10 +7,12 @@ export const metadata: Metadata = {
   title: 'Blog - Advanced Appliance Repair Service',
   description:
     'Read our latest articles about appliance repair, maintenance tips, and industry insights.',
+  alternates: { canonical: '/blog' },
   openGraph: {
     title: 'Blog - Advanced Appliance Repair Service',
     description:
       'Expert advice, maintenance tips, and industry insights for your appliances.',
+    images: [{ url: '/api/og?title=Our+Blog&subtitle=Expert+Advice+%26+Maintenance+Tips&category=Blog', width: 1200, height: 630 }],
   },
 }
 
