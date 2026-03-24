@@ -92,10 +92,12 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </section>
 
-        <div className="grid grid-cols-3 gap-1">
-          <div className="aspect-[4/3] overflow-hidden"><img src="/team/technician-doorstep.webp" alt="Technician ready for service" className="w-full h-full object-cover object-center" /></div>
-          <div className="aspect-[4/3] overflow-hidden"><img src="/team/technician-oven-repair.webp" alt="Oven repair in progress" className="w-full h-full object-cover object-center" /></div>
-          <div className="aspect-[4/3] overflow-hidden"><img src="/team/technician-portrait.webp" alt="Advanced Appliance technician" className="w-full h-full object-cover object-top" /></div>
+        <div className="container mx-auto px-6 py-8">
+          <div className="grid grid-cols-3 gap-3">
+            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-doorstep.webp" alt="Technician ready for service" className="w-full h-full object-cover object-top" /></div>
+            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-oven-repair.webp" alt="Oven repair in progress" className="w-full h-full object-cover object-center" /></div>
+            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-portrait.webp" alt="Advanced Appliance technician" className="w-full h-full object-cover object-top" /></div>
+          </div>
         </div>
 
         <section className="py-24 lg:py-32 bg-gray-50">
@@ -127,9 +129,11 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </section>
 
-        <div className="grid grid-cols-2 gap-1">
-          <div className="aspect-[3/2] overflow-hidden"><img src="/team/technician-dishwasher-repair.webp" alt="Dishwasher repair in progress" className="w-full h-full object-cover object-center" /></div>
-          <div className="aspect-[3/2] overflow-hidden"><img src="/team/team-photo.webp" alt="Advanced Appliance team" className="w-full h-full object-cover object-center" /></div>
+        <div className="container mx-auto px-6 py-8">
+          <div className="grid grid-cols-2 gap-3">
+            <div className="aspect-[4/3] overflow-hidden rounded"><img src="/team/technician-dishwasher-repair.webp" alt="Dishwasher repair in progress" className="w-full h-full object-cover object-center" /></div>
+            <div className="aspect-[4/3] overflow-hidden rounded"><img src="/team/team-photo.webp" alt="Advanced Appliance team" className="w-full h-full object-cover object-center" /></div>
+          </div>
         </div>
 
         <section className="py-24 lg:py-32 bg-gray-50">
