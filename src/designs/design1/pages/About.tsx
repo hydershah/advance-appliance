@@ -92,9 +92,10 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </section>
 
-        <div className="grid grid-cols-2">
-          <div className="aspect-[3/2] overflow-hidden relative"><Image src="/team/technician-portrait.webp" alt="Our technician" fill className="object-cover" sizes="50vw" /></div>
-          <div className="aspect-[3/2] overflow-hidden relative"><Image src="/team/technician-arrival.webp" alt="Technician arriving for service" fill className="object-cover" sizes="50vw" /></div>
+        <div className="grid grid-cols-3 gap-1">
+          <div className="aspect-[4/3] overflow-hidden"><img src="/team/technician-doorstep.webp" alt="Technician ready for service" className="w-full h-full object-cover object-center" /></div>
+          <div className="aspect-[4/3] overflow-hidden"><img src="/team/technician-oven-repair.webp" alt="Oven repair in progress" className="w-full h-full object-cover object-center" /></div>
+          <div className="aspect-[4/3] overflow-hidden"><img src="/team/technician-portrait.webp" alt="Advanced Appliance technician" className="w-full h-full object-cover object-top" /></div>
         </div>
 
         <section className="py-24 lg:py-32 bg-gray-50">
@@ -126,9 +127,9 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </section>
 
-        <div className="grid grid-cols-2">
-          <div className="aspect-[3/2] overflow-hidden relative"><Image src="/team/technician-oven-repair.webp" alt="Oven repair in progress" fill className="object-cover" sizes="50vw" /></div>
-          <div className="aspect-[3/2] overflow-hidden relative"><Image src="/team/technician-dishwasher-repair.webp" alt="Dishwasher repair in progress" fill className="object-cover" sizes="50vw" /></div>
+        <div className="grid grid-cols-2 gap-1">
+          <div className="aspect-[3/2] overflow-hidden"><img src="/team/technician-dishwasher-repair.webp" alt="Dishwasher repair in progress" className="w-full h-full object-cover object-center" /></div>
+          <div className="aspect-[3/2] overflow-hidden"><img src="/team/team-photo.webp" alt="Advanced Appliance team" className="w-full h-full object-cover object-center" /></div>
         </div>
 
         <section className="py-24 lg:py-32 bg-gray-50">
@@ -150,10 +151,9 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
 
         <section className="py-16 bg-white">
           <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <div className="aspect-video overflow-hidden rounded relative"><Image src="/team/team-photo.webp" alt="Advanced Appliance team" fill className="object-cover" sizes="(max-width: 768px) 100vw, 40vw" /></div>
+            <div className="max-w-3xl mx-auto">
               <div className="aspect-video overflow-hidden rounded bg-black">
-                <video className="w-full h-full object-cover" controls poster="/team/technician-doorstep.webp">
+                <video className="w-full h-full object-cover" controls poster="/team/team-photo.webp">
                   <source src="/team/team-video.mov" type="video/quicktime" />
                   <source src="/team/team-video.mov" type="video/mp4" />
                   Your browser does not support the video tag.

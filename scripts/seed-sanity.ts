@@ -105,7 +105,7 @@ async function seedServices() {
       icon: 'refrigerator',
       excerpt: 'Expert repair for all premier refrigerator brands including Sub-Zero, Viking, and more.',
       longDescription: 'Your refrigerator is the hardest-working appliance in your home, running 24 hours a day, 365 days a year to keep your food fresh and safe. When it breaks down, you need fast, reliable service from technicians who understand the complexity of modern refrigeration systems.',
-      features: ['Prompt service scheduling', 'Factory-trained technicians', 'Genuine OEM replacement parts', '365-day warranty on all repairs', 'Sub-Zero, Viking, Thermador specialists', 'Built-in and integrated unit experts', 'Compressor and sealed system repair', 'Ice maker and water dispenser service'],
+      features: ['Prompt service scheduling', 'Factory-trained technicians', 'Genuine OEM replacement parts', '1-year warranty on all repairs', 'Sub-Zero, Viking, Thermador specialists', 'Built-in and integrated unit experts', 'Compressor and sealed system repair', 'Ice maker and water dispenser service'],
       commonProblems: [
         { title: 'Not Cooling Properly', description: 'Temperature fluctuations, warm spots, or complete cooling failure often indicate compressor, thermostat, or sealed system issues.' },
         { title: 'Excessive Frost Buildup', description: 'Ice accumulation in the freezer or refrigerator section typically points to defrost system malfunctions or door seal problems.' },
@@ -127,7 +127,7 @@ async function seedServices() {
       name: 'Washer Repair',
       slug: 'washer-repair',
       icon: 'washer',
-      excerpt: 'Professional washing machine repair for residential and high-capacity units.',
+      excerpt: 'Professional washing machine repair for residential top-loading and front-loading units and laundry centers.',
       longDescription: 'A broken washing machine disrupts your entire household routine. At Advanced Appliance Repair Service, we understand the urgency of washer repairs and offer fast, reliable service throughout Monmouth and Middlesex Counties.',
       features: ['All washer types serviced', 'Leak detection and repair', 'Motor and pump replacement', 'Electronic control board repair', 'Miele, Bosch, Speed Queen specialists', 'Front-load and top-load experts', 'Drain and spin cycle repair', 'Bearing and seal replacement'],
       commonProblems: [
@@ -136,7 +136,7 @@ async function seedServices() {
         { title: 'Leaking Water', description: 'Leaks can originate from door seals, water inlet valves, drain hoses, or internal tub components.' },
       ],
       warningSigns: ['Clothes still wet after spin cycle', 'Water on the floor during or after washing', 'Loud banging or thumping during operation', 'Burning smell during use'],
-      repairProcess: ['Contact us by phone or schedule online for prompt service', 'Our technician arrives with common washer parts in stock', 'We diagnose the problem with professional testing equipment', 'You receive a detailed repair estimate before we begin', 'Repairs are completed using manufacturer-approved parts', 'We run test cycles to verify proper operation', 'Your repair is covered by our 365-day warranty'],
+      repairProcess: ['Contact us by phone or schedule online for prompt service', 'Our technician arrives with common washer parts in stock', 'We diagnose the problem with professional testing equipment', 'You receive a detailed repair estimate before we begin', 'Repairs are completed using manufacturer-approved parts', 'We run test cycles to verify proper operation', 'Your repair is covered by our 1-year warranty'],
       preventionTips: ["Don't overload the washer - follow capacity guidelines", 'Use HE detergent in high-efficiency machines', 'Leave the door open after cycles to prevent mold', 'Clean the detergent dispenser monthly'],
       faqs: [
         { question: 'Why is my washer leaking?', answer: 'Leaks can be caused by damaged door seals, faulty water inlet valves, loose hose connections, or drain pump issues.' },
@@ -156,7 +156,7 @@ async function seedServices() {
         { title: "Won't Start", description: 'A dryer that won\'t turn on may have door switch issues, thermal fuse failures, or control board problems.' },
       ],
       warningSigns: ['Clothes taking multiple cycles to dry', 'Dryer is hot to the touch on the outside', 'Burning smell during operation', 'Loud squealing, banging, or grinding noises'],
-      repairProcess: ['Schedule service online or call for an appointment', 'Our technician arrives with common dryer parts and tools', 'We perform complete diagnostics including vent inspection', 'You receive an honest estimate before repairs begin', 'Repairs are made with quality OEM components', 'We test the dryer through a complete cycle', 'All work is backed by our 365-day warranty'],
+      repairProcess: ['Schedule service online or call for an appointment', 'Our technician arrives with common dryer parts and tools', 'We perform complete diagnostics including vent inspection', 'You receive an honest estimate before repairs begin', 'Repairs are made with quality OEM components', 'We test the dryer through a complete cycle', 'All work is backed by our 1-year warranty'],
       preventionTips: ['Clean the lint filter before every load', 'Have the vent professionally cleaned annually', "Don't overload the dryer", 'Use rigid metal vent duct, not flexible plastic'],
       faqs: [
         { question: 'Why is my dryer not heating?', answer: 'For electric dryers, common causes include a faulty heating element, broken thermal fuse, or failed thermostat. Gas dryers may have igniter, gas valve, or flame sensor issues.' },
@@ -167,7 +167,7 @@ async function seedServices() {
       name: 'Dishwasher Repair',
       slug: 'dishwasher-repair',
       icon: 'dishwasher',
-      excerpt: 'Expert dishwasher repair for brands like Miele, Bosch, and Thermador.',
+      excerpt: 'Expert dishwasher repair for brands like Miele, Bosch, Samsung, LG, GE, KitchenAid, Jenn-Air, and many more.',
       longDescription: 'A malfunctioning dishwasher means hours of hand-washing dishes. At Advanced Appliance Repair Service, we provide fast, professional dishwasher repair throughout Monmouth and Middlesex Counties.',
       features: ['All major brands serviced', 'Pump and motor repair', 'Door latch replacement', 'Spray arm and rack repair', 'Water inlet valve service', 'Control board diagnostics', 'Leak detection and repair', 'European brand specialists'],
       commonProblems: [
@@ -176,7 +176,7 @@ async function seedServices() {
         { title: 'Leaking Water', description: 'Leaks can come from worn door gaskets, faulty water inlet valves, cracked tubs, or loose hose connections.' },
       ],
       warningSigns: ['Water remaining in the bottom after cycles', 'Dishes still dirty or spotty after washing', 'Water leaking onto the floor', 'Unusual sounds during operation'],
-      repairProcess: ['Book your appointment online or by phone', 'Our technician arrives with diagnostic equipment and common parts', 'We inspect all components and identify the problem', 'You approve the repair estimate before we proceed', 'We complete the repair with genuine manufacturer parts', 'We run a test cycle to verify proper operation', 'Your repair is protected by our 365-day warranty'],
+      repairProcess: ['Book your appointment online or by phone', 'Our technician arrives with diagnostic equipment and common parts', 'We inspect all components and identify the problem', 'You approve the repair estimate before we proceed', 'We complete the repair with genuine manufacturer parts', 'We run a test cycle to verify proper operation', 'Your repair is protected by our 1-year warranty'],
       preventionTips: ["Scrape dishes but don't pre-rinse excessively", 'Clean the filter every month', 'Run hot water at the sink before starting', 'Use quality detergent and rinse aid'],
       faqs: [
         { question: 'Why are my dishes still dirty after washing?', answer: 'Poor cleaning can result from clogged spray arms, low water temperature, insufficient water fill, faulty wash pumps, or incorrect loading.' },
@@ -196,7 +196,7 @@ async function seedServices() {
         { title: 'Gas Igniter Problems', description: 'Weak or no ignition is typically caused by worn igniters, faulty gas valves, or spark module failures.' },
       ],
       warningSigns: ['Food cooking unevenly or at wrong temperature', 'Gas smell when oven is off', 'Oven taking longer to preheat', 'Self-cleaning cycle not working'],
-      repairProcess: ['Contact us to schedule a convenient appointment', 'Our certified technician arrives with specialized tools', 'We perform thorough diagnostics and safety checks', 'You receive a detailed estimate for your approval', 'Repairs are completed with OEM parts', 'We verify temperature accuracy and proper operation', 'All repairs include our 365-day warranty'],
+      repairProcess: ['Contact us to schedule a convenient appointment', 'Our certified technician arrives with specialized tools', 'We perform thorough diagnostics and safety checks', 'You receive a detailed estimate for your approval', 'Repairs are completed with OEM parts', 'We verify temperature accuracy and proper operation', 'All repairs include our 1-year warranty'],
       preventionTips: ['Clean spills promptly to prevent smoke and damage', 'Use the self-cleaning feature sparingly', 'Check and replace damaged door gaskets', "Don't line oven bottom with foil"],
       faqs: [
         { question: 'My oven is not heating evenly. Can you fix it?', answer: 'Yes, uneven heating is often caused by a faulty heating element, failed temperature sensor, malfunctioning convection fan, or calibration issues.' },
@@ -543,7 +543,7 @@ async function seedTrustBadges() {
     { title: '$100 Diagnostic Fee', description: 'Plus parts and labor. No hidden fees' },
     { title: '24/7 Assistance', description: 'Live operators available around the clock' },
     { title: 'Fast Scheduling', description: 'Schedule next day, service tomorrow' },
-    { title: '365-Day Warranty', description: 'Coverage on parts with matching labor warranty' },
+    { title: '1-Year Warranty', description: 'Coverage on parts with matching labor warranty' },
     { title: '30+ Years Experience', description: 'Professional service since 1992' },
     { title: 'Genuine OEM Parts', description: 'We use only manufacturer parts' },
   ]
@@ -592,7 +592,7 @@ async function seedHowItWorks() {
   const steps = [
     { step: 1, title: 'Book', description: 'Schedule an appointment for a convenient time that works for you.', icon: 'book' },
     { step: 2, title: 'Repair', description: 'We diagnose the issue, explain the problem, and repair your appliance.', icon: 'repair' },
-    { step: 3, title: 'Relax', description: 'Our 365-day warranty covers all repairs on parts and labor.', icon: 'relax' },
+    { step: 3, title: 'Relax', description: 'Our 1-year warranty covers all repairs on parts and labor.', icon: 'relax' },
   ]
 
   for (const s of steps) {
@@ -616,7 +616,7 @@ async function seedGeneralFaqs() {
     { question: 'What areas do you serve?', answer: 'We provide appliance repair services in parts of Monmouth and Middlesex Counties, including Morganville, Marlboro, Holmdel, Red Bank, Freehold, Old Bridge, Edison, and many other communities.' },
     { question: 'How quickly can you schedule service?', answer: 'Schedule your appointment, and we can often provide next day service. For emergencies, we do our best to accommodate urgent requests.' },
     { question: 'What brands do you repair?', answer: 'We are factory-trained to service Sub-Zero, Viking, Thermador, Miele, and Wolf. We also service Samsung, LG, Bosch, KitchenAid, Whirlpool, GE, Maytag, Kenmore, Jenn-Air, Electrolux, and many more.' },
-    { question: 'Do you provide warranties on repairs?', answer: 'Yes, all our repairs come with a 365-day warranty on parts with matching labor warranty coverage.' },
+    { question: 'Do you provide warranties on repairs?', answer: 'Yes, all our repairs come with a 1-year warranty on parts with matching labor warranty coverage.' },
     { question: 'How much does a service call cost?', answer: 'Our diagnostic fee is $100, plus parts and labor. No hidden fees. We provide a complete estimate before beginning any work.' },
     { question: 'Are your technicians factory trained?', answer: 'Yes! Our technicians receive continuous factory training from major manufacturers. We have been in business since 1992 - over 30 years of experience.' },
     { question: 'What appliances do you repair?', answer: 'We repair all major kitchen and laundry appliances including refrigerators, washers, dryers, dishwashers, ovens, ranges, cooktops, freezers, and stoves - both gas and electric.' },

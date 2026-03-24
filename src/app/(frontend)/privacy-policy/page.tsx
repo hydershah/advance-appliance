@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { PrivacyPolicy as Design1PrivacyPolicy } from '@/designs/design1/pages'
+import Design1PrivacyPolicy from '@/designs/design1/pages/PrivacyPolicy'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy - Advanced Appliance Repair Service',

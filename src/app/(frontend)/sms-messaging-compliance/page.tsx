@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { SMSCompliance as Design1SMSCompliance } from '@/designs/design1/pages'
+import Design1SMSCompliance from '@/designs/design1/pages/SMSCompliance'
 
 export const metadata: Metadata = {
   title: 'SMS / Messaging Compliance - Advanced Appliance Repair Service',

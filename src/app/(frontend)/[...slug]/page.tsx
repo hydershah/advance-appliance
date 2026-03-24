@@ -7,7 +7,9 @@ import { BlockRenderer } from '@/components/BlockRenderer'
 import { getCurrentDesignTheme, getDesignComponents } from '@/lib/getDesignComponents'
 
 // Import static page components for fallbacks
-import { BrandPage as Design1BrandPage, AreaPage as Design1AreaPage, BlogPost as Design1BlogPost } from '@/designs/design1/pages'
+import Design1BrandPage from '@/designs/design1/pages/BrandPage'
+import Design1AreaPage from '@/designs/design1/pages/AreaPage'
+import Design1BlogPost from '@/designs/design1/pages/BlogPost'
 import { brands, serviceAreas, blogPosts } from '@/designs/design1/data/content'
 
 /**
@@ -63,7 +65,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (brand) {
     return {
       title: `${brand.name} Appliance Repair Service in NJ - Advanced Appliance`,
-      description: `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 365-day warranty. Call (732) 416-7430.`,
+      description: `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 1-year warranty. Call (732) 416-7430.`,
       openGraph: {
         title: `${brand.name} Appliance Repair Service in NJ`,
         description: `Expert ${brand.name} appliance repair in parts of Monmouth and Middlesex Counties.`,

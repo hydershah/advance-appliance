@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Brands as Design1Brands } from '@/designs/design1/pages'
+import Design1Brands from '@/designs/design1/pages/Brands'
 import { fetchAllBrands } from '@/sanity/fetchers'
 import { adaptBrand } from '@/lib/sanityAdapters'
 

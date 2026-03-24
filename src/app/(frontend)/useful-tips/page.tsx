@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { UsefulTips as Design1UsefulTips } from '@/designs/design1/pages'
+import Design1UsefulTips from '@/designs/design1/pages/UsefulTips'
 import { fetchAllBlogPosts } from '@/sanity/fetchers'
 import { adaptBlogPost } from '@/lib/sanityAdapters'
 

@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { TermsOfService as Design1TermsOfService } from '@/designs/design1/pages'
+import Design1TermsOfService from '@/designs/design1/pages/TermsOfService'
 
 export const metadata: Metadata = {
   title: 'Terms of Service - Advanced Appliance Repair Service',

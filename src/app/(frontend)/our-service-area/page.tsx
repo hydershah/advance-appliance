@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { ServiceAreas as Design1ServiceAreas } from '@/designs/design1/pages'
+import Design1ServiceAreas from '@/designs/design1/pages/ServiceAreas'
 import { fetchAllServiceAreas } from '@/sanity/fetchers'
 import { adaptServiceArea } from '@/lib/sanityAdapters'
 

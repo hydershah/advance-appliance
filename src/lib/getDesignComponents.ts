@@ -5,8 +5,16 @@
 
 import type { ComponentType } from 'react'
 
-// Design 1 Components
-import * as Design1 from '@/designs/design1/components'
+// Design 1 Components - direct imports to avoid barrel re-export issues
+import Header from '@/designs/design1/components/Header'
+import Footer from '@/designs/design1/components/Footer'
+import Hero from '@/designs/design1/components/Hero'
+import ServiceCard from '@/designs/design1/components/ServiceCard'
+import TestimonialCard from '@/designs/design1/components/TestimonialCard'
+import ContactForm from '@/designs/design1/components/ContactForm'
+import CTAButton from '@/designs/design1/components/CTAButton'
+import SectionHeading from '@/designs/design1/components/SectionHeading'
+import FAQAccordion from '@/designs/design1/components/FAQAccordion'
 
 export type DesignTheme = '1'
 
@@ -31,15 +39,15 @@ export interface DesignComponents {
  */
 export function getDesignComponents(_theme: DesignTheme = '1'): DesignComponents {
   return {
-    Header: Design1.Header,
-    Footer: Design1.Footer,
-    Hero: Design1.Hero,
-    ServiceCard: Design1.ServiceCard,
-    TestimonialCard: Design1.TestimonialCard,
-    ContactForm: Design1.ContactForm,
-    CTAButton: Design1.CTAButton,
-    SectionHeading: Design1.SectionHeading,
-    FAQAccordion: Design1.FAQAccordion,
+    Header,
+    Footer,
+    Hero,
+    ServiceCard,
+    TestimonialCard,
+    ContactForm,
+    CTAButton,
+    SectionHeading,
+    FAQAccordion,
   }
 }
 
