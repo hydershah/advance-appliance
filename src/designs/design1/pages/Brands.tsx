@@ -178,7 +178,7 @@ const Brands: React.FC<BrandsProps> = ({ brands: brandsProp }) => {
                   href={appliance.link}
                   className="group text-center"
                 >
-                  <div className="aspect-square overflow-hidden mb-4 bg-gray-50 border border-gray-100 group-hover:border-[#D4AF37] transition-all duration-300 flex items-center justify-center">
+                  <div className="aspect-[4/3] overflow-hidden mb-4 bg-gray-50 border border-gray-100 group-hover:border-[#D4AF37] transition-all duration-300 flex items-center justify-center">
                     <img
                       src={appliance.image}
                       alt={appliance.name}
