@@ -111,6 +111,29 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </section>
 
+        <section className="py-24 lg:py-32 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <SectionHeading subtitle="Appliances" title="What We Repair" align="center" />
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-16">
+              {[
+                { name: 'Refrigerators', image: images.refrigerator, link: '/services/refrigerator-repair' },
+                { name: 'Washers', image: images.washer, link: '/services/washer-repair' },
+                { name: 'Dryers', image: images.dryer, link: '/services/dryer-repair' },
+                { name: 'Dishwashers', image: images.dishwasher, link: '/services/dishwasher-repair' },
+                { name: 'Ovens', image: images.oven, link: '/services/oven-repair' },
+                { name: 'Cooktops', image: images.cooktop, link: '/services/cooktop-repair' },
+              ].map((appliance, i) => (
+                <Link key={i} href={appliance.link} className="group text-center">
+                  <div className="aspect-[4/3] overflow-hidden mb-4 bg-white border border-gray-100 group-hover:border-[#D4AF37] transition-all duration-300 flex items-center justify-center">
+                    <img src={appliance.image} alt={appliance.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  </div>
+                  <h4 className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">{appliance.name}</h4>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
             <SectionHeading subtitle="Our Values" title="What We Stand For" align="center" />
