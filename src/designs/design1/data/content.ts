@@ -36,7 +36,7 @@ export const images = {
   // Hero/Cover images for different pages
   hero: '/njhero-opt.webp',
   kitchen: '/why-choose-us.png',
-  about: '/Advanced-Appliance-Repair-Service.webp',
+  about: '/images/fleet-trucks.png',
   contact: '/Kitchen_Appliances_Photo_1.webp',
   team: '/technician-service.webp',
   services: '/Kitchen_Appliances_Photo_1.webp',
