@@ -158,8 +158,8 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks-clean.jpeg" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" style={{ transform: 'scaleX(-1)' }} /></div>
-              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks-clean.jpeg" alt="Advanced Appliance service vehicles" className="w-full h-full object-cover" /></div>
+              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks.png" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" style={{ transform: 'scaleX(-1)' }} /></div>
+              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks.png" alt="Advanced Appliance service vehicles" className="w-full h-full object-cover" /></div>
             </div>
           </div>
         </section>
