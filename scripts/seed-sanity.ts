@@ -202,7 +202,7 @@ async function seedServices() {
       name: 'Oven Repair',
       slug: 'oven-repair',
       icon: 'oven',
-      excerpt: 'Comprehensive oven repair for Wolf, Viking, and Thermador.',
+      excerpt: 'Comprehensive oven repair for Wolf, Viking, Thermador, Miele, GE, Monogram, KitchenAid, Jenn-Air, Samsung, LG, and many more.',
       longDescription: 'Your oven is the centerpiece of your kitchen. Advanced Appliance Repair Service provides expert oven repair throughout Monmouth and Middlesex Counties.',
       features: ['Gas and electric oven repair', 'Igniter and burner service', 'Temperature calibration', 'Door seal replacement', 'Self-cleaning system repair', 'Convection fan service', 'Control board repair', 'Wolf, Viking, Thermador certified'],
       commonProblems: [
