@@ -129,12 +129,17 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </section>
 
-        <div className="container mx-auto px-6 py-8">
-          <div className="grid grid-cols-2 gap-3">
-            <div className="aspect-[4/3] overflow-hidden rounded"><img src="/team/technician-dishwasher-repair.webp" alt="Dishwasher repair in progress" className="w-full h-full object-cover object-center" /></div>
-            <div className="aspect-[4/3] overflow-hidden rounded"><img src="/team/team-photo.webp" alt="Advanced Appliance team" className="w-full h-full object-cover object-center" /></div>
+        <section className="relative py-16 overflow-hidden">
+          <div className="absolute inset-0">
+            <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
           </div>
-        </div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks-clean.jpeg" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" style={{ transform: 'scaleX(-1)' }} /></div>
+              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks-clean.jpeg" alt="Advanced Appliance service vehicles" className="w-full h-full object-cover" /></div>
+            </div>
+          </div>
+        </section>
 
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
