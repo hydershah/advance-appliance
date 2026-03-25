@@ -26,6 +26,7 @@ export interface Service {
   preventionTips: string[]; // Maintenance tips
   faqs: FAQ[];
   image: string;
+  brandNames?: string[];
 }
 
 export interface Testimonial {

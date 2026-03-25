@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
-import { businessInfo, brands as staticBrands, images } from '../data/content';
+import { businessInfo, brands as staticBrands, certifications, images } from '../data/content';
 import type { Brand } from '../types';
 
 interface BrandsProps {
@@ -138,8 +138,26 @@ const Brands: React.FC<BrandsProps> = ({ brands: brandsProp }) => {
           </div>
         </section>
 
-        {/* Appliances We Service */}
+        {/* Credentials */}
         <section className="py-24 lg:py-32 bg-white">
+          <div className="container mx-auto px-6">
+            <SectionHeading subtitle="Credentials" title="Certifications & Accreditations" align="center" />
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-16">
+              {certifications.map((cert, i) => (
+                <div key={i} className="bg-gray-50 p-6 border border-gray-100 hover:border-[#D4AF37] transition-colors text-center">
+                  <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center border border-[#D4AF37] text-[#D4AF37]">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                  </div>
+                  <h4 className="font-serif text-sm text-black mb-1">{cert.name}</h4>
+                  <p className="text-gray-500 text-xs">{cert.issuer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Appliances We Service */}
+        <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
             <SectionHeading
               subtitle="Appliances"
@@ -152,7 +170,7 @@ const Brands: React.FC<BrandsProps> = ({ brands: brandsProp }) => {
                 { name: 'Washers', image: images.washer, link: '/services/washer-repair' },
                 { name: 'Dryers', image: images.dryer, link: '/services/dryer-repair' },
                 { name: 'Dishwashers', image: images.dishwasher, link: '/services/dishwasher-repair' },
-                { name: 'Ovens', image: images.oven, link: '/services/oven-range-repair' },
+                { name: 'Ovens', image: images.oven, link: '/services/oven-repair' },
                 { name: 'Cooktops', image: images.cooktop, link: '/services/cooktop-repair' },
               ].map((appliance, i) => (
                 <a
@@ -160,11 +178,11 @@ const Brands: React.FC<BrandsProps> = ({ brands: brandsProp }) => {
                   href={appliance.link}
                   className="group text-center"
                 >
-                  <div className="aspect-square overflow-hidden mb-4 bg-gray-50 border border-gray-100 group-hover:border-[#D4AF37] transition-all duration-300">
+                  <div className="aspect-square overflow-hidden mb-4 bg-gray-50 border border-gray-100 group-hover:border-[#D4AF37] transition-all duration-300 flex items-center justify-center">
                     <img
                       src={appliance.image}
                       alt={appliance.name}
-                      className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <h4 className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">

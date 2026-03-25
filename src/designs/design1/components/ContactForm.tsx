@@ -9,22 +9,17 @@ const applianceTypes = [
   'Dryer',
   'Dishwasher',
   'Oven / Range',
-  'Microwave',
+  'Cooktop',
   'Freezer',
 ];
 
-const timeRanges = [
-  { value: '9-12', label: '9:00 AM - 12:00 PM' },
-  { value: '12-4', label: '12:00 PM - 4:00 PM' },
-  { value: '2-6', label: '2:00 PM - 6:00 PM' },
-];
 
-interface FormData { name: string; email: string; phone: string; applianceType: string; brandName: string; message: string; preferredDate: string; preferredTime: string; }
+interface FormData { name: string; email: string; phone: string; applianceType: string; brandName: string; message: string; }
 interface FormErrors { [key: string]: string; }
 interface ContactFormProps { variant?: 'default' | 'compact' | 'dark'; }
 
 const ContactForm: React.FC<ContactFormProps> = ({ variant = 'default' }) => {
-  const [formData, setFormData] = useState<FormData>({ name: '', email: '', phone: '', applianceType: '', brandName: '', message: '', preferredDate: '', preferredTime: '' });
+  const [formData, setFormData] = useState<FormData>({ name: '', email: '', phone: '', applianceType: '', brandName: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -95,10 +90,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ variant = 'default' }) => {
         <div><label htmlFor="phone" className={labelClasses}>Phone Number *</label><input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="(732) 416-7430" className={inputClasses} />{errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}</div>
         <div><label htmlFor="applianceType" className={labelClasses}>Appliance Type *</label><select id="applianceType" name="applianceType" value={formData.applianceType} onChange={handleChange} className={inputClasses}><option value="">Select appliance type</option>{applianceTypes.map((type) => <option key={type} value={type}>{type}</option>)}</select>{errors.applianceType && <p className="text-red-500 text-xs mt-1">{errors.applianceType}</p>}</div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div><label htmlFor="brandName" className={labelClasses}>Brand Name</label><input type="text" id="brandName" name="brandName" value={formData.brandName} onChange={handleChange} placeholder="e.g. Samsung, LG, Whirlpool" className={inputClasses} /></div>
-        <div><label htmlFor="preferredDate" className={labelClasses}>Preferred Date</label><input type="date" id="preferredDate" name="preferredDate" value={formData.preferredDate} onChange={handleChange} className={inputClasses} /></div>
-        <div><label htmlFor="preferredTime" className={labelClasses}>Preferred Time</label><select id="preferredTime" name="preferredTime" value={formData.preferredTime} onChange={handleChange} className={inputClasses}><option value="">Select a time</option>{timeRanges.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}</select></div>
       </div>
       <div><label htmlFor="message" className={labelClasses}>Message *</label><textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Please describe the issue with your appliance..." rows={5} className={inputClasses} />{errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}</div>
       <CTAButton type="submit" variant="primary" size="lg" icon="calendar" fullWidth disabled={isSubmitting}>{isSubmitting ? 'Sending Request...' : 'Schedule Service'}</CTAButton>

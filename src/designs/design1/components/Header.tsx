@@ -23,7 +23,7 @@ const navigation: NavItem[] = [
       { label: 'Dryer Repair', href: '/services/dryer-repair' },
       { label: 'Dishwasher Repair', href: '/services/dishwasher-repair' },
       { label: 'Oven Repair', href: '/services/oven-repair' },
-      { label: 'Range / Stove Repair', href: '/services/range-repair' },
+      { label: 'Range Repair', href: '/services/range-repair' },
       { label: 'Refrigerator Repair', href: '/services/refrigerator-repair' },
       { label: 'Washer Repair', href: '/services/washer-repair' },
     ],

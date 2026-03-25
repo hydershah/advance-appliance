@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Header, Footer, Hero, ServiceCard, SectionHeading, CTAButton, FAQAccordion, ContactForm, ServiceSchema, BreadcrumbSchema, FAQSchema } from '../components';
+import { Header, Footer, Hero, SectionHeading, FAQAccordion, ContactForm, ServiceSchema, BreadcrumbSchema, FAQSchema } from '../components';
 import { businessInfo, services as staticServices, brands } from '../data/content';
 import type { Service } from '../types';
 
@@ -11,7 +11,6 @@ interface ServiceDetailProps { serviceSlug?: string; service?: Service; }
 const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerator-repair', service: serviceProp }) => {
   const service = serviceProp || staticServices.find((s) => s.slug === serviceSlug) || staticServices[0];
   if (!service) return null;
-  const relatedServices = (serviceProp ? [] : staticServices).filter((s) => s.id !== service.id).slice(0, 3);
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: service.name, url: `/services/${service.slug}` }];
 
   return (
@@ -123,9 +122,9 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
                 <div className="mb-12">
                   <h3 className="font-serif text-2xl text-black mb-6">Brands We Service</h3>
                   <div className="flex flex-wrap gap-3">
-                    {brands.slice(0, 12).map((brand, i) => (
+                    {(service.brandNames || brands.slice(0, 12).map(b => b.name)).map((name, i) => (
                       <span key={i} className="px-4 py-2 border border-gray-200 text-gray-600 text-sm hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors">
-                        {brand.name}
+                        {name}
                       </span>
                     ))}
                   </div>
@@ -229,14 +228,26 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
           </div>
         </section>
 
-        {/* Related Services */}
+        {/* Other Services */}
         <section className="py-16 lg:py-24 bg-white">
           <div className="container mx-auto px-6">
             <SectionHeading subtitle="Related Services" title="Other Services You May Need" align="center" />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              {relatedServices.map((s) => <ServiceCard key={s.id} service={s} variant="default" />)}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mt-12 max-w-4xl mx-auto">
+              {(serviceProp ? staticServices : staticServices).filter((s) => s.slug !== service.slug).map((s) => (
+                <Link key={s.id} href={`/services/${s.slug}`} className="group flex flex-col items-center text-center p-4 border border-gray-100 hover:border-[#D4AF37] transition-colors">
+                  <div className="w-12 h-12 flex items-center justify-center mb-3 text-gray-400 group-hover:text-[#D4AF37] transition-colors">
+                    {s.icon === 'refrigerator' && <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" strokeWidth={1.5}/><line x1="5" y1="10" x2="19" y2="10" strokeWidth={1.5}/><line x1="10" y1="6" x2="10" y2="6.01" strokeWidth={2} strokeLinecap="round"/><line x1="10" y1="14" x2="10" y2="14.01" strokeWidth={2} strokeLinecap="round"/></svg>}
+                    {s.icon === 'washer' && <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" strokeWidth={1.5}/><circle cx="12" cy="14" r="4" strokeWidth={1.5}/><circle cx="12" cy="14" r="1.5" strokeWidth={1.5}/><line x1="8" y1="6" x2="8" y2="6.01" strokeWidth={2} strokeLinecap="round"/><line x1="11" y1="6" x2="11" y2="6.01" strokeWidth={2} strokeLinecap="round"/></svg>}
+                    {s.icon === 'dryer' && <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" strokeWidth={1.5}/><circle cx="12" cy="14" r="4" strokeWidth={1.5}/><path d="M10 13c1-1 2 1 3 0s2 1 3 0" strokeWidth={1.5} strokeLinecap="round"/><line x1="8" y1="6" x2="8" y2="6.01" strokeWidth={2} strokeLinecap="round"/></svg>}
+                    {s.icon === 'dishwasher' && <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" strokeWidth={1.5}/><line x1="4" y1="7" x2="20" y2="7" strokeWidth={1.5}/><path d="M9 12h6M9 15h6M9 18h6" strokeWidth={1} strokeLinecap="round"/><line x1="8" y1="4.5" x2="8" y2="4.51" strokeWidth={2} strokeLinecap="round"/></svg>}
+                    {s.icon === 'oven' && <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" strokeWidth={1.5}/><rect x="7" y="10" width="10" height="9" rx="1" strokeWidth={1.5}/><line x1="8" y1="6" x2="8" y2="6.01" strokeWidth={2} strokeLinecap="round"/><line x1="12" y1="6" x2="12" y2="6.01" strokeWidth={2} strokeLinecap="round"/><line x1="16" y1="6" x2="16" y2="6.01" strokeWidth={2} strokeLinecap="round"/></svg>}
+                    {s.icon === 'cooktop' && <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2" strokeWidth={1.5}/><circle cx="8" cy="12" r="2" strokeWidth={1.5}/><circle cx="16" cy="12" r="2" strokeWidth={1.5}/></svg>}
+                    {s.icon === 'range' && <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" strokeWidth={1.5}/><rect x="7" y="11" width="10" height="8" rx="1" strokeWidth={1.5}/><circle cx="8" cy="6" r="1.5" strokeWidth={1.5}/><circle cx="16" cy="6" r="1.5" strokeWidth={1.5}/></svg>}
+                  </div>
+                  <span className="text-xs text-gray-600 group-hover:text-[#D4AF37] transition-colors font-medium">{s.name.replace(' Repair', '')}</span>
+                </Link>
+              ))}
             </div>
-            <div className="text-center mt-10"><CTAButton href="/services" variant="outline" size="lg" icon="arrow">View All Services</CTAButton></div>
           </div>
         </section>
       </main>

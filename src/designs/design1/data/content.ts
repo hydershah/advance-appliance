@@ -167,7 +167,7 @@ Modern washing machines are complex appliances with electronic control boards, m
       'Leak detection and repair',
       'Motor and pump replacement',
       'Electronic control board repair',
-      'Miele, Bosch, Speed Queen specialists',
+      'Washer maintenance tips included',
       'Front-load and top-load experts',
       'Drain and spin cycle repair',
       'Bearing and seal replacement',
@@ -211,31 +211,36 @@ Modern washing machines are complex appliances with electronic control boards, m
     ],
     faqs: [
       {
-        question: 'Why is my washer leaking?',
-        answer: 'Leaks can be caused by damaged door seals, faulty water inlet valves, loose hose connections, or drain pump issues. Front-load washers commonly leak from worn door boot gaskets. Our technicians will identify the exact source and repair it properly.',
+        question: 'When should I contact a technician for washer repair?',
+        answer: 'If your washing machine won\'t spin, won\'t drain, leaks water, makes loud noises, or leaves clothes soaking wet, it\'s best to contact a technician. Early service can prevent further damage to the washer\'s internal components.',
       },
       {
-        question: 'My washer won\'t spin. Can you fix it?',
-        answer: 'Yes, spin cycle issues are commonly caused by lid switch problems, motor coupling failures, worn drive belts, or control board malfunctions. We repair all of these issues and can usually complete the repair in one visit.',
+        question: 'Why is my washer not draining?',
+        answer: 'Drain problems are often caused by clogged pump filters, blocked drain hoses, or pump system issues.',
       },
       {
-        question: 'Why does my front-load washer smell bad?',
-        answer: 'Mold and mildew growth in the door gasket and detergent dispenser causes odors in front-load washers. We can clean and treat these areas, replace damaged gaskets, and show you how to prevent future odor problems.',
+        question: 'Why is my washing machine shaking or banging during the spin cycle?',
+        answer: 'Excessive vibration can result from unbalanced loads, worn suspension components, or leveling problems.',
       },
       {
-        question: 'How long do washing machines typically last?',
-        answer: 'Most washing machines last 10-15 years with proper maintenance. High-quality brands like Speed Queen and Miele often last longer. If your washer is under 10 years old, repair is usually more economical than replacement.',
+        question: 'Why are my clothes still soaking wet after the cycle?',
+        answer: 'Clothes remaining wet usually indicate spin cycle issues, drainage problems, or control system concerns.',
       },
       {
-        question: 'Do you repair high-efficiency (HE) washers?',
-        answer: 'Yes, we repair all high-efficiency washers including front-load and top-load HE models. Our technicians are trained on the latest HE technology from all major manufacturers.',
+        question: 'Why is my washer leaking water?',
+        answer: 'Leaks may come from hoses, door seals, internal connections, or pump components.',
       },
       {
-        question: 'Why is my washer so loud during the spin cycle?',
-        answer: 'Loud spinning is typically caused by worn drum bearings, damaged shock absorbers, or foreign objects caught between the drum and tub. Ignoring these sounds can lead to more expensive repairs, so it\'s best to have it checked promptly.',
+        question: 'Why does my washer smell bad?',
+        answer: 'Odors can develop from detergent buildup, trapped moisture, or residue inside the drum or gasket area.',
+      },
+      {
+        question: 'Do you use original manufacturer parts for washer repairs?',
+        answer: 'Yes. We use OEM (original manufacturer) parts whenever possible to ensure proper performance and reliability. All repairs are backed by our parts and labor warranty.',
       },
     ],
     image: '/images/washer-front.webp',
+    brandNames: ['LG', 'Samsung', 'Miele', 'Bosch', 'Speed Queen', 'GE', 'Whirlpool', 'Frigidaire', 'Kenmore', 'Maytag', 'Electrolux', 'Amana'],
   },
   {
     id: '3',
@@ -252,7 +257,7 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
     features: [
       'Gas and electric dryer repair',
       'Heating element replacement',
-      'Thermal fuse repair',
+      'Thermal control repair',
       'Drum and belt service',
       'Ventilation inspection included',
       'Gas valve and igniter service',
@@ -298,31 +303,36 @@ A dryer that isn\'t heating properly or takes multiple cycles to dry clothes isn
     ],
     faqs: [
       {
+        question: 'When should I contact a technician for dryer repair?',
+        answer: 'If your dryer is not heating, takes too long to dry clothes, makes unusual noises, or won\'t start, it\'s best to contact a technician. Addressing problems early can prevent further damage and reduce the risk of overheating or airflow issues.',
+      },
+      {
         question: 'Why is my dryer not heating?',
-        answer: 'For electric dryers, common causes include a faulty heating element, broken thermal fuse, or failed thermostat. Gas dryers may have igniter, gas valve, or flame sensor issues. We diagnose and repair all heating problems for both types.',
+        answer: 'A dryer that runs but produces no heat may have heating system issues, ignition problems, or thermal control components that need service.',
       },
       {
-        question: 'How often should I clean my dryer vent?',
-        answer: 'We recommend professional dryer vent cleaning at least once a year. If you do many loads per week, you may need cleaning more frequently. Clogged vents are the leading cause of dryer fires and significantly reduce efficiency.',
+        question: 'Why is my dryer taking too long to dry clothes?',
+        answer: 'Drying problems are often caused by restricted airflow, blocked vents, or heating performance issues. Proper airflow is essential for efficient drying.',
       },
       {
-        question: 'Is it safe to repair a gas dryer myself?',
-        answer: 'We strongly recommend professional service for gas dryers. Gas leaks can cause fires and explosions, and improper repairs can create dangerous situations. Our technicians are trained in safe gas appliance repair procedures.',
+        question: 'Why is my dryer making loud noises?',
+        answer: 'Grinding, squeaking, or thumping sounds may indicate worn drum components, rollers, or drive system parts that need service.',
       },
       {
-        question: 'Why does my dryer take so long to dry clothes?',
-        answer: 'Extended drying times are usually caused by restricted airflow from clogged lint filters, blocked vents, or failing blower wheels. It can also indicate heating element problems or worn drum seals letting heat escape.',
+        question: 'Why won\'t my dryer start?',
+        answer: 'A dryer that won\'t start may have control system issues, door switch problems, or electrical supply concerns.',
       },
       {
-        question: 'Why is my dryer making a squealing noise?',
-        answer: 'Squealing typically indicates worn drum glides, a fraying belt, or dry idler pulley bearings. These parts wear over time and should be replaced before they fail completely and cause further damage.',
+        question: 'Is a burning smell from my dryer dangerous?',
+        answer: 'Yes. A burning smell can indicate lint buildup, overheating components, or airflow restrictions. The dryer should be inspected before continued use.',
       },
       {
-        question: 'Can you repair dryers with steam features?',
-        answer: 'Yes, we repair all modern dryers including those with steam refresh, wrinkle release, and sanitize cycles. Our technicians stay current with the latest dryer technology through ongoing training.',
+        question: 'Do you use original manufacturer parts for dryer repairs?',
+        answer: 'Yes. We use OEM (original manufacturer) parts whenever possible to ensure reliable performance. All repairs are backed by our parts and labor warranty for peace of mind.',
       },
     ],
     image: '/images/dryer-front.webp',
+    brandNames: ['LG', 'Samsung', 'Speed Queen', 'Bosch', 'Miele', 'KitchenAid', 'Jenn-Air', 'GE', 'Whirlpool', 'Frigidaire', 'Kenmore', 'Maytag'],
   },
   {
     id: '4',
@@ -385,31 +395,36 @@ Whether your dishwasher won\'t drain, isn\'t cleaning properly, or is leaking wa
     ],
     faqs: [
       {
-        question: 'Why are my dishes still dirty after washing?',
-        answer: 'Poor cleaning can result from clogged spray arms, low water temperature, insufficient water fill, faulty wash pumps, or incorrect loading. Our technicians diagnose the specific cause and make the necessary repairs.',
+        question: 'When should I contact a technician for dishwasher repair?',
+        answer: 'If your dishwasher won\'t start, won\'t drain, leaves dishes dirty, leaks water, or makes unusual noises, it\'s best to contact a technician. Early diagnosis can prevent further damage and restore proper cleaning performance.',
       },
       {
-        question: 'My dishwasher won\'t drain. What should I do?',
-        answer: 'Check if the filter is clogged and clear the garbage disposal if connected. If it still won\'t drain, you likely have a pump failure, blocked drain hose, or control board issue that requires professional repair.',
+        question: 'Why is my dishwasher not draining?',
+        answer: 'Drain problems are commonly caused by clogged filters, blocked drain hoses, or drainage system issues.',
       },
       {
-        question: 'Why is my dishwasher leaking?',
-        answer: 'Leaks commonly come from worn door gaskets, faulty water inlet valves, loose hose clamps, or cracked components. We identify the leak source and repair it properly to prevent water damage to your floors and cabinets.',
+        question: 'Why are my dishes still dirty after a wash cycle?',
+        answer: 'Poor cleaning performance may be related to spray arm blockage, water circulation issues, or detergent problems.',
       },
       {
-        question: 'Do you repair Bosch and Miele dishwashers?',
-        answer: 'Yes, we specialize in European brands including Bosch, Miele, Thermador, and Gaggenau. Our technicians receive factory training on these brands and use genuine OEM parts for all repairs.',
+        question: 'Why is my dishwasher leaking water?',
+        answer: 'Leaks may come from door seals, hose connections, or internal water components.',
       },
       {
-        question: 'Why doesn\'t my dishwasher dry the dishes?',
-        answer: 'Drying issues can be caused by heating element failure, rinse aid dispenser problems, vent fan issues, or selecting the wrong cycle. Some European dishwashers use condensation drying which works differently than heated drying.',
+        question: 'Why won\'t my dishwasher start?',
+        answer: 'A dishwasher that won\'t start may have power supply issues, door latch problems, or control system concerns.',
       },
       {
-        question: 'How long should a dishwasher last?',
-        answer: 'Most dishwashers last 9-12 years. Premier brands like Miele often last longer with proper maintenance. If your dishwasher is under 8 years old, repair is usually more economical than replacement.',
+        question: 'Why is my dishwasher making unusual noises?',
+        answer: 'Grinding or humming sounds may indicate pump, motor, or circulation system issues.',
+      },
+      {
+        question: 'Do you use original manufacturer parts for dishwasher repairs?',
+        answer: 'Yes. We use OEM (original manufacturer) parts whenever possible to ensure reliable performance. All repairs are backed by our parts and labor warranty.',
       },
     ],
     image: '/images/dishwasher-front.webp',
+    brandNames: ['Viking', 'Thermador', 'Miele', 'LG', 'Samsung', 'Bosch', 'KitchenAid', 'Jenn-Air', 'GE', 'Whirlpool', 'Frigidaire', 'Kenmore'],
   },
   {
     id: '5',
@@ -472,31 +487,36 @@ Whether you have a freestanding oven, wall oven, double oven, or professional-st
     ],
     faqs: [
       {
-        question: 'My oven is not heating evenly. Can you fix it?',
-        answer: 'Yes, uneven heating is often caused by a faulty heating element, failed temperature sensor, malfunctioning convection fan, or calibration issues. We diagnose the specific cause and make the necessary repairs to restore even cooking.',
+        question: 'When should I contact a technician for oven repair?',
+        answer: 'If your oven won\'t heat, cooks unevenly, shows error codes, or trips the breaker, it\'s best to contact a technician. Addressing the issue early can prevent further damage and restore proper cooking performance.',
       },
       {
-        question: 'Do you repair commercial-style ranges?',
-        answer: 'Absolutely. We specialize in Viking, Wolf, Thermador, and other professional-grade ranges. Our technicians have factory training and certification to work on these premier appliances.',
+        question: 'Why is my oven not heating properly?',
+        answer: 'Heating problems may be caused by heating system issues, temperature control problems, or internal components that require service.',
       },
       {
-        question: 'Why won\'t my gas oven ignite?',
-        answer: 'The most common cause is a weak or failed igniter. Gas igniters wear out over time and lose their ability to glow hot enough to open the gas valve. We can test and replace igniters, gas valves, and spark modules as needed.',
+        question: 'Why is my oven cooking unevenly?',
+        answer: 'Uneven cooking can result from temperature sensor issues, airflow problems, or heating element performance issues.',
       },
       {
-        question: 'Is it safe to use a gas oven that clicks but doesn\'t light?',
-        answer: 'No, you should not attempt to use a gas oven that isn\'t igniting properly. If you smell gas, turn off the appliance, ventilate the area, and call for professional service. Repeated clicking can also damage the spark module.',
+        question: 'Why does my oven show an error code?',
+        answer: 'Modern ovens display error codes when the system detects sensor, door lock, or control system problems that require service.',
       },
       {
-        question: 'Can you calibrate my oven temperature?',
-        answer: 'Yes, we can calibrate oven temperatures to ensure accuracy. Some ovens allow user calibration adjustment, while others require sensor replacement or control board programming.',
+        question: 'Why does my oven keep tripping the breaker?',
+        answer: 'This may indicate electrical component issues, wiring concerns, or heating system problems.',
       },
       {
-        question: 'Why does my oven smoke when I use the self-clean feature?',
-        answer: 'Some smoke during self-cleaning is normal as food residue burns off at high temperatures. However, excessive smoke may indicate heavy buildup, worn door gaskets, or ventilation problems. We can inspect and address these issues.',
+        question: 'Is it normal for an oven to make noise while heating?',
+        answer: 'Some light clicking or fan noise is normal, but loud buzzing, grinding, or unusual sounds may indicate components that need inspection.',
+      },
+      {
+        question: 'Do you use original manufacturer parts for oven repairs?',
+        answer: 'Yes. We use OEM (original manufacturer) parts whenever possible to ensure reliable performance. All repairs are backed by our parts and labor warranty.',
       },
     ],
     image: '/images/oven-front.webp',
+    brandNames: ['Viking', 'Thermador', 'Miele', 'Wolf', 'LG', 'Samsung', 'Bosch', 'KitchenAid', 'Jenn-Air', 'GE', 'Whirlpool', 'Frigidaire'],
   },
   {
     id: '6',
@@ -559,35 +579,39 @@ Induction cooktops have become increasingly popular in premier kitchens, and we 
     ],
     faqs: [
       {
-        question: 'My gas burner won\'t ignite. What\'s wrong?',
-        answer: 'This is typically caused by clogged burner ports, a faulty igniter, or spark module issues. Sometimes simply cleaning the burner cap and ports resolves the issue. If cleaning doesn\'t help, the igniter likely needs replacement.',
+        question: 'When should I contact a technician for cooktop repair?',
+        answer: 'If burners won\'t ignite, don\'t heat properly, click continuously, or controls stop responding, it\'s best to contact a technician to diagnose the problem and restore safe operation.',
       },
       {
-        question: 'Can you repair cracked cooktop glass?',
-        answer: 'Cracked glass cannot be repaired and must be replaced. We can replace damaged glass cooktop surfaces for most major brands. We recommend replacement even for small cracks to prevent further damage and potential safety hazards.',
+        question: 'Why won\'t my gas burner ignite?',
+        answer: 'This is often caused by clogged burner ports, worn igniters, or ignition module problems.',
       },
       {
-        question: 'Why is my gas flame yellow instead of blue?',
-        answer: 'Yellow flames indicate incomplete combustion, usually caused by clogged burner ports, incorrect air-to-gas mixture, or low gas pressure. Blue flames with yellow tips are normal; entirely yellow flames should be addressed.',
+        question: 'Why is my electric burner not heating properly?',
+        answer: 'Electric elements may stop heating due to burned elements, switch problems, or wiring issues.',
       },
       {
-        question: 'Do you repair induction cooktops?',
-        answer: 'Yes, we repair all induction cooktop brands. Induction technology requires specialized knowledge of electronics and magnetic heating systems. Our technicians can diagnose and repair coil failures, control board issues, and cooling fan problems.',
+        question: 'Why does my cooktop keep clicking?',
+        answer: 'Constant clicking usually indicates moisture around the ignition switches or worn ignition components.',
       },
       {
-        question: 'Why won\'t my induction cooktop recognize my pan?',
-        answer: 'Induction cooktops require magnetic cookware. If your pan doesn\'t stick to a magnet, it won\'t work on induction. If compatible cookware still isn\'t detected, there may be a coil or sensor issue requiring professional diagnosis.',
+        question: 'Can cracked glass cooktops be repaired?',
+        answer: 'Minor issues may sometimes be repaired, but cracked glass cooktops usually require replacement for safety.',
       },
       {
-        question: 'Is it worth repairing an old cooktop?',
-        answer: 'Most cooktops last 15-20 years. If yours is less than 10 years old and the repair cost is reasonable, repair is usually the better choice. Glass replacement on newer units is often worthwhile; major repairs on older units may not be.',
+        question: 'How long does cooktop repair usually take?',
+        answer: 'Most cooktop repairs can be completed within about 1 hour during a single visit, depending on the issue.',
+      },
+      {
+        question: 'Do you use original manufacturer parts?',
+        answer: 'Yes. We use OEM (original manufacturer) parts whenever possible, and all repairs are backed by our parts and labor warranty.',
       },
     ],
     image: '/images/cooktop-front.webp',
   },
   {
     id: '7',
-    name: 'Range / Stove Repair',
+    name: 'Range Repair',
     slug: 'range-repair',
     icon: 'range',
     shortDescription: 'Expert range and stove repair for gas, electric, and dual-fuel models from all major brands including Viking, Wolf, Thermador, and more.',
@@ -678,7 +702,6 @@ Ranges combine multiple heating systems, gas connections, electronic controls, a
 // Brands - from live site (with repair page slugs)
 // Featured Brands (with logos)
 export const brands: Brand[] = [
-  { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Sub-zero-logo.jpg', featured: true },
   { name: 'Viking', slug: 'viking-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Viking-logo.jpg', featured: true },
   { name: 'Thermador', slug: 'thermador-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Thermador.png', featured: true },
   { name: 'Miele', slug: 'miele-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Miele-logo.png', featured: true },
@@ -686,16 +709,17 @@ export const brands: Brand[] = [
   // Major Brands (Featured)
   { name: 'LG', slug: 'lg-appliance-repair-service-nj', logo: '/brands/lg.png', featured: true },
   { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj', logo: '/brands/samsung.png', featured: true },
+  { name: 'Bosch', slug: 'bosch-appliance-repair-service-nj', logo: '/brands/bosch.png', featured: true },
   { name: 'KitchenAid', slug: 'kitchenaid-appliance-repair-service-nj', logo: '/brands/kitchenaid.jpg', featured: true },
   { name: 'Jenn-Air', slug: 'jenn-air-appliance-repair-service-nj', logo: '/brands/jennair.png', featured: true },
-  { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj', logo: '/brands/electrolux.jpg', featured: true },
   { name: 'GE', slug: 'general-electric-ge-appliance-repair-service-nj', logo: '/brands/ge.png', featured: true },
-  { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj', logo: '/brands/maytag.png', featured: true },
   { name: 'Whirlpool', slug: 'whirlpool-appliance-repair-service-nj', logo: '/brands/whirlpool.jpg', featured: true },
   { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj', logo: '/brands/frigidaire.png', featured: true },
   { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj', logo: '/brands/kenmore.png', featured: true },
   // Other Major Brands
-  { name: 'Bosch', slug: 'bosch-appliance-repair-service-nj' },
+  { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Sub-zero-logo.jpg' },
+  { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj', logo: '/brands/electrolux.jpg' },
+  { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj', logo: '/brands/maytag.png' },
   { name: 'GE Profile', slug: 'ge-profile-appliance-repair-service-nj' },
   { name: 'GE Monogram', slug: 'ge-monogram-appliance-repair-service-nj' },
   { name: 'GE Cafe', slug: 'ge-cafe-appliance-repair-service-nj' },
@@ -709,13 +733,11 @@ export const brands: Brand[] = [
   { name: 'Fisher & Paykel', slug: 'fisher-paykel-appliance-repair-service-nj' },
   { name: 'Gaggenau', slug: 'gaggenau-appliance-repair-service-nj' },
   { name: 'Hotpoint', slug: 'hotpoint-appliance-repair-service-nj' },
-  { name: 'Kelvinator', slug: 'kelvinator-appliance-repair-service-nj' },
   { name: 'Kenmore 90 Series', slug: 'kenmore-90-series-appliance-repair-service-nj' },
   { name: 'Kenmore Oasis', slug: 'kenmore-oasis-appliance-repair-service-nj' },
   { name: 'Kenmore Galaxy', slug: 'kenmore-galaxy-appliance-repair-service-nj' },
   { name: 'Kenmore Superba', slug: 'kenmore-superba-appliance-repair-service-nj' },
   { name: 'LG Tromm', slug: 'lg-tromm-appliance-repair-service-nj' },
-  { name: 'Magic Chef', slug: 'magic-chef-appliance-repair-service-nj' },
   { name: 'Maytag Performa', slug: 'maytag-perfoma-appliance-repair-service-nj' },
   { name: 'Maytag Neptune', slug: 'maytag-neptune-appliance-repair-service-nj' },
   { name: 'Maytag Atlantis', slug: 'maytag-atlantis-appliance-repair-service-nj' },
@@ -724,9 +746,7 @@ export const brands: Brand[] = [
   { name: 'Maytag Gemini', slug: 'maytag-gemini-appliance-repair-service-nj' },
   { name: 'Roper', slug: 'roper-appliance-repair-service-nj' },
   { name: 'Speed Queen', slug: 'speed-queen-appliance-repair-service-nj' },
-  { name: 'Tappan', slug: 'tappan-appliance-repair-service-nj' },
   { name: 'U Line', slug: 'u-line-appliance-repair-service-nj' },
-  { name: 'Westinghouse', slug: 'westinghouse-appliance-repair-service-nj' },
   { name: 'Whirlpool Duet', slug: 'whirlpool-duet-appliance-repair-service-nj' },
   { name: 'Whirlpool Cabrio', slug: 'whirlpool-carbio-appliance-repair-service-nj' },
   { name: 'Whirlpool Gold', slug: 'whirlpool-gold-appliance-repair-service-nj' },
@@ -1056,7 +1076,6 @@ export const certifications: Certification[] = [
   { name: 'Viking Certified Service', issuer: 'Viking Range', year: '2024' },
   { name: 'Thermador Certified', issuer: 'BSH Home Appliances', year: '2024' },
   { name: 'Miele Premier Partner', issuer: 'Miele', year: '2024' },
-  { name: 'EPA 608 Certified', issuer: 'EPA', year: '2023' },
   { name: 'AHAM NARDA Certified', issuer: 'AHAM', year: '2024' },
   { name: 'PSA World Member', issuer: 'PSA World', year: '2024' },
   { name: 'MSA World Member', issuer: 'MSA World', year: '2024' },
@@ -1064,6 +1083,9 @@ export const certifications: Certification[] = [
   { name: 'Samsung Factory Trained', issuer: 'Samsung', year: '2024' },
   { name: 'KitchenAid Certified', issuer: 'KitchenAid', year: '2024' },
   { name: 'LG Factory Trained', issuer: 'LG', year: '2024' },
+  { name: 'GE Factory Authorized Service', issuer: 'General Electric', year: '2024' },
+  { name: 'Frigidaire Factory Authorized Service', issuer: 'Frigidaire', year: '2024' },
+  { name: 'Electrolux Factory Service', issuer: 'Electrolux', year: '2024' },
 ];
 
 // Trust Badges - matching live site
@@ -1071,7 +1093,7 @@ export const trustBadges = [
   { title: '$100 Diagnostic Fee', description: 'Plus parts and labor. No hidden fees' },
   { title: '24/7 Assistance', description: 'Live operators available around the clock' },
   { title: 'Fast Scheduling', description: 'Schedule next day, service tomorrow' },
-  { title: '1-Year Warranty', description: 'Coverage on parts with matching labor warranty' },
+  { title: 'Up to 1-Year Warranty', description: 'Parts warranty based on brand with matching labor warranty' },
   { title: '30+ Years Experience', description: 'Professional service since 1992' },
   { title: 'Genuine OEM Parts', description: 'We use only manufacturer parts' },
 ];
@@ -1112,7 +1134,7 @@ export const howItWorks = [
   {
     step: 3,
     title: 'Relax',
-    description: 'Our up to 1-year warranty covers all repairs on parts and labor.',
+    description: 'Up to 1-year parts warranty based on brand, with a matching labor warranty coverage.',
     icon: 'relax'
   },
 ];
@@ -1133,7 +1155,7 @@ export const generalFaqs: FAQ[] = [
   },
   {
     question: 'Do you provide warranties on repairs?',
-    answer: 'Yes, all our repairs come with up to 1-year warranty on parts with matching labor warranty coverage.',
+    answer: 'Yes. Up to 1-year parts warranty based on brand, with a matching labor warranty coverage.',
   },
   {
     question: 'How much does a service call cost?',

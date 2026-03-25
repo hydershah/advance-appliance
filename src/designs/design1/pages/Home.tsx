@@ -26,7 +26,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
       <LocalBusinessSchema page="home" />
       <Header />
       <main>
-        <Hero title="Exceptional Care for Your Advanced Appliances" subtitle="Professional Repair Service" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, Thermador, Miele, KitchenAid, LG, Samsung and more. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
+        <Hero title={"Exceptional Care for Your\nAdvanced Appliances"} subtitle="Professional Repair Service" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, Thermador, Miele, KitchenAid, LG, Samsung and more. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />
 
         {/* Trust Badges */}
         <section className="py-16 bg-white border-b border-gray-100">
@@ -48,7 +48,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
         {/* Services */}
         <section className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Our Services" title="Precision Appliance Repair" description="From refrigerators to cooktops, our factory-trained technicians provide skilled repair services for all your premier appliances." align="center" />
+            <SectionHeading subtitle="Our Services" title="Precision Appliance Repair" description="From refrigerators to cooktops, our factory-trained technicians provide skilled repair services for all your appliances." align="center" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
               {services.slice(0, 6).map((service) => <ServiceCard key={service.id} service={service} variant="default" />)}
             </div>

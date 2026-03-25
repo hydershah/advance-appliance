@@ -41,23 +41,23 @@ const Services: React.FC<ServicesProps> = ({ services: servicesProp, brands: bra
                     Expert Repair Services You Can Trust
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-4">
-                    At Advanced Appliance Repair, we specialize in diagnosing and repairing high-end household appliances with precision and care. Our factory-trained technicians bring years of hands-on experience to every service call.
+                    At Advanced Appliance Repair, we diagnose and repair both everyday household appliances and premium brands with precision and care. Our factory-trained technicians bring years of hands-on experience to every service call.
                   </p>
                   <p className="text-gray-600 leading-relaxed mb-8">
-                    Whether it&apos;s a Sub-Zero refrigerator, a Wolf range, or a Miele dishwasher, we use genuine manufacturer parts and proven repair techniques to restore your appliances to peak performance.
+                    Whether it&apos;s a Sub-Zero refrigerator, Wolf range, Miele dishwasher, or common brands like GE, Whirlpool, LG, and Samsung, we use genuine manufacturer parts whenever possible and proven repair methods to restore your appliances to reliable performance.
                   </p>
                   <div className="flex flex-wrap gap-x-8 gap-y-4">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-                      <span className="text-sm text-gray-700">Same-Day Diagnostics</span>
+                      <span className="text-sm text-gray-700">Next Day Service</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-                      <span className="text-sm text-gray-700">Factory-Certified Parts</span>
+                      <span className="text-sm text-gray-700">OEM Factory Parts</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-                      <span className="text-sm text-gray-700">90-Day Warranty</span>
+                      <span className="text-sm text-gray-700">Up to 1-Year Warranty</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-[#D4AF37]" />
@@ -112,9 +112,32 @@ const Services: React.FC<ServicesProps> = ({ services: servicesProp, brands: bra
 
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
-            <SectionHeading subtitle="Featured Services" title="Specialized in Premier Appliances" align="center" />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
-              {services.slice(0, 4).map((service) => <ServiceCard key={service.id} service={service} variant="featured" />)}
+            <SectionHeading subtitle="Service Timeline" title="How Long Does the Repair Take?" align="center" />
+            <div className="max-w-4xl mx-auto mt-16">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <div className="hidden md:block absolute top-10 left-[16.67%] right-[16.67%] h-px bg-[#D4AF37]/30" />
+                <div className="text-center">
+                  <div className="w-20 h-20 border-2 border-[#D4AF37] rounded-full flex items-center justify-center mx-auto mb-6 bg-white relative z-10">
+                    <span className="font-serif text-2xl text-[#D4AF37]">1</span>
+                  </div>
+                  <h3 className="font-serif text-xl text-gray-900 mb-2">Today</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">Your appliance broke down. No worries — our operators are standing by. Call today for next day service.</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-20 h-20 border-2 border-[#D4AF37] rounded-full flex items-center justify-center mx-auto mb-6 bg-white relative z-10">
+                    <span className="font-serif text-2xl text-[#D4AF37]">2</span>
+                  </div>
+                  <h3 className="font-serif text-xl text-gray-900 mb-2">Tomorrow</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">A technician calls 30 minutes before arrival, provides a detailed estimate, and with your approval completes the repair on-site.</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-20 h-20 border-2 border-[#D4AF37] rounded-full flex items-center justify-center mx-auto mb-6 bg-white relative z-10">
+                    <span className="font-serif text-2xl text-[#D4AF37]">3</span>
+                  </div>
+                  <h3 className="font-serif text-xl text-gray-900 mb-2">1–3 Days</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">Most repairs are completed same-day. When additional parts are needed, they typically arrive within 1–3 business days — not weeks.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -137,7 +160,7 @@ const Services: React.FC<ServicesProps> = ({ services: servicesProp, brands: bra
             <div className="max-w-3xl mx-auto text-center">
               <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8" />
               <span className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] font-light mb-4 block">Schedule Next Day</span>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Ready to Restore Your Appliance?</h2>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Ready to Repair Your Appliance?</h2>
               <p className="text-white/70 text-lg leading-relaxed mb-10">Contact us today for precise diagnosis and quality repair.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <CTAButton href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`} variant="primary" size="lg" icon="phone">Call {businessInfo.phone}</CTAButton>
