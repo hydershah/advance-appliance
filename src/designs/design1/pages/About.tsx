@@ -157,9 +157,9 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
             <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
           </div>
           <div className="container mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-2 gap-6 max-w-3xl mx-auto">
-              <div className="aspect-[3/4] overflow-hidden rounded shadow-lg"><img src="/images/founder-1.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
-              <div className="aspect-[3/4] overflow-hidden rounded shadow-lg"><img src="/images/founder-2.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
+            <div className="flex justify-between items-center">
+              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0"><img src="/images/founder-1.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
+              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0"><img src="/images/founder-2.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
             </div>
           </div>
         </section>
