@@ -25,7 +25,7 @@ const Hero: React.FC<HeroProps> = ({
   align = 'left',
 }) => {
   const heightClasses = { full: 'min-h-screen', large: 'min-h-[85vh]', medium: 'min-h-[65vh]', small: 'min-h-[45vh]' };
-  const overlayClasses = { dark: 'bg-black/60', light: 'bg-black/30', gradient: 'bg-gradient-to-r from-black/80 via-black/50 to-transparent' };
+  const overlayClasses = { dark: 'bg-black/60', light: 'bg-black/30', gradient: align === 'center' ? 'bg-black/50' : 'bg-gradient-to-r from-black/80 via-black/50 to-transparent' };
   const alignClasses = { left: 'text-left items-start', center: 'text-center items-center', right: 'text-right items-end' };
   const containerAlign = { left: 'justify-start', center: 'justify-center', right: 'justify-end' };
 
