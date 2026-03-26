@@ -49,7 +49,7 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title="Our Story" subtitle="About Us" description="For over 30 years, homeowners throughout Central New Jersey have trusted us to keep their kitchens and laundry rooms running smoothly." image={images.about} showCTA={false} overlay="gradient" height="medium" align="center" />
+        <Hero title="Our Story" subtitle="About Us" description="For over 30 years, homeowners throughout Central New Jersey have trusted us to keep their kitchens and laundry rooms running smoothly." image={images.kitchen} showCTA={false} overlay="gradient" height="medium" align="center" />
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
@@ -158,8 +158,16 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks.png" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" style={{ transform: 'scaleX(-1)' }} /></div>
-              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks.png" alt="Advanced Appliance service vehicles" className="w-full h-full object-cover" /></div>
+              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/team-founders.jpeg" alt="Advanced Appliance founder" className="w-full h-full object-cover object-left" /></div>
+              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/team-founders.jpeg" alt="Advanced Appliance founder" className="w-full h-full object-cover object-right" /></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="aspect-[16/7] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks-clean.png" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" /></div>
             </div>
           </div>
         </section>

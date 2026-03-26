@@ -1093,7 +1093,7 @@ export const trustBadges = [
   { title: '$100 Diagnostic Fee', description: 'Plus parts and labor. No hidden fees' },
   { title: '24/7 Assistance', description: 'Live operators available around the clock' },
   { title: 'Fast Scheduling', description: 'Schedule next day, service tomorrow' },
-  { title: 'Up to 1-Year Warranty', description: 'Parts warranty based on brand with matching labor warranty' },
+  { title: 'Up to 1-Year Warranty', description: 'Up to 1 year parts warranty based on brand, with a matching labor warranty coverage.' },
   { title: '30+ Years Experience', description: 'Professional service since 1992' },
   { title: 'Genuine OEM Parts', description: 'We use only manufacturer parts' },
 ];
