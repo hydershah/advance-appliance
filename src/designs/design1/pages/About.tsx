@@ -158,8 +158,8 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/team-founders.jpeg" alt="Advanced Appliance founder" className="w-full h-full object-cover object-left" /></div>
-              <div className="aspect-[16/9] overflow-hidden rounded shadow-lg"><img src="/images/team-founders.jpeg" alt="Advanced Appliance founder" className="w-full h-full object-cover object-right" /></div>
+              <div className="aspect-[3/4] overflow-hidden rounded shadow-lg"><img src="/images/founder-1.png" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" /></div>
+              <div className="aspect-[3/4] overflow-hidden rounded shadow-lg"><img src="/images/founder-2.png" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" /></div>
             </div>
           </div>
         </section>
