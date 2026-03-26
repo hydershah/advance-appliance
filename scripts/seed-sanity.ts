@@ -8,6 +8,8 @@
  */
 
 import { createClient } from '@sanity/client'
+import * as fs from 'fs'
+import * as path from 'path'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
@@ -25,6 +27,19 @@ const client = createClient({
   useCdn: false,
   token,
 })
+
+// Helper to upload an image from the public folder to Sanity
+async function uploadImage(filePath: string): Promise<{ _type: 'image'; asset: { _type: 'reference'; _ref: string } } | undefined> {
+  const fullPath = path.join(process.cwd(), 'public', filePath)
+  if (!fs.existsSync(fullPath)) {
+    console.warn(`  Image not found: ${fullPath}`)
+    return undefined
+  }
+  const buffer = fs.readFileSync(fullPath)
+  const filename = path.basename(filePath)
+  const asset = await client.assets.upload('image', buffer, { filename })
+  return { _type: 'image', asset: { _type: 'reference', _ref: asset._id } }
+}
 
 // Helper to create a slug-based deterministic ID
 function docId(type: string, key: string): string {
@@ -467,6 +482,7 @@ async function seedBlogPosts() {
       publishedDate: '2024-11-20',
       categories: ['Tips'],
       tags: ['Washer', 'Emergency', 'Repair', 'Tips'],
+      imagePath: '/Appliances_Photo_7614539.webp',
     },
     {
       slug: 'dryer-not-heating-guide',
@@ -476,6 +492,7 @@ async function seedBlogPosts() {
       publishedDate: '2024-11-15',
       categories: ['Tips'],
       tags: ['Dryer', 'Heating', 'Troubleshooting', 'Tips'],
+      imagePath: '/Appliances_Photo_7534280.webp',
     },
     {
       slug: 'dishwasher-not-draining-fix',
@@ -485,6 +502,7 @@ async function seedBlogPosts() {
       publishedDate: '2024-11-10',
       categories: ['Tips'],
       tags: ['Dishwasher', 'Draining', 'DIY', 'Tips'],
+      imagePath: '/Kitchen_Appliances_Photo_2.webp',
     },
     {
       slug: 'kitchen-appliance-repair-guide',
@@ -494,12 +512,14 @@ async function seedBlogPosts() {
       publishedDate: '2024-11-05',
       categories: ['Guide'],
       tags: ['Kitchen', 'Appliances', 'Maintenance', 'Guide'],
+      imagePath: '/Appliances_Photo_7614540.webp',
     },
   ]
 
   for (const p of posts) {
     const id = docId('blogPost', p.slug)
-    await client.createOrReplace({
+    const featuredImage = await uploadImage(p.imagePath)
+    const doc: Record<string, unknown> = {
       _id: id,
       _type: 'blogPost',
       title: p.title,
@@ -519,7 +539,9 @@ async function seedBlogPosts() {
           markDefs: [],
         },
       ],
-    })
+    }
+    if (featuredImage) doc.featuredImage = featuredImage
+    await client.createOrReplace(doc)
     console.log(`  Blog: ${p.title}`)
   }
 }
