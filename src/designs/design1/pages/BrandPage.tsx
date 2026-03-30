@@ -164,7 +164,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
               {[
                 { title: '$100 Diagnostic', description: 'Clear pricing with no hidden fees' },
                 { title: 'Fast Scheduling', description: 'Next-day appointments available' },
-                { title: '1-Year Warranty', description: 'All repairs guaranteed' },
+                { title: 'Up to 1-Year Warranty', description: 'All repairs guaranteed' },
                 { title: '30+ Years', description: 'Experience you can trust' },
               ].map((item, i) => (
                 <div key={i} className="text-center group">

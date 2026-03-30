@@ -59,6 +59,18 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </div>
 
+        <section className="relative py-16 overflow-hidden">
+          <div className="absolute inset-0">
+            <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
+          </div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="flex justify-between items-center">
+              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0"><img src="/images/founder-1.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
+              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0"><img src="/team/technician-doorstep.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 bg-white border-b border-gray-100">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -152,18 +164,6 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           </div>
         </section>
 
-        <section className="relative py-16 overflow-hidden">
-          <div className="absolute inset-0">
-            <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
-          </div>
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="flex justify-between items-center">
-              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0"><img src="/images/founder-1.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
-              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0"><img src="/images/founder-2.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
-            </div>
-          </div>
-        </section>
-
         <section className="py-16 bg-white">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
@@ -208,7 +208,7 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
             <div className="max-w-3xl mx-auto text-center">
               <div className="w-16 h-px bg-[#D4AF37] mx-auto mb-8" />
               <span className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] font-light mb-4 block">Get Started</span>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Ready to Experience the Difference?</h2>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white font-light leading-tight mb-6">Experience the Difference?</h2>
               <p className="text-white/70 text-lg leading-relaxed mb-10">Contact us today and discover why discerning homeowners trust Advanced Appliance.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <CTAButton href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`} variant="primary" size="lg" icon="phone">Call {businessInfo.phone}</CTAButton>

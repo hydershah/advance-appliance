@@ -64,43 +64,6 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
                   </div>
                 </div>
 
-                {/* Common Problems We Fix */}
-                {service.commonProblems && service.commonProblems.length > 0 && (
-                  <div className="mb-12">
-                    <h3 className="font-serif text-2xl text-black mb-6">Common Problems We Fix</h3>
-                    <div className="space-y-4">
-                      {service.commonProblems.map((problem, i) => (
-                        <div key={i} className="border-l-4 border-[#D4AF37] pl-4 py-2">
-                          <h4 className="font-semibold text-black mb-1">{problem.title}</h4>
-                          <p className="text-gray-600 text-sm">{problem.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Warning Signs */}
-                {service.warningSigns && service.warningSigns.length > 0 && (
-                  <div className="mb-12 bg-red-50 border border-red-100 p-6 rounded-lg">
-                    <h3 className="font-serif text-2xl text-black mb-4 flex items-center">
-                      <svg className="w-6 h-6 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                      </svg>
-                      {service.warningSignsTitle || 'Warning Signs Your Appliance Needs Repair'}
-                    </h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {service.warningSigns.map((sign, i) => (
-                        <li key={i} className="flex items-start text-gray-700">
-                          <svg className="w-4 h-4 text-red-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
-                          </svg>
-                          <span className="text-sm">{sign}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
                 {/* Our Repair Process */}
                 {service.repairProcess && service.repairProcess.length > 0 && (
                   <div className="mb-12">
@@ -131,9 +94,15 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
                   <p className="text-gray-500 text-sm mt-4">Plus many more brands - call us to confirm we service your appliance.</p>
                 </div>
 
+                {/* FAQs */}
+                <div className="mb-12">
+                  <h3 className="font-serif text-2xl text-black mb-6">Frequently Asked Questions</h3>
+                  <FAQAccordion faqs={service.faqs} variant="default" />
+                </div>
+
                 {/* Prevention Tips */}
                 {service.preventionTips && service.preventionTips.length > 0 && (
-                  <div className="mb-12 bg-green-50 border border-green-100 p-6 rounded-lg">
+                  <div className="bg-green-50 border border-green-100 p-6 rounded-lg">
                     <h3 className="font-serif text-2xl text-black mb-4 flex items-center">
                       <svg className="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
@@ -152,12 +121,6 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
                     </ul>
                   </div>
                 )}
-
-                {/* FAQs */}
-                <div>
-                  <h3 className="font-serif text-2xl text-black mb-6">Frequently Asked Questions</h3>
-                  <FAQAccordion faqs={service.faqs} variant="default" />
-                </div>
               </div>
 
               {/* Sidebar */}
@@ -172,7 +135,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
 
                   <div className="bg-black text-white p-6 text-center">
                     <svg className="w-10 h-10 mx-auto text-[#D4AF37] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    <h4 className="font-serif text-lg mb-2">1-Year Warranty</h4>
+                    <h4 className="font-serif text-lg mb-2">Up to 1-Year Warranty</h4>
                     <p className="text-white/70 text-sm">All repairs backed by our comprehensive parts and labor warranty</p>
                   </div>
 
