@@ -106,9 +106,9 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
 
         <div className="container mx-auto px-6 py-8">
           <div className="grid grid-cols-3 gap-3">
-            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-doorstep.webp" alt="Technician ready for service" className="w-full h-full object-cover object-top" /></div>
             <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-oven-repair.webp" alt="Oven repair in progress" className="w-full h-full object-cover object-center" /></div>
-            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-portrait.webp" alt="Advanced Appliance technician" className="w-full h-full object-cover object-top" /></div>
+            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-doorstep.webp" alt="Technician arriving for service" className="w-full h-full object-cover object-top" /></div>
+            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-dishwasher-action.webp" alt="Dishwasher repair in progress" className="w-full h-full object-cover object-center" /></div>
           </div>
         </div>
 
@@ -167,7 +167,7 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
         <section className="py-16 bg-white">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
-              <div className="aspect-[16/7] overflow-hidden rounded shadow-lg"><img src="/images/fleet-trucks-clean.png" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" /></div>
+              <div className="aspect-[16/7] overflow-hidden rounded shadow-lg"><img src="/Advanced-Appliance-Repair-Service.webp" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" /></div>
             </div>
           </div>
         </section>
@@ -185,20 +185,6 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
                   <p className="text-gray-500 text-xs">{cert.issuer}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-6">
-            <div className="max-w-3xl mx-auto">
-              <div className="aspect-video overflow-hidden rounded bg-black">
-                <video className="w-full h-full object-cover" controls poster="/team/team-photo.webp">
-                  <source src="/team/team-video.mov" type="video/quicktime" />
-                  <source src="/team/team-video.mov" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
             </div>
           </div>
         </section>
