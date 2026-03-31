@@ -81,7 +81,7 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
-                <div className="aspect-[4/5] overflow-hidden relative"><Image src={images.kitchen} alt="Modern kitchen" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" /></div>
+                <div className="aspect-[4/5] overflow-hidden relative"><Image src="/images/doorstep-service.png" alt="Advanced Appliance technician at doorstep" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" /></div>
                 <div className="absolute -bottom-8 -right-8 w-48 h-48 border border-[#D4AF37] hidden lg:block" />
                 <div className="absolute top-8 -left-8 bg-[#D4AF37] text-black p-8 hidden lg:block"><span className="font-serif text-4xl block">1992</span><span className="text-xs uppercase tracking-wider">Est.</span></div>
               </div>
