@@ -49,7 +49,7 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <section className="relative py-16 overflow-hidden">
+        <section className="relative pt-32 pb-16 overflow-hidden">
           <div className="absolute inset-0">
             <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
           </div>
