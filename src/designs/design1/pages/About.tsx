@@ -166,8 +166,8 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
 
         <section className="py-16 bg-white">
           <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto">
-              <div className="aspect-[16/7] overflow-hidden rounded shadow-lg"><img src="/Advanced-Appliance-Repair-Service.webp" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" /></div>
+            <div className="max-w-md mx-auto">
+              <div className="aspect-video overflow-hidden rounded shadow-lg"><img src="/Advanced-Appliance-Repair-Service.webp" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" /></div>
             </div>
           </div>
         </section>
