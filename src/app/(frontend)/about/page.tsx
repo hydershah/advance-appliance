@@ -9,12 +9,18 @@ export const metadata: Metadata = {
   title: 'About Us - Advanced Appliance Repair Service',
   description:
     'Learn about our professional appliance repair services, expert technicians, and commitment to excellence in Monmouth and Middlesex Counties, NJ.',
+  keywords: ['about Advanced Appliance Repair', 'appliance repair company NJ', 'factory trained technicians', 'Morganville appliance repair', 'appliance repair since 1992'],
   alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Us - Advanced Appliance Repair Service',
     description:
-      'For over 25 years, Advanced Appliance Repair Service has been the trusted choice for premier appliance care.',
+      'For over 30 years, Advanced Appliance Repair Service has been the trusted choice for premier appliance care.',
     images: [{ url: '/api/og?title=About+Us&subtitle=30%2B+Years+of+Excellence+in+Appliance+Repair&category=About', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us - Advanced Appliance Repair Service',
+    description: 'For over 30 years, Advanced Appliance Repair Service has been the trusted choice for premier appliance care.',
   },
 }
 

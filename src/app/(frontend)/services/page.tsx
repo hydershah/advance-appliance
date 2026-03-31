@@ -6,15 +6,21 @@ import { fetchAllServices, fetchAllBrands } from '@/sanity/fetchers'
 import { adaptService, adaptBrand } from '@/lib/sanityAdapters'
 
 export const metadata: Metadata = {
-  title: 'Our Services',
+  title: 'Our Appliance Repair Services',
   description:
     'Professional appliance repair services for all major brands. Factory-trained technicians serving parts of Monmouth and Middlesex Counties.',
+  keywords: ['appliance repair services NJ', 'refrigerator repair', 'washer repair', 'dryer repair', 'dishwasher repair', 'oven repair', 'cooktop repair', 'Sub-Zero repair', 'professional appliance technician'],
   alternates: { canonical: '/services' },
   openGraph: {
-    title: 'Our Services - Advanced Appliance Repair Service',
+    title: 'Our Appliance Repair Services - Advanced Appliance Repair Service',
     description:
       'Professional appliance repair services for all major brands. Factory-trained technicians serving parts of Monmouth and Middlesex Counties.',
     images: [{ url: '/api/og?title=Our+Services&subtitle=Professional+Appliance+Repair+for+All+Major+Brands&category=Services', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Appliance Repair Services - Advanced Appliance Repair Service',
+    description: 'Professional appliance repair services for all major brands in Monmouth and Middlesex Counties, NJ.',
   },
 }
 

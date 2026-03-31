@@ -128,7 +128,7 @@ export function generateBreadcrumbs(items: Array<{ name: string; url: string }>)
     '@type': 'ListItem' as const,
     position: index + 1,
     name: item.name,
-    item: item.url.startsWith('http') ? item.url : `${BASE_URL}${item.url}`,
+    '@id': item.url.startsWith('http') ? item.url : `${BASE_URL}${item.url}`,
   }))
 }
 

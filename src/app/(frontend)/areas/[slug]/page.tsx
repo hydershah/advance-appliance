@@ -148,17 +148,30 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
   const components = getDesignComponents(designTheme)
   const { Header, Footer, ServiceCard } = components
 
+  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+  const areaSlug = typeof area.slug === 'object' ? area.slug.current : area.slug
+
   // Generate Service schema for the area
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    '@id': `${BASE_URL}/areas/${areaSlug}#service`,
     name: `Appliance Repair in ${area.name}`,
     description: area.excerpt || undefined,
+    url: `${BASE_URL}/areas/${areaSlug}`,
     provider: {
       '@type': 'LocalBusiness',
+      '@id': `${BASE_URL}/#organization`,
       name: settings.siteName,
     },
-    areaServed: area.name,
+    areaServed: {
+      '@type': 'City',
+      name: area.name,
+      containedInPlace: {
+        '@type': 'State',
+        name: 'New Jersey',
+      },
+    },
   }
 
   const areaImage = area.image ? urlFor(area.image).url() : null

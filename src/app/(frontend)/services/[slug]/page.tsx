@@ -6,6 +6,8 @@ import { fetchServiceBySlug } from '@/sanity/fetchers'
 import { adaptService } from '@/lib/sanityAdapters'
 import Design1ServiceDetail from '@/designs/design1/pages/ServiceDetail'
 import { services as staticServices } from '@/designs/design1/data/content'
+import { generateServiceSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/JsonLd'
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>
@@ -55,7 +57,20 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   try {
     const cmsService = await fetchServiceBySlug(slug)
     if (cmsService) {
-      return <Design1ServiceDetail service={adaptService(cmsService)} />
+      const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+      const serviceSchema = generateServiceSchema({
+        name: cmsService.name,
+        description: cmsService.excerpt || cmsService.seo?.description || '',
+        serviceType: 'Appliance Repair',
+        url: `${BASE_URL}/services/${slug}`,
+      })
+      
+      return (
+        <>
+          <JsonLd data={serviceSchema} />
+          <Design1ServiceDetail service={adaptService(cmsService)} />
+        </>
+      )
     }
   } catch {
     // CMS unavailable
@@ -64,7 +79,20 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   // Fallback to static
   const staticService = findStaticServiceBySlug(slug)
   if (staticService) {
-    return <Design1ServiceDetail serviceSlug={slug} />
+    const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+    const serviceSchema = generateServiceSchema({
+      name: staticService.name,
+      description: staticService.shortDescription || '',
+      serviceType: 'Appliance Repair',
+      url: `${BASE_URL}/services/${slug}`,
+    })
+
+    return (
+      <>
+        <JsonLd data={serviceSchema} />
+        <Design1ServiceDetail serviceSlug={slug} />
+      </>
+    )
   }
 
   notFound()

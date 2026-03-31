@@ -207,7 +207,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
                     {s.icon === 'cooktop' && <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2" strokeWidth={1.5}/><circle cx="8" cy="12" r="2" strokeWidth={1.5}/><circle cx="16" cy="12" r="2" strokeWidth={1.5}/></svg>}
                     {s.icon === 'range' && <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" strokeWidth={1.5}/><rect x="7" y="11" width="10" height="8" rx="1" strokeWidth={1.5}/><circle cx="8" cy="6" r="1.5" strokeWidth={1.5}/><circle cx="16" cy="6" r="1.5" strokeWidth={1.5}/></svg>}
                   </div>
-                  <span className="text-xs text-gray-600 group-hover:text-[#D4AF37] transition-colors font-medium">{s.name.replace(' Repair', '')}</span>
+                  <span className="text-xs text-gray-600 group-hover:text-[#D4AF37] transition-colors font-medium">{s.name}</span>
                 </Link>
               ))}
             </div>

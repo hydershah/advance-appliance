@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
+import { Header, Footer, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
 import { businessInfo, certifications as staticCertifications, images } from '../data/content';
 import type { Certification } from '../types';
 
@@ -49,7 +49,17 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
-        <Hero title="Our Story" subtitle="About Us" description="For over 30 years, homeowners throughout Central New Jersey have trusted us to keep their kitchens and laundry rooms running smoothly." image={images.kitchen} showCTA={false} overlay="gradient" height="medium" align="center" />
+        <section className="relative py-16 overflow-hidden">
+          <div className="absolute inset-0">
+            <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
+          </div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="flex justify-between items-center">
+              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0 relative"><Image src="/images/founder-1.webp" alt="Advanced Appliance Repair Service founder" fill className="object-cover object-top" sizes="(max-width: 1024px) 256px, 320px" /></div>
+              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0 relative"><Image src="/team/technician-doorstep.webp" alt="Advanced Appliance technician providing doorstep service" fill className="object-cover object-top" sizes="(max-width: 1024px) 256px, 320px" /></div>
+            </div>
+          </div>
+        </section>
 
         <div className="bg-gray-50 py-4 border-b border-gray-100">
           <div className="container mx-auto px-6">
@@ -58,18 +68,6 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
             </nav>
           </div>
         </div>
-
-        <section className="relative py-16 overflow-hidden">
-          <div className="absolute inset-0">
-            <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
-          </div>
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="flex justify-between items-center">
-              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0"><img src="/images/founder-1.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
-              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0"><img src="/team/technician-doorstep.webp" alt="Advanced Appliance founder" className="w-full h-full object-cover object-top" loading="lazy" /></div>
-            </div>
-          </div>
-        </section>
 
         <section className="py-16 bg-white border-b border-gray-100">
           <div className="container mx-auto px-6">

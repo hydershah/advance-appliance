@@ -6,7 +6,15 @@ import { adaptBlogPost } from '@/lib/sanityAdapters'
 export const metadata: Metadata = {
   title: 'Useful Tips - Advanced Appliance Repair Service',
   description: 'Expert appliance maintenance tips and troubleshooting guides. Learn how to keep your appliances running smoothly and prevent costly repairs.',
+  keywords: ['appliance maintenance tips', 'appliance troubleshooting', 'refrigerator maintenance', 'washer dryer tips', 'appliance care guide'],
+  alternates: { canonical: '/useful-tips' },
   openGraph: {
+    title: 'Useful Tips - Advanced Appliance Repair Service',
+    description: 'Expert appliance maintenance tips and troubleshooting guides.',
+    images: [{ url: '/api/og?title=Useful+Tips&subtitle=Expert+Appliance+Maintenance+Guides&category=Tips', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
     title: 'Useful Tips - Advanced Appliance Repair Service',
     description: 'Expert appliance maintenance tips and troubleshooting guides.',
   },

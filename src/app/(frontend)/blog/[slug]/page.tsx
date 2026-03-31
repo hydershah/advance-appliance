@@ -6,6 +6,9 @@ import { adaptBlogPost } from '@/lib/sanityAdapters'
 // Import static design pages for fallback when CMS is unavailable
 import Design1BlogPost from '@/designs/design1/pages/BlogPost'
 import { blogPosts as staticBlogPosts } from '@/designs/design1/data/content'
+import { generateArticleSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/JsonLd'
+import { urlFor } from '@/sanity/image'
 
 /**
  * Blog Post Detail Page - Server Component
@@ -79,7 +82,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   try {
     const cmsPost = await fetchBlogPostBySlug(slug)
     if (cmsPost) {
-      return <Design1BlogPost post={adaptBlogPost(cmsPost)} />
+      const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+      const imageUrl = cmsPost.featuredImage ? urlFor(cmsPost.featuredImage)?.url() : `${BASE_URL}/og-image.jpg`
+      const articleSchema = generateArticleSchema({
+        headline: cmsPost.title,
+        description: cmsPost.excerpt || '',
+        url: `${BASE_URL}/blog/${slug}`,
+        imageUrl: imageUrl || `${BASE_URL}/og-image.jpg`,
+        datePublished: cmsPost.publishedDate || cmsPost._createdAt,
+        dateModified: cmsPost._updatedAt || cmsPost.publishedDate || cmsPost._createdAt,
+        author: cmsPost.author || 'Advanced Appliance Repair',
+      })
+
+      return (
+        <>
+          <JsonLd data={articleSchema} />
+          <Design1BlogPost post={adaptBlogPost(cmsPost)} />
+        </>
+      )
     }
   } catch {
     // CMS unavailable, fall through to static
@@ -88,7 +108,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   // Fallback to static blog post
   const staticPost = findStaticBlogPostBySlug(slug)
   if (staticPost) {
-    return <Design1BlogPost postSlug={slug} />
+    const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+    const articleSchema = generateArticleSchema({
+      headline: staticPost.title,
+      description: staticPost.excerpt || '',
+      url: `${BASE_URL}/blog/${slug}`,
+      imageUrl: staticPost.image || `${BASE_URL}/og-image.jpg`,
+      datePublished: staticPost.date,
+      dateModified: staticPost.date,
+      author: staticPost.author || 'Advanced Appliance Repair',
+    })
+
+    return (
+      <>
+        <JsonLd data={articleSchema} />
+        <Design1BlogPost postSlug={slug} />
+      </>
+    )
   }
 
   notFound()

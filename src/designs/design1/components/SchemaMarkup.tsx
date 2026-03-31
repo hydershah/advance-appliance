@@ -23,7 +23,7 @@ export const LocalBusinessSchema: React.FC<LocalBusinessSchemaProps> = () => {
     priceRange: '$$',
     areaServed: serviceAreas.map((area) => ({ '@type': 'City', name: area.name, containedInPlace: { '@type': 'State', name: 'New Jersey' } })),
     hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Appliance Repair Services', itemListElement: services.map((service) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: service.name, description: service.shortDescription } })) },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '127', bestRating: '5', worstRating: '1' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: 4.9, reviewCount: 127, bestRating: 5, worstRating: 1 },
     sameAs: [businessInfo.socialMedia.facebook, businessInfo.socialMedia.instagram, businessInfo.socialMedia.twitter, businessInfo.socialMedia.youtube],
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
@@ -37,7 +37,7 @@ export const ServiceSchema: React.FC<ServiceSchemaProps> = ({ serviceName, servi
 
 interface BreadcrumbSchemaProps { items: { name: string; url: string }[]; }
 export const BreadcrumbSchema: React.FC<BreadcrumbSchemaProps> = ({ items }) => {
-  const schema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, item: item.url })) };
+  const schema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, '@id': item.url })) };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
 };
 

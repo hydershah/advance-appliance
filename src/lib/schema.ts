@@ -59,7 +59,7 @@ export function generateLocalBusinessSchema() {
         latitude: BUSINESS_INFO.geo.latitude,
         longitude: BUSINESS_INFO.geo.longitude,
       },
-      geoRadius: '50000', // 50km radius
+      geoRadius: '32000', // ~32km / 20mi radius covering Monmouth & Middlesex Counties
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -92,6 +92,7 @@ export function generateServiceSchema(options: {
   description: string
   serviceType: string
   url: string
+  image?: string
 }) {
   return {
     '@context': 'https://schema.org',
@@ -99,12 +100,15 @@ export function generateServiceSchema(options: {
     '@id': `${options.url}#service`,
     name: options.name,
     description: options.description,
+    url: options.url,
     serviceType: options.serviceType,
+    ...(options.image && { image: { '@type': 'ImageObject', url: options.image } }),
     provider: {
       '@type': 'LocalBusiness',
       '@id': `${BASE_URL}/#organization`,
       name: BUSINESS_INFO.name,
     },
+    priceRange: BUSINESS_INFO.priceRange,
     areaServed: BUSINESS_INFO.areasServed.map(area => ({
       '@type': 'City',
       name: area,
