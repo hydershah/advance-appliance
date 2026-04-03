@@ -133,8 +133,8 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
                 { name: 'Cooktops', image: images.cooktop, link: '/services/cooktop-repair' },
               ].map((appliance, i) => (
                 <Link key={i} href={appliance.link} className="group text-center">
-                  <div className="aspect-[4/3] overflow-hidden mb-4 bg-white border border-gray-100 group-hover:border-[#D4AF37] transition-all duration-300 flex items-center justify-center">
-                    <img src={appliance.image} alt={appliance.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="aspect-square overflow-hidden mb-4 bg-[#FAFAF8] border border-gray-100 group-hover:border-[#D4AF37] transition-all duration-300 flex items-center justify-center p-6">
+                    <img src={appliance.image} alt={appliance.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <h4 className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">{appliance.name}</h4>
                 </Link>
