@@ -51,12 +51,12 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
       <main>
         <section className="relative pt-32 pb-16 overflow-hidden">
           <div className="absolute inset-0">
-            <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=10&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
+            <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=12&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="flex justify-between items-center">
-              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0 relative"><Image src="/images/founder-1.webp" alt="Advanced Appliance Repair Service founder" fill className="object-cover object-top" sizes="(max-width: 1024px) 256px, 320px" /></div>
               <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0 relative"><Image src="/team/technician-doorstep.webp" alt="Advanced Appliance technician providing doorstep service" fill className="object-cover object-top" sizes="(max-width: 1024px) 256px, 320px" /></div>
+              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0 relative"><Image src="/images/founder-2.jpg" alt="Advanced Appliance Repair Service founder" fill className="object-cover object-top" sizes="(max-width: 1024px) 256px, 320px" /></div>
             </div>
           </div>
         </section>
@@ -103,9 +103,8 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
         </section>
 
         <div className="container mx-auto px-6 py-8">
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-oven-repair.webp" alt="Oven repair in progress" className="w-full h-full object-cover object-center" /></div>
-            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-doorstep.webp" alt="Technician arriving for service" className="w-full h-full object-cover object-top" /></div>
             <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-dishwasher-action.webp" alt="Dishwasher repair in progress" className="w-full h-full object-cover object-center" /></div>
           </div>
         </div>
