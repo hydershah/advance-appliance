@@ -64,7 +64,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         serviceType: 'Appliance Repair',
         url: `${BASE_URL}/services/${slug}`,
       })
-      
+
       return (
         <>
           <JsonLd data={serviceSchema} />

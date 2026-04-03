@@ -38,6 +38,15 @@ export const brandType = defineType({
       type: 'image',
       options: { hotspot: true },
       description: 'Upload brand logo image',
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the logo for accessibility and SEO',
+          validation: (Rule) => Rule.max(125),
+        },
+      ],
     }),
     defineField({
       name: 'logoUrl',

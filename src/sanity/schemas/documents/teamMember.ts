@@ -37,6 +37,15 @@ export const teamMemberType = defineType({
       type: 'image',
       options: { hotspot: true },
       validation: (Rule) => Rule.required(),
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the photo for accessibility and SEO',
+          validation: (Rule) => Rule.max(125),
+        },
+      ],
     }),
     defineField({
       name: 'email',

@@ -51,6 +51,15 @@ export const serviceAreaType = defineType({
       title: 'Area Image',
       type: 'image',
       options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the image for accessibility and SEO',
+          validation: (Rule) => Rule.max(125),
+        },
+      ],
     }),
     defineField({
       name: 'services',
