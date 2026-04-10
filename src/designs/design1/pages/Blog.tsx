@@ -57,9 +57,32 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, featured = false }) => {
 const Blog: React.FC<BlogProps> = ({ blogPosts: blogPostsProp }) => {
   const blogPosts = blogPostsProp || staticBlogPosts;
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }];
   const categories = ['All', ...new Set(blogPosts.map((post) => post.category))];
   const filteredPosts = selectedCategory === 'All' ? blogPosts : blogPosts.filter((post) => post.category === selectedCategory);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newsletterEmail)) {
+      setNewsletterStatus('error');
+      return;
+    }
+    setNewsletterStatus('submitting');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'newsletter', email: newsletterEmail }),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setNewsletterStatus('success');
+      setNewsletterEmail('');
+    } catch {
+      setNewsletterStatus('error');
+    }
+  };
 
   return (
     <>
@@ -109,10 +132,21 @@ const Blog: React.FC<BlogProps> = ({ blogPosts: blogPostsProp }) => {
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mx-auto text-center">
               <SectionHeading subtitle="Stay Informed" title="Subscribe to Our Newsletter" description="Get helpful tips and exclusive offers delivered to your inbox." align="center" />
-              <form className="mt-8 flex flex-col sm:flex-row gap-4">
-                <input type="email" placeholder="Enter your email address" className="flex-1 px-4 py-3 border border-gray-200 focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none transition-colors" />
-                <CTAButton type="submit" variant="primary" size="md">Subscribe</CTAButton>
+              <form onSubmit={handleNewsletterSubmit} className="mt-8 flex flex-col sm:flex-row gap-4">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => { setNewsletterEmail(e.target.value); if (newsletterStatus === 'error') setNewsletterStatus('idle'); }}
+                  placeholder="Enter your email address"
+                  required
+                  className="flex-1 px-4 py-3 border border-gray-200 focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none transition-colors"
+                />
+                <CTAButton type="submit" variant="primary" size="md" disabled={newsletterStatus === 'submitting'}>
+                  {newsletterStatus === 'submitting' ? 'Subscribing...' : 'Subscribe'}
+                </CTAButton>
               </form>
+              {newsletterStatus === 'success' && <p className="mt-4 text-sm text-green-600">Thanks for subscribing! We will be in touch.</p>}
+              {newsletterStatus === 'error' && <p className="mt-4 text-sm text-red-500">Please enter a valid email and try again.</p>}
             </div>
           </div>
         </section>

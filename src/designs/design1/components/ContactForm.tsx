@@ -42,13 +42,26 @@ const ContactForm: React.FC<ContactFormProps> = ({ variant = 'default' }) => {
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
+  const [submitError, setSubmitError] = useState('');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    setSubmitError('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error('Failed to send');
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError('Something went wrong. Please call us directly or try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClasses = variant === 'dark' ? 'w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none transition-colors' : 'w-full px-4 py-3 bg-white border border-gray-200 text-black placeholder-gray-400 focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] outline-none transition-colors';
@@ -75,6 +88,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ variant = 'default' }) => {
         </div>
         <div><select name="applianceType" value={formData.applianceType} onChange={handleChange} className={inputClasses}><option value="">Select Appliance Type</option>{applianceTypes.map((type) => <option key={type} value={type}>{type}</option>)}</select>{errors.applianceType && <p className="text-red-500 text-xs mt-1">{errors.applianceType}</p>}</div>
         <div><input type="text" name="brandName" value={formData.brandName} onChange={handleChange} placeholder="Brand Name (e.g. Samsung, LG)" className={inputClasses} /></div>
+        {submitError && <p className="text-red-500 text-sm text-center">{submitError}</p>}
         <CTAButton type="submit" variant="primary" size="lg" fullWidth disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Request Service'}</CTAButton>
       </form>
     );
@@ -94,6 +108,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ variant = 'default' }) => {
         <div><label htmlFor="brandName" className={labelClasses}>Brand Name</label><input type="text" id="brandName" name="brandName" value={formData.brandName} onChange={handleChange} placeholder="e.g. Samsung, LG, Whirlpool" className={inputClasses} /></div>
       </div>
       <div><label htmlFor="message" className={labelClasses}>Message *</label><textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Please describe the issue with your appliance..." rows={5} className={inputClasses} />{errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}</div>
+      {submitError && <p className="text-red-500 text-sm text-center">{submitError}</p>}
       <CTAButton type="submit" variant="primary" size="lg" icon="calendar" fullWidth disabled={isSubmitting}>{isSubmitting ? 'Sending Request...' : 'Schedule Service'}</CTAButton>
       <p className={`text-center text-xs ${variant === 'dark' ? 'text-white/50' : 'text-gray-500'}`}>By submitting this form, you agree to our privacy policy and terms of service.</p>
     </form>
