@@ -57,7 +57,7 @@ const Header: React.FC = () => {
           <nav className="flex justify-between items-center">
             <Link href="/" className="flex items-center flex-shrink-0">
               <Image
-                src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
+                src="/logo.png"
                 alt="Advanced Appliance Repair"
                 width={220}
                 height={48}

@@ -31,8 +31,8 @@ export const businessInfo = {
 
 // Images - local high-quality images
 export const images = {
-  logo: 'https://appliancenj.com/wp-content/uploads/2016/05/logo.png',
-  favicon: 'https://appliancenj.com/wp-content/uploads/2016/05/favicon.png',
+  logo: '/logo.png',
+  favicon: '/favicon.ico',
   // Hero/Cover images for different pages
   hero: '/njhero-opt.webp',
   kitchen: '/why-choose-us.png',
@@ -47,9 +47,9 @@ export const images = {
   blog: '/Kitchen_Appliances_Photo.webp',
   living: '/Kitchen_Appliances_Photo.webp',
   // Process icons
-  iconBook: 'https://appliancenj.com/wp-content/uploads/2016/04/note-2.png',
-  iconRepair: 'https://appliancenj.com/wp-content/uploads/2016/04/repair-2.png',
-  iconRelax: 'https://appliancenj.com/wp-content/uploads/2016/04/relax-2.png',
+  iconBook: '/icon-booking.png',
+  iconRepair: '/icon-services.png',
+  iconRelax: '/icon-contact.png',
   // Appliance images (cohesive gold-themed SVG icons from Material Design Icons - Apache 2.0)
   oven: '/images/oven-icon.svg',
   cooktop: '/images/cooktop-icon.svg',
@@ -702,10 +702,10 @@ Ranges combine multiple heating systems, gas connections, electronic controls, a
 // Brands - from live site (with repair page slugs)
 // Featured Brands (with logos)
 export const brands: Brand[] = [
-  { name: 'Viking', slug: 'viking-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Viking-logo.jpg', featured: true },
-  { name: 'Thermador', slug: 'thermador-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Thermador.png', featured: true },
-  { name: 'Miele', slug: 'miele-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Miele-logo.png', featured: true },
-  { name: 'Wolf', slug: 'wolf-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Wolf-logo.jpg', featured: true },
+  { name: 'Viking', slug: 'viking-appliance-repair-service-nj', logo: '/brands/viking.jpg', featured: true },
+  { name: 'Thermador', slug: 'thermador-appliance-repair-service-nj', logo: '/brands/thermador.png', featured: true },
+  { name: 'Miele', slug: 'miele-appliance-repair-service-nj', logo: '/brands/miele.png', featured: true },
+  { name: 'Wolf', slug: 'wolf-appliance-repair-service-nj', logo: '/brands/wolf.jpg', featured: true },
   // Major Brands (Featured)
   { name: 'LG', slug: 'lg-appliance-repair-service-nj', logo: '/brands/lg.png', featured: true },
   { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj', logo: '/brands/samsung.png', featured: true },
@@ -717,7 +717,7 @@ export const brands: Brand[] = [
   { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj', logo: '/brands/frigidaire.png', featured: true },
   { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj', logo: '/brands/kenmore.png', featured: true },
   // Other Major Brands
-  { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: 'https://appliancenj.com/wp-content/uploads/2021/06/Sub-zero-logo.jpg' },
+  { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: '/brands/sub-zero.jpg' },
   { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj', logo: '/brands/electrolux.jpg' },
   { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj', logo: '/brands/maytag.png' },
   { name: 'GE Profile', slug: 'ge-profile-appliance-repair-service-nj' },

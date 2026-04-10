@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="mb-6">
               <Image
-                src="https://appliancenj.com/wp-content/uploads/2016/05/logo.png"
+                src="/logo.png"
                 alt="Advanced Appliance Repair"
                 width={220}
                 height={56}
