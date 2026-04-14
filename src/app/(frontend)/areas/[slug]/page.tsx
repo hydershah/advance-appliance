@@ -2,8 +2,10 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { fetchServiceAreaBySlug, fetchAllServiceAreas } from '@/sanity/fetchers'
 import { urlFor } from '@/sanity/image'
+import { JsonLd } from '@/components/JsonLd'
 import Design1AreaPage from '@/designs/design1/pages/AreaPage'
 import { serviceAreas } from '@/designs/design1/data/content'
+import { areaEnrichment, buildAreaFaqs } from '@/designs/design1/data/areaContent'
 
 // Helper to find static area by slug
 function findStaticAreaBySlug(slug: string) {
@@ -91,14 +93,24 @@ export async function generateMetadata({
   // Fallback to static data
   const staticArea = findStaticAreaBySlug(slug)
   if (staticArea) {
+    const enrichment = areaEnrichment[staticArea.slug]
+    const neighborhoodPhrase = enrichment?.neighborhoods.slice(0, 3).join(', ')
+    const metaTitle = `Appliance Repair in ${staticArea.name}, NJ | Same-Day Service | Advanced Appliance`
+    const metaDescription = neighborhoodPhrase
+      ? `Factory-trained appliance repair in ${staticArea.name}, NJ (${staticArea.zipCodes.join(', ')}) — serving ${neighborhoodPhrase}. Sub-Zero, Wolf, Thermador, LG, Samsung & all major brands. 30+ years in ${staticArea.county} County. Call (732) 416-7430.`
+      : `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ (${staticArea.zipCodes.join(', ')}). All major brands — same-day service available. Call (732) 416-7430.`
     return {
-      title: `Appliance Repair in ${staticArea.name}, NJ - Advanced Appliance`,
-      description: `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ. All major brands serviced. Call (732) 416-7430.`,
+      title: metaTitle,
+      description: metaDescription,
       alternates: { canonical: `/areas/${slug}` },
       openGraph: {
         title: `Appliance Repair in ${staticArea.name}, NJ`,
-        description: `Professional appliance repair services in ${staticArea.name}, New Jersey.`,
+        description: metaDescription,
         images: [{ url: `/api/og?title=Appliance+Repair+in+${encodeURIComponent(staticArea.name)},+NJ&category=Service+Area`, width: 1200, height: 630 }],
+      },
+      twitter: {
+        title: metaTitle,
+        description: metaDescription,
       },
     }
   }
@@ -116,7 +128,59 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
     notFound()
   }
 
-  return <Design1AreaPage area={staticArea} />
+  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.appliancenj.com'
+  const enrichment = areaEnrichment[staticArea.slug]
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${BASE_URL}/areas/${staticArea.slug}#service`,
+    name: `Appliance Repair in ${staticArea.name}, NJ`,
+    serviceType: 'Appliance Repair',
+    description: enrichment?.intro || staticArea.description,
+    url: `${BASE_URL}/areas/${staticArea.slug}`,
+    provider: {
+      '@type': 'LocalBusiness',
+      '@id': `${BASE_URL}/#organization`,
+      name: 'Advanced Appliance',
+      telephone: '(732) 416-7430',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: staticArea.name,
+      containedInPlace: {
+        '@type': 'AdministrativeArea',
+        name: `${staticArea.county} County, ${staticArea.state}`,
+      },
+    },
+    offers: {
+      '@type': 'AggregateOffer',
+      availability: 'https://schema.org/InStock',
+      priceCurrency: 'USD',
+    },
+  }
+
+  const faqs = enrichment ? buildAreaFaqs(staticArea, enrichment) : []
+  const faqSchema = faqs.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        '@id': `${BASE_URL}/areas/${staticArea.slug}#faq`,
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      }
+    : null
+
+  return (
+    <>
+      <JsonLd data={serviceSchema} />
+      {faqSchema && <JsonLd data={faqSchema} />}
+      <Design1AreaPage area={staticArea} />
+    </>
+  )
 }
 
 // Enable ISR

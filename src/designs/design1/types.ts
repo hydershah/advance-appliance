@@ -47,6 +47,15 @@ export interface TeamMember {
   image: string;
 }
 
+export type AreaType =
+  | 'shore'
+  | 'historic'
+  | 'luxury'
+  | 'suburban'
+  | 'downtown'
+  | 'industrial'
+  | 'rural';
+
 export interface ServiceArea {
   id: string;
   name: string;
@@ -55,6 +64,16 @@ export interface ServiceArea {
   state: string;
   description: string;
   zipCodes: string[];
+}
+
+export interface AreaEnrichment {
+  slug: string;
+  areaType: AreaType;
+  intro: string;
+  localNote: string;
+  neighborhoods: string[];
+  landmarks: string[];
+  nearbyAreaSlugs: string[];
 }
 
 export interface BlogPost {
