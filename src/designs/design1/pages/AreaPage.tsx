@@ -176,7 +176,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
               <div className="max-w-5xl mx-auto">
                 <SectionHeading
                   subtitle="Service Coverage"
-                  title={`Neighborhoods &amp; Zip Codes We Cover in ${area.name}`}
+                  title={`Neighborhoods & Zip Codes We Cover in ${area.name}`}
                   align="center"
                 />
                 <div className="grid md:grid-cols-2 gap-12 mt-12">

@@ -62,7 +62,7 @@ export const areaEnrichment: Record<string, AreaEnrichment> = {
     localNote: 'Weekends at Raceway Park and the flea market drive a surge of same-week callbacks from Englishtown rental and short-term stay owners.',
     neighborhoods: ['Tennent Road', 'Gravel Hill', 'Millhurst', 'Tennent', 'Wickatunk'],
     landmarks: ['Old Bridge Township Raceway Park', 'Englishtown Auction', 'Battleground Country Club'],
-    nearbyAreaSlugs: ['appliance-repair-in-manalapan-nj', 'appliance-repair-in-marlboro-nj', 'appliance-repair-in-freehold-nj'],
+    nearbyAreaSlugs: ['appliance-repair-in-manalapan-nj', 'appliance-repair-marlboro-nj', 'appliance-repair-in-freehold-nj'],
   },
   'appliance-repair-in-fair-haven-nj': {
     slug: 'appliance-repair-in-fair-haven-nj',
