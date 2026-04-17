@@ -702,6 +702,7 @@ Ranges combine multiple heating systems, gas connections, electronic controls, a
 // Brands - from live site (with repair page slugs)
 // Featured Brands (with logos)
 export const brands: Brand[] = [
+  { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: '/brands/sub-zero.jpg', featured: true },
   { name: 'Viking', slug: 'viking-appliance-repair-service-nj', logo: '/brands/viking.jpg', featured: true },
   { name: 'Thermador', slug: 'thermador-appliance-repair-service-nj', logo: '/brands/thermador.png', featured: true },
   { name: 'Miele', slug: 'miele-appliance-repair-service-nj', logo: '/brands/miele.png', featured: true },
@@ -717,7 +718,6 @@ export const brands: Brand[] = [
   { name: 'Frigidaire', slug: 'frigidaire-appliance-repair-service-nj', logo: '/brands/frigidaire.png', featured: true },
   { name: 'Kenmore', slug: 'kenmore-appliance-repair-service-nj', logo: '/brands/kenmore.png', featured: true },
   // Other Major Brands
-  { name: 'Sub-Zero', slug: 'sub-zero-appliance-repair-service-nj', logo: '/brands/sub-zero.jpg' },
   { name: 'Electrolux', slug: 'electrolux-appliance-repair-service-nj', logo: '/brands/electrolux.jpg' },
   { name: 'Maytag', slug: 'maytag-appliance-repair-service-nj', logo: '/brands/maytag.png' },
   { name: 'GE Profile', slug: 'ge-profile-appliance-repair-service-nj' },
