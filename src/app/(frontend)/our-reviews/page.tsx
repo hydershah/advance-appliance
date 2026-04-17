@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import Design1Reviews from '@/designs/design1/pages/Reviews'
 import { fetchTestimonials } from '@/sanity/fetchers'
 import { adaptTestimonial } from '@/lib/sanityAdapters'
+import { JsonLd } from '@/components/JsonLd'
+import { testimonials as staticTestimonials } from '@/designs/design1/data/content'
+import type { Testimonial } from '@/designs/design1/types'
 
 export const metadata: Metadata = {
   title: 'Our Reviews - Advanced Appliance Repair Service',
@@ -21,10 +24,47 @@ export const metadata: Metadata = {
 }
 
 export default async function ReviewsPage() {
+  const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.appliancenj.com'
+
+  let testimonials: Testimonial[] = staticTestimonials
   try {
     const cmsTestimonials = await fetchTestimonials()
-    return <Design1Reviews testimonials={cmsTestimonials?.length ? cmsTestimonials.map(adaptTestimonial) : undefined} />
+    if (cmsTestimonials?.length) {
+      testimonials = cmsTestimonials.map(adaptTestimonial)
+    }
   } catch {
-    return <Design1Reviews />
+    // fall back to static
   }
+
+  // Emit a Graph of per-review entities. LocalBusiness + AggregateRating is
+  // already injected by LocalBusinessSchema inside Reviews.tsx; we avoid a
+  // duplicate entity with the same @id and just add the Review list here.
+  const reviewsSchema = {
+    '@context': 'https://schema.org',
+    '@graph': testimonials.slice(0, 10).map((t, i) => ({
+      '@type': 'Review',
+      '@id': `${BASE_URL}/our-reviews#review-${t.id || i}`,
+      author: { '@type': 'Person', name: t.name },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: t.rating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      reviewBody: t.text,
+      datePublished: t.date,
+      itemReviewed: {
+        '@type': 'LocalBusiness',
+        '@id': `${BASE_URL}/#organization`,
+        name: 'Advanced Appliance',
+      },
+    })),
+  }
+
+  return (
+    <>
+      <JsonLd data={reviewsSchema} />
+      <Design1Reviews testimonials={testimonials} />
+    </>
+  )
 }

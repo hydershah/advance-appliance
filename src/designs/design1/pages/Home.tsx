@@ -106,8 +106,41 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
         {/* Testimonials */}
         <section className="py-24 lg:py-32 bg-gray-50">
           <div className="container mx-auto px-6">
+            <div className="flex flex-col items-center mb-10">
+              <div className="flex items-center gap-1 mb-3" aria-label="4.9 out of 5 stars">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-6 h-6 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="font-serif text-2xl md:text-3xl text-black">
+                <span className="font-medium">4.9</span>
+                <span className="text-gray-400 text-xl"> / 5.0</span>
+              </p>
+              <p className="text-gray-500 text-sm mt-1">Averaged across 127+ verified customer reviews</p>
+            </div>
             <SectionHeading subtitle="Client Testimonials" title="Trusted by Homeowners in Our Community" description="Discover why homeowners choose Advanced Appliance for their premier appliance care." align="center" />
             <div className="mt-16 max-w-4xl mx-auto"><TestimonialCarousel testimonials={testimonials} autoPlay={true} interval={7000} /></div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
+              <a
+                href="https://www.google.com/search?q=advanced+appliance+repair+service+morganville+nj"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-sm uppercase tracking-[0.2em] text-gray-700 hover:text-[#D4AF37] transition-colors"
+              >
+                Read 127+ Reviews on Google
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+              <span className="hidden sm:inline text-gray-300">|</span>
+              <Link
+                href="/our-reviews"
+                className="inline-flex items-center text-sm uppercase tracking-[0.2em] text-gray-700 hover:text-[#D4AF37] transition-colors"
+              >
+                View All Customer Reviews
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </Link>
+            </div>
           </div>
         </section>
 

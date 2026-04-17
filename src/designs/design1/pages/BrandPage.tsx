@@ -3,8 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
+import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema, FAQAccordion } from '../components';
 import { businessInfo, services, serviceAreas, testimonials, images, brands } from '../data/content';
+import { brandEnrichment, buildBrandFaqs } from '../data/brandContent';
 import { Brand } from '../types';
 
 interface BrandPageProps {
@@ -17,6 +18,9 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
     { name: 'Our Brands', url: '/our-brands' },
     { name: `${brand.name} Repair`, url: `/${brand.slug}` },
   ];
+
+  const enrichment = brand.slug ? brandEnrichment[brand.slug] : undefined;
+  const brandFaqs = enrichment ? buildBrandFaqs(brand, enrichment) : [];
 
   // Get relevant testimonials (first 3)
   const brandTestimonials = testimonials.slice(0, 3);
@@ -70,22 +74,34 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                   </div>
                 )}
                 <SectionHeading
-                  subtitle="Skilled Technicians"
+                  subtitle={enrichment?.tagline || 'Skilled Technicians'}
                   title={`${brand.name} Repair Specialists`}
                   align="left"
                 />
                 <div className="space-y-6 mt-8">
-                  <p className="text-gray-600 leading-relaxed">
-                    Advanced Appliance Repair Service has been providing trusted {brand.name} appliance
-                    repair in parts of Monmouth and Middlesex Counties for over 30 years. Our factory-trained
-                    technicians have the knowledge and genuine parts to service all {brand.name}
-                    appliances, ensuring your investment is properly maintained.
-                  </p>
-                  <p className="text-gray-600 leading-relaxed">
-                    Whether you need routine maintenance or emergency repair, our team is ready
-                    to help. We offer next-day appointments, with most repairs
-                    completed on the first visit.
-                  </p>
+                  {enrichment ? (
+                    <>
+                      <p className="text-gray-600 leading-relaxed">{enrichment.intro}</p>
+                      <p className="text-gray-600 leading-relaxed">
+                        <span className="font-medium text-black">Certification:</span>{' '}
+                        {enrichment.certificationNote}
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-gray-600 leading-relaxed">
+                        Advanced Appliance Repair Service has been providing trusted {brand.name} appliance
+                        repair in parts of Monmouth and Middlesex Counties for over 30 years. Our factory-trained
+                        technicians have the knowledge and genuine parts to service all {brand.name}
+                        appliances, ensuring your investment is properly maintained.
+                      </p>
+                      <p className="text-gray-600 leading-relaxed">
+                        Whether you need routine maintenance or emergency repair, our team is ready
+                        to help. We offer next-day appointments, with most repairs
+                        completed on the first visit.
+                      </p>
+                    </>
+                  )}
                   <ul className="space-y-4">
                     {[
                       `Factory-trained ${brand.name} technicians`,
@@ -151,6 +167,51 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
             </div>
           </div>
         </section>
+
+        {enrichment && (
+          <section className="py-24 lg:py-32 bg-white">
+            <div className="container mx-auto px-6">
+              <SectionHeading
+                subtitle={`${brand.name} Product Lines`}
+                title={`${brand.name} Appliances We Service`}
+                description={`Every ${brand.name} product line we cover in Monmouth and Middlesex Counties, NJ.`}
+                align="center"
+              />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16 max-w-4xl mx-auto">
+                {enrichment.productLines.map((line, i) => (
+                  <div key={i} className="flex items-start border-l-2 border-[#D4AF37] pl-4 py-2">
+                    <span className="text-gray-700 text-sm leading-relaxed">{line}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {enrichment && (
+          <section className="py-24 lg:py-32 bg-gray-50">
+            <div className="container mx-auto px-6">
+              <SectionHeading
+                subtitle="Common Failures"
+                title={`${brand.name} Issues We Diagnose & Repair`}
+                description="The failure modes we see most often — and exactly how we approach each one."
+                align="center"
+              />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-5xl mx-auto">
+                {enrichment.commonFailures.map((f, i) => (
+                  <div key={i} className="bg-white p-8 border border-gray-100">
+                    <h3 className="font-serif text-xl text-black mb-3">{f.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{f.description}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="max-w-3xl mx-auto mt-16 bg-black text-white p-10">
+                <p className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] mb-4">Signature Work</p>
+                <p className="text-white/80 leading-relaxed">{enrichment.signatureWork}</p>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Why Choose Us */}
         <section className="py-24 lg:py-32 bg-white">
@@ -237,6 +298,21 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
             </div>
           </div>
         </section>
+
+        {enrichment && brandFaqs.length > 0 && (
+          <section className="py-24 lg:py-32 bg-white">
+            <div className="container mx-auto px-6">
+              <SectionHeading
+                subtitle="Questions & Answers"
+                title={`${brand.name} Repair FAQ`}
+                align="center"
+              />
+              <div className="max-w-3xl mx-auto mt-16">
+                <FAQAccordion faqs={brandFaqs} />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Other Brands */}
         <section className="py-16 bg-gray-50 border-t border-gray-100">

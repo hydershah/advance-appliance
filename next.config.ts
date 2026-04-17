@@ -114,12 +114,32 @@ const nextConfig: NextConfig = {
 
   // Redirects
   async redirects() {
+    const retiredAreas: Array<{ from: string; to: string }> = [
+      { from: 'appliance-repair-belford-nj', to: 'appliance-repair-in-middletown-nj' },
+      { from: 'appliance-repair-in-leonardo-nj', to: 'appliance-repair-in-middletown-nj' },
+      { from: 'appliance-repair-in-port-monmouth-nj', to: 'appliance-repair-in-middletown-nj' },
+      { from: 'appliance-repair-in-keansburg-nj', to: 'appliance-repair-in-middletown-nj' },
+      { from: 'appliance-repair-in-keyport-nj', to: 'appliance-repair-in-matawan-nj' },
+      { from: 'appliance-repair-in-farmingdale-nj', to: 'appliance-repair-in-freehold-nj' },
+      { from: 'appliance-repair-in-englishtown-nj', to: 'appliance-repair-in-manalapan-nj' },
+      { from: 'appliance-repair-in-deal-nj', to: 'appliance-repair-in-ocean-nj' },
+      { from: 'appliance-repair-in-west-long-branch-nj', to: 'appliance-repair-in-ocean-nj' },
+      { from: 'appliance-repair-in-oceanport-nj', to: 'appliance-repair-in-red-bank-nj' },
+      { from: 'appliance-repair-in-parlin-nj', to: 'appliance-repair-in-sayreville-nj' },
+    ]
+
+    const areaRedirects = retiredAreas.flatMap(({ from, to }) => [
+      { source: `/areas/${from}`, destination: `/areas/${to}`, permanent: true },
+      { source: `/${from}`, destination: `/areas/${to}`, permanent: true },
+    ])
+
     return [
       {
         source: '/admin',
         destination: '/studio',
         permanent: false,
       },
+      ...areaRedirects,
     ]
   },
 

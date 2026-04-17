@@ -98,6 +98,18 @@ export interface Brand {
   featured?: boolean;
 }
 
+export interface BrandEnrichment {
+  slug: string;
+  tier: 'luxury' | 'premium' | 'mainstream';
+  tagline: string;
+  intro: string;
+  certificationNote: string;
+  productLines: string[];
+  commonFailures: Array<{ title: string; description: string }>;
+  signatureWork: string;
+  faqs: Array<{ question: string; answer: string }>;
+}
+
 export interface Certification {
   name: string;
   issuer: string;

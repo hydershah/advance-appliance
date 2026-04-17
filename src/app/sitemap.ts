@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { client } from '@/sanity/client'
 import { groq } from 'next-sanity'
+import { serviceAreas as staticAreas, brands as staticBrands } from '@/designs/design1/data/content'
 
 /**
  * Dynamic sitemap generation for Advanced Appliance Repair
@@ -89,13 +90,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.warn('Could not fetch blog posts for sitemap:', error)
   }
 
-  // Fetch service areas from Sanity
+  // Service areas: merge Sanity + static list (static is authoritative fallback)
+  const areaSlugs = new Set<string>()
   try {
     const areas = await client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
       groq`*[_type == "serviceArea" && status == "published"]{ slug, _updatedAt }`
     )
 
     ;(areas || []).forEach((area) => {
+      areaSlugs.add(area.slug.current)
       sitemap.push({
         url: `${baseUrl}/areas/${area.slug.current}`,
         lastModified: new Date(area._updatedAt),
@@ -107,13 +110,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.warn('Could not fetch service areas for sitemap:', error)
   }
 
-  // Fetch brands from Sanity
+  staticAreas.forEach((area) => {
+    if (areaSlugs.has(area.slug)) return
+    sitemap.push({
+      url: `${baseUrl}/areas/${area.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })
+  })
+
+  // Brands: merge Sanity + static list
+  const brandSlugs = new Set<string>()
   try {
     const brands = await client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
       groq`*[_type == "brand" && status == "published"]{ slug, _updatedAt }`
     )
 
     ;(brands || []).forEach((brand) => {
+      brandSlugs.add(brand.slug.current)
       sitemap.push({
         url: `${baseUrl}/brands/${brand.slug.current}`,
         lastModified: new Date(brand._updatedAt),
@@ -124,6 +139,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   } catch (error) {
     console.warn('Could not fetch brands for sitemap:', error)
   }
+
+  staticBrands.forEach((brand) => {
+    if (!brand.slug || brandSlugs.has(brand.slug)) return
+    sitemap.push({
+      url: `${baseUrl}/${brand.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: brand.featured ? 0.7 : 0.5,
+    })
+  })
 
   // Fetch pages from Sanity (excluding home which is already added)
   try {

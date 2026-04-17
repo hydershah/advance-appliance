@@ -11,6 +11,7 @@ import Design1BrandPage from '@/designs/design1/pages/BrandPage'
 import Design1AreaPage from '@/designs/design1/pages/AreaPage'
 import Design1BlogPost from '@/designs/design1/pages/BlogPost'
 import { brands, serviceAreas, blogPosts } from '@/designs/design1/data/content'
+import { brandEnrichment, buildBrandFaqs } from '@/designs/design1/data/brandContent'
 
 /**
  * Dynamic Page Route - Server Component
@@ -63,12 +64,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // Check for static brand page
   const brand = findBrandBySlug(pageSlug)
   if (brand) {
+    const enrichment = brand.slug ? brandEnrichment[brand.slug] : undefined
+    const title = enrichment
+      ? `${brand.name} Appliance Repair NJ | ${enrichment.tagline} | Advanced Appliance`
+      : `${brand.name} Appliance Repair Service in NJ - Advanced Appliance`
+    const description = enrichment
+      ? `${enrichment.tagline}. ${enrichment.certificationNote} Serving Monmouth & Middlesex Counties since 1993. Call (732) 416-7430.`
+      : `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 1-year warranty. Call (732) 416-7430.`
     return {
-      title: `${brand.name} Appliance Repair Service in NJ - Advanced Appliance`,
-      description: `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 1-year warranty. Call (732) 416-7430.`,
+      title,
+      description,
+      alternates: { canonical: `/${brand.slug}` },
       openGraph: {
         title: `${brand.name} Appliance Repair Service in NJ`,
-        description: `Expert ${brand.name} appliance repair in parts of Monmouth and Middlesex Counties.`,
+        description,
+      },
+      twitter: {
+        title,
+        description,
       },
     }
   }
@@ -149,7 +162,58 @@ export default async function DynamicPage({ params }: PageProps) {
   // Check for static brand page first
   const brand = findBrandBySlug(pageSlug)
   if (brand) {
-    return <Design1BrandPage brand={brand} />
+    const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.appliancenj.com'
+    const enrichment = brand.slug ? brandEnrichment[brand.slug] : undefined
+
+    const serviceSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': `${BASE_URL}/${brand.slug}#service`,
+      name: `${brand.name} Appliance Repair in NJ`,
+      serviceType: `${brand.name} Appliance Repair`,
+      description:
+        enrichment?.intro ||
+        `Factory-trained ${brand.name} appliance repair across Monmouth and Middlesex Counties, NJ.`,
+      url: `${BASE_URL}/${brand.slug}`,
+      brand: { '@type': 'Brand', name: brand.name },
+      provider: {
+        '@type': 'LocalBusiness',
+        '@id': `${BASE_URL}/#organization`,
+        name: 'Advanced Appliance',
+        telephone: '(732) 416-7430',
+      },
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'Monmouth County, NJ' },
+        { '@type': 'AdministrativeArea', name: 'Middlesex County, NJ' },
+      ],
+      offers: {
+        '@type': 'AggregateOffer',
+        availability: 'https://schema.org/InStock',
+        priceCurrency: 'USD',
+      },
+    }
+
+    const brandFaqs = enrichment ? buildBrandFaqs(brand, enrichment) : []
+    const faqSchema = brandFaqs.length
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          '@id': `${BASE_URL}/${brand.slug}#faq`,
+          mainEntity: brandFaqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+          })),
+        }
+      : null
+
+    return (
+      <>
+        <JsonLd data={serviceSchema} />
+        {faqSchema && <JsonLd data={faqSchema} />}
+        <Design1BrandPage brand={brand} />
+      </>
+    )
   }
 
   // Check for static location/area page
