@@ -4,7 +4,7 @@ import { fetchServiceAreaBySlug, fetchAllServiceAreas } from '@/sanity/fetchers'
 import { urlFor } from '@/sanity/image'
 import { JsonLd } from '@/components/JsonLd'
 import Design1AreaPage from '@/designs/design1/pages/AreaPage'
-import { serviceAreas } from '@/designs/design1/data/content'
+import { serviceAreas, testimonials } from '@/designs/design1/data/content'
 import { areaEnrichment, buildAreaFaqs } from '@/designs/design1/data/areaContent'
 
 // Helper to find static area by slug
@@ -174,9 +174,55 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
       }
     : null
 
+  // Per-area LocalBusiness + AggregateRating + city-tagged reviews
+  const areaReviews = testimonials.filter((t) =>
+    t.location.toLowerCase().includes(staticArea.name.toLowerCase()),
+  )
+
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${BASE_URL}/areas/${staticArea.slug}#localbusiness`,
+    name: `Advanced Appliance Repair — ${staticArea.name}, NJ`,
+    image: `${BASE_URL}/logo.png`,
+    url: `${BASE_URL}/areas/${staticArea.slug}`,
+    telephone: '(732) 416-7430',
+    priceRange: '$$',
+    areaServed: {
+      '@type': 'City',
+      name: staticArea.name,
+      containedInPlace: {
+        '@type': 'AdministrativeArea',
+        name: `${staticArea.county} County, ${staticArea.state}`,
+      },
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '127',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    ...(areaReviews.length > 0 && {
+      review: areaReviews.slice(0, 3).map((t) => ({
+        '@type': 'Review',
+        author: { '@type': 'Person', name: t.name },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: t.rating,
+          bestRating: 5,
+          worstRating: 1,
+        },
+        reviewBody: t.text,
+        datePublished: t.date,
+      })),
+    }),
+  }
+
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={localBusinessSchema} />
       {faqSchema && <JsonLd data={faqSchema} />}
       <Design1AreaPage area={staticArea} />
     </>
