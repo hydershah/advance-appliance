@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema, FAQAccordion } from '../components';
 import { businessInfo, services, serviceAreas, testimonials, images, brands } from '../data/content';
+import { brandAreaCombos, getAreaForCombo } from '../data/brandAreaCombos';
 import { brandEnrichment, buildBrandFaqs } from '../data/brandContent';
 import { Brand } from '../types';
 
@@ -271,33 +272,92 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
           </div>
         </section>
 
-        {/* Service Areas */}
-        <section className="py-24 lg:py-32 bg-white">
-          <div className="container mx-auto px-6">
-            <SectionHeading
-              subtitle="Service Areas"
-              title={`${brand.name} Repair Near You`}
-              description="We provide service throughout Monmouth and Middlesex Counties."
-              align="center"
-            />
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-16">
-              {serviceAreas.slice(0, 18).map((area) => (
-                <Link
-                  key={area.id}
-                  href={`/areas/${area.slug}`}
-                  className="group bg-gray-50 p-4 text-center hover:bg-[#D4AF37] transition-colors"
-                >
-                  <span className="text-gray-700 text-sm group-hover:text-white transition-colors">{area.name}</span>
-                </Link>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <CTAButton href="/our-service-area" variant="outline" size="md" icon="arrow">
-                View All Service Areas
-              </CTAButton>
-            </div>
-          </div>
-        </section>
+        {/* Brand × Area combos — direct links to specialty pages.
+            Surfaces brand×area landing pages from this brand-parent so
+            crawlers (and users) reach combo pages without sitemap-only
+            discovery. Falls back to general area links for brands that
+            do not have combo coverage yet. */}
+        {(() => {
+          const combosForBrand = brand.slug
+            ? brandAreaCombos.filter((c) => c.brandSlug === brand.slug)
+            : [];
+          if (combosForBrand.length > 0) {
+            return (
+              <section className="py-24 lg:py-32 bg-white">
+                <div className="container mx-auto px-6">
+                  <SectionHeading
+                    subtitle="By Service Area"
+                    title={`${brand.name} Repair By Town`}
+                    description="Click your town for a specialty page with local zip codes, neighborhoods, and frequently-asked questions."
+                    align="center"
+                  />
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mt-16">
+                    {combosForBrand.map((c) => {
+                      const a = getAreaForCombo(c);
+                      if (!a) return null;
+                      return (
+                        <Link
+                          key={c.slug}
+                          href={`/${c.slug}`}
+                          className="group bg-gray-50 p-4 text-center hover:bg-[#D4AF37] transition-colors"
+                        >
+                          <span className="block text-gray-800 text-sm font-medium group-hover:text-white transition-colors">
+                            {a.name}
+                          </span>
+                          <span className="block text-gray-500 text-xs mt-1 group-hover:text-white/80 transition-colors">
+                            {brand.name} Repair
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                  <div className="text-center mt-8">
+                    <CTAButton
+                      href="/our-service-area"
+                      variant="outline"
+                      size="md"
+                      icon="arrow"
+                    >
+                      View All Service Areas
+                    </CTAButton>
+                  </div>
+                </div>
+              </section>
+            );
+          }
+
+          // No combo coverage — fall back to general service-area grid.
+          return (
+            <section className="py-24 lg:py-32 bg-white">
+              <div className="container mx-auto px-6">
+                <SectionHeading
+                  subtitle="Service Areas"
+                  title={`${brand.name} Repair Near You`}
+                  description="We provide service throughout Monmouth and Middlesex Counties."
+                  align="center"
+                />
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-16">
+                  {serviceAreas.slice(0, 18).map((area) => (
+                    <Link
+                      key={area.id}
+                      href={`/areas/${area.slug}`}
+                      className="group bg-gray-50 p-4 text-center hover:bg-[#D4AF37] transition-colors"
+                    >
+                      <span className="text-gray-700 text-sm group-hover:text-white transition-colors">
+                        {area.name}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+                <div className="text-center mt-8">
+                  <CTAButton href="/our-service-area" variant="outline" size="md" icon="arrow">
+                    View All Service Areas
+                  </CTAButton>
+                </div>
+              </div>
+            </section>
+          );
+        })()}
 
         {enrichment && brandFaqs.length > 0 && (
           <section className="py-24 lg:py-32 bg-white">

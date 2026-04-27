@@ -26,6 +26,57 @@ function findStaticBlogPostBySlug(slug: string) {
   return staticBlogPosts.find(p => p.slug === slug)
 }
 
+/**
+ * Build HowTo JSON-LD from a static blog post entry that has howToSteps
+ * populated. Returns null when the post is not a structured how-to.
+ *
+ * Used in BOTH the CMS branch and the static-fallback branch — when a
+ * post is served from Sanity, we still emit HowTo if its slug matches a
+ * known static post with steps. This keeps HowTo schema consistent
+ * regardless of content source.
+ */
+function buildHowToSchema(slug: string, baseUrl: string) {
+  const staticPost = findStaticBlogPostBySlug(slug)
+  if (!staticPost?.howToSteps || staticPost.howToSteps.length === 0) return null
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    '@id': `${baseUrl}/blog/${slug}#howto`,
+    name: staticPost.title,
+    description: staticPost.excerpt,
+    image: staticPost.image
+      ? `${baseUrl}${staticPost.image.startsWith('/') ? '' : '/'}${staticPost.image}`
+      : `${baseUrl}/og-image.jpg`,
+    ...(staticPost.howToTotalTime && { totalTime: staticPost.howToTotalTime }),
+    ...(staticPost.howToEstimatedCost && {
+      estimatedCost: {
+        '@type': 'MonetaryAmount',
+        currency: staticPost.howToEstimatedCost.currency,
+        value: staticPost.howToEstimatedCost.value,
+      },
+    }),
+    ...(staticPost.howToTools && staticPost.howToTools.length > 0 && {
+      tool: staticPost.howToTools.map((t) => ({ '@type': 'HowToTool', name: t })),
+    }),
+    ...(staticPost.howToSupplies && staticPost.howToSupplies.length > 0 && {
+      supply: staticPost.howToSupplies.map((s) => ({ '@type': 'HowToSupply', name: s })),
+    }),
+    step: staticPost.howToSteps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+      url: `${baseUrl}/blog/${slug}#step-${i + 1}`,
+      ...(s.image && {
+        image: s.image.startsWith('http')
+          ? s.image
+          : `${baseUrl}${s.image.startsWith('/') ? '' : '/'}${s.image}`,
+      }),
+    })),
+  }
+}
+
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
@@ -94,9 +145,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         author: cmsPost.author || 'Advanced Appliance Repair',
       })
 
+      // Emit HowTo schema even when serving from CMS — pulls structured
+      // step data from the static how-to library matched by slug. Sanity
+      // schema for blog posts does not (yet) carry howToSteps, so this
+      // keeps HowTo eligibility consistent regardless of content source.
+      const howToSchema = buildHowToSchema(slug, BASE_URL)
+
       return (
         <>
           <JsonLd data={articleSchema} />
+          {howToSchema && <JsonLd data={howToSchema} />}
           <Design1BlogPost post={adaptBlogPost(cmsPost)} />
         </>
       )
@@ -119,43 +177,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       author: staticPost.author || 'Advanced Appliance Repair',
     })
 
-    // Emit HowTo schema for posts with structured steps (rich result eligibility)
-    const howToSchema = staticPost.howToSteps && staticPost.howToSteps.length > 0
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'HowTo',
-          '@id': `${BASE_URL}/blog/${slug}#howto`,
-          name: staticPost.title,
-          description: staticPost.excerpt,
-          image: staticPost.image
-            ? `${BASE_URL}${staticPost.image.startsWith('/') ? '' : '/'}${staticPost.image}`
-            : `${BASE_URL}/og-image.jpg`,
-          ...(staticPost.howToTotalTime && { totalTime: staticPost.howToTotalTime }),
-          ...(staticPost.howToEstimatedCost && {
-            estimatedCost: {
-              '@type': 'MonetaryAmount',
-              currency: staticPost.howToEstimatedCost.currency,
-              value: staticPost.howToEstimatedCost.value,
-            },
-          }),
-          ...(staticPost.howToTools && staticPost.howToTools.length > 0 && {
-            tool: staticPost.howToTools.map((t) => ({ '@type': 'HowToTool', name: t })),
-          }),
-          ...(staticPost.howToSupplies && staticPost.howToSupplies.length > 0 && {
-            supply: staticPost.howToSupplies.map((s) => ({ '@type': 'HowToSupply', name: s })),
-          }),
-          step: staticPost.howToSteps.map((s, i) => ({
-            '@type': 'HowToStep',
-            position: i + 1,
-            name: s.name,
-            text: s.text,
-            url: `${BASE_URL}/blog/${slug}#step-${i + 1}`,
-            ...(s.image && {
-              image: s.image.startsWith('http') ? s.image : `${BASE_URL}${s.image.startsWith('/') ? '' : '/'}${s.image}`,
-            }),
-          })),
-        }
-      : null
+    const howToSchema = buildHowToSchema(slug, BASE_URL)
 
     return (
       <>

@@ -174,10 +174,13 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
       }
     : null
 
-  // Per-area LocalBusiness + AggregateRating + city-tagged reviews
-  const areaReviews = testimonials.filter((t) =>
-    t.location.toLowerCase().includes(staticArea.name.toLowerCase()),
-  )
+  // Per-area LocalBusiness + AggregateRating + city-tagged reviews.
+  // Anchored to avoid "Amboy" false-positives.
+  const areaNameLc = staticArea.name.toLowerCase()
+  const areaReviews = testimonials.filter((t) => {
+    const loc = t.location.toLowerCase()
+    return loc === `${areaNameLc}, nj` || loc.startsWith(`${areaNameLc},`)
+  })
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
@@ -209,9 +212,9 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
         author: { '@type': 'Person', name: t.name },
         reviewRating: {
           '@type': 'Rating',
-          ratingValue: t.rating,
-          bestRating: 5,
-          worstRating: 1,
+          ratingValue: String(t.rating),
+          bestRating: '5',
+          worstRating: '1',
         },
         reviewBody: t.text,
         datePublished: t.date,

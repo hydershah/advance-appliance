@@ -238,13 +238,21 @@ export default async function DynamicPage({ params }: PageProps) {
   if (brandAreaCombo) {
     const b = getBrandForCombo(brandAreaCombo)
     const a = getAreaForCombo(brandAreaCombo)
+    // Data integrity guard: if a combo exists in the lookup but the
+    // underlying brand/area was renamed, return 404 rather than rendering
+    // a blank 200 (which would get indexed as content-free).
+    if (!b || !a) notFound()
     if (b && a) {
       const url = `${BASE_URL_FOR_COMBO}/${pageSlug}`
       const faqs = buildBrandAreaFaqs(brandAreaCombo)
 
-      const cityHits = testimonials.filter((t) =>
-        t.location.toLowerCase().includes(a.name.toLowerCase()),
-      )
+      // Anchored match: testimonial format is "<City>, NJ".
+      // Avoids "Amboy" false-matching "South Amboy" / "Perth Amboy".
+      const aNameLc = a.name.toLowerCase()
+      const cityHits = testimonials.filter((t) => {
+        const loc = t.location.toLowerCase()
+        return loc === `${aNameLc}, nj` || loc.startsWith(`${aNameLc},`)
+      })
 
       const serviceSchema = {
         '@context': 'https://schema.org',
@@ -306,9 +314,9 @@ export default async function DynamicPage({ params }: PageProps) {
             author: { '@type': 'Person', name: t.name },
             reviewRating: {
               '@type': 'Rating',
-              ratingValue: t.rating,
-              bestRating: 5,
-              worstRating: 1,
+              ratingValue: String(t.rating),
+              bestRating: '5',
+              worstRating: '1',
             },
             reviewBody: t.text,
             datePublished: t.date,
@@ -357,12 +365,17 @@ export default async function DynamicPage({ params }: PageProps) {
   if (serviceAreaCombo) {
     const s = getServiceForCombo(serviceAreaCombo)
     const a = getAreaForServiceCombo(serviceAreaCombo)
+    if (!s || !a) notFound()
     if (s && a) {
       const url = `${BASE_URL_FOR_COMBO}/${pageSlug}`
       const faqs = buildServiceAreaFaqs(serviceAreaCombo)
-      const cityHits = testimonials.filter((t) =>
-        t.location.toLowerCase().includes(a.name.toLowerCase()),
-      )
+      // Anchored match: testimonial format is "<City>, NJ".
+      // Avoids "Amboy" false-matching "South Amboy" / "Perth Amboy".
+      const aNameLc = a.name.toLowerCase()
+      const cityHits = testimonials.filter((t) => {
+        const loc = t.location.toLowerCase()
+        return loc === `${aNameLc}, nj` || loc.startsWith(`${aNameLc},`)
+      })
 
       const serviceSchema = {
         '@context': 'https://schema.org',
@@ -416,9 +429,9 @@ export default async function DynamicPage({ params }: PageProps) {
             author: { '@type': 'Person', name: t.name },
             reviewRating: {
               '@type': 'Rating',
-              ratingValue: t.rating,
-              bestRating: 5,
-              worstRating: 1,
+              ratingValue: String(t.rating),
+              bestRating: '5',
+              worstRating: '1',
             },
             reviewBody: t.text,
             datePublished: t.date,

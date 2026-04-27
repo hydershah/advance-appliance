@@ -39,9 +39,12 @@ const ServiceAreaPage: React.FC<ServiceAreaPageProps> = ({ combo }) => {
 
   if (!service || !area || !ae || !body) return null;
 
-  const cityHits = testimonials.filter((t) =>
-    t.location.toLowerCase().includes(area.name.toLowerCase()),
-  );
+  // Anchored area-name match to avoid "Amboy" false-positives.
+  const areaNameLc = area.name.toLowerCase();
+  const cityHits = testimonials.filter((t) => {
+    const loc = t.location.toLowerCase();
+    return loc === `${areaNameLc}, nj` || loc.startsWith(`${areaNameLc},`);
+  });
 
   // Same-service nearby-area combos
   const nearbySameService = serviceAreaCombos

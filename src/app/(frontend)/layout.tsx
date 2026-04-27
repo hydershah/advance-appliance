@@ -84,8 +84,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  // metadataBase resolves all relative canonicals/og URLs across the site.
+  // Fall back to the production domain (NOT localhost) so a missing env var
+  // in deploy never produces canonicals pointing to localhost.
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+    process.env.NEXT_PUBLIC_SERVER_URL ||
+      (process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000'
+        : 'https://www.appliancenj.com')
   ),
   alternates: {
     canonical: '/',

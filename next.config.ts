@@ -133,6 +133,22 @@ const nextConfig: NextConfig = {
       { source: `/${from}`, destination: `/areas/${to}`, permanent: true },
     ])
 
+    // Morganville brand×area combos were intentionally dropped — Morganville
+    // is a Marlboro Township section and brand-level content is duplicative.
+    // Redirect any inbound links/crawl hits to the equivalent Marlboro combo.
+    const droppedMorganvilleCombos = [
+      'sub-zero-appliance-repair-in-morganville-nj',
+      'viking-appliance-repair-in-morganville-nj',
+      'miele-appliance-repair-in-morganville-nj',
+      'wolf-appliance-repair-in-morganville-nj',
+      'thermador-appliance-repair-in-morganville-nj',
+    ]
+    const morganvilleComboRedirects = droppedMorganvilleCombos.map((slug) => ({
+      source: `/${slug}`,
+      destination: `/${slug.replace('-in-morganville-nj', '-in-marlboro-nj')}`,
+      permanent: true,
+    }))
+
     return [
       {
         source: '/admin',
@@ -140,6 +156,7 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       ...areaRedirects,
+      ...morganvilleComboRedirects,
     ]
   },
 

@@ -47,9 +47,9 @@ export default async function ReviewsPage() {
       author: { '@type': 'Person', name: t.name },
       reviewRating: {
         '@type': 'Rating',
-        ratingValue: t.rating,
-        bestRating: 5,
-        worstRating: 1,
+        ratingValue: String(t.rating),
+        bestRating: '5',
+        worstRating: '1',
       },
       reviewBody: t.text,
       datePublished: t.date,

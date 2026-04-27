@@ -9,6 +9,13 @@ interface JsonLdProps {
   data: Record<string, any> | Array<Record<string, any>>
 }
 
+// Escape `<` so a value containing `</script>` cannot break out of the script
+// element. Required defense-in-depth for any field that could ever flow from
+// a CMS or untrusted source. `<` parses identically in JSON-LD.
+function safeJsonLd(data: unknown): string {
+  return JSON.stringify(data, null, 0).replace(/</g, '\\u003c')
+}
+
 export function JsonLd({ data }: JsonLdProps) {
   // Handle both single schema and array of schemas
   const schemas = Array.isArray(data) ? data : [data]
@@ -19,9 +26,7 @@ export function JsonLd({ data }: JsonLdProps) {
         <script
           key={index}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schema, null, 0),
-          }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(schema) }}
         />
       ))}
     </>

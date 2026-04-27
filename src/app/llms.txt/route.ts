@@ -122,6 +122,10 @@ export async function GET() {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'public, max-age=3600, s-maxage=86400',
+      // Manifest is for AI crawlers, not human SERP results — keep crawlable
+      // but out of Google/Bing index. AI bots ignore X-Robots-Tag, so this
+      // affects only classic search engines.
+      'X-Robots-Tag': 'noindex, follow',
     },
   })
 }

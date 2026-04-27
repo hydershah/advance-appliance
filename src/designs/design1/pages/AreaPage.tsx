@@ -24,6 +24,8 @@ import {
   images,
 } from '../data/content';
 import { areaEnrichment, buildAreaBody, buildAreaFaqs } from '../data/areaContent';
+import { brandAreaCombos } from '../data/brandAreaCombos';
+import { serviceAreaCombos } from '../data/serviceAreaCombos';
 import { ServiceArea } from '../types';
 
 interface AreaPageProps {
@@ -40,9 +42,14 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
   const otherAreas = serviceAreas
     .filter((a) => a.id !== area.id)
     .sort((a, b) => a.name.localeCompare(b.name));
-  const areaTestimonials = testimonials.filter((t) =>
-    t.location.toLowerCase().includes(area.name.toLowerCase()),
-  );
+  // Anchored area match (testimonial format: "<City>, NJ").
+  // Prevents short names like "Ocean" from accidentally matching another
+  // area, and prevents "Amboy" matching "South Amboy" / "Perth Amboy".
+  const areaNameLc = area.name.toLowerCase();
+  const areaTestimonials = testimonials.filter((t) => {
+    const loc = t.location.toLowerCase();
+    return loc === `${areaNameLc}, nj` || loc.startsWith(`${areaNameLc},`);
+  });
 
   const body = enrichment ? buildAreaBody(area, enrichment) : null;
   const faqs = enrichment
@@ -319,6 +326,88 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
             </div>
           </div>
         </section>
+
+        {/* Premium-brand combo links + service combo links for this area.
+            Surfaces the combo landing pages from this area-parent so
+            crawlers (and users) reach combo pages without sitemap-only
+            discovery. Renders only when the area has combo coverage. */}
+        {(() => {
+          const brandCombosForArea = brandAreaCombos.filter(
+            (c) => c.areaSlug === area.slug,
+          );
+          const serviceCombosForArea = serviceAreaCombos.filter(
+            (c) => c.areaSlug === area.slug,
+          );
+          if (brandCombosForArea.length === 0 && serviceCombosForArea.length === 0) {
+            return null;
+          }
+          return (
+            <section className="py-24 lg:py-32 bg-white">
+              <div className="container mx-auto px-6">
+                {brandCombosForArea.length > 0 && (
+                  <>
+                    <SectionHeading
+                      subtitle="Premium Brand Specialty"
+                      title={`Premium Brand Repair in ${area.name}`}
+                      description="Factory-certified service pages with brand-specific failure patterns and FAQs for your address."
+                      align="center"
+                    />
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mt-12 max-w-5xl mx-auto">
+                      {brandCombosForArea.map((c) => {
+                        const b = brands.find((br) => br.slug === c.brandSlug);
+                        if (!b) return null;
+                        return (
+                          <Link
+                            key={c.slug}
+                            href={`/${c.slug}`}
+                            className="group p-4 text-center bg-gray-50 hover:bg-[#D4AF37] transition-colors"
+                          >
+                            <span className="block text-gray-800 text-sm font-medium group-hover:text-white transition-colors">
+                              {b.name}
+                            </span>
+                            <span className="block text-gray-500 text-xs mt-1 group-hover:text-white/80 transition-colors">
+                              in {area.name}
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
+                {serviceCombosForArea.length > 0 && (
+                  <div className="mt-16">
+                    <SectionHeading
+                      subtitle="By Appliance"
+                      title={`${area.name} Repair By Appliance Type`}
+                      description="Specialty pages for the most common service categories in your zip."
+                      align="center"
+                    />
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-12 max-w-4xl mx-auto">
+                      {serviceCombosForArea.map((c) => {
+                        const svc = services.find((s) => s.slug === c.serviceSlug);
+                        if (!svc) return null;
+                        return (
+                          <Link
+                            key={c.slug}
+                            href={`/${c.slug}`}
+                            className="group p-4 text-center bg-gray-50 hover:bg-[#D4AF37] transition-colors"
+                          >
+                            <span className="block text-gray-800 text-sm font-medium group-hover:text-white transition-colors">
+                              {svc.name}
+                            </span>
+                            <span className="block text-gray-500 text-xs mt-1 group-hover:text-white/80 transition-colors">
+                              in {area.name}
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </section>
+          );
+        })()}
 
         {/* Testimonials + 4.9 rating proof */}
         <section className="py-24 lg:py-32 bg-white">

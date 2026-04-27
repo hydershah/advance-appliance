@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { Header, Footer, Hero, SectionHeading, FAQAccordion, ContactForm, ServiceSchema, BreadcrumbSchema, FAQSchema } from '../components';
-import { businessInfo, services as staticServices, brands } from '../data/content';
+import { businessInfo, services as staticServices, brands, serviceAreas } from '../data/content';
+import { serviceAreaCombos } from '../data/serviceAreaCombos';
 import type { Service } from '../types';
 
 interface ServiceDetailProps { serviceSlug?: string; service?: Service; }
@@ -190,6 +191,48 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
             </div>
           </div>
         </section>
+
+        {/* Service × Area combo links — surfaces combo pages from the
+            service-parent so combos are reachable without sitemap-only
+            discovery. Renders only when this service has combo coverage. */}
+        {(() => {
+          const combosForService = serviceAreaCombos.filter(
+            (c) => c.serviceSlug === service.slug,
+          );
+          if (combosForService.length === 0) return null;
+          return (
+            <section className="py-16 lg:py-24 bg-gray-50 border-y border-gray-100">
+              <div className="container mx-auto px-6">
+                <SectionHeading
+                  subtitle="By Service Area"
+                  title={`${service.name} By Town`}
+                  description="Specialty pages with local zip codes and frequently-asked questions for your area."
+                  align="center"
+                />
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 mt-12 max-w-5xl mx-auto">
+                  {combosForService.map((c) => {
+                    const a = serviceAreas.find((sa) => sa.slug === c.areaSlug);
+                    if (!a) return null;
+                    return (
+                      <Link
+                        key={c.slug}
+                        href={`/${c.slug}`}
+                        className="group p-3 text-center bg-white border border-gray-200 hover:border-[#D4AF37] hover:bg-[#D4AF37] transition-colors"
+                      >
+                        <span className="block text-gray-800 text-sm font-medium group-hover:text-white transition-colors">
+                          {a.name}
+                        </span>
+                        <span className="block text-gray-500 text-xs mt-1 group-hover:text-white/80 transition-colors">
+                          {a.county} County
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+          );
+        })()}
 
         {/* Other Services */}
         <section className="py-16 lg:py-24 bg-white">

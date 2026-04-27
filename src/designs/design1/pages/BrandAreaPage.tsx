@@ -40,12 +40,25 @@ const BrandAreaPage: React.FC<BrandAreaPageProps> = ({ combo }) => {
 
   if (!brand || !area || !ae || !be || !body) return null;
 
-  // Filter testimonials matching this area + brand mention
-  const cityHits = testimonials.filter((t) =>
-    t.location.toLowerCase().includes(area.name.toLowerCase()),
-  );
+  // Filter testimonials matching this area + brand mention.
+  //
+  // Match the area against `t.location` with a trailing comma to avoid
+  // false positives where one area name is a substring of another
+  // ("Amboy" matching "South Amboy, NJ" or "Perth Amboy, NJ"). The
+  // testimonial format is consistently "<City>, NJ".
+  //
+  // Match the brand by checking if t.service contains the brand name
+  // verbatim (lowercased, hyphen preserved) — earlier code stripped
+  // non-letters which turned "sub-zero" into "subzero" and never matched
+  // any "Sub-Zero ..." testimonial service strings.
+  const areaNameLc = area.name.toLowerCase();
+  const cityHits = testimonials.filter((t) => {
+    const loc = t.location.toLowerCase();
+    return loc === `${areaNameLc}, nj` || loc.startsWith(`${areaNameLc},`);
+  });
+  const brandNameLc = brand.name.toLowerCase();
   const brandHits = cityHits.filter((t) =>
-    t.service.toLowerCase().includes(brand.name.toLowerCase().replace(/[^a-z]/g, '')),
+    t.service.toLowerCase().includes(brandNameLc),
   );
   const reviews = brandHits.length > 0 ? brandHits : cityHits.slice(0, 3);
 

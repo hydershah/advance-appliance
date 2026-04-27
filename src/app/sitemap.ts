@@ -10,11 +10,20 @@ import { serviceAreaCombos } from '@/designs/design1/data/serviceAreaCombos'
  * Automatically includes all pages, services, blog posts, and service areas from Sanity CMS
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.appliancenj.com'
   const sitemap: MetadataRoute.Sitemap = []
+  // Track every emitted URL so we never duplicate (combo slug colliding
+  // with a CMS page slug, etc.). Combos win precedence at runtime, so
+  // they should also win in the sitemap.
+  const seenUrls = new Set<string>()
+  const pushUrl = (entry: MetadataRoute.Sitemap[number]) => {
+    if (seenUrls.has(entry.url)) return
+    seenUrls.add(entry.url)
+    sitemap.push(entry)
+  }
 
   // Static pages - highest priority (always include these)
-  sitemap.push({
+  pushUrl({
     url: baseUrl,
     lastModified: new Date(),
     changeFrequency: 'daily',
@@ -63,7 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     )
 
     ;(services || []).forEach((service) => {
-      sitemap.push({
+      pushUrl({
         url: `${baseUrl}/services/${service.slug.current}`,
         lastModified: new Date(service._updatedAt),
         changeFrequency: 'weekly',
@@ -81,7 +90,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     )
 
     ;(posts || []).forEach((post) => {
-      sitemap.push({
+      pushUrl({
         url: `${baseUrl}/blog/${post.slug.current}`,
         lastModified: new Date(post._updatedAt),
         changeFrequency: 'monthly',
@@ -101,7 +110,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     ;(areas || []).forEach((area) => {
       areaSlugs.add(area.slug.current)
-      sitemap.push({
+      pushUrl({
         url: `${baseUrl}/areas/${area.slug.current}`,
         lastModified: new Date(area._updatedAt),
         changeFrequency: 'monthly',
@@ -114,7 +123,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   staticAreas.forEach((area) => {
     if (areaSlugs.has(area.slug)) return
-    sitemap.push({
+    pushUrl({
       url: `${baseUrl}/areas/${area.slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -131,7 +140,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     ;(brands || []).forEach((brand) => {
       brandSlugs.add(brand.slug.current)
-      sitemap.push({
+      pushUrl({
         url: `${baseUrl}/brands/${brand.slug.current}`,
         lastModified: new Date(brand._updatedAt),
         changeFrequency: 'monthly',
@@ -144,17 +153,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   staticBrands.forEach((brand) => {
     if (!brand.slug || brandSlugs.has(brand.slug)) return
-    sitemap.push({
+    pushUrl({
       url: `${baseUrl}/${brand.slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: brand.featured ? 0.7 : 0.5,
+      // Featured brands and parent-of-combo brands sit above non-featured.
+      // Parent priority should not drop below child combo priority (0.65).
+      priority: brand.featured ? 0.7 : 0.65,
     })
   })
 
   // Brand × Area combo pages (70) — premium brand × core area landing pages
   brandAreaCombos.forEach((combo) => {
-    sitemap.push({
+    pushUrl({
       url: `${baseUrl}/${combo.slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -164,7 +175,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Service × Area combo pages (56) — top services × core area landing pages
   serviceAreaCombos.forEach((combo) => {
-    sitemap.push({
+    pushUrl({
       url: `${baseUrl}/${combo.slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -172,14 +183,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // Fetch pages from Sanity (excluding home which is already added)
+  // Fetch pages from Sanity (excluding home which is already added).
+  // pushUrl dedups against any combo slug already emitted above so a CMS
+  // page slug that collides with a combo cannot duplicate.
   try {
     const pages = await client.fetch<Array<{ slug: { current: string }; _updatedAt: string }>>(
       groq`*[_type == "page" && status == "published" && slug.current != "home"]{ slug, _updatedAt }`
     )
 
     ;(pages || []).forEach((page) => {
-      sitemap.push({
+      pushUrl({
         url: `${baseUrl}/${page.slug.current}`,
         lastModified: new Date(page._updatedAt),
         changeFrequency: 'monthly',
