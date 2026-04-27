@@ -5,7 +5,7 @@ export const revalidate = 300 // revalidate every 5 minutes
 import { fetchServiceBySlug } from '@/sanity/fetchers'
 import { adaptService } from '@/lib/sanityAdapters'
 import Design1ServiceDetail from '@/designs/design1/pages/ServiceDetail'
-import { services as staticServices } from '@/designs/design1/data/content'
+import { services as staticServices, brands as staticBrands } from '@/designs/design1/data/content'
 import { generateServiceSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/JsonLd'
 
@@ -80,12 +80,46 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const staticService = findStaticServiceBySlug(slug)
   if (staticService) {
     const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
-    const serviceSchema = generateServiceSchema({
+    const featuredBrandNames = staticBrands.filter((b) => b.featured).map((b) => b.name)
+
+    const serviceSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': `${BASE_URL}/services/${slug}#service`,
       name: staticService.name,
-      description: staticService.shortDescription || '',
-      serviceType: 'Appliance Repair',
+      serviceType: staticService.name,
+      description: staticService.description || staticService.shortDescription,
       url: `${BASE_URL}/services/${slug}`,
-    })
+      provider: {
+        '@type': 'LocalBusiness',
+        '@id': `${BASE_URL}/#organization`,
+        name: 'Advanced Appliance Repair Service',
+        telephone: '(732) 416-7430',
+      },
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'Monmouth County, NJ' },
+        { '@type': 'AdministrativeArea', name: 'Middlesex County, NJ' },
+      ],
+      offers: {
+        '@type': 'AggregateOffer',
+        availability: 'https://schema.org/InStock',
+        priceCurrency: 'USD',
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          price: '100.00',
+          priceCurrency: 'USD',
+          description: 'Diagnostic fee, credited toward repair on approval',
+        },
+      },
+      brand: featuredBrandNames.map((n) => ({ '@type': 'Brand', name: n })),
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '127',
+        bestRating: '5',
+        worstRating: '1',
+      },
+    }
 
     return (
       <>

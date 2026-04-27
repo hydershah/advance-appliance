@@ -76,6 +76,12 @@ export interface AreaEnrichment {
   nearbyAreaSlugs: string[];
 }
 
+export interface HowToStep {
+  name: string;
+  text: string;
+  image?: string;
+}
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -88,6 +94,11 @@ export interface BlogPost {
   category: string;
   tags: string[];
   readTime: number;
+  howToSteps?: HowToStep[];
+  howToTotalTime?: string; // ISO 8601 duration, e.g. PT15M
+  howToEstimatedCost?: { currency: string; value: string };
+  howToTools?: string[];
+  howToSupplies?: string[];
 }
 
 export interface Brand {

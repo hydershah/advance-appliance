@@ -119,9 +119,48 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       author: staticPost.author || 'Advanced Appliance Repair',
     })
 
+    // Emit HowTo schema for posts with structured steps (rich result eligibility)
+    const howToSchema = staticPost.howToSteps && staticPost.howToSteps.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'HowTo',
+          '@id': `${BASE_URL}/blog/${slug}#howto`,
+          name: staticPost.title,
+          description: staticPost.excerpt,
+          image: staticPost.image
+            ? `${BASE_URL}${staticPost.image.startsWith('/') ? '' : '/'}${staticPost.image}`
+            : `${BASE_URL}/og-image.jpg`,
+          ...(staticPost.howToTotalTime && { totalTime: staticPost.howToTotalTime }),
+          ...(staticPost.howToEstimatedCost && {
+            estimatedCost: {
+              '@type': 'MonetaryAmount',
+              currency: staticPost.howToEstimatedCost.currency,
+              value: staticPost.howToEstimatedCost.value,
+            },
+          }),
+          ...(staticPost.howToTools && staticPost.howToTools.length > 0 && {
+            tool: staticPost.howToTools.map((t) => ({ '@type': 'HowToTool', name: t })),
+          }),
+          ...(staticPost.howToSupplies && staticPost.howToSupplies.length > 0 && {
+            supply: staticPost.howToSupplies.map((s) => ({ '@type': 'HowToSupply', name: s })),
+          }),
+          step: staticPost.howToSteps.map((s, i) => ({
+            '@type': 'HowToStep',
+            position: i + 1,
+            name: s.name,
+            text: s.text,
+            url: `${BASE_URL}/blog/${slug}#step-${i + 1}`,
+            ...(s.image && {
+              image: s.image.startsWith('http') ? s.image : `${BASE_URL}${s.image.startsWith('/') ? '' : '/'}${s.image}`,
+            }),
+          })),
+        }
+      : null
+
     return (
       <>
         <JsonLd data={articleSchema} />
+        {howToSchema && <JsonLd data={howToSchema} />}
         <Design1BlogPost postSlug={slug} />
       </>
     )

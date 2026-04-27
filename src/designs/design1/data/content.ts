@@ -1125,6 +1125,26 @@ Don't wait for small problems to become big ones. Contact Advanced Appliance for
     category: 'Tips',
     tags: ['Washer', 'Emergency', 'Repair', 'Tips'],
     readTime: 4,
+    howToTotalTime: 'PT10M',
+    howToTools: ['Adjustable wrench', 'Towels', 'Bucket'],
+    howToSteps: [
+      {
+        name: 'Turn off the water supply',
+        text: 'Locate the hot and cold water shut-off valves behind your washing machine and turn both fully clockwise to closed. This stops further water flow and prevents flooding while you assess the situation.',
+      },
+      {
+        name: 'Unplug the washer',
+        text: 'Disconnect the washer from the electrical outlet. Standing water plus live electricity is the most dangerous condition in a laundry-room emergency — power down before doing anything else.',
+      },
+      {
+        name: 'Drain standing water from the drum',
+        text: 'Most front-loaders have a drain filter behind a small access panel at the bottom front. Place a shallow pan beneath it and slowly open the filter to drain the drum. Top-loaders typically need to be bailed out manually.',
+      },
+      {
+        name: 'Call a factory-trained technician',
+        text: 'Once the immediate hazard is contained, call Advanced Appliance at (732) 416-7430. Most washer emergencies — drain pump failure, door-lock fault, control-board error — require diagnostic equipment and OEM parts to repair correctly.',
+      },
+    ],
   },
   {
     id: '2',
@@ -1162,6 +1182,30 @@ If these steps don't solve the problem, you likely have a faulty heating element
     category: 'Tips',
     tags: ['Dryer', 'Heating', 'Troubleshooting', 'Tips'],
     readTime: 5,
+    howToTotalTime: 'PT15M',
+    howToTools: ['Multimeter (optional)', 'Vacuum', 'Flashlight'],
+    howToSteps: [
+      {
+        name: 'Verify 240V power at the outlet',
+        text: 'Electric dryers require both legs of 240V to produce heat. If only one leg is live, the motor will run but no heat will generate. Reset the dedicated dryer breaker; if it trips again, you likely have a heating element drawing wrong amperage.',
+      },
+      {
+        name: 'Clean the lint filter and trap housing',
+        text: 'Pull the lint screen, clean it, then vacuum inside the trap housing where lint passes after the filter. Buildup here is the single most common cause of slow-heating dryers and a leading cause of dryer fires.',
+      },
+      {
+        name: 'Inspect the exterior dryer vent',
+        text: 'Disconnect the duct at the back of the dryer and inspect for compacted lint. Also check the exterior wall vent — flapper stuck closed, bird nest, or mesh screen all kill airflow and trip the high-limit thermostat.',
+      },
+      {
+        name: 'Confirm gas supply (gas dryers only)',
+        text: 'Verify the gas valve at the wall is fully open and other gas appliances in the home are working. If gas is supplied but the dryer still does not heat, the igniter or gas valve coils are the most common failures.',
+      },
+      {
+        name: 'Listen for the gas igniter clicking',
+        text: 'On gas dryers, you should hear a faint click and see a glow from the igniter when the burner cycles. Silence usually means a failed igniter or open thermal fuse — both are technician-replaced parts.',
+      },
+    ],
   },
   {
     id: '3',
@@ -1199,6 +1243,30 @@ If these steps don't solve your drainage problem, you may have a faulty drain pu
     category: 'Tips',
     tags: ['Dishwasher', 'Draining', 'DIY', 'Tips'],
     readTime: 4,
+    howToTotalTime: 'PT20M',
+    howToTools: ['Towels', 'Wet/dry vacuum', 'Flashlight'],
+    howToSteps: [
+      {
+        name: 'Clean the bottom filter',
+        text: 'Twist out the cylindrical filter at the bottom of the tub and rinse under running water. Soak in warm soapy water if encrusted with grease. A clogged filter is the #1 cause of dishwasher drainage failure.',
+      },
+      {
+        name: 'Inspect the drain hose for kinks',
+        text: 'Pull the dishwasher forward and check the corrugated drain hose between the unit and the sink/disposal. A high loop, kink, or sag below the disposal inlet will trap water and stall drainage.',
+      },
+      {
+        name: 'Clear the garbage disposal',
+        text: 'If your dishwasher drains through a garbage disposal, run the disposal with cold water for 30 seconds. New disposals also have a knock-out plug at the dishwasher inlet that must be removed during installation.',
+      },
+      {
+        name: 'Check the air gap (if installed)',
+        text: 'The chrome cylinder beside your faucet is an air gap — pop the cap and clean any food debris from the inlet and outlet ports. A blocked air gap will back up wash water into the dishwasher.',
+      },
+      {
+        name: 'Run hot water before starting a cycle',
+        text: 'Turn the kitchen sink to hot until it runs hot at the tap, then start the dishwasher. This ensures the unit begins with hot water in the lines and helps the detergent dissolve and rinse properly.',
+      },
+    ],
   },
   {
     id: '4',

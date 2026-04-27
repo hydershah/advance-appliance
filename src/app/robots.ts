@@ -11,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
         disallow: [
           '/admin',
           '/admin/*',
@@ -38,7 +38,45 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/admin', '/admin/*', '/api/*', '/private/*'],
       },
+      // AI crawlers — explicitly allowed for citability in AI Overviews,
+      // ChatGPT search, Perplexity, Claude, etc.
+      {
+        userAgent: 'GPTBot',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/admin', '/admin/*', '/api/*', '/private/*'],
+      },
+      {
+        userAgent: 'OAI-SearchBot',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/admin', '/admin/*', '/api/*', '/private/*'],
+      },
+      {
+        userAgent: 'PerplexityBot',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/admin', '/admin/*', '/api/*', '/private/*'],
+      },
+      {
+        userAgent: 'Perplexity-User',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/admin', '/admin/*', '/api/*', '/private/*'],
+      },
+      {
+        userAgent: 'ClaudeBot',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/admin', '/admin/*', '/api/*', '/private/*'],
+      },
+      {
+        userAgent: 'Claude-Web',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/admin', '/admin/*', '/api/*', '/private/*'],
+      },
+      {
+        userAgent: 'Google-Extended',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/admin', '/admin/*', '/api/*', '/private/*'],
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   }
 }

@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next'
 import { client } from '@/sanity/client'
 import { groq } from 'next-sanity'
 import { serviceAreas as staticAreas, brands as staticBrands } from '@/designs/design1/data/content'
+import { brandAreaCombos } from '@/designs/design1/data/brandAreaCombos'
+import { serviceAreaCombos } from '@/designs/design1/data/serviceAreaCombos'
 
 /**
  * Dynamic sitemap generation for Advanced Appliance Repair
@@ -147,6 +149,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: brand.featured ? 0.7 : 0.5,
+    })
+  })
+
+  // Brand × Area combo pages (70) — premium brand × core area landing pages
+  brandAreaCombos.forEach((combo) => {
+    sitemap.push({
+      url: `${baseUrl}/${combo.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.65,
+    })
+  })
+
+  // Service × Area combo pages (56) — top services × core area landing pages
+  serviceAreaCombos.forEach((combo) => {
+    sitemap.push({
+      url: `${baseUrl}/${combo.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
     })
   })
 
