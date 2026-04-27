@@ -55,3 +55,19 @@ docs/
 # Misc
 *.log
 .vercel
+
+# Working files / reference dumps at repo root (do not commit)
+/1.png
+/2.png
+/Gemini_Generated_Image_*.png
+/Untitled*.png
+/Image from Google Drive*
+/Website Image from Anthony*
+/original.png
+/original.jpeg
+/*.pdf
+/team/
+
+# Oversized image source files in public/images (use the .jpg versions)
+/public/images/founder-1.png
+/public/images/founder-2.png
