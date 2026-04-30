@@ -306,7 +306,7 @@ export default async function DynamicPage({ params }: PageProps) {
         provider: {
           '@type': 'LocalBusiness',
           '@id': `${BASE_URL_FOR_COMBO}/#organization`,
-          name: 'Advanced Appliance',
+          name: 'Advanced Appliance Repair Service',
           telephone: '(732) 416-7430',
         },
         areaServed: {
@@ -324,46 +324,30 @@ export default async function DynamicPage({ params }: PageProps) {
         },
       }
 
-      const localBusinessSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        '@id': `${url}#localbusiness`,
-        name: `Advanced Appliance — ${b.name} Repair in ${a.name}, NJ`,
-        image: `${BASE_URL_FOR_COMBO}/logo.png`,
-        url,
-        telephone: '(732) 416-7430',
-        priceRange: '$$',
-        areaServed: {
-          '@type': 'City',
-          name: a.name,
-          containedInPlace: {
-            '@type': 'AdministrativeArea',
-            name: `${a.county} County, ${a.state}`,
-          },
-        },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.9',
-          reviewCount: '127',
-          bestRating: '5',
-          worstRating: '1',
-        },
-        ...(cityHits.length > 0 && {
-          review: cityHits.slice(0, 3).map((t) => ({
-            '@type': 'Review',
-            author: { '@type': 'Person', name: t.name },
-            reviewRating: {
-              '@type': 'Rating',
-              ratingValue: String(t.rating),
-              bestRating: '5',
-              worstRating: '1',
-            },
-            reviewBody: t.text,
-            datePublished: t.date,
-          })),
-        }),
-      }
-
+      // Per-combo Reviews emitted as a standalone @graph that references
+      // the canonical #organization. Earlier the page emitted a separate
+      // LocalBusiness with #localbusiness fragment which Google treated as
+      // a competing entity. The reviews now reinforce the single org node
+      // emitted sitewide by the layout's LocalBusinessSchema component.
+      const localBusinessSchema = cityHits.length > 0
+        ? {
+            '@context': 'https://schema.org',
+            '@graph': cityHits.slice(0, 3).map((t, i) => ({
+              '@type': 'Review',
+              '@id': `${url}#review-${i + 1}`,
+              author: { '@type': 'Person', name: t.name },
+              reviewRating: {
+                '@type': 'Rating',
+                ratingValue: String(t.rating),
+                bestRating: '5',
+                worstRating: '1',
+              },
+              reviewBody: t.text,
+              datePublished: t.date,
+              itemReviewed: { '@id': `${BASE_URL_FOR_COMBO}/#organization` },
+            })),
+          }
+        : null
       const faqSchema = faqs.length
         ? {
             '@context': 'https://schema.org',
@@ -391,7 +375,7 @@ export default async function DynamicPage({ params }: PageProps) {
       return (
         <>
           <JsonLd data={serviceSchema} />
-          <JsonLd data={localBusinessSchema} />
+          {localBusinessSchema && <JsonLd data={localBusinessSchema} />}
           <JsonLd data={breadcrumbSchema} />
           {faqSchema && <JsonLd data={faqSchema} />}
           <Design1BrandAreaPage combo={brandAreaCombo} />
@@ -428,7 +412,7 @@ export default async function DynamicPage({ params }: PageProps) {
         provider: {
           '@type': 'LocalBusiness',
           '@id': `${BASE_URL_FOR_COMBO}/#organization`,
-          name: 'Advanced Appliance',
+          name: 'Advanced Appliance Repair Service',
           telephone: '(732) 416-7430',
         },
         areaServed: {
@@ -446,38 +430,27 @@ export default async function DynamicPage({ params }: PageProps) {
         },
       }
 
-      const localBusinessSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        '@id': `${url}#localbusiness`,
-        name: `Advanced Appliance — ${s.name} in ${a.name}, NJ`,
-        image: `${BASE_URL_FOR_COMBO}/logo.png`,
-        url,
-        telephone: '(732) 416-7430',
-        priceRange: '$$',
-        areaServed: { '@type': 'City', name: a.name },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.9',
-          reviewCount: '127',
-          bestRating: '5',
-          worstRating: '1',
-        },
-        ...(cityHits.length > 0 && {
-          review: cityHits.slice(0, 3).map((t) => ({
-            '@type': 'Review',
-            author: { '@type': 'Person', name: t.name },
-            reviewRating: {
-              '@type': 'Rating',
-              ratingValue: String(t.rating),
-              bestRating: '5',
-              worstRating: '1',
-            },
-            reviewBody: t.text,
-            datePublished: t.date,
-          })),
-        }),
-      }
+      // Page-level reviews emit as standalone Review entities tied to the
+      // sitewide #organization (no separate #localbusiness entity).
+      const localBusinessSchema = cityHits.length > 0
+        ? {
+            '@context': 'https://schema.org',
+            '@graph': cityHits.slice(0, 3).map((t, i) => ({
+              '@type': 'Review',
+              '@id': `${url}#review-${i + 1}`,
+              author: { '@type': 'Person', name: t.name },
+              reviewRating: {
+                '@type': 'Rating',
+                ratingValue: String(t.rating),
+                bestRating: '5',
+                worstRating: '1',
+              },
+              reviewBody: t.text,
+              datePublished: t.date,
+              itemReviewed: { '@id': `${BASE_URL_FOR_COMBO}/#organization` },
+            })),
+          }
+        : null
 
       const faqSchema = faqs.length
         ? {
@@ -506,7 +479,7 @@ export default async function DynamicPage({ params }: PageProps) {
       return (
         <>
           <JsonLd data={serviceSchema} />
-          <JsonLd data={localBusinessSchema} />
+          {localBusinessSchema && <JsonLd data={localBusinessSchema} />}
           <JsonLd data={breadcrumbSchema} />
           {faqSchema && <JsonLd data={faqSchema} />}
           <Design1ServiceAreaPage combo={serviceAreaCombo} />
@@ -535,7 +508,7 @@ export default async function DynamicPage({ params }: PageProps) {
       provider: {
         '@type': 'LocalBusiness',
         '@id': `${BASE_URL}/#organization`,
-        name: 'Advanced Appliance',
+        name: 'Advanced Appliance Repair Service',
         telephone: '(732) 416-7430',
       },
       areaServed: [

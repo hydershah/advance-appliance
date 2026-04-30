@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header, Footer, Hero, ServiceCard, TestimonialCarousel, SectionHeading, CTAButton, LocalBusinessSchema } from '../components';
+import { Header, Footer, Hero, ServiceCard, TestimonialCarousel, SectionHeading, CTAButton } from '../components';
 import { businessInfo, services as staticServices, testimonials as staticTestimonials, serviceAreas as staticServiceAreas, trustBadges as staticTrustBadges, brands as staticBrands, images } from '../data/content';
 import type { Service, Testimonial, ServiceArea, Brand } from '../types';
 
@@ -23,7 +23,7 @@ const Home: React.FC<HomeProps> = ({ services: servicesProp, testimonials: testi
   const brands = brandsProp || staticBrands;
   return (
     <>
-      <LocalBusinessSchema page="home" />
+
       <Header />
       <main>
         <Hero title={"Exceptional Care for\nAdvanced Appliances"} subtitle="Professional Repair Service" description="Factory-trained technicians specializing in Sub-Zero, Viking, Wolf, Thermador, Miele, KitchenAid, LG, Samsung and more. Serving parts of Monmouth and Middlesex Counties." image={images.hero} showCTA={true} overlay="gradient" height="full" align="left" />

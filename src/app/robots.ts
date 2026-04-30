@@ -5,7 +5,14 @@ import { MetadataRoute } from 'next'
  * Controls search engine crawler access
  */
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+  // Three-way fallback so prod robots.txt never references localhost or a
+  // preview-deploy hostname. Sitemap directive must point at the canonical
+  // domain — Google merges or splits indexation based on this URL.
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SERVER_URL ||
+    (process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://www.appliancenj.com')
 
   return {
     rules: [

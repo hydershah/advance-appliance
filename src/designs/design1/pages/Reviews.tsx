@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
+import { Header, Footer, Hero, SectionHeading, CTAButton, BreadcrumbSchema } from '../components';
 import { businessInfo, testimonials as staticTestimonials, images } from '../data/content';
 import type { Testimonial } from '../types';
 
@@ -15,7 +15,7 @@ const Reviews: React.FC<ReviewsProps> = ({ testimonials: testimonialsProp }) => 
 
   return (
     <>
-      <LocalBusinessSchema />
+
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>

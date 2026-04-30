@@ -140,7 +140,7 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
     provider: {
       '@type': 'LocalBusiness',
       '@id': `${BASE_URL}/#organization`,
-      name: 'Advanced Appliance',
+      name: 'Advanced Appliance Repair Service',
       telephone: '(732) 416-7430',
     },
     areaServed: {
@@ -180,50 +180,37 @@ export default async function ServiceAreaPage({ params }: ServiceAreaPageProps) 
     return loc === `${areaNameLc}, nj` || loc.startsWith(`${areaNameLc},`)
   })
 
-  const localBusinessSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `${BASE_URL}/areas/${staticArea.slug}#localbusiness`,
-    name: `Advanced Appliance Repair — ${staticArea.name}, NJ`,
-    image: `${BASE_URL}/logo.png`,
-    url: `${BASE_URL}/areas/${staticArea.slug}`,
-    telephone: '(732) 416-7430',
-    priceRange: '$$',
-    areaServed: {
-      '@type': 'City',
-      name: staticArea.name,
-      containedInPlace: {
-        '@type': 'AdministrativeArea',
-        name: `${staticArea.county} County, ${staticArea.state}`,
-      },
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '127',
-      bestRating: '5',
-      worstRating: '1',
-    },
-    ...(areaReviews.length > 0 && {
-      review: areaReviews.slice(0, 3).map((t) => ({
-        '@type': 'Review',
-        author: { '@type': 'Person', name: t.name },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: String(t.rating),
-          bestRating: '5',
-          worstRating: '1',
-        },
-        reviewBody: t.text,
-        datePublished: t.date,
-      })),
-    }),
-  }
+  // Page-level reviews emitted as a standalone @graph of Review entities
+  // that reference the canonical #organization. Earlier this code emitted
+  // a duplicate `LocalBusiness` with a separate `#localbusiness` @id
+  // which Google treated as a competing entity. Reviews now reinforce the
+  // single org entity from layout-level LocalBusinessSchema.
+  const localBusinessSchema =
+    areaReviews.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@graph': areaReviews.slice(0, 3).map((t, i) => ({
+            '@type': 'Review',
+            '@id': `${BASE_URL}/areas/${staticArea.slug}#review-${i + 1}`,
+            author: { '@type': 'Person', name: t.name },
+            reviewRating: {
+              '@type': 'Rating',
+              ratingValue: String(t.rating),
+              bestRating: '5',
+              worstRating: '1',
+            },
+            reviewBody: t.text,
+            datePublished: t.date,
+            // Bind every page review to the canonical Organization @id.
+            itemReviewed: { '@id': `${BASE_URL}/#organization` },
+          })),
+        }
+      : null
 
   return (
     <>
       <JsonLd data={serviceSchema} />
-      <JsonLd data={localBusinessSchema} />
+      {localBusinessSchema && <JsonLd data={localBusinessSchema} />}
       {faqSchema && <JsonLd data={faqSchema} />}
       <Design1AreaPage area={staticArea} />
     </>

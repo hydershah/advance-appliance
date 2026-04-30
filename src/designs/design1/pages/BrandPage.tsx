@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema, FAQAccordion } from '../components';
+import { Header, Footer, Hero, SectionHeading, CTAButton, BreadcrumbSchema, FAQAccordion } from '../components';
 import { businessInfo, services, serviceAreas, testimonials, images, brands } from '../data/content';
 import { brandAreaCombos, getAreaForCombo } from '../data/brandAreaCombos';
 import { brandEnrichment, buildBrandFaqs } from '../data/brandContent';
@@ -31,7 +31,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
 
   return (
     <>
-      <LocalBusinessSchema />
+
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Header, Footer, Hero, SectionHeading, ContactForm, FAQAccordion, LocalBusinessSchema, BreadcrumbSchema, FAQSchema } from '../components';
+import { Header, Footer, Hero, SectionHeading, ContactForm, FAQAccordion, BreadcrumbSchema, FAQSchema } from '../components';
 import { businessInfo, generalFaqs as staticGeneralFaqs, serviceAreas as staticServiceAreas, images } from '../data/content';
 import type { FAQ, ServiceArea } from '../types';
 
@@ -20,7 +20,7 @@ const Contact: React.FC<ContactProps> = ({ generalFaqs: faqsProp, serviceAreas: 
 
   return (
     <>
-      <LocalBusinessSchema page="contact" />
+
       <BreadcrumbSchema items={breadcrumbs} />
       <FAQSchema faqs={generalFaqs} />
       <Header />

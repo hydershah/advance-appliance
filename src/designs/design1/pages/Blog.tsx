@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
+import { Header, Footer, Hero, SectionHeading, CTAButton, BreadcrumbSchema } from '../components';
 import { businessInfo, blogPosts as staticBlogPosts, images } from '../data/content';
 import { BlogPost } from '../types';
 
@@ -86,7 +86,7 @@ const Blog: React.FC<BlogProps> = ({ blogPosts: blogPostsProp }) => {
 
   return (
     <>
-      <LocalBusinessSchema />
+
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>

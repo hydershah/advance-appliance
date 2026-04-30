@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Header, Footer, Hero, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
+import { Header, Footer, Hero, SectionHeading, CTAButton, BreadcrumbSchema } from '../components';
 import { businessInfo, brands as staticBrands, certifications, images } from '../data/content';
 import type { Brand } from '../types';
 
@@ -20,7 +20,7 @@ const Brands: React.FC<BrandsProps> = ({ brands: brandsProp }) => {
 
   return (
     <>
-      <LocalBusinessSchema />
+
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>

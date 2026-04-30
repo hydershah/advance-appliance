@@ -154,12 +154,43 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
+  const BASE_URL =
+    process.env.NEXT_PUBLIC_SERVER_URL ||
+    (process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://www.appliancenj.com')
 
-  // Try CMS first
+  // STATIC-FIRST: try the in-code blog post array before hitting Sanity.
+  // Earlier the CMS fetch was awaited first, which made every static post
+  // pay the Sanity round-trip. When Sanity was slow, Next.js triggered the
+  // route-level loading.tsx and SSR'd a "Loading..." spinner instead of the
+  // article body — Googlebot's first crawl saw the spinner, not the post.
+  const staticPost = findStaticBlogPostBySlug(slug)
+  if (staticPost) {
+    const articleSchema = generateArticleSchema({
+      headline: staticPost.title,
+      description: staticPost.excerpt || '',
+      url: `${BASE_URL}/blog/${slug}`,
+      imageUrl: staticPost.image || `${BASE_URL}/og-image.jpg`,
+      datePublished: staticPost.date,
+      dateModified: staticPost.date,
+      author: staticPost.author || 'Advanced Appliance Repair',
+    })
+    const howToSchema = buildHowToSchema(slug, BASE_URL)
+
+    return (
+      <>
+        <JsonLd data={articleSchema} />
+        {howToSchema && <JsonLd data={howToSchema} />}
+        <Design1BlogPost post={staticPost} />
+      </>
+    )
+  }
+
+  // Only hit CMS when no static match (CMS-only posts in Sanity).
   try {
     const cmsPost = await fetchBlogPostBySlug(slug)
     if (cmsPost) {
-      const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
       const imageUrl = cmsPost.featuredImage ? urlFor(cmsPost.featuredImage)?.url() : `${BASE_URL}/og-image.jpg`
       const articleSchema = generateArticleSchema({
         headline: cmsPost.title,
@@ -170,11 +201,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         dateModified: cmsPost._updatedAt || cmsPost.publishedDate || cmsPost._createdAt,
         author: cmsPost.author || 'Advanced Appliance Repair',
       })
-
-      // Emit HowTo schema even when serving from CMS — pulls structured
-      // step data from the static how-to library matched by slug. Sanity
-      // schema for blog posts does not (yet) carry howToSteps, so this
-      // keeps HowTo eligibility consistent regardless of content source.
       const howToSchema = buildHowToSchema(slug, BASE_URL)
 
       return (
@@ -186,32 +212,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       )
     }
   } catch {
-    // CMS unavailable, fall through to static
-  }
-
-  // Fallback to static blog post
-  const staticPost = findStaticBlogPostBySlug(slug)
-  if (staticPost) {
-    const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
-    const articleSchema = generateArticleSchema({
-      headline: staticPost.title,
-      description: staticPost.excerpt || '',
-      url: `${BASE_URL}/blog/${slug}`,
-      imageUrl: staticPost.image || `${BASE_URL}/og-image.jpg`,
-      datePublished: staticPost.date,
-      dateModified: staticPost.date,
-      author: staticPost.author || 'Advanced Appliance Repair',
-    })
-
-    const howToSchema = buildHowToSchema(slug, BASE_URL)
-
-    return (
-      <>
-        <JsonLd data={articleSchema} />
-        {howToSchema && <JsonLd data={howToSchema} />}
-        <Design1BlogPost postSlug={slug} />
-      </>
-    )
+    // CMS unavailable
   }
 
   notFound()

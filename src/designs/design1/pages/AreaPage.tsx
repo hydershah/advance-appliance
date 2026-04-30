@@ -12,7 +12,6 @@ import {
   CTAButton,
   FAQAccordion,
   TestimonialCard,
-  LocalBusinessSchema,
   BreadcrumbSchema,
 } from '../components';
 import {
@@ -87,7 +86,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
 
   return (
     <>
-      <LocalBusinessSchema />
+
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>

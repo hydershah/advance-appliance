@@ -48,7 +48,10 @@ export const LocalBusinessSchema: React.FC<LocalBusinessSchemaProps> = () => {
     // Coordinates for 23 Reids Hill Road, Morganville, NJ 07751.
     // Earlier value (40.7261, -74.3073) was Parsippany/Newark — wrong county
     // entirely, breaking local-search ranking signals.
-    geo: { '@type': 'GeoCoordinates', latitude: 40.3565, longitude: -74.2532 },
+    // 5-decimal precision (~1.1m accuracy) per Google LocalBusiness spec.
+    // Earlier 4-decimal value (~110m) was below recommended precision for
+    // local-pack proximity matching.
+    geo: { '@type': 'GeoCoordinates', latitude: 40.35650, longitude: -74.25320 },
     openingHoursSpecification: [
       { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '21:00' },
     ],

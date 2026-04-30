@@ -11,7 +11,6 @@ import {
   CTAButton,
   FAQAccordion,
   TestimonialCard,
-  LocalBusinessSchema,
   BreadcrumbSchema,
 } from '../components';
 import { businessInfo, services, testimonials, images } from '../data/content';
@@ -77,7 +76,7 @@ const BrandAreaPage: React.FC<BrandAreaPageProps> = ({ combo }) => {
 
   return (
     <>
-      <LocalBusinessSchema />
+
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>

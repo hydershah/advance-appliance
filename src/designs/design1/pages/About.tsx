@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header, Footer, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
+import { Header, Footer, SectionHeading, CTAButton, BreadcrumbSchema } from '../components';
 import { businessInfo, certifications as staticCertifications, images } from '../data/content';
 import type { Certification } from '../types';
 
@@ -45,7 +45,7 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
 
   return (
     <>
-      <LocalBusinessSchema page="about" />
+
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>

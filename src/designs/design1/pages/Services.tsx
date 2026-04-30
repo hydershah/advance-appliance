@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Header, Footer, Hero, ServiceCard, SectionHeading, CTAButton, LocalBusinessSchema, BreadcrumbSchema } from '../components';
+import { Header, Footer, Hero, ServiceCard, SectionHeading, CTAButton, BreadcrumbSchema } from '../components';
 import { businessInfo, services as staticServices, brands as staticBrands, images } from '../data/content';
 import type { Service, Brand } from '../types';
 
@@ -19,7 +19,7 @@ const Services: React.FC<ServicesProps> = ({ services: servicesProp, brands: bra
 
   return (
     <>
-      <LocalBusinessSchema />
+
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>

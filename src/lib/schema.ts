@@ -83,10 +83,14 @@ export function generateLocalBusinessSchema() {
         },
       })),
     },
+    // Real, claimed social profiles. Earlier values used invented slugs
+    // (`/advanceappliancerepair`) that 404'd — every sameAs pointer to a
+    // dead URL is a negative entity-graph signal in Google's KG.
     sameAs: [
-      'https://www.facebook.com/advanceappliancerepair',
-      'https://www.instagram.com/advanceappliancerepair',
-      'https://www.linkedin.com/company/advanceappliancerepair',
+      'https://www.facebook.com/profile.php?id=61555650040922',
+      'https://www.instagram.com/advancedappliance/?hl=en',
+      'https://twitter.com/advappliancenj',
+      'https://www.youtube.com/channel/UC3FgNm3NMvks81yUBLOYhKw',
     ],
   }
 }
