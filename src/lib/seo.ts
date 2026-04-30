@@ -19,7 +19,12 @@ export interface SEOConfig {
   author?: string
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+// Three-way fallback so prod never emits localhost URLs in metadata.
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SERVER_URL ||
+  (process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://www.appliancenj.com')
 const BUSINESS_NAME = 'Advanced Appliance Repair Service'
 const PHONE = '(732) 416-7430'
 const LOGO_URL = `${BASE_URL}/logo.png`
@@ -121,14 +126,18 @@ export function generateOgImageUrl(options: {
 }
 
 /**
- * Generate breadcrumb list items for navigation
+ * Generate breadcrumb list items for navigation.
+ *
+ * Schema.org BreadcrumbList wants `item` (a URL string or Thing with @id),
+ * NOT a bare `@id` on the ListItem itself. Earlier versions of this
+ * function emitted invalid markup that Google ignored.
  */
 export function generateBreadcrumbs(items: Array<{ name: string; url: string }>) {
   return items.map((item, index) => ({
     '@type': 'ListItem' as const,
     position: index + 1,
     name: item.name,
-    '@id': item.url.startsWith('http') ? item.url : `${BASE_URL}${item.url}`,
+    item: item.url.startsWith('http') ? item.url : `${BASE_URL}${item.url}`,
   }))
 }
 

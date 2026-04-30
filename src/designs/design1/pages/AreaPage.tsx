@@ -93,7 +93,7 @@ const AreaPage: React.FC<AreaPageProps> = ({ areaSlug, area: areaProp }) => {
       <main>
         <Hero
           title={`Appliance Repair in ${area.name}, NJ`}
-          subtitle={`Serving ${area.county} County Since 1993`}
+          subtitle={`Serving ${area.county} County Since 1992`}
           description={`Factory-trained technicians, OEM parts, and 30+ years of local experience across ${area.name} — including ${area.zipCodes.join(', ')}.`}
           image={images.serviceAreas}
           showCTA={true}

@@ -82,48 +82,74 @@ export async function generateMetadata({
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
 
-  // Try CMS first
+  // Resolve title/description from static when slug matches; otherwise
+  // fall back to CMS fields. Static is authoritative when both exist —
+  // prevents legacy CMS phrasing from leaking into SERPs. Bare titles
+  // (no manual "- Advanced Appliance" suffix) so the layout template
+  // appends the brand exactly once.
+  const staticPost = findStaticBlogPostBySlug(slug)
+
+  let title: string | undefined
+  let description: string | undefined
+  let publishedTime: string | undefined
+  let author: string | undefined
+  let cmsImage: string | undefined
+
   try {
-    const post = await fetchBlogPostBySlug(slug)
-    if (post) {
-      const title = post.meta?.seo?.title || post.seo?.title || post.title
-      const description = post.meta?.seo?.description || post.seo?.description || post.excerpt || ''
-      return {
-        title: `${title} - Advanced Appliance Repair Service`,
-        description,
-        alternates: { canonical: `/blog/${slug}` },
-        openGraph: {
-          title,
-          description,
-          type: 'article',
-          publishedTime: post.publishedDate || post._createdAt,
-          images: [{ url: `/api/og?title=${encodeURIComponent(title)}&category=Blog`, width: 1200, height: 630 }],
-        },
-      }
+    const cmsPost = await fetchBlogPostBySlug(slug)
+    if (cmsPost) {
+      title = cmsPost.title
+      description =
+        cmsPost.meta?.seo?.description || cmsPost.seo?.description || cmsPost.excerpt || ''
+      publishedTime = cmsPost.publishedDate || cmsPost._createdAt
+      author = cmsPost.author
+      // CMS may have a custom hero image; only use as OG override.
+      cmsImage = cmsPost.featuredImage
+        ? `/api/og?title=${encodeURIComponent(cmsPost.title)}&category=Blog`
+        : undefined
     }
   } catch {
-    // CMS unavailable, fall through to static
+    // CMS unavailable — fall through to static.
   }
 
-  // Fallback to static blog posts
-  const staticPost = findStaticBlogPostBySlug(slug)
   if (staticPost) {
-    return {
-      title: `${staticPost.title} - Advanced Appliance Repair Service`,
-      description: staticPost.excerpt,
-      alternates: { canonical: `/blog/${slug}` },
-      openGraph: {
-        title: staticPost.title,
-        description: staticPost.excerpt,
-        type: 'article',
-        publishedTime: staticPost.date,
-        authors: staticPost.author ? [staticPost.author] : undefined,
-        images: [{ url: `/api/og?title=${encodeURIComponent(staticPost.title)}&category=Blog`, width: 1200, height: 630 }],
-      },
-    }
+    title = staticPost.title
+    description = staticPost.excerpt
+    publishedTime = staticPost.date
+    author = staticPost.author
   }
 
-  return { title: 'Post Not Found' }
+  if (!title) {
+    return { title: 'Post Not Found' }
+  }
+
+  // Trim description to ≤155 chars (Google truncates at ~160).
+  if (description && description.length > 155) {
+    description = `${description.slice(0, 152).trimEnd()}…`
+  }
+
+  const ogImage =
+    cmsImage || `/api/og?title=${encodeURIComponent(title)}&category=Blog`
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      publishedTime,
+      authors: author ? [author] : undefined,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
+    },
+  }
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

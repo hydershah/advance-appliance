@@ -20,34 +20,44 @@ function findStaticServiceBySlug(slug: string) {
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params
 
-  // Try CMS first
-  try {
-    const service = await fetchServiceBySlug(slug)
-    if (service) {
-      const title = service.seo?.title || service.name
-      const description = service.seo?.description || service.excerpt || ''
-      return { title, description, alternates: { canonical: `/services/${slug}` }, openGraph: { title, description, images: [{ url: `/api/og?title=${encodeURIComponent(title)}&category=Service`, width: 1200, height: 630 }] } }
-    }
-  } catch {
-    // CMS unavailable
-  }
-
-  // Fallback to static
+  // Static title/description are authoritative for SEO. CMS may carry stale
+  // phrasing (legacy "Factory-Authorized", old domain refs) that we do not
+  // want leaking into Google SERPs. Same pattern as /areas/[slug].
   const staticService = findStaticServiceBySlug(slug)
-  if (staticService) {
-    return {
-      title: `${staticService.name} - Advanced Appliance Repair Service`,
-      description: staticService.shortDescription,
-      alternates: { canonical: `/services/${slug}` },
-      openGraph: {
-        title: `${staticService.name} - Advanced Appliance Repair Service`,
-        description: staticService.shortDescription,
-        images: [{ url: `/api/og?title=${encodeURIComponent(staticService.name)}&category=Service`, width: 1200, height: 630 }],
-      },
-    }
+  if (!staticService) {
+    return { title: 'Service Not Found' }
   }
 
-  return { title: 'Service Not Found' }
+  // Title bare here (no "- Advanced Appliance Repair Service" suffix) —
+  // the layout `template: '%s | Advanced Appliance Repair Service'` adds
+  // the brand. Suffixing manually causes the brand to double in SERPs.
+  const title = `${staticService.name} in NJ | Factory-Certified`
+  const description =
+    staticService.shortDescription.length <= 155
+      ? staticService.shortDescription
+      : `${staticService.shortDescription.slice(0, 152)}…`
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `/services/${slug}` },
+    openGraph: {
+      title: `${staticService.name} - Advanced Appliance Repair`,
+      description,
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(staticService.name)}&category=Service`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+  }
 }
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {

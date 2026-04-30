@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header, Footer, SectionHeading, CTAButton, ArticleSchema, BreadcrumbSchema } from '../components';
+import { Header, Footer, SectionHeading, CTAButton, BreadcrumbSchema } from '../components';
 import { businessInfo, blogPosts } from '../data/content';
 import { BlogPost as BlogPostType } from '../types';
 
@@ -21,7 +21,10 @@ const BlogPost: React.FC<BlogPostProps> = ({ postSlug, post: postProp }) => {
 
   return (
     <>
-      <ArticleSchema title={post.title} description={post.excerpt} author={post.author} datePublished={post.date} image={post.image} url={`https://advancedappliancerepair.com/blog/${post.slug}`} />
+      {/* Server route at src/app/(frontend)/blog/[slug]/page.tsx emits
+          Article + HowTo schema with the canonical domain. Skip the
+          duplicate client-side ArticleSchema here to avoid conflicting
+          @id values pointing at advancedappliancerepair.com. */}
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>

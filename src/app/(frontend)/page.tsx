@@ -8,9 +8,14 @@ import { generateWebSiteSchema, generateHomepageSchema } from '@/lib/schema'
 import { JsonLd } from '@/components/JsonLd'
 
 export async function generateMetadata(): Promise<Metadata> {
+  // Bare title here — layout `template: '%s | Advanced Appliance Repair
+  // Service'` adds the brand. Including the brand twice was producing
+  // truncated SERP snippets like "Advanced Appliance Repair Service |
+  // Expert Repair in NJ | Advanced Appliance Repa…".
   return {
-    title: 'Advanced Appliance Repair Service | Expert Repair in NJ',
-    description: 'Professional premier appliance repair services in Monmouth & Middlesex Counties, NJ. Expert technicians, reliable service.',
+    title: 'Expert Appliance Repair in Monmouth & Middlesex Counties, NJ',
+    description:
+      'Factory-certified appliance repair across Monmouth & Middlesex Counties, NJ. Sub-Zero, Wolf, Viking, Thermador, Miele & all major brands. Call (732) 416-7430.',
     keywords: ['appliance repair NJ', 'premier appliance repair', 'Sub-Zero repair', 'Wolf repair', 'Viking repair', 'Monmouth County appliance repair', 'Middlesex County appliance repair'],
     alternates: { canonical: '/' },
   }

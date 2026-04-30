@@ -25,7 +25,7 @@ export function HomePage() {
   const websiteSchema = generateWebSiteSchema()
   const businessSchema = generateHomepageSchema({
     aggregateRating: {
-      ratingValue: 4.8,
+      ratingValue: 4.9,
       reviewCount: 127,
     },
   })

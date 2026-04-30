@@ -65,11 +65,21 @@ export async function generateMetadata({
   }
 
   const enrichment = areaEnrichment[staticArea.slug]
-  const neighborhoodPhrase = enrichment?.neighborhoods.slice(0, 3).join(', ')
-  const metaTitle = `Appliance Repair in ${staticArea.name}, NJ | Factory-Certified | Advanced Appliance`
-  const metaDescription = neighborhoodPhrase
-    ? `Factory-certified appliance repair in ${staticArea.name}, NJ (${staticArea.zipCodes.join(', ')}) — serving ${neighborhoodPhrase}. Sub-Zero, Wolf, Thermador, LG, Samsung & all major brands. 30+ years in ${staticArea.county} County. Call (732) 416-7430.`
-    : `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ (${staticArea.zipCodes.join(', ')}). All major brands — same-day service available. Call (732) 416-7430.`
+  const firstNeighborhood = enrichment?.neighborhoods[0]
+  // Title bare — layout template appends "| Advanced Appliance Repair Service".
+  // Adding "| Advanced Appliance" in the page-level title was producing
+  // double-brand SERP truncation.
+  const metaTitle = `Appliance Repair in ${staticArea.name}, NJ | Factory-Certified`
+  // Description must stay under ~160 chars (Google truncation). The previous
+  // version with full zip-list + 3-neighborhood list was 240+ chars for
+  // multi-zip towns.
+  const rawDescription = firstNeighborhood
+    ? `Factory-certified appliance repair in ${staticArea.name}, NJ (${staticArea.zipCodes[0]}). All major brands. 30+ years. Call (732) 416-7430.`
+    : `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ. All major brands, same-day available. Call (732) 416-7430.`
+  const metaDescription =
+    rawDescription.length <= 155
+      ? rawDescription
+      : `${rawDescription.slice(0, 152).trimEnd()}…`
 
   // Try CMS for OG image only — if Sanity supplies a custom hero image,
   // use it. Title and description are NOT taken from CMS to prevent

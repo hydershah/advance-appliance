@@ -710,7 +710,10 @@ export const brands: Brand[] = [
   // Major Brands (Featured)
   { name: 'LG', slug: 'lg-appliance-repair-service-nj', logo: '/brands/lg.png', featured: true },
   { name: 'Samsung', slug: 'samsung-appliance-repair-service-nj', logo: '/brands/samsung.png', featured: true },
-  { name: 'Bosch', slug: 'bosch-appliance-repair-service-nj', logo: '/brands/bosch.png', featured: true },
+  // Bosch logo file is not present in public/brands/ — the Image component
+  // would 404. Fall back to text-only rendering until a real Bosch logo is
+  // added. Add as `logo: '/brands/bosch.png'` (or .svg) when available.
+  { name: 'Bosch', slug: 'bosch-appliance-repair-service-nj', featured: true },
   { name: 'KitchenAid', slug: 'kitchenaid-appliance-repair-service-nj', logo: '/brands/kitchenaid.jpg', featured: true },
   { name: 'Jenn-Air', slug: 'jenn-air-appliance-repair-service-nj', logo: '/brands/jennair.png', featured: true },
   { name: 'GE', slug: 'general-electric-ge-appliance-repair-service-nj', logo: '/brands/ge.png', featured: true },

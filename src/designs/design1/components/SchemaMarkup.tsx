@@ -45,11 +45,12 @@ export const LocalBusinessSchema: React.FC<LocalBusinessSchemaProps> = () => {
       postalCode: '07751',
       addressCountry: 'US',
     },
-    geo: { '@type': 'GeoCoordinates', latitude: 40.7261, longitude: -74.3073 },
+    // Coordinates for 23 Reids Hill Road, Morganville, NJ 07751.
+    // Earlier value (40.7261, -74.3073) was Parsippany/Newark — wrong county
+    // entirely, breaking local-search ranking signals.
+    geo: { '@type': 'GeoCoordinates', latitude: 40.3565, longitude: -74.2532 },
     openingHoursSpecification: [
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:00', closes: '20:00' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '18:00' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday', opens: '09:00', closes: '16:00' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '21:00' },
     ],
     priceRange: '$$',
     areaServed: serviceAreas.map((area) => ({ '@type': 'City', name: area.name, containedInPlace: { '@type': 'State', name: 'New Jersey' } })),

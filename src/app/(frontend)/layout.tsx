@@ -59,8 +59,10 @@ export const metadata: Metadata = {
     default: 'Advanced Appliance Repair Service | Expert Repair in Monmouth & Middlesex Counties, NJ',
     template: '%s | Advanced Appliance Repair Service',
   },
+  // Default sitewide description (used as fallback when a page does not
+  // set its own). Kept under Google's ~160 char truncation point.
   description:
-    'Professional premier appliance repair services in parts of Monmouth & Middlesex Counties, NJ. Factory-trained technicians for Sub-Zero, Wolf, Viking & all major brands. Call (732) 416-7430',
+    'Factory-certified appliance repair in Monmouth & Middlesex Counties, NJ. Sub-Zero, Wolf, Viking & all major brands. Call (732) 416-7430.',
   keywords: [
     'appliance repair NJ',
     'premier appliance service',

@@ -13,7 +13,9 @@ interface ServicesProps {
 const Services: React.FC<ServicesProps> = ({ services: servicesProp, brands: brandsProp }) => {
   const services = servicesProp || staticServices;
   const brands = brandsProp || staticBrands;
-  const breadcrumbs = [{ name: 'Home', url: 'https://advancedappliancerepair.com/' }, { name: 'Services', url: 'https://advancedappliancerepair.com/services' }];
+  // BreadcrumbSchema component resolves relative paths against the
+  // canonical BASE_URL — never hardcode a domain here.
+  const breadcrumbs = [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }];
 
   return (
     <>

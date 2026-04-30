@@ -5,7 +5,14 @@ import { BUSINESS_INFO, generateBusinessHours, generateBreadcrumbs } from './seo
  * Complete structured data implementation for SEO
  */
 
-const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+// Resolve canonical site URL. Three-way fallback: env var → dev localhost
+// → production domain. Never let prod schema emit `localhost:3000` (which
+// is what was making Google attribute SERPs to the Railway preview).
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SERVER_URL ||
+  (process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://www.appliancenj.com')
 
 /**
  * Generate comprehensive LocalBusiness schema with all details

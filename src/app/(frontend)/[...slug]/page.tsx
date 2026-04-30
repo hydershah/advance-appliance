@@ -90,14 +90,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const pageSlug = slug.join('/')
 
-  // Check for brand × area combo page first (more specific than brand-only)
+  // Title rules: layout template appends "| Advanced Appliance Repair Service".
+  // Page-level titles MUST NOT include the brand suffix or "Advanced Appliance"
+  // — doing so produces "...| Advanced Appliance | Advanced Appliance Repair
+  // Service" which truncates and looks broken in SERPs.
+
+  // Helper to keep descriptions under Google's ~160 char truncation point.
+  const trim160 = (s: string) =>
+    s.length <= 155 ? s : `${s.slice(0, 152).trimEnd()}…`
+
+  // Brand × Area combo page (most specific first)
   const brandAreaCombo = findBrandAreaCombo(pageSlug)
   if (brandAreaCombo) {
     const b = getBrandForCombo(brandAreaCombo)
     const a = getAreaForCombo(brandAreaCombo)
     if (b && a) {
-      const title = `${b.name} Appliance Repair in ${a.name}, NJ | Factory-Certified Service | Advanced Appliance`
-      const description = `Factory-trained ${b.name} repair in ${a.name}, NJ (${a.zipCodes.join(', ')}). 30+ years on ${b.name}, OEM parts only, same-day service available. Call (732) 416-7430.`
+      const title = `${b.name} Repair in ${a.name}, NJ | Factory-Certified`
+      const description = trim160(
+        `Factory-trained ${b.name} repair in ${a.name}, NJ (${a.zipCodes[0]}). OEM parts, 30+ years, same-day available. Call (732) 416-7430.`,
+      )
       return {
         title,
         description,
@@ -107,19 +118,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           description,
           images: [{ url: `/api/og?title=${encodeURIComponent(`${b.name} Repair in ${a.name}, NJ`)}&category=Service`, width: 1200, height: 630 }],
         },
-        twitter: { title, description },
+        twitter: { card: 'summary_large_image', title, description },
       }
     }
   }
 
-  // Check for service × area combo page
+  // Service × Area combo page
   const serviceAreaCombo = findServiceAreaCombo(pageSlug)
   if (serviceAreaCombo) {
     const s = getServiceForCombo(serviceAreaCombo)
     const a = getAreaForServiceCombo(serviceAreaCombo)
     if (s && a) {
-      const title = `${s.name} in ${a.name}, NJ | Same-Day Service | Advanced Appliance`
-      const description = `Professional ${s.name.toLowerCase()} in ${a.name}, NJ (${a.zipCodes.join(', ')}). 30+ years, OEM parts, all major brands serviced. Call (732) 416-7430.`
+      const title = `${s.name} in ${a.name}, NJ | Same-Day Service`
+      const description = trim160(
+        `Professional ${s.name.toLowerCase()} in ${a.name}, NJ (${a.zipCodes[0]}). OEM parts, all major brands, 30+ years. Call (732) 416-7430.`,
+      )
       return {
         title,
         description,
@@ -129,102 +142,129 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           description,
           images: [{ url: `/api/og?title=${encodeURIComponent(`${s.name} in ${a.name}, NJ`)}&category=Service`, width: 1200, height: 630 }],
         },
-        twitter: { title, description },
+        twitter: { card: 'summary_large_image', title, description },
       }
     }
   }
 
-  // Check for static brand page
+  // Static brand page
   const brand = findBrandBySlug(pageSlug)
   if (brand) {
     const enrichment = brand.slug ? brandEnrichment[brand.slug] : undefined
     const title = enrichment
-      ? `${brand.name} Appliance Repair NJ | ${enrichment.tagline} | Advanced Appliance`
-      : `${brand.name} Appliance Repair Service in NJ - Advanced Appliance`
-    const description = enrichment
-      ? `${enrichment.tagline}. ${enrichment.certificationNote} Serving Monmouth & Middlesex Counties since 1993. Call (732) 416-7430.`
-      : `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained technicians, genuine parts, 1-year warranty. Call (732) 416-7430.`
+      ? `${brand.name} Appliance Repair NJ | Factory-Certified`
+      : `${brand.name} Appliance Repair NJ`
+    const description = trim160(
+      enrichment
+        ? `${enrichment.tagline}. Serving Monmouth & Middlesex Counties since 1992. OEM parts, up to 1-year warranty. Call (732) 416-7430.`
+        : `Expert ${brand.name} appliance repair in Monmouth & Middlesex Counties, NJ. Factory-trained, OEM parts. Call (732) 416-7430.`,
+    )
+    const ogImg = `/api/og?title=${encodeURIComponent(`${brand.name} Repair NJ`)}&category=Brand`
     return {
       title,
       description,
       alternates: { canonical: `/${brand.slug}` },
       openGraph: {
-        title: `${brand.name} Appliance Repair Service in NJ`,
+        title: `${brand.name} Appliance Repair NJ`,
         description,
+        images: [{ url: ogImg, width: 1200, height: 630 }],
       },
-      twitter: {
-        title,
-        description,
-      },
+      twitter: { card: 'summary_large_image', title, description, images: [ogImg] },
     }
   }
 
-  // Check for static location page
+  // Static location page (catchall fallback for /<area-slug> directly)
   const area = findAreaBySlug(pageSlug)
   if (area) {
+    const title = `Appliance Repair in ${area.name}, NJ | Factory-Certified`
+    const description = trim160(
+      `Professional appliance repair in ${area.name}, ${area.county} County, NJ (${area.zipCodes[0]}). All major brands, 30+ years. Call (732) 416-7430.`,
+    )
     return {
-      title: `Appliance Repair in ${area.name}, NJ - Advanced Appliance`,
-      description: `Professional appliance repair in ${area.name}, ${area.county} County, NJ. All major brands serviced. Call (732) 416-7430.`,
+      title,
+      description,
+      // Canonical points at /areas/<slug>, the preferred URL form for areas.
+      alternates: { canonical: `/areas/${area.slug}` },
       openGraph: {
         title: `Appliance Repair in ${area.name}, NJ`,
-        description: `Professional appliance repair services in ${area.name}, New Jersey.`,
+        description,
+        images: [{ url: `/api/og?title=Appliance+Repair+in+${encodeURIComponent(area.name)},+NJ&category=Service+Area`, width: 1200, height: 630 }],
       },
+      twitter: { card: 'summary_large_image', title, description },
     }
   }
 
-  // Check for static blog post
+  // Static blog post (catchall fallback for /<post-slug>)
   const blogPost = findBlogPostBySlug(pageSlug)
   if (blogPost) {
+    const description = trim160(blogPost.excerpt)
     return {
-      title: `${blogPost.title} - Advanced Appliance`,
-      description: blogPost.excerpt,
+      title: blogPost.title,
+      description,
+      alternates: { canonical: `/blog/${blogPost.slug}` },
       openGraph: {
         title: blogPost.title,
-        description: blogPost.excerpt,
+        description,
         images: blogPost.image ? [{ url: blogPost.image }] : undefined,
       },
+      twitter: { card: 'summary_large_image', title: blogPost.title, description },
     }
   }
 
-  // Try CMS page
+  // CMS-managed page (Sanity). This is the open namespace for editor-created
+  // pages that do not match any of the static slug patterns above. CMS title
+  // is unavoidable here, but we enforce: trimmed description, canonical URL,
+  // brand-suffix-free title (template adds brand once).
   try {
     const page = await fetchPageBySlug(pageSlug)
 
     if (!page) {
-      return {
-        title: 'Page Not Found',
-      }
+      // Genuine 404 — let Next.js render the not-found page rather than
+      // returning a generic title that gets indexed as content-free.
+      notFound()
     }
 
     const settings = await fetchSettings()
-
     const seo = page.seo || page.meta?.seo
-    const title = seo?.title || page.title
-    const description = seo?.description || ''
+    const cmsTitle = (seo?.title || page.title || '').trim()
+    const cmsDescRaw = seo?.description || ''
+
+    // Strip any trailing "| Advanced Appliance..." or "- Advanced Appliance..."
+    // that an editor may have manually pasted — the layout template adds
+    // the brand exactly once.
+    const title =
+      cmsTitle.replace(
+        /\s*[|\-–—]\s*Advanced Appliance(?: Repair Service)?\s*$/i,
+        '',
+      ) || 'Page'
+
+    const description = trim160(cmsDescRaw)
     const image = seo?.image
       ? urlFor(seo.image).url()
-      : settings.seo?.defaultImage
+      : settings?.seo?.defaultImage
         ? urlFor(settings.seo.defaultImage).url()
         : undefined
 
     return {
       title,
       description,
+      alternates: { canonical: `/${pageSlug}` },
       openGraph: {
         title,
         description,
         images: image ? [{ url: image }] : undefined,
       },
       twitter: {
+        card: 'summary_large_image',
         title,
         description,
         images: image ? [image] : undefined,
       },
     }
   } catch {
-    return {
-      title: 'Page Not Found',
-    }
+    // Transient CMS error (network/timeout) — return 404 rather than
+    // emitting a generic "Page Not Found" title that Google could index.
+    notFound()
   }
 }
 

@@ -7,18 +7,18 @@ import { testimonials as staticTestimonials } from '@/designs/design1/data/conte
 import type { Testimonial } from '@/designs/design1/types'
 
 export const metadata: Metadata = {
-  title: 'Our Reviews - Advanced Appliance Repair Service',
+  title: 'Our Reviews',
   description: 'Read customer reviews and testimonials. 4.9 star rating from 127+ satisfied customers throughout Monmouth and Middlesex Counties, NJ.',
   keywords: ['appliance repair reviews NJ', 'Advanced Appliance reviews', 'appliance repair testimonials', 'best appliance repair Monmouth County'],
   alternates: { canonical: '/our-reviews' },
   openGraph: {
-    title: 'Our Reviews - Advanced Appliance Repair Service',
+    title: 'Our Reviews',
     description: 'Read customer reviews and testimonials from satisfied homeowners in parts of Monmouth and Middlesex Counties.',
     images: [{ url: '/api/og?title=Our+Reviews&subtitle=4.9+Star+Rating+from+127%2B+Reviews&category=Reviews', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Reviews - Advanced Appliance Repair Service',
+    title: 'Our Reviews',
     description: '4.9 star rating from 127+ satisfied customers in Monmouth and Middlesex Counties.',
   },
 }

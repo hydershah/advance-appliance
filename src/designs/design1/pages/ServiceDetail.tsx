@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Header, Footer, Hero, SectionHeading, FAQAccordion, ContactForm, ServiceSchema, BreadcrumbSchema, FAQSchema } from '../components';
+import { Header, Footer, Hero, SectionHeading, FAQAccordion, ContactForm, BreadcrumbSchema, FAQSchema } from '../components';
 import { businessInfo, services as staticServices, brands, serviceAreas } from '../data/content';
 import { serviceAreaCombos } from '../data/serviceAreaCombos';
 import type { Service } from '../types';
@@ -16,7 +16,10 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceSlug = 'refrigerat
 
   return (
     <>
-      <ServiceSchema serviceName={service.name} serviceDescription={service.description} serviceUrl={`https://advancedappliancerepair.com/services/${service.slug}`} />
+      {/* Server route at src/app/(frontend)/services/[slug]/page.tsx
+          emits Service + AggregateRating + LocalBusiness schema with the
+          canonical domain. We only emit Breadcrumb + FAQ here to avoid
+          duplicate Service entities under conflicting @id values. */}
       <BreadcrumbSchema items={breadcrumbs} />
       <FAQSchema faqs={service.faqs} />
       <Header />

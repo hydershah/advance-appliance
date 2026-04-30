@@ -107,7 +107,7 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                     {[
                       `Factory-trained ${brand.name} technicians`,
                       'Genuine OEM replacement parts',
-                      '1-year warranty on all repairs',
+                      'Up to 1-year warranty on all repairs',
                       'Transparent pricing with no hidden fees',
                     ].map((item, i) => (
                       <li key={i} className="flex items-start">
