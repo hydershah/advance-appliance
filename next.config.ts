@@ -163,9 +163,15 @@ const nextConfig: NextConfig = {
       { from: 'appliance-repair-in-parlin-nj', to: 'appliance-repair-in-sayreville-nj' },
     ]
 
+    // Use `statusCode: 301` instead of `permanent: true` (which yields 308).
+    // 308 is technically a permanent redirect but its method-preserving
+    // semantics make older bots, link-checkers, and aggregator tools mis-
+    // handle it for page redirects. 301 is the broadly-compatible standard
+    // and is what an SEO audit tool flags as the correct value for
+    // permanent page redirects.
     const areaRedirects = retiredAreas.flatMap(({ from, to }) => [
-      { source: `/areas/${from}`, destination: `/areas/${to}`, permanent: true },
-      { source: `/${from}`, destination: `/areas/${to}`, permanent: true },
+      { source: `/areas/${from}`, destination: `/areas/${to}`, statusCode: 301 as const },
+      { source: `/${from}`, destination: `/areas/${to}`, statusCode: 301 as const },
     ])
 
     // Morganville brand×area combos were intentionally dropped — Morganville
@@ -181,7 +187,7 @@ const nextConfig: NextConfig = {
     const morganvilleComboRedirects = droppedMorganvilleCombos.map((slug) => ({
       source: `/${slug}`,
       destination: `/${slug.replace('-in-morganville-nj', '-in-marlboro-nj')}`,
-      permanent: true,
+      statusCode: 301 as const,
     }))
 
     // Legacy URL redirects from the old site that still appear in SERPs.
@@ -216,7 +222,7 @@ const nextConfig: NextConfig = {
       },
       ...areaRedirects,
       ...morganvilleComboRedirects,
-      ...legacyPageRedirects.map((r) => ({ ...r, permanent: true })),
+      ...legacyPageRedirects.map((r) => ({ ...r, statusCode: 301 as const })),
     ]
   },
 
