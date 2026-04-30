@@ -9,6 +9,7 @@ import {
   Source_Serif_4,
 } from 'next/font/google'
 import '../globals.css'
+import { LocalBusinessSchema, WebSiteSchema } from '@/designs/design1/components/SchemaMarkup'
 
 // Design 1: Elegant Minimalist
 const playfair = Playfair_Display({
@@ -184,6 +185,12 @@ export default function FrontendLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       </head>
       <body className={`${inter.className} antialiased`}>
+        {/* Sitewide brand schemas — every indexable page emits these so
+            Google's SERP "source" label always shows the brand name and
+            never falls back to preview-deploy metadata (e.g. Railway). */}
+        <WebSiteSchema />
+        <LocalBusinessSchema />
+
         {/* Skip to main content link for accessibility */}
         <a href="#main-content" className="skip-to-content">
           Skip to main content

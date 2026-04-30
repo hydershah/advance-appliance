@@ -53,7 +53,7 @@ export const brandEnrichment: Record<string, BrandEnrichment> = {
       'We routinely rebuild 15- and 20-year-old Sub-Zero built-ins rather than pushing replacement. The cabinet, compressor, and door mechanisms are still sound; the electronic controls and seals are the failure points, and those are serviceable. A correct rebuild on a 15-year-old 650 extends the unit another decade for a fraction of the replacement cost.',
     faqs: [
       {
-        question: 'Are you a factory-authorized Sub-Zero service provider in NJ?',
+        question: 'Are you a factory-certified Sub-Zero service provider in NJ?',
         answer:
           'Yes. Advanced Appliance is factory-certified on the full Sub-Zero line and has been servicing Sub-Zero built-ins across Monmouth and Middlesex Counties since the 1990s. We are EPA 608 certified for sealed-system work.',
       },

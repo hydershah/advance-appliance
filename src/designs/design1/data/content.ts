@@ -1049,7 +1049,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: '4',
     role: 'Field Service Technician',
-    bio: 'Providing professional in-home appliance repair throughout Monmouth and Middlesex Counties. Prompt, reliable, and factory-authorized.',
+    bio: 'Providing professional in-home appliance repair throughout Monmouth and Middlesex Counties. Prompt, reliable, and factory-certified.',
     image: '/team/technician-dishwasher-repair.webp',
   },
 ];

@@ -10,4 +10,4 @@ export { default as CTAButton } from './CTAButton';
 export { default as ContactForm } from './ContactForm';
 export { default as FAQAccordion } from './FAQAccordion';
 export { default as SectionHeading } from './SectionHeading';
-export { LocalBusinessSchema, ServiceSchema, BreadcrumbSchema, FAQSchema, ArticleSchema } from './SchemaMarkup';
+export { LocalBusinessSchema, WebSiteSchema, ServiceSchema, BreadcrumbSchema, FAQSchema, ArticleSchema } from './SchemaMarkup';

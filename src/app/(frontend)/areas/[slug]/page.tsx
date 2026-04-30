@@ -55,68 +55,56 @@ export async function generateMetadata({
 }: ServiceAreaPageProps): Promise<Metadata> {
   const { slug } = await params
 
-  // Try Sanity first
+  // Static title/description are the canonical SEO targets — they are
+  // versioned in code, reviewed in PRs, and free of stale phrasing
+  // (e.g. "Factory-Authorized" still in legacy Sanity documents). Static
+  // wins for title/desc; CMS still supplies the OG image when available.
+  const staticArea = findStaticAreaBySlug(slug)
+  if (!staticArea) {
+    return { title: 'Area Not Found' }
+  }
+
+  const enrichment = areaEnrichment[staticArea.slug]
+  const neighborhoodPhrase = enrichment?.neighborhoods.slice(0, 3).join(', ')
+  const metaTitle = `Appliance Repair in ${staticArea.name}, NJ | Factory-Certified | Advanced Appliance`
+  const metaDescription = neighborhoodPhrase
+    ? `Factory-certified appliance repair in ${staticArea.name}, NJ (${staticArea.zipCodes.join(', ')}) — serving ${neighborhoodPhrase}. Sub-Zero, Wolf, Thermador, LG, Samsung & all major brands. 30+ years in ${staticArea.county} County. Call (732) 416-7430.`
+    : `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ (${staticArea.zipCodes.join(', ')}). All major brands — same-day service available. Call (732) 416-7430.`
+
+  // Try CMS for OG image only — if Sanity supplies a custom hero image,
+  // use it. Title and description are NOT taken from CMS to prevent
+  // legacy "Factory-Authorized" phrasing from leaking into SERPs.
+  let ogImage: string | undefined
   try {
-    const area = await fetchServiceAreaBySlug(slug)
-
-    if (area) {
-      const title = area.meta?.seo?.title || area.seo?.title || `${area.name} - Service Area`
-      const description = area.meta?.seo?.description || area.seo?.description || area.excerpt || ''
-
-      const seoImage = area.meta?.seo?.image || area.seo?.image
-      const image = seoImage
+    const cmsArea = await fetchServiceAreaBySlug(slug)
+    if (cmsArea) {
+      const seoImage = cmsArea.meta?.seo?.image || cmsArea.seo?.image
+      ogImage = seoImage
         ? urlFor(seoImage).url()
-        : area.image
-        ? urlFor(area.image).url()
-        : undefined
-
-      return {
-        title,
-        description,
-        alternates: { canonical: `/areas/${slug}` },
-        openGraph: {
-          title,
-          description,
-          images: image ? [{ url: image }] : [{ url: `/api/og?title=${encodeURIComponent(String(area.name))}&subtitle=Appliance+Repair+Service&category=Service+Area`, width: 1200, height: 630 }],
-        },
-        twitter: {
-          title,
-          description,
-          images: image ? [image] : undefined,
-        },
-      }
+        : cmsArea.image
+          ? urlFor(cmsArea.image).url()
+          : undefined
     }
   } catch {
-    // CMS unavailable, fall through to static
+    // CMS unavailable — no problem, we have a generated OG fallback below.
   }
 
-  // Fallback to static data
-  const staticArea = findStaticAreaBySlug(slug)
-  if (staticArea) {
-    const enrichment = areaEnrichment[staticArea.slug]
-    const neighborhoodPhrase = enrichment?.neighborhoods.slice(0, 3).join(', ')
-    const metaTitle = `Appliance Repair in ${staticArea.name}, NJ | Same-Day Service | Advanced Appliance`
-    const metaDescription = neighborhoodPhrase
-      ? `Factory-trained appliance repair in ${staticArea.name}, NJ (${staticArea.zipCodes.join(', ')}) — serving ${neighborhoodPhrase}. Sub-Zero, Wolf, Thermador, LG, Samsung & all major brands. 30+ years in ${staticArea.county} County. Call (732) 416-7430.`
-      : `Professional appliance repair in ${staticArea.name}, ${staticArea.county} County, NJ (${staticArea.zipCodes.join(', ')}). All major brands — same-day service available. Call (732) 416-7430.`
-    return {
-      title: metaTitle,
-      description: metaDescription,
-      alternates: { canonical: `/areas/${slug}` },
-      openGraph: {
-        title: `Appliance Repair in ${staticArea.name}, NJ`,
-        description: metaDescription,
-        images: [{ url: `/api/og?title=Appliance+Repair+in+${encodeURIComponent(staticArea.name)},+NJ&category=Service+Area`, width: 1200, height: 630 }],
-      },
-      twitter: {
-        title: metaTitle,
-        description: metaDescription,
-      },
-    }
-  }
+  const fallbackOg = `/api/og?title=Appliance+Repair+in+${encodeURIComponent(staticArea.name)},+NJ&category=Service+Area`
 
   return {
-    title: 'Area Not Found',
+    title: metaTitle,
+    description: metaDescription,
+    alternates: { canonical: `/areas/${slug}` },
+    openGraph: {
+      title: `Appliance Repair in ${staticArea.name}, NJ`,
+      description: metaDescription,
+      images: [{ url: ogImage || fallbackOg, width: 1200, height: 630 }],
+    },
+    twitter: {
+      title: metaTitle,
+      description: metaDescription,
+      images: ogImage ? [ogImage] : undefined,
+    },
   }
 }
 
