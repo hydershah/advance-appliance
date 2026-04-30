@@ -1,8 +1,10 @@
 /* Design 1 - Elegant Minimalist Theme Global Styles */
 
-/* Font Imports */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+/* Inter and Playfair Display are loaded via next/font/google in
+ * src/app/(frontend)/layout.tsx. The earlier @import url(fonts.googleapis.com/...)
+ * statements duplicated those requests, adding render-blocking CSS and
+ * causing font-swap layout shift. Do NOT reintroduce them — Next.js handles
+ * font preload, subsetting, and self-hosting automatically. */
 
 /* Tailwind Base */
 @tailwind base;

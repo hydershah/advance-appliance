@@ -80,6 +80,29 @@ const nextConfig: NextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload',
           },
+          {
+            // Content Security Policy — defense in depth against XSS.
+            // 'unsafe-inline' on script/style is required for Next.js
+            // hydration markers and Tailwind's runtime style injection.
+            // Allowlists: Retell widget (chat), Google Maps (map iframe),
+            // Sanity CDN (CMS images), Pexels/Unsplash/Cloudinary/AWS
+            // (next/image remote patterns from next.config.ts).
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' https://dashboard.retellai.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' data: https://fonts.gstatic.com",
+              "img-src 'self' data: blob: https://cdn.sanity.io https://images.pexels.com https://images.unsplash.com https://*.cloudinary.com https://*.amazonaws.com https://www.google.com https://maps.gstatic.com",
+              "frame-src 'self' https://www.google.com https://maps.google.com https://dashboard.retellai.com",
+              "connect-src 'self' https://*.sanity.io https://api.retellai.com wss://*.retellai.com https://retellai.com",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'self'",
+              "upgrade-insecure-requests",
+            ].join('; '),
+          },
         ],
       },
       {
@@ -97,6 +120,18 @@ const nextConfig: NextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // OG image generator is deterministic for a given query string —
+        // cache it aggressively. Override the catchall /api/:path* rule
+        // below which sets no-store. Order matters: more specific first.
+        source: '/api/og',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800',
           },
         ],
       },

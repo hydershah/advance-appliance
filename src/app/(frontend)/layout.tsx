@@ -1,17 +1,14 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import {
-  Inter,
-  Playfair_Display,
-  Bebas_Neue,
-  Poppins,
-  Cormorant_Garamond,
-  Source_Serif_4,
-} from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import '../globals.css'
 import { LocalBusinessSchema, WebSiteSchema } from '@/designs/design1/components/SchemaMarkup'
 
-// Design 1: Elegant Minimalist
+// Only Design 1 fonts (Inter + Playfair) ship to production.
+// Bebas Neue, Poppins, Cormorant, and Source Serif 4 were placeholders for
+// alternate Design 2/3 themes that were never used — grepping the source
+// finds zero `font-bebas|font-poppins|font-cormorant|font-source` classes.
+// Each unused font added 30-100KB plus its own DNS lookup and font-swap CLS.
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
@@ -21,36 +18,6 @@ const playfair = Playfair_Display({
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'swap',
-})
-
-// Design 2: Bold Modern
-const bebas = Bebas_Neue({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-bebas',
-  display: 'swap',
-})
-
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-poppins',
-  display: 'swap',
-})
-
-// Design 3: Classic Premium
-const cormorant = Cormorant_Garamond({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-cormorant',
-  display: 'swap',
-})
-
-const sourceSerif = Source_Serif_4({
-  weight: ['300', '400', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-source',
   display: 'swap',
 })
 
@@ -163,7 +130,7 @@ export default function FrontendLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${bebas.variable} ${poppins.variable} ${cormorant.variable} ${sourceSerif.variable}`}
+      className={`${inter.variable} ${playfair.variable}`}
     >
       <head>
         {/* Preconnect to external domains for performance */}
@@ -200,12 +167,15 @@ export default function FrontendLayout({
 
         <div id="main-content">{children}</div>
 
-        {/* Retell AI Chat Widget */}
+        {/* Retell AI Chat Widget — loaded with `lazyOnload` so it does not
+            compete with hydration or block INP. The popup waits 5 seconds
+            anyway (data-show-ai-popup-time), so deferring to idle has no
+            visible UX cost. */}
         <Script
           id="retell-widget"
           src="https://dashboard.retellai.com/retell-widget.js"
           type="module"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           data-public-key="public_key_c1905a5062116c55e1cf8"
           data-agent-id="agent_8179546a2d50fe1ecceb17a2a2"
           data-title="Advanced Appliance Repair"

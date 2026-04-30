@@ -93,7 +93,7 @@ const Contact: React.FC<ContactProps> = ({ generalFaqs: faqsProp, serviceAreas: 
 
         <section className="py-0">
           <div className="relative h-[500px]">
-            <iframe src={mapEmbedUrl || DEFAULT_MAP_URL} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale" />
+            <iframe src={mapEmbedUrl || DEFAULT_MAP_URL} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale" sandbox="allow-scripts allow-same-origin allow-popups" referrerPolicy="no-referrer-when-downgrade" />
             <div className="absolute top-8 left-8 lg:left-16 bg-white p-8 shadow-xl max-w-sm max-h-[440px] overflow-hidden flex flex-col">
               <h3 className="font-serif text-xl mb-4">Our Service Area</h3>
               <p className="text-gray-600 text-sm mb-6">We proudly serve Monmouth and Middlesex counties in New Jersey.</p>

@@ -108,37 +108,56 @@ const Header: React.FC = () => {
               ))}
             </div>
 
+            {/* Desktop CTA — show full phone number, not generic "Call Now".
+                Customers should be able to read and dial without a hover. */}
             <div className="hidden xl:block">
               <a
                 href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`}
-                className={`inline-flex items-center px-5 py-2.5 border border-[#D4AF37] text-xs uppercase tracking-wider transition-all duration-300 ${
-                  isScrolled
-                    ? 'text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white'
-                    : 'bg-[#D4AF37] text-white hover:bg-[#C4A030]'
-                }`}
+                className="inline-flex items-center px-5 py-2.5 bg-[#D4AF37] text-white text-xs uppercase tracking-wider hover:bg-[#C4A030] transition-colors"
+                aria-label={`Call ${businessInfo.phone}`}
               >
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                Call Now
+                {businessInfo.phone}
               </a>
             </div>
 
-            <button
-              className={`xl:hidden p-2 transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            {/* Mobile: tap-to-call button visible at all times — phone-first
+                business loses leads when the number is hidden behind a
+                hamburger. Keep the menu button beside it. */}
+            <div className="flex items-center gap-2 xl:hidden">
+              <a
+                href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`}
+                className="inline-flex items-center px-3 py-2 bg-[#D4AF37] text-white text-xs uppercase tracking-wider hover:bg-[#C4A030] transition-colors"
+                aria-label={`Call ${businessInfo.phone}`}
+              >
+                <svg className="w-4 h-4 sm:mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span className="hidden sm:inline">Call</span>
+              </a>
+              <button
+                className={`p-2 transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
           </nav>
         </div>
       </header>
 
       {/* Mobile Menu — outside header to avoid backdrop-filter containing block */}
-      <div className={`xl:hidden fixed inset-0 bg-white z-[60] transform transition-transform duration-500 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div
+        id="mobile-menu"
+        className={`xl:hidden fixed inset-0 bg-white z-[60] transform transition-transform duration-500 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      >
         <div className="flex justify-between items-center p-6 border-b border-gray-100">
           <span className="font-serif text-xl">Menu</span>
           <button onClick={() => setIsMobileMenuOpen(false)} className="p-2" aria-label="Close menu">

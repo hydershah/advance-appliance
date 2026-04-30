@@ -27,6 +27,15 @@ export async function GET(request: NextRequest) {
     return new Response('Slug parameter is required', { status: 400 })
   }
 
+  // Sanitize slug: alphanumeric + hyphen + underscore only, max 100 chars.
+  // Defense in depth: even though the route is gated by PREVIEW_SECRET, do
+  // not let a slug like `../../admin` or `//evil.com/x` traverse paths or
+  // build an off-origin redirect.
+  const safeSlug = slug.replace(/[^a-zA-Z0-9\-_]/g, '').slice(0, 100)
+  if (!safeSlug) {
+    return new Response('Invalid slug', { status: 400 })
+  }
+
   // Enable draft mode
   const draft = await draftMode()
   draft.enable()
@@ -36,19 +45,19 @@ export async function GET(request: NextRequest) {
 
   switch (collection) {
     case 'pages':
-      redirectPath = slug === 'home' ? '/' : `/${slug}`
+      redirectPath = safeSlug === 'home' ? '/' : `/${safeSlug}`
       break
     case 'services':
-      redirectPath = `/services/${slug}`
+      redirectPath = `/services/${safeSlug}`
       break
     case 'service-areas':
-      redirectPath = `/areas/${slug}`
+      redirectPath = `/areas/${safeSlug}`
       break
     case 'blog-posts':
-      redirectPath = `/blog/${slug}`
+      redirectPath = `/blog/${safeSlug}`
       break
     default:
-      redirectPath = `/${slug}`
+      redirectPath = `/${safeSlug}`
   }
 
   // Redirect to the page

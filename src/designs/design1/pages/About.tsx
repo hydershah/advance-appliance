@@ -49,14 +49,18 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
       <BreadcrumbSchema items={breadcrumbs} />
       <Header />
       <main>
+        {/* Visually hidden h1 — About page intentionally has no large
+            hero heading. Required for screen readers and crawlers to
+            identify the page topic (WCAG 1.3.1). */}
+        <h1 className="sr-only">About Advanced Appliance Repair Service</h1>
         <section className="relative pt-32 pb-16 overflow-hidden">
           <div className="absolute inset-0">
-            <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=12&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" />
+            <iframe src="https://www.google.com/maps?q=23+Reids+Hill+Rd,+Morganville,+NJ+07751&z=12&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Our Service Area" className="grayscale opacity-30" sandbox="allow-scripts allow-same-origin allow-popups" referrerPolicy="no-referrer-when-downgrade" />
           </div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="flex justify-between items-center">
-              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0 relative"><Image src="/team/technician-doorstep.webp" alt="Advanced Appliance technician providing doorstep service" fill className="object-cover object-top" sizes="(max-width: 1024px) 256px, 320px" /></div>
-              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0 relative"><Image src="/images/founder-2.jpg" alt="Advanced Appliance Repair Service founder" fill className="object-cover object-top" sizes="(max-width: 1024px) 256px, 320px" /></div>
+              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0 relative"><Image src="/team/technician-doorstep.webp" alt="Advanced Appliance technician providing doorstep service" fill priority className="object-cover object-top" sizes="(max-width: 1024px) 256px, 320px" /></div>
+              <div className="w-64 lg:w-80 aspect-[3/4] overflow-hidden rounded shadow-lg shrink-0 relative"><Image src="/images/founder-2.jpg" alt="Advanced Appliance Repair Service founder" fill priority className="object-cover object-top" sizes="(max-width: 1024px) 256px, 320px" /></div>
             </div>
           </div>
         </section>
@@ -104,8 +108,12 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
 
         <div className="container mx-auto px-6 py-8">
           <div className="grid grid-cols-2 gap-3">
-            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-oven-repair.webp" alt="Oven repair in progress" className="w-full h-full object-cover object-center" /></div>
-            <div className="aspect-square overflow-hidden rounded"><img src="/team/technician-dishwasher-action.webp" alt="Dishwasher repair in progress" className="w-full h-full object-cover object-center" /></div>
+            <div className="aspect-square overflow-hidden rounded relative">
+              <Image src="/team/technician-oven-repair.webp" alt="Advanced Appliance technician performing oven repair in a customer's kitchen" fill className="object-cover object-center" sizes="(max-width: 768px) 50vw, 25vw" />
+            </div>
+            <div className="aspect-square overflow-hidden rounded relative">
+              <Image src="/team/technician-dishwasher-action.webp" alt="Advanced Appliance technician installing a dishwasher pump assembly" fill className="object-cover object-center" sizes="(max-width: 768px) 50vw, 25vw" />
+            </div>
           </div>
         </div>
 
@@ -133,10 +141,10 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
                 { name: 'Cooktops', image: images.cooktop, link: '/services/cooktop-repair' },
               ].map((appliance, i) => (
                 <Link key={i} href={appliance.link} className="group text-center">
-                  <div className="aspect-square overflow-hidden mb-4 bg-[#FAFAF8] border border-gray-100 group-hover:border-[#D4AF37] transition-all duration-300 flex items-center justify-center p-6">
-                    <img src={appliance.image} alt={appliance.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
+                  <div className="aspect-square overflow-hidden mb-4 bg-[#FAFAF8] border border-gray-100 group-hover:border-[#D4AF37] transition-all duration-300 flex items-center justify-center p-6 relative">
+                    <Image src={appliance.image} alt={`${appliance.name} repair service in NJ`} fill className="object-contain p-6 group-hover:scale-110 transition-transform duration-300" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw" />
                   </div>
-                  <h4 className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">{appliance.name}</h4>
+                  <h3 className="font-serif text-lg text-black group-hover:text-[#D4AF37] transition-colors">{appliance.name}</h3>
                 </Link>
               ))}
             </div>
@@ -164,7 +172,9 @@ const About: React.FC<AboutProps> = ({ certifications: certificationsProp, exper
         <section className="py-16 bg-white">
           <div className="container mx-auto px-6">
             <div className="max-w-md mx-auto">
-              <div className="aspect-video overflow-hidden rounded shadow-lg"><img src="/Advanced-Appliance-Repair-Service.webp" alt="Advanced Appliance service fleet" className="w-full h-full object-cover" /></div>
+              <div className="aspect-video overflow-hidden rounded shadow-lg relative">
+                <Image src="/Advanced-Appliance-Repair-Service.webp" alt="Advanced Appliance Repair Service fleet vehicle parked at a New Jersey home" fill className="object-cover" sizes="(max-width: 768px) 100vw, 448px" />
+              </div>
             </div>
           </div>
         </section>

@@ -119,9 +119,19 @@ const BrandPage: React.FC<BrandPageProps> = ({ brand }) => {
                     ))}
                   </ul>
                 </div>
-                <div className="mt-10">
-                  <CTAButton href="/contact" variant="primary" size="lg" icon="arrow">
-                    Schedule {brand.name} Repair
+                {/* Phone-first CTA — appliance customers convert via phone
+                    5-10x more than form. Form is offered as secondary. */}
+                <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                  <CTAButton
+                    href={`tel:${businessInfo.phone.replace(/[^0-9]/g, '')}`}
+                    variant="primary"
+                    size="lg"
+                    icon="phone"
+                  >
+                    Call {businessInfo.phone}
+                  </CTAButton>
+                  <CTAButton href="/contact" variant="outline" size="lg" icon="arrow">
+                    Schedule Online
                   </CTAButton>
                 </div>
               </div>
