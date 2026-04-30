@@ -149,6 +149,30 @@ const nextConfig: NextConfig = {
       permanent: true,
     }))
 
+    // Legacy URL redirects from the old site that still appear in SERPs.
+    // Without these, old Google/Bing results land on the 404 page and lose
+    // customers. Both with-trailing-slash and without are covered by Next's
+    // matcher which is already trailingSlash-agnostic by default.
+    const legacyPageRedirects: Array<{ source: string; destination: string }> = [
+      { source: '/contact-us', destination: '/contact' },
+      { source: '/contact-us/', destination: '/contact' },
+      { source: '/service-request', destination: '/contact' },
+      { source: '/service-request/', destination: '/contact' },
+      // Common legacy variants worth catching defensively
+      { source: '/contactus', destination: '/contact' },
+      { source: '/request-service', destination: '/contact' },
+      { source: '/schedule-service', destination: '/contact' },
+      { source: '/book-appointment', destination: '/contact' },
+      { source: '/services-old', destination: '/services' },
+      { source: '/our-services', destination: '/services' },
+      { source: '/brands', destination: '/our-brands' },
+      { source: '/reviews', destination: '/our-reviews' },
+      { source: '/testimonials', destination: '/our-reviews' },
+      { source: '/service-area', destination: '/our-service-area' },
+      { source: '/service-areas', destination: '/our-service-area' },
+      { source: '/locations', destination: '/our-service-area' },
+    ]
+
     return [
       {
         source: '/admin',
@@ -157,6 +181,7 @@ const nextConfig: NextConfig = {
       },
       ...areaRedirects,
       ...morganvilleComboRedirects,
+      ...legacyPageRedirects.map((r) => ({ ...r, permanent: true })),
     ]
   },
 
